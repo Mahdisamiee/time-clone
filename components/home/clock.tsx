@@ -1,12 +1,15 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import moment from "moment-timezone";
 import ReactClock from "react-clock";
 import "react-clock/dist/Clock.css";
 import LiveClock from "react-live-clock";
 import Balancer from "react-wrap-balancer";
+import TimezoneSelect from "./timezone";
+
+import type { ITimezone } from "react-timezone-select";
 
 interface ClockProps {
   timeZone: string;
@@ -17,6 +20,10 @@ const Clock: React.FC<ClockProps> = ({ timeZone, timeCity }) => {
   const [fetchedDateTime, setFetchedDateTime] = useState<moment.Moment | null>(
     null,
   );
+
+  const handleTimezoneChange = (timeZone: string) => {
+    console.log(timeZone);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,17 +49,17 @@ const Clock: React.FC<ClockProps> = ({ timeZone, timeCity }) => {
       {fetchedDateTime ? (
         <div className="text-center">
           <h1>
-            Exact Time For {timeZone} /{timeCity}
+            Exact Time For {timeZone} / {timeCity}
           </h1>
           <h1
-            className="animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:text-7xl md:leading-[5rem]"
+            className="text-10xl animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:text-7xl md:leading-[5rem]"
             style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
           >
-            <Balancer>
+            <Balancer >
               <LiveClock
                 format={"HH:mm:ss"}
                 ticking={true}
-                timezone={"Europe/London"}
+                timezone={`${timeZone}/${timeCity}`}
               />
             </Balancer>
           </h1>
