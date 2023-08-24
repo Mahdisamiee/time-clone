@@ -36,6 +36,7 @@
     "react-dom": "18.2.0",
     "react-live-clock": "^6.1.15",
     "react-markdown": "^8.0.4",
+    "react-responsive": "^9.0.2",
     "react-select": "^5.7.4",
     "react-timezone-select": "^2.1.2",
     "react-wrap-balancer": "^0.3.0",
