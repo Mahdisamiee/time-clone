@@ -2,15 +2,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import moment from "moment-timezone";
-import LiveClock from "react-live-clock";
+import Clock from "react-live-clock";
 import Balancer from "react-wrap-balancer";
+import TimeZoneSelector from './timezone-select';
 
 interface ClockProps {
   timeZone: string;
   timeCity: string;
 }
 
-const Clock: React.FC<ClockProps> = ({ timeZone, timeCity }) => {
+const LiveClock: React.FC<ClockProps> = ({ timeZone, timeCity }) => {
   const [adjustedTime, setAdjustedTime] = useState<moment.Moment | null>(null);
 
   useEffect(() => {
@@ -42,7 +43,7 @@ const Clock: React.FC<ClockProps> = ({ timeZone, timeCity }) => {
   }, [timeZone, timeCity]);
 
   return (
-    <div className="flex flex-col items-center text-center">
+    <div className="width-100 flex flex-col items-center text-center">
       <h1>
         Exact Time For {timeZone} / {timeCity}
       </h1>
@@ -51,7 +52,7 @@ const Clock: React.FC<ClockProps> = ({ timeZone, timeCity }) => {
         style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
       >
         {adjustedTime && (
-          <LiveClock
+          <Clock
             date={adjustedTime.toISOString()}
             format={"HH:mm:ss"}
             ticking={true}
@@ -72,4 +73,4 @@ const Clock: React.FC<ClockProps> = ({ timeZone, timeCity }) => {
   );
 };
 
-export default Clock;
+export default LiveClock;

@@ -6,7 +6,7 @@ import WebVitals from "@/components/home/web-vitals";
 import ComponentGrid from "@/components/home/component-grid";
 import Image from "next/image";
 import { nFormatter } from "@/lib/utils";
-import Clock from "@/components/home/clock";
+import LiveClock from "@/components/home/timezone-clock";
 import LocalClock from "@/components/home/local-clock";
 
 export default async function Home() {
@@ -81,7 +81,7 @@ const features = [
     description:
       "Built on [Next.js](https://nextjs.org/) primitives like `@next/font` and `next/image` for stellar performance.",
     large: true,
-    demo: <Clock timeZone={"Europe"} timeCity={"London"} />,
+    demo: <LiveClock  />,
   },
   {
     title: "Performance first",
