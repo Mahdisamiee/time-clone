@@ -8,6 +8,7 @@ import Image from "next/image";
 import { nFormatter } from "@/lib/utils";
 import LiveClock from "@/components/home/timezone-clock";
 import LocalClock from "@/components/home/local-clock";
+import MainCalendar from "@/components/home/calendar";
 
 export default async function Home() {
   const { stargazers_count: stars } = await fetch(
@@ -81,13 +82,13 @@ const features = [
     description:
       "Built on [Next.js](https://nextjs.org/) primitives like `@next/font` and `next/image` for stellar performance.",
     large: true,
-    demo: <LiveClock  />,
+    demo: <LiveClock />,
   },
   {
-    title: "Performance first",
+    title: "",
     description:
-      "Built on [Next.js](https://nextjs.org/) primitives like `@next/font` and `next/image` for stellar performance.",
-    demo: <WebVitals />,
+      "",
+    demo: <MainCalendar />,
   },
   {
     title: "One-click Deploy",
