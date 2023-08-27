@@ -25,7 +25,7 @@ export default function NavBar() {
               height="30"
               className="mr-2 rounded-sm"
             ></Image>
-            <p>Time-Project</p>
+            <p>BATime</p>
           </Link>
         </div>
       </div>
