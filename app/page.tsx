@@ -1,32 +1,11 @@
 import Card from "@/components/home/card";
-import Balancer from "react-wrap-balancer";
-import { DEPLOY_URL } from "@/lib/constants";
-import { Github, Twitter } from "@/components/shared/icons";
-import WebVitals from "@/components/home/web-vitals";
+import { Twitter } from "@/components/shared/icons";
 import ComponentGrid from "@/components/home/component-grid";
-import Image from "next/image";
-import { nFormatter } from "@/lib/utils";
 import LiveClock from "@/components/home/timezone-clock";
 import LocalClock from "@/components/home/local-clock";
 import MainCalendar from "@/components/home/calendar";
 
 export default async function Home() {
-  const { stargazers_count: stars } = await fetch(
-    "https://api.github.com/repos/steven-tey/precedent",
-    {
-      ...(process.env.GITHUB_OAUTH_TOKEN && {
-        headers: {
-          Authorization: `Bearer ${process.env.GITHUB_OAUTH_TOKEN}`,
-          "Content-Type": "application/json",
-        },
-      }),
-      // data will revalidate every 24 hours
-      next: { revalidate: 86400 },
-    },
-  )
-    .then((res) => res.json())
-    .catch((e) => console.log(e));
-
   return (
     <>
       <div className="z-10 w-full max-w-xl px-5 xl:px-0">
@@ -49,12 +28,11 @@ export default async function Home() {
           </p>
         </a>
       </div>
-      <div className="my-10 grid w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
-        {features.map(({ title, description, demo, large }) => (
+      <div className="my-10 grid w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-5 xl:px-0">
+        {features.map(({ title, demo, large }) => (
           <Card
             key={title}
             title={title}
-            description={description}
             demo={
               title === "Beautiful, reusable components" ? (
                 <ComponentGrid />
@@ -73,21 +51,15 @@ export default async function Home() {
 const features = [
   // {
   //   title: "Beautiful, reusable components",
-  //   description:
-  //     "Pre-built beautiful, a11y-first components, powered by [Tailwind CSS](https://tailwindcss.com/), [Radix UI](https://www.radix-ui.com/), and [Framer Motion](https://framer.com/motion)",
   //   large: true,
   // },
   {
     title: "Performance first",
-    description:
-      "Built on [Next.js](https://nextjs.org/) primitives like `@next/font` and `next/image` for stellar performance.",
     large: true,
     demo: <LiveClock />,
   },
   {
-    title: "",
-    description:
-      "",
+    title: "Calendar",
     demo: <MainCalendar />,
   },
 ];

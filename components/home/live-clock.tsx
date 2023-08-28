@@ -43,7 +43,7 @@ const LiveClock: React.FC<ClockProps> = ({ timeZone, timeCity }) => {
   }, [timeZone, timeCity]);
 
   return (
-    <div className="width-100 flex flex-col items-center text-center">
+    <div className="w-full flex flex-col items-center text-center">
       <h1>
         Exact Time For {timeZone} / {timeCity}
       </h1>
