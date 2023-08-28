@@ -7,9 +7,9 @@ import Footer from "@/components/layout/footer";
 import { Suspense } from "react";
 
 export const metadata = {
-  title: "Precedent - Building blocks for your Next.js project",
+  title: "be on time - multi timezone clock",
   description:
-    "Precedent is the all-in-one solution for your Next.js project. It includes a design system, authentication, analytics, and more.",
+    "batime is all ypu need to find about clock, time and timezones. use this to find your locale calendar and more tools",
   twitter: {
     card: "summary_large_image",
     title: "Precedent - Building blocks for your Next.js project",
@@ -17,7 +17,7 @@ export const metadata = {
       "Precedent is the all-in-one solution for your Next.js project. It includes a design system, authentication, analytics, and more.",
     creator: "@steventey",
   },
-  metadataBase: new URL("https://precedent.dev"),
+  metadataBase: new URL("https://batime.ir"),
   themeColor: "#FFF",
 };
 
