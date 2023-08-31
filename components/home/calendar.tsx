@@ -1,25 +1,20 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import useCurrentLocale from "@/lib/hooks/use-current-locale";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+// import "react-calendar/dist/Calendar.css";
 
 type ValuePiece = Date | null;
 
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
-const MainCalendar = ({ locale }: { locale?: string }) => {
+const MainCalendar = () => {
   const [value, onChange] = useState<Value>(new Date());
-  const [currentLocale, setCurrentLocale] = useState(locale);
-
-  useEffect(() => {
-    // This runs after the component is mounted on the client side
-    setCurrentLocale(document.documentElement.lang);
-    console.log(document.documentElement.lang);
-  }, []);
+  const currentLocale = useCurrentLocale();
 
   return (
-    <div dir={currentLocale === "fa" ? "rtl" : "ltr"} className="">
+    <div dir={currentLocale === "fa" ? "rtl" : "ltr"}>
       <Calendar
         onChange={onChange}
         calendarType={currentLocale === "fa" ? "islamic" : "iso8601"}

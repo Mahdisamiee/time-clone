@@ -1,5 +1,5 @@
 import Card from "@/components/home/card";
-import { Twitter } from "@/components/shared/icons";
+import { Twitter, LinkedIn } from "@/components/shared/icons";
 import ComponentGrid from "@/components/home/component-grid";
 import LiveClock from "@/components/home/timezone-clock";
 import LocalClock from "@/components/home/local-clock";
@@ -22,7 +22,7 @@ export default async function Home() {
           rel="noreferrer"
           className="mx-auto my-5 flex max-w-fit animate-fade-up items-center justify-center space-x-2 overflow-hidden rounded-full bg-blue-100 px-7 py-2 transition-colors hover:bg-blue-200"
         >
-          <Twitter className="h-5 w-5 text-[#1d9bf0]" />
+          <LinkedIn className="h-5 w-5 text-[#1d9bf0] mx-1" />
           <p className="text-sm font-semibold text-[#1d9bf0]">
             Introducing Nano1
           </p>
@@ -54,12 +54,12 @@ const features = [
   //   large: true,
   // },
   {
-    title: "Performance first",
+    title: "ساعت دقیق سایر کشور ها",
     large: true,
     demo: <LiveClock />,
   },
   {
-    title: "Calendar",
+    title: "تقویم روزانه",
     demo: <MainCalendar />,
   },
 ];

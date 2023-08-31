@@ -3,13 +3,10 @@ import { useState } from "react";
 import TimezoneSelect, { allTimezones } from "react-timezone-select";
 import type { ITimezone } from "react-timezone-select";
 
-const Timezone = ({
-  handleTimezoneChange,
-}: {
-  handleTimezoneChange: (timeZone: string) => void;
-}) => {
-  const [selectedTimezone, setSelectedTimezone] =
-    useState<ITimezone | "">("Europe/London");
+const Timezone = () => {
+  const [selectedTimezone, setSelectedTimezone] = useState<ITimezone | "">(
+    "Europe/London",
+  );
 
   const onTimezoneChange = (timezone: ITimezone) => {
     setSelectedTimezone(timezone);

@@ -1,18 +1,22 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import moment from "moment-timezone";
+import timezoneMoment from "moment-timezone";
+import moment from "moment";
+import "moment/locale/fa";
 import Clock from "react-live-clock";
 import Balancer from "react-wrap-balancer";
-import TimeZoneSelector from './timezone-select';
 
 interface ClockProps {
   timeZone: string;
   timeCity: string;
 }
 
+moment.locale("fa");
+
 const LiveClock: React.FC<ClockProps> = ({ timeZone, timeCity }) => {
-  const [adjustedTime, setAdjustedTime] = useState<moment.Moment | null>(null);
+  const [adjustedTime, setAdjustedTime] =
+    useState<timezoneMoment.Moment | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,11 +24,11 @@ const LiveClock: React.FC<ClockProps> = ({ timeZone, timeCity }) => {
         const response = await axios.get(
           `https://worldtimeapi.org/api/timezone/${timeZone}/${timeCity}`,
         );
-        const serverTime = moment(response.data.datetime);
-        const localTime = moment();
+        const serverTime = timezoneMoment(response.data.datetime);
+        const localTime = timezoneMoment();
         const difference = serverTime.diff(localTime);
 
-        setAdjustedTime(moment().add(difference, "milliseconds"));
+        setAdjustedTime(timezoneMoment().add(difference, "milliseconds"));
 
         // Periodically adjust time to keep in sync with server
         const interval = setInterval(() => {
@@ -38,17 +42,16 @@ const LiveClock: React.FC<ClockProps> = ({ timeZone, timeCity }) => {
         console.error("Failed to fetch the date and time:", error);
       }
     };
-
     fetchData();
   }, [timeZone, timeCity]);
 
   return (
-    <div className="w-full flex flex-col items-center text-center">
+    <div className="flex w-full flex-col items-center text-center">
       <h1>
         Exact Time For {timeZone} / {timeCity}
       </h1>
       <h1
-        className="text-10xl animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:text-7xl md:leading-[5rem]"
+        className="text-10xl animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-lale font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:text-7xl md:leading-[5rem]"
         style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
       >
         {adjustedTime && (

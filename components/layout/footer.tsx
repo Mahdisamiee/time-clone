@@ -1,24 +1,14 @@
 export default function Footer() {
   return (
     <footer id="footer" className="text-sm text-gray-600">
-      <div className="absolute w-full border-t border-gray-200 bg-white py-5 px-4 text-center">
+      <div className="absolute w-full border-t border-gray-200 bg-white px-4 py-5 text-center font-lale">
         <h2 className="mb-2 text-xl font-bold text-gray-700">
-          Exact time for Russia
+          باتایم، زمان رو در دست بگیر
         </h2>
-        <p className="mb-4 text-gray-500">
-          Designed By Nano1 team{" "}
-          <a
-            className="font-medium text-gray-800 underline transition-colors"
-            href="https://twitter.com/Tehran_chi"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            2M & SM
-          </a>
-        </p>
+        <p className="mb-4 text-gray-500">ابزارهای تبدیل و مدیریت زمان</p>
 
-        <div className="mx-auto flex max-w-screen-xl flex-row sm:flex-col items-center justify-around text-center sm:flex-row">
-          <ul className="mb-4 flex flex-col sm:flex-row justify-center gap-4 px-4 py-2">
+        <div className="mx-auto flex max-w-screen-xl flex-row items-center justify-around text-center sm:flex-row sm:flex-col">
+          <ul className="mb-4 flex flex-col justify-center gap-4 px-4 py-2 sm:flex-row">
             <li>
               <a
                 href="/apps"
@@ -52,7 +42,7 @@ export default function Footer() {
               </a>
             </li>
           </ul>
-          <ul className="mb-4 flex flex-col sm:flex-row justify-center gap-4 px-4 py-2">
+          <ul className="mb-4 flex flex-col justify-center gap-4 px-4 py-2 sm:flex-row">
             <li>
               <a
                 href="/apps"
@@ -89,20 +79,35 @@ export default function Footer() {
         </div>
 
         <div>
-          Time.is displays exact, official atomic clock time for any time zone
-          (more than 7 million locations) in 57 languages.
+          با تایم ساعت اتمی دقیق و رسمی را برای هر منطقه زمانی نمایش می دهد.
+          ابزار های متنوع و کاربردی برای مدیریت زمان و تمرکز دیگر محصول ماست که
+          از طریق لینک های بالا میتوناید به آن دسترسی داشته باشید.
           <br />
         </div>
+        {/* <div
+          id="footerlangs"
+          className="mt-2 flex flex-wrap justify-center gap-2"
+        >
+          <a href="/?lang=en" title="English">
+            What time is it?
+          </a>
+          <a href="/languages">≫ more languages</a>
+        </div> */}
         <div
           id="footerlangs"
           className="mt-2 flex flex-wrap justify-center gap-2"
         >
-          {/* Add the rest of the language links here */}
-          <a href="/?lang=en" title="English">
-            What time is it?
-          </a>
-          {/* ... */}
-          <a href="/languages">≫ more languages</a>
+          <p className="mb-4 text-gray-500">
+            Designed By Nano1 team{" "}
+            <a
+              className="font-medium text-gray-800 underline transition-colors"
+              href="https://twitter.com/Tehran_chi"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              2M
+            </a>
+          </p>
         </div>
       </div>
     </footer>

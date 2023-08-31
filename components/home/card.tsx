@@ -20,7 +20,7 @@ export default function Card({
       }`}
     >
       <div className="text-center">
-        <h2 className="bg-gradient-to-br from-black to-stone-500 bg-clip-text font-display text-xl font-bold text-transparent md:text-3xl md:font-normal w-full mb-2">
+        <h2 className="bg-gradient-to-br from-black to-stone-500 bg-clip-text font-lale text-xl font-bold text-transparent md:text-3xl md:font-normal w-full mb-2">
           <Balancer>{title}</Balancer>
         </h2>
       </div>
