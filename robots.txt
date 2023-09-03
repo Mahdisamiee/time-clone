@@ -1,4 +1,8 @@
-Sitemap: https://precedent.dev/sitemap.xml
 
 User-agent: *
 Disallow: /api
+
+User-agent: *
+Allow: /
+
+Sitemap: https://batime.ir/sitemap.xml

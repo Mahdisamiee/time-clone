@@ -7,9 +7,9 @@ import Footer from "@/components/layout/footer";
 import { Suspense } from "react";
 
 export const metadata = {
-  title: "be on time - multi timezone clock",
+  title: "باتایم، ساعت رسمی ایران و جهان",
   description:
-    "batime is all ypu need to find about clock, time and timezones. use this to find your locale calendar and more tools",
+    "ساعت دقیق و رسمی ایران و سایر نقاط جهان، تقویم شمسی و جلالی ، تقویم ماهانه و تقویم سالیانه از امکانات با تایم است",
   twitter: {
     card: "summary_large_image",
     title: "Precedent - Building blocks for your Next.js project",
@@ -28,7 +28,14 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="fa" dir="rtl">
-      <body className={cx(sfPro.variable, inter.variable, lalezar.variable, vazirmatn.variable)}>
+      <body
+        className={cx(
+          sfPro.variable,
+          inter.variable,
+          lalezar.variable,
+          vazirmatn.variable,
+        )}
+      >
         <div className="fixed h-screen w-full bg-gradient-to-bl from-indigo-50 via-white to-cyan-100" />
         <Suspense fallback="...">
           {/* @ts-expect-error Server Component */}
