@@ -6,8 +6,7 @@ export default function Card({
   title,
   demo,
   large,
-  xlarge,
-}: {
+  }: {
   title: string;
   demo: ReactNode;
   large?: boolean;
@@ -15,8 +14,8 @@ export default function Card({
 }) {
   return (
     <div
-      className={`relative col-span-2 h-96 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md flex flex-col items-stretch justify-center ${
-        large ? "md:col-span-3" : xlarge ? "md:col-span-3" : ""
+      className={`relative col-span-2 h-[28rem] overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md flex flex-col items-stretch justify-between py-10 ${
+        large ? "md:col-span-3" : ""
       }`}
     >
       <div className="text-center">

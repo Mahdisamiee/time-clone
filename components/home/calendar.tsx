@@ -1,27 +1,23 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import useCurrentLocale from "@/lib/hooks/use-current-locale";
-import Calendar from "react-calendar";
-// import "react-calendar/dist/Calendar.css";
-
-type ValuePiece = Date | null;
-
-type Value = ValuePiece | [ValuePiece, ValuePiece];
+import { Calendar, Day, DayValue } from "react-modern-calendar-datepicker";
+import "react-modern-calendar-datepicker/lib/DatePicker.css";
 
 const MainCalendar = () => {
-  const [value, onChange] = useState<Value>(new Date());
-  const currentLocale = useCurrentLocale();
+  const [selectedDay, setSelectedDay] = useState<DayValue>(null);
 
   return (
-    <div dir={currentLocale === "fa" ? "rtl" : "ltr"}>
-      <Calendar
-        onChange={onChange}
-        calendarType={currentLocale === "fa" ? "islamic" : "iso8601"}
-        locale={currentLocale}
-        value={value}
-      />
-    </div>
+    <Calendar
+      value={selectedDay}
+      onChange={setSelectedDay}
+      shouldHighlightWeekends
+      colorPrimary="#9c88ff"
+      calendarClassName="custom-calendar"
+      calendarTodayClassName="custom-calendar-today-day"
+      locale="fa" // for Persian calendar
+    />
   );
 };
+
 export default MainCalendar;

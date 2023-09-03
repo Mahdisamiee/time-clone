@@ -51,7 +51,7 @@ const LiveClock: React.FC<ClockProps> = ({ timeZone, timeCity }) => {
         Exact Time For {timeZone} / {timeCity}
       </h1>
       <h1
-        className="text-10xl animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-lale font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:text-7xl md:leading-[5rem]"
+        className="text-10xl animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-lale font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm text-7xl md:leading-[5rem]"
         style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
       >
         {adjustedTime && (

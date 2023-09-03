@@ -19,9 +19,9 @@ const TimezoneClock = () => {
   };
 
   return (
-    <div className="flex flex-col items-center p-4 text-left sm:w-full md:w-1/2">
+    <div className="flex flex-col items-center justify-between p-4 text-left sm:w-full md:w-1/2">
       <TimezoneSelect
-        className="w-full"
+        className="w-full h-24"
         value={selectedTimezone}
         onChange={onTimezoneChange}
         timezones={{

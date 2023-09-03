@@ -5,9 +5,10 @@ export default function Footer() {
         <h2 className="mb-2 text-xl font-bold text-gray-700">
           باتایم، زمان رو در دست بگیر
         </h2>
-        <p className="mb-4 text-gray-500">ابزارهای تبدیل و مدیریت زمان</p>
+        {/* <p className="mb-4 text-gray-500">ابزارهای تبدیل و مدیریت زمان</p> */}
 
-        <div className="mx-auto flex max-w-screen-xl flex-row items-center justify-around text-center sm:flex-row sm:flex-col">
+        {/* لیست ابزار ها */}
+        {/* <div className="mx-auto flex max-w-screen-xl flex-row items-center justify-around text-center sm:flex-row sm:flex-col">
           <ul className="mb-4 flex flex-col justify-center gap-4 px-4 py-2 sm:flex-row">
             <li>
               <a
@@ -76,12 +77,11 @@ export default function Footer() {
               </a>
             </li>
           </ul>
-        </div>
+        </div> */}
 
-        <div>
-          با تایم ساعت اتمی دقیق و رسمی را برای هر منطقه زمانی نمایش می دهد.
-          ابزار های متنوع و کاربردی برای مدیریت زمان و تمرکز دیگر محصول ماست که
-          از طریق لینک های بالا میتوناید به آن دسترسی داشته باشید.
+        <div className="text-base">
+          <span className="text-blue-500">باتایم</span> ، ساعت اتمی دقیق و رسمی را برای هر منطقه زمانی
+          نمایش می دهد. ابزار های متنوع و کاربردی برای مدیریت زمان.
           <br />
         </div>
         {/* <div
@@ -101,7 +101,7 @@ export default function Footer() {
             Designed By Nano1 team{" "}
             <a
               className="font-medium text-gray-800 underline transition-colors"
-              href="https://twitter.com/Tehran_chi"
+              href="https://www.linkedin.com/company/nano1"
               target="_blank"
               rel="noopener noreferrer"
             >
