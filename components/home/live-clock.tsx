@@ -26,8 +26,8 @@ const LiveClock: React.FC<ClockProps> = ({ timeZone, timeCity }) => {
         );
         const serverTime = timezoneMoment(response.data.datetime);
         const localTime = timezoneMoment();
-        const difference = serverTime.diff(localTime);
-
+        const difference = serverTime.diff(localTime) + 1000;
+        console.log("first", difference)
         setAdjustedTime(timezoneMoment().add(difference, "milliseconds"));
 
         // Periodically adjust time to keep in sync with server

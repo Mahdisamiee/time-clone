@@ -17,14 +17,14 @@ export default async function Home() {
         </div>
 
         <a
-          href="https://www.linkedin.com/company/nano1"
+          href="https://www.linkedin.com/company/innofinityteam"
           target="_blank"
           rel="noreferrer"
-          className="mx-auto my-5 flex max-w-fit animate-fade-up items-center justify-center space-x-2 overflow-hidden rounded-full bg-blue-100 px-7 py-2 transition-colors hover:bg-blue-200"
+          className="innofinity_link mx-auto my-5 flex max-w-fit animate-fade-up items-center justify-center space-x-2 overflow-hidden rounded-full bg-blue-100 px-7 py-2 transition-colors hover:bg-blue-200"
         >
           <LinkedIn className="h-5 w-5 text-[#1d9bf0] mx-1" />
-          <p className="text-sm font-semibold text-[#1d9bf0]">
-            Introducing Nano1
+          <p className="text-md font-light text-[#1d9bf0]">
+            Introducing Innofinity
           </p>
         </a>
       </div>

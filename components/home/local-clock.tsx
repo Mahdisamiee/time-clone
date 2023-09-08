@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import ReactClock from "react-clock";
 import "react-clock/dist/Clock.css";
@@ -22,13 +22,13 @@ const LocalClock: React.FC = () => {
         const serverDateTime = new Date(response.data.datetime);
         const clientDateTime = new Date();
         const offset = serverDateTime.getTime() - clientDateTime.getTime();
-
+        console.log("ffset",offset)
         // Update the state with server time initially
         setTimeValue(serverDateTime);
         setTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone);
         // Then update every second
         const interval = setInterval(() => {
-          const newTime = new Date(Date.now() + offset);
+          const newTime = new Date(Date.now() + offset + 1000);
           setTimeValue(newTime);
         }, 1000);
 
