@@ -1,4 +1,5 @@
 import Script from "next/script";
+import { Metadata } from "next";
 import "./globals.css";
 import { sfPro, inter, lalezar, vazirmatn } from "./fonts";
 import { Analytics } from "@vercel/analytics/react";
@@ -9,8 +10,11 @@ import { Suspense } from "react";
 
 const GTM_ID = "GTM-TZXPH9S3";
 
-export const metadata = {
-  title: "Batime - باتایم، ساعت و تقویم رسمی ایران و جهان",
+export const metadata: Metadata = {
+  title: {
+    default: "Batime - باتایم، ساعت و تقویم رسمی ایران و جهان",
+    template : "%s | Batime.ir"
+  },
   description:
     "ساعت دقیق و رسمی ایران و سایر نقاط جهان، تقویم شمسی و جلالی ، تقویم ماهانه و تقویم سالیانه از امکانات با تایم است",
 
@@ -120,10 +124,10 @@ export default async function RootLayout({
         <Footer />
         {/* <Analytics /> */}
         <noscript
-        dangerouslySetInnerHTML={{
-        __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display: none; visibility: hidden;"></iframe>`,
-        }} 
-    />
+          dangerouslySetInnerHTML={{
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display: none; visibility: hidden;"></iframe>`,
+          }}
+        />
       </body>
     </html>
   );

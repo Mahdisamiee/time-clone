@@ -7,6 +7,10 @@ import "react-modern-calendar-datepicker/lib/DatePicker.css";
 const MainCalendar = () => {
   const [selectedDay, setSelectedDay] = useState<DayValue>(null);
 
+  useEffect(() => {
+    setSelectedDay(null);
+  }, []);
+
   return (
     <Calendar
       value={selectedDay}
@@ -21,3 +25,5 @@ const MainCalendar = () => {
 };
 
 export default MainCalendar;
+
+// reffrence : https://kiarash-z.github.io/react-modern-calendar-datepicker/docs/getting-started
