@@ -96,6 +96,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="fa" dir="rtl">
+      {/* Analytics */}
       <Script id="google-tag-manager" strategy="afterInteractive">
         {`
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -105,6 +106,7 @@ export default async function RootLayout({
         })(window,document,'script','dataLayer','${GTM_ID}');
         `}
       </Script>
+
       <body
         className={cx(
           sfPro.variable,
@@ -122,6 +124,8 @@ export default async function RootLayout({
           {children}
         </main>
         <Footer />
+
+
         {/* <Analytics /> */}
         <noscript
           dangerouslySetInnerHTML={{
