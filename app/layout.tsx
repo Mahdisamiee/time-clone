@@ -264,7 +264,10 @@ export const metadata: Metadata = {
   //     "Precedent is the all-in-one solution for your Next.js project. It includes a design system, authentication, analytics, and more.",
   //   creator: "@steventey",
   // },
-  metadataBase: new URL("https://batime.ir"),
+  metadataBase: new URL("http://batime.ir"),
+  alternates:{
+    canonical:"/"
+  },
   themeColor: "#FFF",
 };
 
