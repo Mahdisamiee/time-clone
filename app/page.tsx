@@ -1,8 +1,10 @@
+
 import Card from "@/components/home/card";
 import { Twitter, LinkedIn } from "@/components/shared/icons";
 import ComponentGrid from "@/components/home/component-grid";
 import LiveClock from "@/components/home/timezone-clock";
 import LocalClock from "@/components/home/local-clock";
+import ShariaTime from "@/components/home/sharia-time";
 import MainCalendar from "@/components/home/calendar";
 
 export default async function Home() {
@@ -61,5 +63,10 @@ const features = [
   {
     title: "تقویم روزانه",
     demo: <MainCalendar />,
+  },
+  {
+    title: "اوقات شرعی",
+    large: true,
+    demo: <ShariaTime />,
   },
 ];

@@ -22,7 +22,6 @@ const LocalClock: React.FC = () => {
         const serverDateTime = new Date(response.data.datetime);
         const clientDateTime = new Date();
         const offset = serverDateTime.getTime() - clientDateTime.getTime();
-        console.log("ffset",offset)
         // Update the state with server time initially
         setTimeValue(serverDateTime);
         setTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone);

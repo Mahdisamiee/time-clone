@@ -23,7 +23,7 @@ export default function Card({
           <Balancer>{title}</Balancer>
         </h2>
       </div>
-      <div className="flex h-100 items-center justify-center">{demo}</div>
+      <div className="flex h-full items-center justify-center py-10">{demo}</div>
     </div>
   );
 }
