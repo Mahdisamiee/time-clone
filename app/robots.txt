@@ -1,8 +1,6 @@
 
 User-agent: *
-Disallow: /api
+Disallow: /
 
-User-agent: *
-Allow: /
 
-Sitemap: https://batime.ir/sitemap.xml
+Sitemap: https://kit365.ir/sitemap.xml

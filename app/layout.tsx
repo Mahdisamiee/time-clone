@@ -8,15 +8,15 @@ import Nav from "@/components/layout/nav";
 import Footer from "@/components/layout/footer";
 import { Suspense } from "react";
 
-const GTM_ID = "GTM-TZXPH9S3";
+const GTM_ID = "GTM-TN59LRQS";
 
 export const metadata: Metadata = {
   title: {
-    default: "Batime - باتایم، ساعت و تقویم رسمی ایران و جهان",
-    template: "%s | Batime.ir",
+    default: "کیت 365 | ابزارهای مورد نیاز در روزهای سال",
+    template: "%s | کیت 365",
   },
   description:
-    "ساعت دقیق و رسمی ایران و سایر نقاط جهان، تقویم شمسی و جلالی ، تقویم ماهانه و تقویم سالیانه از امکانات با تایم است",
+    "کیت365 - ساعت دقیق امروز و تقویم، اوقات شرعی و اذان امروز، محاسبه آنلاین، تبدیل تاریخ و واحد، نقشه و فاصله",
 
   keywords: [
     "ساعت ایران",
@@ -264,7 +264,7 @@ export const metadata: Metadata = {
   //     "Precedent is the all-in-one solution for your Next.js project. It includes a design system, authentication, analytics, and more.",
   //   creator: "@steventey",
   // },
-  metadataBase: new URL("http://batime.ir"),
+  metadataBase: new URL("http://kit365.ir"),
   alternates:{
     canonical:"/"
   },

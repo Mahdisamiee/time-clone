@@ -23,9 +23,9 @@ export default function NavBar() {
               alt="Time logo"
               width="30"
               height="30"
-              className="mr-2 rounded-sm"
+              className="ml-2 rounded-sm"
             ></Image>
-            <p>با تایم ، همیشه آن تایم</p>
+            <p>کیت 365 | هر روز، یک راهکار</p>
           </Link>
         </div>
       </div>
