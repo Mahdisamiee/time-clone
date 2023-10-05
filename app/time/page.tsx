@@ -1,15 +1,22 @@
 import Card from "@/components/home/card";
-import LiveClock from "@/components/home/timezone-clock";
-import LocalClock from "@/components/home/local-clock";
-import ShariaTime from "@/components/home/sharia-time";
-import MainCalendar from "@/components/home/calendar";
+import LiveClock from "@/components/time/timezone-clock";
+import AnalogClock from "@/components/time/analog-clock";
+import ShariaTime from "@/components/time/sharia-time";
+import MainCalendar from "@/components/time/calendar";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "ساعت و زمان",
   description:
     "ابزارهای اعلام وقت و زمان، اوقات شرعی شهرها و تاریخ دقیق، تعیین و تبدیل انواع تقویم ها و زمان",
-  keywords:["اوقات شرعی دقیق", "تاریخ و ساعت دقیق", "تقویم روز", "تبدیل تاریخ", "محاسبه سن و فاصله دو تاریخ", ""]
+  keywords: [
+    "اوقات شرعی دقیق",
+    "تاریخ و ساعت دقیق",
+    "تقویم روز",
+    "تبدیل تاریخ",
+    "محاسبه سن و فاصله دو تاریخ",
+    "",
+  ],
 };
 
 export default async function Home() {
@@ -33,7 +40,7 @@ export default async function Home() {
           className="mx-auto mt-8 flex animate-fade-up flex-col items-center justify-center space-x-5 opacity-0"
           style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
         >
-          <LocalClock />
+          <AnalogClock />
         </div>
       </div>
       <div className="my-10 grid w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-5 xl:px-0">

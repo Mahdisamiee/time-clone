@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import TimezoneSelect, { allTimezones } from "react-timezone-select";
 import type { ITimezone } from "react-timezone-select";
-import LiveClock from "./live-clock";
+import DigitalClock from "./digital-clock";
 
 const TimezoneClock = () => {
   const [selectedTimezone, setSelectedTimezone] = useState<ITimezone | "">(
@@ -21,7 +21,7 @@ const TimezoneClock = () => {
   return (
     <div className="flex flex-col items-center justify-between p-4 text-left sm:w-full md:w-1/2">
       <TimezoneSelect
-        className="w-full mb-24"
+        className="mb-24 w-full"
         value={selectedTimezone}
         onChange={onTimezoneChange}
         timezones={{
@@ -30,7 +30,7 @@ const TimezoneClock = () => {
           "Europe/Berlin": "Frankfurt",
         }}
       />
-      <LiveClock timeZone={clockTimezone} timeCity={clockCity} />
+      <DigitalClock timeZone={clockTimezone} timeCity={clockCity} />
     </div>
   );
 };
