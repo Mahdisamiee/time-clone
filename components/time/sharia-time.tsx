@@ -132,14 +132,6 @@ const PrayerTimesComponent: React.FC = () => {
             <li>
               <p>نیمه شب : {prayerTimes.Midnight}</p>
             </li>
-
-            {/* {Object.entries(prayerTimes).map((entry) => (
-              <li key={entry[0]}>
-                <p>
-                  {entry[0]} : {entry[1]}
-                </p>
-              </li>
-            ))} */}
           </ul>
         ) : (
           <p>Loading...</p>
