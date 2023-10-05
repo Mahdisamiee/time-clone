@@ -2,7 +2,6 @@ import Script from "next/script";
 import { Metadata } from "next";
 import "./globals.css";
 import { sfPro, inter, lalezar, vazirmatn } from "./fonts";
-import { Analytics } from "@vercel/analytics/react";
 import cx from "classnames";
 import Nav from "@/components/layout/nav";
 import Footer from "@/components/layout/footer";

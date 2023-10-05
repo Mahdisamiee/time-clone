@@ -31,7 +31,7 @@ export default async function Home() {
 const tools = [
   {
     title: "وقت و زمان",
-    url: "/date-time",
+    url: "/time",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
