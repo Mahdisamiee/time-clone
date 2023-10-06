@@ -28,6 +28,7 @@ const TimezoneClock = () => {
           ...allTimezones,
           "America/Lima": "Pittsburgh",
           "Europe/Berlin": "Frankfurt",
+          "Europe/London": "London",
         }}
       />
       <DigitalClock timeZone={clockTimezone} timeCity={clockCity} />

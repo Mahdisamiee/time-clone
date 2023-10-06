@@ -4,6 +4,7 @@ import AnalogClock from "@/components/time/analog-clock";
 import ShariaTime from "@/components/time/sharia-time";
 import MainCalendar from "@/components/time/calendar";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "ساعت و زمان",
@@ -19,20 +20,21 @@ export const metadata: Metadata = {
   ],
 };
 
-export default async function Home() {
+export default function Time() {
   return (
     <>
       <div className="z-10 w-full max-w-3xl px-5 xl:px-0">
         <div className="grid grid-cols-1 gap-5 md:grid-cols-6">
           {timeParts.map((part) => {
             return (
-              <a
-                key={`${part.title}-${part.url}`}
-                href={part.url}
+              <Link
+                prefetch={false}
+                key={`--${part.url}`}
                 className="w-18 flex items-center justify-center rounded-md border border-gray-300 px-3 py-2 transition-all duration-100 hover:border-blue-500 focus:outline-none active:bg-gray-100"
+                href={part.url}
               >
                 <p className="text-gray-600">{part.title}</p>
-              </a>
+              </Link>
             );
           })}
         </div>
@@ -55,27 +57,27 @@ export default async function Home() {
 const timeParts = [
   {
     title: "تقویم ایران",
-    url: "#",
+    url: "time/calendar",
   },
   {
     title: "محاسبه سن",
-    url: "#",
+    url: "time/age",
   },
   {
     title: "اوقات شرعی",
-    url: "#",
+    url: "time/sharia",
   },
   {
     title: "تبدیل تاریخ",
-    url: "#",
+    url: "time/conversion",
   },
   {
     title: "ساعت کشورها",
-    url: "#",
+    url: "time/worldclock",
   },
   {
-    title: "محاسبه سن",
-    url: "#",
+    title: "فاصله دو تاریخ",
+    url: "time/diff",
   },
 ];
 

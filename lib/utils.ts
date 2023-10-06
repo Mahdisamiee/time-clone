@@ -61,3 +61,44 @@ export const truncate = (str: string, length: number) => {
   if (!str || str.length <= length) return str;
   return `${str.slice(0, length)}...`;
 };
+
+export const dayFormatter = (jalaliDay: string | null = null) => {
+  if (jalaliDay !== null || jalaliDay !== "") {
+    const jalaliMonthLookup = [
+      { value: "1", symbol: "فروردین" },
+      { value: "2", symbol: "اردیبهشت" },
+      { value: "3", symbol: "خرداد" },
+      { value: "4", symbol: "تیر" },
+      { value: "5", symbol: "مرداد" },
+      { value: "6", symbol: "شهریور" },
+      { value: "7", symbol: "مهر" },
+      { value: "8", symbol: "آبان" },
+      { value: "9", symbol: "آذر" },
+      { value: "10", symbol: "دی" },
+      { value: "11", symbol: "بهمن" },
+      { value: "12", symbol: "اسفند" },
+    ];
+    const qamariMonthLookup = [
+      { value: "1", symbol: "محرم" },
+      { value: "2", symbol: "صفر" },
+      { value: "3", symbol: "ربیع‌الاول" },
+      { value: "4", symbol: "ربیع‌الثانی" },
+      { value: "5", symbol: "جمادی‌الاول" },
+      { value: "6", symbol: "جمادی‌الثانی" },
+      { value: "7", symbol: "رجب" },
+      { value: "8", symbol: "شعبان" },
+      { value: "9", symbol: "رمضان" },
+      { value: "10", symbol: "شوال" },
+      { value: "11", symbol: "ذی‌القعده" },
+      { value: "12", symbol: "ذی‌الحجه" },
+    ];
+
+    const monthValue = jalaliDay?.split(" - ")[0].split("/")[1];
+    const dayValue = jalaliDay?.split(" - ")[0].split("/")[2];
+    console.log(monthValue);
+    const newMonthFormat = jalaliMonthLookup.find(
+      (item) => item.value === monthValue,
+    )?.symbol;
+    return `${dayValue} ${newMonthFormat}`;
+  }
+};
