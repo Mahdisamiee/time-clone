@@ -20,24 +20,29 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function Time() {
+export default function TimeContainer() {
   return (
     <>
+      <div className="z-10 grid grid-cols-1 gap-5 md:grid-cols-6">
+        {timeParts.map((part) => {
+          return (
+            <Link
+              prefetch={true}
+              key={`${part.url}`}
+              className="w-18 flex items-center justify-center rounded-md border border-gray-300 px-3 py-2 transition-all duration-100 hover:border-blue-500 focus:outline-none active:bg-gray-100"
+              href={part.url}
+            >
+              <p className="text-gray-600">{part.title}</p>
+            </Link>
+          );
+        })}
+      </div>
+      <div className="my-10 grid w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-5 xl:px-0">
+        {cards.map(({ title, demo, large }) => (
+          <Card key={title} title={title} demo={demo} large={large} />
+        ))}
+      </div>
       <div className="z-10 w-full max-w-3xl px-5 xl:px-0">
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-6">
-          {timeParts.map((part) => {
-            return (
-              <Link
-                prefetch={false}
-                key={`--${part.url}`}
-                className="w-18 flex items-center justify-center rounded-md border border-gray-300 px-3 py-2 transition-all duration-100 hover:border-blue-500 focus:outline-none active:bg-gray-100"
-                href={part.url}
-              >
-                <p className="text-gray-600">{part.title}</p>
-              </Link>
-            );
-          })}
-        </div>
         <div
           className="mx-auto mt-8 flex animate-fade-up flex-col items-center justify-center space-x-5 opacity-0"
           style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
@@ -45,11 +50,7 @@ export default function Time() {
           <AnalogClock />
         </div>
       </div>
-      <div className="my-10 grid w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-5 xl:px-0">
-        {cards.map(({ title, demo, large }) => (
-          <Card key={title} title={title} demo={demo} large={large} />
-        ))}
-      </div>
+      
     </>
   );
 }
@@ -83,13 +84,9 @@ const timeParts = [
 
 const cards = [
   // {
-  //   title: "Beautiful, reusable components",
-  //   large: true,
+  //   title: "تقویم روزانه",
+  //   demo: <MainCalendar />,
   // },
-  {
-    title: "تقویم روزانه",
-    demo: <MainCalendar />,
-  },
   {
     title: "اوقات شرعی",
     large: true,
@@ -97,7 +94,7 @@ const cards = [
   },
   {
     title: "ساعت دقیق سایر کشور ها",
-    large: true,
+    large: false,
     demo: <LiveClock />,
   },
 ];

@@ -14,7 +14,7 @@ export default function Card({
 }) {
   return (
     <div
-      className={`relative col-span-2 h-[28rem] overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md flex flex-col items-stretch justify-between py-10 ${
+      className={`relative col-span-2 h-[28rem] overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md flex flex-col items-stretch justify-between py-5 ${
         large ? "md:col-span-3" : ""
       }`}
     >
@@ -23,7 +23,7 @@ export default function Card({
           <Balancer>{title}</Balancer>
         </h2>
       </div>
-      <div className="flex h-full items-center justify-center py-10">{demo}</div>
+      <div className="flex h-full items-center justify-center">{demo}</div>
     </div>
   );
 }
