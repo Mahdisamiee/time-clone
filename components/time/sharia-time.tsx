@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Select from "react-select";
 import axios from "axios";
+import { dayFormatter } from "@/lib/utils";
 
 const options = [
   { value: 1, label: "تهران" },
@@ -47,11 +48,6 @@ const options = [
   { value: 968, label: "کیش" },
 ];
 type PrayerTimesResponse = {
-  // Fajr: string;
-  // Dhuhr: string;
-  // Asr: string;
-  // Maghrib: string;
-  // Isha: string;
   CityLName: string;
   CityName: string;
   CountryAlpha2: string;
@@ -74,11 +70,15 @@ type PrayerTimesResponse = {
   TodayQamari: string;
 };
 
-const PrayerTimesComponent: React.FC = () => {
+const PrayerTimesComponent = ({ city }: { city?: string }) => {
   // for select the code of city
   const [selectedOption, setSelectedOption] = useState<
     { value: number; label: string } | any
-  >({ value: 1, label: "تهران" });
+  >(
+    city
+      ? options.find((option) => option.label === city)
+      : { value: 1, label: "تهران" },
+  );
   // to save the Sharia times
   const [prayerTimes, setPrayerTimes] = useState<PrayerTimesResponse | null>(
     null,
@@ -99,32 +99,44 @@ const PrayerTimesComponent: React.FC = () => {
       setPrayerTimes(times);
     }
 
+    console.log("city: ", city);
     loadPrayerTimes();
   }, [selectedOption]);
 
   return (
-    <div className="flex h-full flex-col items-center justify-between text-right sm:w-full md:w-1/2">
+    <div className="flex h-full flex-col items-center justify-between text-center w-5/6 sm:w-full">
+      <div className="my-4 w-full p-1 md:p-4 my-6">
+        {prayerTimes ? (
+          <ul className="grid h-full w-full grid-cols-1 gap-4  text-xl sm:gap-8 sm:text-2xl">
+            <li>
+              <p>امروز : {dayFormatter(prayerTimes.Today)}</p>
+            </li>
+          </ul>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
       <Select
-        className="w-full text-lg"
+        className="w-full sm:w-3/4 text-center text-lg sm:text-right"
         defaultValue={selectedOption}
         onChange={setSelectedOption}
         options={options}
         maxMenuHeight={200}
       />
-      <div className="w-full p-2">
+      <div className="my-4 w-full p-2 md:p-4">
         {prayerTimes ? (
-          <ul className="grid h-full w-full grid-cols-2 gap-8 text-lg">
+          <ul className="grid h-full w-full px-3 grid-cols-2 gap-8 text-center text-base sm:text-xl ">
             <li>
               <p>اذان صبح : {prayerTimes.Imsaak}</p>
             </li>
             <li>
-              <p>طلوع : {prayerTimes.Sunrise}</p>
+              <p>طلوع آفتاب : {prayerTimes.Sunrise}</p>
             </li>
             <li>
               <p>اذان ظهر : {prayerTimes.Noon}</p>
             </li>
             <li>
-              <p>غروب : {prayerTimes.Sunset}</p>
+              <p>غروب آفتاب : {prayerTimes.Sunset}</p>
             </li>
             <li>
               <p>اذان مغرب : {prayerTimes.Maghreb}</p>
