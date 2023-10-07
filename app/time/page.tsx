@@ -37,11 +37,6 @@ export default function TimeContainer() {
           );
         })}
       </div>
-      <div className="my-10 grid w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-5 xl:px-0">
-        {cards.map(({ title, demo, large }) => (
-          <Card key={title} title={title} demo={demo} large={large} />
-        ))}
-      </div>
       <div className="z-10 w-full max-w-3xl px-5 xl:px-0">
         <div
           className="mx-auto mt-8 flex animate-fade-up flex-col items-center justify-center space-x-5 opacity-0"
@@ -50,7 +45,11 @@ export default function TimeContainer() {
           <AnalogClock />
         </div>
       </div>
-      
+      <div className="my-10 grid w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-5 xl:px-0">
+        {cards.map(({ title, demo, large }) => (
+          <Card key={title} title={title} demo={demo} large={large} />
+        ))}
+      </div>
     </>
   );
 }
