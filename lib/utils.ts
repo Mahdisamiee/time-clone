@@ -95,7 +95,6 @@ export const dayFormatter = (jalaliDay: string | null = null) => {
 
     const monthValue = jalaliDay?.split(" - ")[0].split("/")[1];
     const dayValue = jalaliDay?.split(" - ")[0].split("/")[2];
-    console.log(monthValue);
     const newMonthFormat = jalaliMonthLookup.find(
       (item) => item.value === monthValue,
     )?.symbol;

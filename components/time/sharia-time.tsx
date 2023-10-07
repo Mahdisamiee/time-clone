@@ -98,8 +98,6 @@ const PrayerTimesComponent = ({ city }: { city?: string }) => {
       const times = await fetchPrayerTimes("Tehran"); // Replace 'Tehran' with any city in Iran
       setPrayerTimes(times);
     }
-
-    console.log("city: ", city);
     loadPrayerTimes();
   }, [selectedOption]);
 

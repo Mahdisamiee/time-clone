@@ -19,15 +19,16 @@ const LocalClock: React.FC = () => {
             Intl.DateTimeFormat().resolvedOptions().timeZone
           }`,
         );
+        console.log("response of API", response.data);
         const serverDateTime = new Date(response.data.datetime);
         const clientDateTime = new Date();
         const offset = serverDateTime.getTime() - clientDateTime.getTime();
         // Update the state with server time initially
-        setTimeValue(serverDateTime);
+        // setTimeValue(serverDateTime);
         setTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone);
         // Then update every second
         const interval = setInterval(() => {
-          const newTime = new Date(Date.now() + offset + 1000);
+          const newTime = new Date(Date.now() + offset);
           setTimeValue(newTime);
         }, 1000);
 
@@ -42,29 +43,31 @@ const LocalClock: React.FC = () => {
     fetchData();
   }, []);
 
-  if (!timeValue) return null; // Or a loading spinner, etc.
-
   return (
     <div className="flex flex-col items-center text-center">
-      <h1
-        className="my-5 animate-fade-up bg-gradient-to-bl from-black to-stone-500 bg-clip-text text-center font-lale text-2xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:text-5xl"
-        style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
-      >
-        زمان دقیق شما
-      </h1>
+      {timeValue ? (
+        <>
+          <h1
+            className="my-5 animate-fade-up bg-gradient-to-bl from-black to-stone-500 bg-clip-text text-center font-lale text-2xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:text-5xl"
+            style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
+          >
+            زمان دقیق شما
+          </h1>
 
-      <ReactClock
-        key={"newone"}
-        className="mx-auto"
-        value={timeValue}
-        size={isDesktop ? 300 : 200}
-      />
-      <p
-        className="mt-6 animate-fade-up text-center text-gray-500 opacity-0 md:text-xl font-lale"
-        style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
-      >
-        <Balancer>{timeZone.split("/").join(" , ")}</Balancer>
-      </p>
+          <ReactClock
+            key={"newone"}
+            className="mx-auto"
+            value={timeValue}
+            size={isDesktop ? 300 : 200}
+          />
+          <p
+            className="mt-6 animate-fade-up text-center font-lale text-gray-500 opacity-0 md:text-xl"
+            style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
+          >
+            <Balancer>{timeZone.split("/").join(" , ")}</Balancer>
+          </p>
+        </>
+      ) : <p className="h-96 min-h-full p-10 m-12">زمان دقیق شما داره مشخص میشه!.....</p>}
     </div>
   );
 };
