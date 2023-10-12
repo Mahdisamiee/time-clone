@@ -1,5 +1,6 @@
 import ms from "ms";
 
+
 export const timeAgo = (timestamp: Date, timeOnly?: boolean): string => {
   if (!timestamp) return "never";
   return `${ms(Date.now() - new Date(timestamp).getTime())}${
@@ -100,4 +101,65 @@ export const dayFormatter = (jalaliDay: string | null = null) => {
     )?.symbol;
     return `${dayValue} ${newMonthFormat}`;
   }
+};
+
+export const persianToCalendars = (
+  year: number ,
+  month: number,
+  day: number,
+  op: any = {},
+): any => {
+  const formatOut = (gD: Date) =>
+    "toCal" in op
+      ? ((op.calendar = op.toCal),
+        new Intl.DateTimeFormat(op.locale ?? "en", op).format(gD))
+      : gD;
+
+  const dFormat = new Intl.DateTimeFormat("en-u-ca-persian", {
+    dateStyle: "short",
+    timeZone: "UTC",
+  });
+
+  let gD: Date = new Date(Date.UTC(2000, month, day));
+  gD = new Date(gD.setUTCDate(gD.getUTCDate() + 226867));
+
+  const gY: number = gD.getUTCFullYear() - 2000 + year;
+  gD = new Date(
+    `${gY < 0 ? "-" : "+"}${("00000" + Math.abs(gY)).slice(-6)}-${(
+      "0" +
+      (gD.getUTCMonth() + 1)
+    ).slice(-2)}-${("0" + gD.getUTCDate()).slice(-2)}`,
+  );
+
+  let [pM, pD, pY] = [...dFormat.format(gD).split("/")];
+  let i = 0;
+  gD = new Date(
+    gD.setUTCDate(
+      gD.getUTCDate() +
+        Math.floor(
+          year * 365.25 +
+            month * 30.44 +
+            day -
+            (parseInt(pY.split(" ")[0]) * 365.25 +
+              parseInt(pM) * 30.44 +
+              parseInt(pD)),
+        ) -
+        2,
+    ),
+  );
+
+  while (i < 4) {
+    [pM, pD, pY] = [...dFormat.format(gD).split("/")];
+    if (
+      pD === day.toString() &&
+      pM === month.toString() &&
+      pY.split(" ")[0] === year.toString()
+    ) {
+      return formatOut(gD);
+    }
+    gD = new Date(gD.setUTCDate(gD.getUTCDate() + 1));
+    i++;
+  }
+
+  throw new Error("Invalid Persian Date!");
 };

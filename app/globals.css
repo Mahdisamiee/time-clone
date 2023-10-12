@@ -18,3 +18,7 @@
 .custom-calendar-today-day::after {
   visibility: hidden;
 }
+
+.DatePicker__input.-rtl {
+  font-size: 18px !important;
+}
