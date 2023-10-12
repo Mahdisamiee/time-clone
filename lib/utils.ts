@@ -1,6 +1,5 @@
 import ms from "ms";
 
-
 export const timeAgo = (timestamp: Date, timeOnly?: boolean): string => {
   if (!timestamp) return "never";
   return `${ms(Date.now() - new Date(timestamp).getTime())}${
@@ -103,8 +102,18 @@ export const dayFormatter = (jalaliDay: string | null = null) => {
   }
 };
 
+/**
+ *
+ *  resource : https://stackoverflow.com/questions/71421825/how-to-convert-persian-jalali-dates-to-other-18-calendar-dates-in-javascript-w
+ *
+ * @param year
+ * @param month
+ * @param day
+ * @param op
+ * @returns
+ */
 export const persianToCalendars = (
-  year: number ,
+  year: number,
   month: number,
   day: number,
   op: any = {},
