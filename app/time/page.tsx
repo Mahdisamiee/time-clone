@@ -23,19 +23,20 @@ export const metadata: Metadata = {
 export default function TimeContainer() {
   return (
     <>
-      <div className="z-10 grid grid-cols-1 gap-5 md:grid-cols-6">
+      <div className={`z-10 grid grid-cols-1 gap-5 md:grid-cols-${timeParts.length}`}>
         {timeParts.map((part) => {
           return (
             <Link
               prefetch={true}
               key={`${part.url}`}
-              className="w-18 flex items-center justify-center rounded-md border border-gray-300 px-3 py-2 transition-all duration-100 hover:border-blue-500 focus:outline-none active:bg-gray-100"
+              className="w-18 flex items-center justify-center rounded-md border border-gray-300 px-2 py-1 transition-all duration-100 hover:border-blue-500 focus:outline-none active:bg-gray-100"
               href={part.url}
             >
               <p className="text-gray-600">{part.title}</p>
             </Link>
           );
         })}
+        <hr className={`w-full col-span-6 mb-10 mt-2`}/>
       </div>
       <div className="z-10 w-full max-w-3xl px-5 xl:px-0">
         <div

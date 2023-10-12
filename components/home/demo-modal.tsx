@@ -7,13 +7,19 @@ import {
   useMemo,
 } from "react";
 import Image from "next/image";
+import { persianToCalendars } from "@/lib/utils";
 
 const DemoModal = ({
   showDemoModal,
   setShowDemoModal,
+  details,
 }: {
   showDemoModal: boolean;
   setShowDemoModal: Dispatch<SetStateAction<boolean>>;
+  details: {
+    age: { years: number; months: number; days: number };
+    selectedDay: { year: number; month: number; day: number };
+  };
 }) => {
   return (
     <Modal showModal={showDemoModal} setShowModal={setShowDemoModal}>
@@ -29,9 +35,22 @@ const DemoModal = ({
             />
           </a>
           <h3 className="font-display text-2xl font-bold">Precedent</h3>
-          <p className="text-sm text-gray-500">
-            Precedent is an opinionated collection of components, hooks, and
-            utilities for your Next.js project.
+          <p className="text-xl text-gray-500">
+            سن شما {details?.age.years} سال و {details?.age.months} ماه و{" "}
+            {details?.age.days} روز است.
+          </p>
+          <br className="my-2 w-full" />
+          <p className="text-md text-gray-500">
+            {persianToCalendars(
+              details.selectedDay.year,
+              details.selectedDay.month,
+              details.selectedDay.day,
+              {
+                toCal: "islamic",
+                dateStyle: "full",
+                locale: "fa",
+              },
+            )}
           </p>
         </div>
       </div>
@@ -42,17 +61,31 @@ const DemoModal = ({
 export function useDemoModal() {
   const [showDemoModal, setShowDemoModal] = useState(false);
 
-  const DemoModalCallback = useCallback(() => {
-    return (
-      <DemoModal
-        showDemoModal={showDemoModal}
-        setShowDemoModal={setShowDemoModal}
-      />
-    );
-  }, [showDemoModal, setShowDemoModal]);
+  const DemoModalCallback = useCallback(
+    (details: {
+      age: { years: number; months: number; days: number };
+      selectedDay: { year: number; month: number; day: number };
+    }) => {
+      console.log("details", details);
+      return (
+        <DemoModal
+          showDemoModal={showDemoModal}
+          setShowDemoModal={setShowDemoModal}
+          details={details}
+        />
+      );
+    },
+    [showDemoModal, setShowDemoModal],
+  );
 
   return useMemo(
-    () => ({ setShowDemoModal, DemoModal: DemoModalCallback }),
+    () => ({
+      setShowDemoModal,
+      DemoModal: (details: {
+        age: { years: number; months: number; days: number };
+        selectedDay: { year: number; month: number; day: number };
+      }) => DemoModalCallback(details),
+    }),
     [setShowDemoModal, DemoModalCallback],
   );
 }
