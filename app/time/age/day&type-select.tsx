@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import PopoverMenu from "@/components/home/popover-menu";
 import { MouseEvent, useState } from "react";
 import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
@@ -18,9 +18,19 @@ const DayAndTypeSelect = ({
   onChangeCalculateType,
   onDayChange,
 }: DayTypeSelectType) => {
+  const selectTypeRef = useRef<HTMLDivElement>(null);
+
+  const handleSelectTypeClick = () => {
+    selectTypeRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <>
-      <div className="flex w-full max-w-3xl flex-col items-center justify-items-center p-10 mb-5 px-5 xl:px-0">
+      <div
+        className="mb-5 flex w-full max-w-3xl flex-col items-center justify-items-center p-10 px-5 xl:px-0"
+        ref={selectTypeRef}
+        onClick={handleSelectTypeClick}
+      >
         <PopoverMenu
           onClickItem={onChangeCalculateType}
           value={selectedType}
@@ -35,7 +45,6 @@ const DayAndTypeSelect = ({
           shouldHighlightWeekends
           colorPrimary="#9c88ff"
           locale="fa" // for Persian calendar
-          
         />
       </div>
     </>
