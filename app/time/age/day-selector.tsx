@@ -7,40 +7,59 @@ import "react-modern-calendar-datepicker/lib/DatePicker.css";
 
 type DayTypeSelectType = {
   selectedDay: any;
+  selectedDay2?: any;
   selectedType: string | null;
-  onChangeCalculateType: (e: any) => void;
   onDayChange: (e: any) => void;
+  onDay2Change?: (e: any) => void;
 };
 
-const DayAndTypeSelect = ({
+const DaySelector = ({
   selectedDay,
+  selectedDay2,
   selectedType,
-  onChangeCalculateType,
   onDayChange,
+  onDay2Change,
 }: DayTypeSelectType) => {
   const selectTypeRef = useRef<HTMLDivElement>(null);
 
-  const handleSelectTypeClick = () => {
+  const handleSelectTypeFocus = () => {
     selectTypeRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <>
-      <div
+      {/* <div
         className="mb-5 flex w-full max-w-3xl flex-col items-center justify-items-center p-10 px-5 xl:px-0"
         ref={selectTypeRef}
-        onClick={handleSelectTypeClick}
+        onClick={handleSelectTypeFocus}
       >
         <PopoverMenu
           onClickItem={onChangeCalculateType}
           value={selectedType}
           items={popoverMenuItems}
         />
-      </div>
-      {selectedType === "محاسبه اختلاف سن دو نفر" ? (
-        <>This is diffrent DatePicker</>
-      ) : (
-        <div className="z-10 text-2xl">
+      </div> */}
+      <div className="z-10 text-2xl">
+        {selectedType === "محاسبه اختلاف سن دو نفر" ? (
+          <div className="grid grid-cols-2 gap-4">
+            <DatePicker
+              value={selectedDay}
+              onChange={onDayChange}
+              inputPlaceholder="روز تولدتان را انتخاب کنید"
+              shouldHighlightWeekends
+              colorPrimary="#9c88ff"
+              locale="fa" // for Persian calendar
+            />
+            <DatePicker
+              value={selectedDay2}
+              onChange={onDay2Change}
+              inputPlaceholder="روز تولدتان را انتخاب کنید"
+              shouldHighlightWeekends
+              colorPrimary="#9c88ff"
+              locale="fa" // for Persian calendar
+            />
+          </div>
+        ) : (
           <DatePicker
             value={selectedDay}
             onChange={onDayChange}
@@ -49,13 +68,13 @@ const DayAndTypeSelect = ({
             colorPrimary="#9c88ff"
             locale="fa" // for Persian calendar
           />
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 };
 
-export default DayAndTypeSelect;
+export default DaySelector;
 const popoverMenuItems = [
   "محاسبه سن و تاریخ تولد",
   "محاسبه اختلاف سن دو نفر",
