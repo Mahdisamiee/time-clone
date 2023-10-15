@@ -11,10 +11,6 @@ export const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
 });
-export const handjet = Handjet({
-  variable: "--font-handjet",
-  subsets: ["latin"],
-});
 export const lalezar = Lalezar({
   variable: "--font-lalezar",
   weight: ["400"],
