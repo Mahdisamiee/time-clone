@@ -40,6 +40,33 @@ const calculateAge = (jalaliBirthDate: JalaliBirthDate): AgeDetail => {
   return { years, months, days };
 };
 
+const calculateAgeDiff = (jalaliBirthDate1: JalaliBirthDate, jalaliBirthDate2: JalaliBirthDate) :AgeDetail => {
+  const birthDate1 = moment(
+    `${jalaliBirthDate1.year}-${jalaliBirthDate1.month}-${jalaliBirthDate1.day}`,
+    "jYYYY-jMM-jDD",
+  ).startOf("day");
+  const birthDate2 = moment(
+    `${jalaliBirthDate2.year}-${jalaliBirthDate2.month}-${jalaliBirthDate2.day}`,
+    "jYYYY-jMM-jDD",
+  ).startOf("day");
+
+  let years = birthDate2.jYear() - birthDate1.jYear();
+  let months = birthDate2.jMonth() - birthDate1.jMonth();
+  let days = birthDate2.jDate() - birthDate1.jDate();
+
+  if (days < 0) {
+    months -= 1;
+    days += moment.jDaysInMonth(birthDate1.jYear(), birthDate1.jMonth());
+  }
+
+  if (months < 0) {
+    years -= 1;
+    months += 12;
+  }
+
+  return { years, months, days };
+}
+
 const AgeCalculator = () => {
   const { DemoModal, setShowDemoModal } = useDemoModal();
   const [selectedDay, setSelectedDay] = useState<any>(null);
@@ -68,13 +95,24 @@ const AgeCalculator = () => {
       alert("لطفا تاریخ تولد خودتون رو مشخص کنید");
     } else {
       switch (selectedType) {
-        case "محاسبه سن و تاریخ تولد":
+        case "محاسبه سن و تاریخ تولد": {
+
           const calculatedAge = calculateAge(selectedDay);
-          console.log(calculatedAge);
+          const diff = calculateAgeDiff({year:1378, month:7, day: 21}, {year:1402, month:7, day: 21});
+          console.log("DIFFFFFF --->",diff);
           setAge(calculatedAge);
           setShowDemoModal(true);
           break;
+        }
+        case "محاسبه اختلاف سن دو نفر":{
 
+          const diff = calculateAgeDiff({year:1378, month:7, day: 21}, {year:1402, month:7, day: 21});
+          console.log(diff);
+          // setAge(diff);
+          // setShowDemoModal(true);
+          break;
+          
+        }
         default:
           alert("نوع محاسبه را انتخاب کنید");
           break;

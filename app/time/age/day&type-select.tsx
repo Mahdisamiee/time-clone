@@ -37,16 +37,20 @@ const DayAndTypeSelect = ({
           items={popoverMenuItems}
         />
       </div>
-      <div className="z-10 text-2xl">
-        <DatePicker
-          value={selectedDay}
-          onChange={onDayChange}
-          inputPlaceholder="روز تولدتان را انتخاب کنید"
-          shouldHighlightWeekends
-          colorPrimary="#9c88ff"
-          locale="fa" // for Persian calendar
-        />
-      </div>
+      {selectedType === "محاسبه اختلاف سن دو نفر" ? (
+        <>This is diffrent DatePicker</>
+      ) : (
+        <div className="z-10 text-2xl">
+          <DatePicker
+            value={selectedDay}
+            onChange={onDayChange}
+            inputPlaceholder="روز تولدتان را انتخاب کنید"
+            shouldHighlightWeekends
+            colorPrimary="#9c88ff"
+            locale="fa" // for Persian calendar
+          />
+        </div>
+      )}
     </>
   );
 };
