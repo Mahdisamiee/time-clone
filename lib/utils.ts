@@ -1,7 +1,7 @@
-
 import ms from "ms";
 
-
+import hijriMoment from "moment-hijri";
+import jalaaliMoment from "moment-jalaali";
 
 export const timeAgo = (timestamp: Date, timeOnly?: boolean): string => {
   if (!timestamp) return "never";
@@ -108,12 +108,6 @@ export const dayFormatter = (jalaliDay: string | null = null) => {
 /**
  *
  *  resource : https://stackoverflow.com/questions/71421825/how-to-convert-persian-jalali-dates-to-other-18-calendar-dates-in-javascript-w
- *
- * @param year
- * @param month
- * @param day
- * @param op
- * @returns
  */
 export const persianToCalendars = (
   year: number,
@@ -176,5 +170,84 @@ export const persianToCalendars = (
   throw new Error("Invalid Persian Date!");
 };
 
+export const convertHijriToGregorian = (islamicBirthDate: {
+  year: number | null;
+  month: number | null;
+  day: number | null;
+}) => {
+  const islamicDate = hijriMoment(
+    `${islamicBirthDate.year}-${islamicBirthDate.month}-${islamicBirthDate.day}`,
+    "iYYYY-iMM-iDD",
+  ).startOf("day"); // Start of Islamic day
 
+  // Convert Islamic date to Gregorian using moment-hijri
+  const gregorianDate = islamicDate.format("YYYY-MM-DD");
 
+  // Parse the Gregorian date to get year, month, and day
+  const gregorianParts = gregorianDate.split("-");
+  const gregorianYear = parseInt(gregorianParts[0]);
+  const gregorianMonth = parseInt(gregorianParts[1]);
+  const gregorianDay = parseInt(gregorianParts[2]);
+  return { year: gregorianYear, month: gregorianMonth, day: gregorianDay };
+};
+
+export const convertJalaliToGregorian = (jalaliBirthDate: {
+  year: number | null;
+  month: number | null;
+  day: number | null;
+}) => {
+  const jalaliDate = jalaaliMoment(
+    `${jalaliBirthDate.year}-${jalaliBirthDate.month}-${jalaliBirthDate.day}`,
+    "jYYYY-jMM-jDD",
+  ).startOf("day"); // Start of Jalali day
+
+  // Convert Jalali date to Gregorian using moment-jalaali
+  const gregorianDate = jalaliDate.format("YYYY-MM-DD");
+
+  // Parse the Gregorian date to get year, month, and day
+  const gregorianParts = gregorianDate.split("-");
+  const gregorianYear = parseInt(gregorianParts[0]);
+  const gregorianMonth = parseInt(gregorianParts[1]);
+  const gregorianDay = parseInt(gregorianParts[2]);
+
+  return { year: gregorianYear, month: gregorianMonth, day: gregorianDay };
+};
+
+export const convertGregorianToJalali = (gregorianBirthDate: {
+  year: number | null;
+  month: number | null;
+  day: number | null;
+}) => {
+
+  const gregorianDate = jalaaliMoment(
+    `${gregorianBirthDate.year}-${gregorianBirthDate.month}-${gregorianBirthDate.day}`,
+    "YYYY-MM-DD",
+  ).startOf("day"); // Start of Gregorian day
+
+  // Convert Gregorian date to Jalali using moment-jalaali
+  const jalaliDate = gregorianDate.format("jYYYY-jMM-jDD");
+
+  // Parse the Jalali date to get year, month, and day
+  const jalaliParts = jalaliDate.split("-");
+  const jalaliYear = parseInt(jalaliParts[0]);
+  const jalaliMonth = parseInt(jalaliParts[1]);
+  const jalaliDay = parseInt(jalaliParts[2]);
+
+  return { year: jalaliYear, month: jalaliMonth, day: jalaliDay };
+};
+
+export const convertGregorianToHijri = (gregorianBirthDate: {
+  year: number | null;
+  month: number | null;
+  day: number | null;
+}) => {
+  const gregorianDate = `${gregorianBirthDate.year}-${gregorianBirthDate.month}-${gregorianBirthDate.day}`;
+
+  // Convert Gregorian date to Hijri using moment-hijri
+  const hijriDate = hijriMoment(gregorianDate, 'YYYY-MM-DD');
+  return {
+    year: hijriDate.iYear(),
+    month: hijriDate.iMonth() + 1,
+    day: hijriDate.iDate(),
+  };
+};

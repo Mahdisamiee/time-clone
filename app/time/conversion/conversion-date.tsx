@@ -3,6 +3,12 @@
 import { useEffect, useState } from "react";
 import SelectType from "./select-type";
 import DatePicker from "./date-picker";
+import {
+  convertGregorianToHijri,
+  convertGregorianToJalali,
+  convertHijriToGregorian,
+  convertJalaliToGregorian,
+} from "@/lib/utils";
 
 const ConversionDate = () => {
   const [selectedType, setSelectedType] = useState<{
@@ -38,6 +44,8 @@ const ConversionDate = () => {
     // setResults and open Modal to show Results.
     console.log("Selected Date", selectedDate);
     console.log("Selected Type", selectedType);
+    console.log(convertGregorianToHijri(selectedDate));
+    // console.log(convertIslamicToGregorian(selectedDate))
   };
 
   return (
