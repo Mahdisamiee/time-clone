@@ -1,7 +1,16 @@
-"use client"
+"use client";
 import Selector from "@/components/time/selector";
 import { useEffect, useState } from "react";
 
+type DatePickerType = {
+  type?: number;
+  date: {
+    year: number | null;
+    month: number | null;
+    day: number | null;
+  };
+  onChangeDate: (obj: any) => void;
+};
 type OptionType = {
   value: number;
   label: string;
@@ -56,25 +65,32 @@ const MONTH_ISLAMIC_OPTIONS: OptionType[] = [
 ];
 // const MONTH
 
-const DatePicker = ({ type }: { type?: number }) => {
-  const [selectedDate, setselectedDate] = useState<{
-    year: number;
-    month: number;
-    day: number;
-  }>();
+const DatePicker = ({ type, date, onChangeDate }: DatePickerType) => {
+  // const [selectedDate, setselectedDate] = useState<{
+  //   year: number | null;
+  //   month: number | null;
+  //   day: number | null;
+  // }>({ year: null, month: null, day: null });
   const [selectedDay, setSelectedDay] = useState<any>(null);
   const [selectedMonth, setSelectedMonth] = useState<any>(null);
-  const [selectedYear, setSelectedYear] = useState<number | any>(null);
-
+  const [selectedYear, setSelectedYear] = useState<string>("");
 
   const handleSelectDay = (option: OptionType) => {
-    setSelectedDay(option);
+    setSelectedDay(option.value);
+    onChangeDate({ ...date, day: option.value });
     console.log("day", option);
   };
 
-  const handleSelectMonth = () => {};
+  const handleSelectMonth = (option: OptionType) => {
+    setSelectedMonth(option.value);
+    onChangeDate({ ...date, month: option.value });
+    console.log("Month", option);
+  };
+
   const handleSelectYear = (e: any) => {
-    console.log(e.currentTarget.value);
+    setSelectedYear(e.currentTarget.value);
+    onChangeDate({ ...date, year: +e.currentTarget.value });
+    console.log(typeof +e.currentTarget.value);
   };
   // here we add selectedday, selectedmonth, selectedyear
   return (
@@ -95,7 +111,7 @@ const DatePicker = ({ type }: { type?: number }) => {
             : MONTH_ISLAMIC_OPTIONS
         }
         selectedOption={selectedMonth}
-        onSelectOption={handleSelectDay}
+        onSelectOption={handleSelectMonth}
         label="انتخاب ماه"
       />
       <input
