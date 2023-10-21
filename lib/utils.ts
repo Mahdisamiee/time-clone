@@ -107,7 +107,8 @@ export const dayFormatter = (jalaliDay: string | null = null) => {
 
 /**
  *
- *  resource : https://stackoverflow.com/questions/71421825/how-to-convert-persian-jalali-dates-to-other-18-calendar-dates-in-javascript-w
+ *  resource  : https://stackoverflow.com/questions/71421825/how-to-convert-persian-jalali-dates-to-other-18-calendar-dates-in-javascript-w
+ *  resource2 : https://stackoverflow.com/questions/71222556/how-to-convert-any-of-the-5-islamic-hijri-calendars-dates-to-any-of-18-world
  */
 export const persianToCalendars = (
   year: number,
@@ -170,6 +171,58 @@ export const persianToCalendars = (
   throw new Error("Invalid Persian Date!");
 };
 
+export const hijriToCalendars = (
+  year: number,
+  month: number,
+  day: number,
+  op: any = {}
+): string => {
+  op.fromCal ??= "islamic-umalqura";
+  let gD = new Date(Date.UTC(2000, 0, 1));
+  gD = new Date(
+    gD.setUTCDate(
+      gD.getUTCDate() + ~~(227022 + (year + (month - 1) / 12 + day / 354) * 354.367)
+    )
+  );
+  const gY = gD.getUTCFullYear() - 2000;
+  const dFormat = new Intl.DateTimeFormat("en-u-ca-" + op.fromCal, {
+    dateStyle: "short",
+    timeZone: "UTC",
+  });
+  gD = new Date(
+    (gY < 0 ? "-" : "+") +
+      ("00000" + Math.abs(gY)).slice(-6) +
+      "-" +
+      ("0" + (gD.getUTCMonth() + 1)).slice(-2) +
+      "-" +
+      ("0" + gD.getUTCDate()).slice(-2)
+  );
+  let [iM, iD, iY] = [...dFormat.format(gD).split("/")];
+  let i = 0;
+  gD = new Date(
+    gD.setUTCDate(
+      gD.getUTCDate() +
+        ~~(year * 354 + month * 29.53 + day - (parseInt(iY.split(" ")[0]) * 354 + parseInt(iM) * 29.53 + parseInt(iD) - 2))
+    )
+  );
+  while (i < 4) {
+    [iM, iD, iY] = [...dFormat.format(gD).split("/")];
+    if (parseInt(iD) == day && parseInt(iM) == month && parseInt(iY.split(" ")[0]) == year) {
+      return formatOutput(gD);
+    }
+    gD = new Date(gD.setUTCDate(gD.getUTCDate() + 1));
+    i++;
+  }
+  throw new Error("Invalid " + op.fromCal + " date!");
+
+  function formatOutput(gD: Date): string {
+    return "toCal" in op
+      ? ((op.calendar = op.toCal), new Intl.DateTimeFormat(op.locale ?? "en", op).format(gD))
+      : gD.toISOString();
+  }
+};
+
+
 export const convertHijriToGregorian = (islamicBirthDate: {
   year: number | null;
   month: number | null;
@@ -218,7 +271,6 @@ export const convertGregorianToJalali = (gregorianBirthDate: {
   month: number | null;
   day: number | null;
 }) => {
-
   const gregorianDate = jalaaliMoment(
     `${gregorianBirthDate.year}-${gregorianBirthDate.month}-${gregorianBirthDate.day}`,
     "YYYY-MM-DD",
@@ -244,7 +296,7 @@ export const convertGregorianToHijri = (gregorianBirthDate: {
   const gregorianDate = `${gregorianBirthDate.year}-${gregorianBirthDate.month}-${gregorianBirthDate.day}`;
 
   // Convert Gregorian date to Hijri using moment-hijri
-  const hijriDate = hijriMoment(gregorianDate, 'YYYY-MM-DD');
+  const hijriDate = hijriMoment(gregorianDate, "YYYY-MM-DD");
   return {
     year: hijriDate.iYear(),
     month: hijriDate.iMonth() + 1,
