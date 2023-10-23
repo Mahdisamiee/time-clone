@@ -51,14 +51,14 @@ const timeParts = [
   },
   {
     title: "تقویم ایران",
-    url: "time/calendar",
+    url: "/time/calendar",
   },
   {
     title: "محاسبه سن",
-    url: "time/age",
+    url: "/time/age",
   },
   {
     title: "فاصله دو تاریخ",
-    url: "time/diff",
+    url: "/time/diff",
   },
 ];
