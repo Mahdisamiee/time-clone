@@ -45,7 +45,7 @@ const ResultModal = ({
             <hr className="my-2  w-full" />
             {details.results &&
               details.results.map((result) => (
-                <p className="text-md text-gray-500">{result}</p>
+                <p key={result} className="text-md text-gray-500">{result}</p>
               ))}
           </>
         </div>
