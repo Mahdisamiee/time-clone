@@ -28,20 +28,10 @@ const DaySelector = ({
 
   return (
     <>
-      {/* <div
-        className="mb-5 flex w-full max-w-3xl flex-col items-center justify-items-center p-10 px-5 xl:px-0"
-        ref={selectTypeRef}
-        onClick={handleSelectTypeFocus}
-      >
-        <PopoverMenu
-          onClickItem={onChangeCalculateType}
-          value={selectedType}
-          items={popoverMenuItems}
-        />
-      </div> */}
+      
       <div className="z-10 text-2xl">
         {selectedType === "محاسبه اختلاف سن دو نفر" ? (
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <DatePicker
               value={selectedDay}
               onChange={onDayChange}

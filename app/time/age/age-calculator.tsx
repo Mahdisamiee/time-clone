@@ -2,7 +2,7 @@
 import { useRef, useState } from "react";
 import moment from "moment-jalaali";
 import HijriMoment from "moment-hijri";
-import { useDemoModal } from "@/components/home/demo-modal";
+import { useResultModal } from "./result-modal";
 import DaySelector from "./day-selector";
 import PopoverMenu from "@/components/home/popover-menu";
 
@@ -114,7 +114,7 @@ const popoverMenuItems = [
 ];
 
 const AgeCalculator = () => {
-  const { DemoModal, setShowDemoModal } = useDemoModal();
+  const { ResultModal, setResultDemoModal } = useResultModal();
   const [selectedDay, setSelectedDay] = useState<any>(null);
   const [selectedDay2, setSelectedDay2] = useState<any>(null);
   const [selectedType, setSelectedType] = useState<string | null>(
@@ -152,7 +152,7 @@ const AgeCalculator = () => {
         case "محاسبه سن و تاریخ تولد": {
           const calculatedAge = calculateAge(selectedDay);
           setResult(calculatedAge);
-          setShowDemoModal(true);
+          setResultDemoModal(true);
           break;
         }
         case "محاسبه اختلاف سن دو نفر": {
@@ -162,7 +162,7 @@ const AgeCalculator = () => {
           );
           console.log(diff);
           setResult(diff);
-          setShowDemoModal(true);
+          setResultDemoModal(true);
           break;
         }
         case "محاسبه سن قمری": {
@@ -171,7 +171,7 @@ const AgeCalculator = () => {
           );
           console.log(calculatedAge);
           setResult(calculatedAge);
-          setShowDemoModal(true);
+          setResultDemoModal(true);
           break;
         }
         default:
@@ -214,7 +214,7 @@ const AgeCalculator = () => {
         >
           <p className=" ">محاسبه</p>
         </button>
-        <>{selectedDay ? DemoModal({ result, selectedDay, calcType: selectedType }) : null}</>
+        <>{selectedDay ? ResultModal({ result, selectedDay, calcType: selectedType }) : null}</>
       </div>
     </div>
   );
