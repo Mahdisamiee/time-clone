@@ -1,7 +1,7 @@
 import Card from "@/components/home/card";
 import LiveClock from "@/components/time/timezone-clock";
 import AnalogClock from "@/components/time/analog-clock";
-import ShariaTime from "@/components/time/sharia-time";
+import ShariaTime from "@/app/time/sharia/sharia-time";
 import MainCalendar from "@/components/time/calendar";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -23,7 +23,9 @@ export const metadata: Metadata = {
 export default function TimeContainer() {
   return (
     <>
-      <div className={`z-10 grid grid-cols-1 gap-5 md:grid-cols-${timeParts.length}`}>
+      <div
+        className={`z-10 grid grid-cols-1 gap-5 md:grid-cols-${timeParts.length}`}
+      >
         {timeParts.map((part) => {
           return (
             <Link
@@ -36,7 +38,7 @@ export default function TimeContainer() {
             </Link>
           );
         })}
-        <hr className={`w-full col-span-6 mb-10 mt-2`}/>
+        <hr className={`col-span-6 mb-10 mt-2 w-full`} />
       </div>
       <div className="z-10 w-full max-w-3xl px-5 xl:px-0">
         <div

@@ -1,5 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import ShariaTime from "@/components/time/sharia-time";
+import ShariaTime from "@/app/time/sharia/sharia-time";
 
 export async function generateMetadata({
   params,
@@ -26,8 +26,8 @@ export async function generateMetadata({
       `نیمه شب شرعی ${decodedCity}`,
     ],
     alternates: {
-      canonical : `https://kit365.ir/time/sharia/${decodedCity}`
-    }
+      canonical: `https://kit365.ir/time/sharia/${decodedCity}`,
+    },
   };
 }
 
