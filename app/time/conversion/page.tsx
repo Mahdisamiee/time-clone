@@ -1,7 +1,7 @@
 import Card from "@/components/home/card";
 import LiveClock from "@/components/time/timezone-clock";
 import AnalogClock from "@/components/time/analog-clock";
-import ShariaTime from "@/components/time/sharia-time";
+import ShariaTime from "@/app/time/sharia/sharia-time";
 import MainCalendar from "@/components/time/calendar";
 import { Metadata } from "next";
 import Link from "next/link";

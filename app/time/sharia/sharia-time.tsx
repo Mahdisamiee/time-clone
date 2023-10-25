@@ -4,6 +4,32 @@ import { useEffect, useState } from "react";
 import Select from "react-select";
 import axios from "axios";
 import { dayFormatter } from "@/lib/utils";
+import Option from '@/components/time/select-city-option';
+// options should go to new js file to access from "Sharia" & "Time" component
+
+type PrayerTimesResponse = {
+  CityLName: string;
+  CityName: string;
+  CountryAlpha2: string;
+  CountryCode: string;
+  CountryLName: string;
+  CountryName: string;
+  DayLenght: null;
+  Imsaak: string;
+  Maghreb: string;
+  Midnight: string;
+  Noon: string;
+  SimultaneityOfKaaba: string;
+  SimultaneityOfKaabaDesc: string;
+  Sunrise: string;
+  SunriseDT: string;
+  Sunset: string;
+  TimeZone: string;
+  Today: string;
+  TodayGregorian: null;
+  TodayQamari: string;
+};
+
 
 const options = [
   { value: 1, label: "تهران" },
@@ -45,35 +71,15 @@ const options = [
   { value: 450, label: "مرند" },
   { value: 822, label: "سبزوار" },
   { value: 976, label: "استانبول" },
-  { value: 968, label: "کیش" },
+  { value: 968, label: "کیش", subLabel: "ایران" },
 ];
-type PrayerTimesResponse = {
-  CityLName: string;
-  CityName: string;
-  CountryAlpha2: string;
-  CountryCode: string;
-  CountryLName: string;
-  CountryName: string;
-  DayLenght: null;
-  Imsaak: string;
-  Maghreb: string;
-  Midnight: string;
-  Noon: string;
-  SimultaneityOfKaaba: string;
-  SimultaneityOfKaabaDesc: string;
-  Sunrise: string;
-  SunriseDT: string;
-  Sunset: string;
-  TimeZone: string;
-  Today: string;
-  TodayGregorian: null;
-  TodayQamari: string;
-};
 
-const PrayerTimesComponent = ({ city }: { city?: string }) => {
+
+
+const ShariaTime = ({ city }: { city?: string }) => {
   // for select the code of city
   const [selectedOption, setSelectedOption] = useState<
-    { value: number; label: string } | any
+    { value: number; label: string; subLabel?: string } | any
   >(
     city
       ? options.find((option) => option.label === city)
@@ -89,25 +95,30 @@ const PrayerTimesComponent = ({ city }: { city?: string }) => {
       city: string,
     ): Promise<PrayerTimesResponse> {
       const response = await axios.get(
-        `https://prayer.aviny.com/api/prayertimes/${selectedOption.value}`,
+        `https://prayer.aviny.com/api/prayertimes/${city}`,
       );
       const data = response.data;
       return data;
     }
     async function loadPrayerTimes() {
-      const times = await fetchPrayerTimes("Tehran"); // Replace 'Tehran' with any city in Iran
+      const times = await fetchPrayerTimes(selectedOption.value); // Replace 'Tehran' with any city in Iran
       setPrayerTimes(times);
+      console.log("here => ");
+      console.log(selectedOption);
     }
     loadPrayerTimes();
   }, [selectedOption]);
 
   return (
-    <div className="flex h-full flex-col items-center justify-between text-center w-5/6 sm:w-full">
-      <div className="my-4 w-full p-1 md:p-4 my-6">
+    <div className="flex h-full w-5/6 flex-col items-center justify-between text-center sm:w-full">
+      <div className="my-4 my-6 w-full p-1 md:p-4">
         {prayerTimes ? (
-          <ul className="grid h-full w-full grid-cols-1 gap-4  text-xl sm:gap-8 sm:text-2xl">
+          <ul className="grid h-full w-full grid-cols-1 gap-4 text-xl text-blue-600 sm:gap-8 sm:text-2xl">
             <li>
-              <p>امروز : {dayFormatter(prayerTimes.Today)}</p>
+              <h4>
+                <p className="inline text-gray-700">امروز : </p>{" "}
+                {dayFormatter(prayerTimes.Today)}
+              </h4>
             </li>
           </ul>
         ) : (
@@ -115,32 +126,51 @@ const PrayerTimesComponent = ({ city }: { city?: string }) => {
         )}
       </div>
       <Select
-        className="w-full sm:w-3/4 text-center text-lg sm:text-right"
+        className="w-full text-center text-lg sm:w-3/4 sm:text-right"
         defaultValue={selectedOption}
         onChange={setSelectedOption}
         options={options}
         maxMenuHeight={200}
+        components={{ Option }}
       />
       <div className="my-4 w-full p-2 md:p-4">
         {prayerTimes ? (
-          <ul className="grid h-full w-full px-3 grid-cols-2 gap-8 text-center text-base sm:text-xl ">
+          <ul className="grid h-full w-full grid-cols-2 gap-8 px-3 text-center text-base sm:text-xl ">
             <li>
-              <p>اذان صبح : {prayerTimes.Imsaak}</p>
+              <h4>
+                <p className="inline text-blue-500">اذان صبح</p> :{" "}
+                {prayerTimes.Imsaak}
+              </h4>
             </li>
             <li>
-              <p>طلوع آفتاب : {prayerTimes.Sunrise}</p>
+              <h4>
+                <p className="inline text-blue-500">طلوع آفتاب</p> :{" "}
+                {prayerTimes.Sunrise}
+              </h4>
             </li>
             <li>
-              <p>اذان ظهر : {prayerTimes.Noon}</p>
+              <h4>
+                <p className="inline text-blue-500">اذان ظهر</p> :{" "}
+                {prayerTimes.Noon}
+              </h4>
             </li>
             <li>
-              <p>غروب آفتاب : {prayerTimes.Sunset}</p>
+              <h4>
+                <p className="inline text-blue-500">غروب آفتاب</p> :{" "}
+                {prayerTimes.Sunset}
+              </h4>
             </li>
             <li>
-              <p>اذان مغرب : {prayerTimes.Maghreb}</p>
+              <h4>
+                <p className="inline text-blue-500">اذان مغرب</p> :{" "}
+                {prayerTimes.Maghreb}
+              </h4>
             </li>
             <li>
-              <p>نیمه شب : {prayerTimes.Midnight}</p>
+              <h4>
+                <p className="inline text-blue-500">نیمه شب</p> :{" "}
+                {prayerTimes.Midnight}
+              </h4>
             </li>
           </ul>
         ) : (
@@ -151,4 +181,4 @@ const PrayerTimesComponent = ({ city }: { city?: string }) => {
   );
 };
 
-export default PrayerTimesComponent;
+export default ShariaTime;

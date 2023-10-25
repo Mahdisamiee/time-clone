@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import ShariaTime from "@/components/time/sharia-time";
+import ShariaTime from "./sharia-time";
 
 export const metadata: Metadata = {
   // i think should use dynamic functin here instead of static object
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function Sharia() {
   return (
-    <div className="z-10 w-full max-w-3xl px-10 sm:px-3 flex flex-col items-center justify-center">
+    <div className="z-10 flex w-full max-w-3xl flex-col items-center justify-center px-10 sm:px-3">
       <ShariaTime />
     </div>
   );
