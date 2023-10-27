@@ -9,12 +9,12 @@ import Balancer from "react-wrap-balancer";
 
 interface ClockProps {
   timeZone: string;
-  timeCity: string;
+  // timeCity: string;
 }
 
 moment.locale("fa");
 
-const LiveClock: React.FC<ClockProps> = ({ timeZone, timeCity }) => {
+const LiveClock: React.FC<ClockProps> = ({ timeZone }) => {
   const [adjustedTime, setAdjustedTime] =
     useState<timezoneMoment.Moment | null>(null);
 
@@ -22,7 +22,7 @@ const LiveClock: React.FC<ClockProps> = ({ timeZone, timeCity }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://worldtimeapi.org/api/timezone/${timeZone}/${timeCity}`,
+          `https://worldtimeapi.org/api/timezone/${timeZone}`,
         );
         const serverTime = timezoneMoment(response.data.datetime);
         const localTime = timezoneMoment();
@@ -42,12 +42,12 @@ const LiveClock: React.FC<ClockProps> = ({ timeZone, timeCity }) => {
       }
     };
     fetchData();
-  }, [timeZone, timeCity]);
+  }, [timeZone]);
 
   return (
     <div className="flex w-full flex-col items-center text-center">
       <h1>
-        Exact Time For {timeZone} / {timeCity}
+        Exact Time For {timeZone} 
       </h1>
       <div
         className="text-10xl animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-lale font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm text-7xl md:leading-[5rem]"
@@ -58,7 +58,7 @@ const LiveClock: React.FC<ClockProps> = ({ timeZone, timeCity }) => {
             date={adjustedTime.toISOString()}
             format={"HH:mm:ss"}
             ticking={true}
-            timezone={`${timeZone}/${timeCity}`}
+            timezone={`${timeZone}`}
           />
         )}
       </div>

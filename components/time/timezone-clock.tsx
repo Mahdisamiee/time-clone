@@ -8,19 +8,13 @@ const TimezoneClock = ({ timezone }: { timezone?: string }) => {
   const [selectedTimezone, setSelectedTimezone] = useState<ITimezone | "">(
     timezone != undefined ? timezone : "Europe/London",
   );
-  const [clockTimezone, setClockTimezone] = useState(
-    timezone ? timezone.split("/")[0] : "Europe",
+  const [clockTimeZone, setClockTimeZone] = useState(
+    timezone ? timezone : "UTC",
   );
-  const [clockCity, setClockCity] = useState(
-    timezone ? timezone.split("/")[1] : "London",
-  );
-
-
 
   const onTimezoneChange = (timezone: ITimezone) => {
     const newValue = JSON.parse(JSON.stringify(timezone)).value;
-    setClockTimezone(newValue.split("/")[0]);
-    setClockCity(newValue.split("/")[1]);
+    setClockTimeZone(newValue);
     setSelectedTimezone(timezone);
   };
 
@@ -415,7 +409,7 @@ const TimezoneClock = ({ timezone }: { timezone?: string }) => {
           UTC: "UTC",
         }}
       />
-      <DigitalClock timeZone={clockTimezone} timeCity={clockCity} />
+      <DigitalClock timeZone={clockTimeZone} />
     </div>
   );
 };
