@@ -49,7 +49,7 @@ const LiveClock: React.FC<ClockProps> = ({ timeZone, timeCity }) => {
       <h1>
         Exact Time For {timeZone} / {timeCity}
       </h1>
-      <h1
+      <div
         className="text-10xl animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-lale font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm text-7xl md:leading-[5rem]"
         style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
       >
@@ -61,13 +61,13 @@ const LiveClock: React.FC<ClockProps> = ({ timeZone, timeCity }) => {
             timezone={`${timeZone}/${timeCity}`}
           />
         )}
-      </h1>
+      </div>
 
       <p
         className="mt-6 animate-fade-up text-center text-gray-500 opacity-0 md:text-xl"
         style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
       >
-        <Balancer>
+        <Balancer className="bg-gray-100 w-full">
           {adjustedTime && adjustedTime.format("dddd, MMMM D, YYYY")}
         </Balancer>
       </p>
