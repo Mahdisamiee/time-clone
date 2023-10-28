@@ -11,24 +11,17 @@ export async function generateMetadata({
   const decodedCity = decodeURIComponent(params.city);
   return {
     title: `ساعت دقیق ${decodedCity} | زمان جهانی ${decodedCity}`,
-    description: `اوقات شرعی دقیق شهر ${decodedCity} | طلوع و غروب دقیق آفتاب ${decodedCity} به همراه زمان دقیق اذان صبح، اذان ظهر و اذان مغرب | کیت ۳۶۵`,
+    description: `ساعت و زمان دقیق  ${decodedCity} | زمان دقیق به وقت ${decodedCity}  | زمان الان ${decodedCity} | کیت365`,
+    // description: `ساعت دقیق {لندن} | زمان دقیق به وقت {لندن} | زمان الان {لندن}$ | کیت365`,
     keywords: [
-      `اوقات شرعی دقیق ${decodedCity}`,
-      `زمان دقیق طلوع و غروب ${decodedCity}`,
-      `زمان طلوع آفتاب ${decodedCity}`,
-      `طلوع آفتاب ${decodedCity}`,
-      `زمان غروب آفتاب ${decodedCity}`,
-      `غروب آفتاب ${decodedCity}`,
-      `زمان اذان صبح ${decodedCity}`,
-      `اذان صبح ${decodedCity}`,
-      `زمان اذان ظهر ${decodedCity}`,
-      `اذان ظهر ${decodedCity}`,
-      `اذان مغرب ${decodedCity}`,
-      `زمان اذان مغرب ${decodedCity}`,
-      `نیمه شب شرعی ${decodedCity}`,
+      `زمان در ${decodedCity}`,
+      `ساعت الان ${decodedCity}`,
+      `ساعت دقیق ${decodedCity}`,
+      `زمان به وقت ${decodedCity}`,
+      `اختلاف ساعت جهانی در ${decodedCity}`,
     ],
     alternates: {
-      canonical: `https://kit365.ir/time/sharia/${decodedCity}`,
+      canonical: `https://kit365.ir/time/${decodedCity}`,
     },
   };
 }
@@ -43,7 +36,7 @@ export default function Page({ params }: { params: { city: string } }) {
 
   return (
     <div className="z-10 flex w-full max-w-3xl flex-col items-center justify-center px-10 sm:px-3">
-      <h2 className="text-xl">زمان در : {decodedCity}</h2>
+      <h1 className="text-2xl">زمان در  {decodedCity}</h1>
       {
         timezone ? 
       <TimezoneClock timezone={timezone} /> : <p>منطقه انتخاب شده موجود نیست !</p>
