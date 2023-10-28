@@ -37,8 +37,9 @@ const LiveClock: React.FC<ClockProps> = ({ timeZone }) => {
         }, 1000);
 
         return () => clearInterval(interval);
-      } catch (error) {
+      } catch (error:any) {
         console.error("Failed to fetch the date and time:", error);
+        alert(error.message)
       }
     };
     fetchData();
@@ -47,10 +48,10 @@ const LiveClock: React.FC<ClockProps> = ({ timeZone }) => {
   return (
     <div className="flex w-full flex-col items-center text-center">
       <h1>
-        Exact Time For {timeZone} 
+        زمان دقیق در <span className="text-blue-500 mx-2">{timeZone}</span> 
       </h1>
       <div
-        className="text-10xl animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-lale font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm text-7xl md:leading-[5rem]"
+        className="text-10xl animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm text-7xl md:leading-[5rem]"
         style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
       >
         {adjustedTime && (
@@ -67,7 +68,7 @@ const LiveClock: React.FC<ClockProps> = ({ timeZone }) => {
         className="mt-6 animate-fade-up text-center text-gray-500 opacity-0 md:text-xl"
         style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
       >
-        <Balancer className="bg-gray-100 w-full">
+        <Balancer className="w-full">
           {adjustedTime && adjustedTime.format("dddd, MMMM D, YYYY")}
         </Balancer>
       </p>
