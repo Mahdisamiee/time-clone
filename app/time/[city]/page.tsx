@@ -1,5 +1,4 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import dynamic from "next/dynamic";
 import TimezoneClock from "@/components/time/timezone-clock";
 
 // import { WORLD_CLOCK_TIMEZONES } from "@/lib/constants";
