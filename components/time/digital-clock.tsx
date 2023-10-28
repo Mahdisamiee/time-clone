@@ -65,10 +65,10 @@ const LiveClock: React.FC<ClockProps> = ({ timeZone }) => {
       </div>
 
       <p
-        className="mt-6 animate-fade-up text-center text-gray-500 opacity-0 md:text-xl"
+        className="mt-6 animate-fade-up text-center text-gray-500 opacity-0 md:text-xl w-full"
         style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
       >
-        <Balancer className="w-full">
+        <Balancer >
           {adjustedTime && adjustedTime.format("dddd, MMMM D, YYYY")}
         </Balancer>
       </p>

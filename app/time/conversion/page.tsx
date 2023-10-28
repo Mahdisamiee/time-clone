@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 const Conversion = () => {
   return (
     <>
-      <LocalNavbar items={timeParts} />
+      <LocalNavbar items={navbarItems} />
 
       <div className="z-10 w-full max-w-3xl px-5 xl:px-0">
         {/* here we add our first client component */}
@@ -44,7 +44,7 @@ const Conversion = () => {
 };
 export default Conversion;
 
-const timeParts = [
+const navbarItems = [
   {
     title: "تاریخ امروز",
     url: "/time",
