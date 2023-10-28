@@ -1,7 +1,8 @@
 import type { Metadata, ResolvingMetadata } from "next";
+import dynamic from "next/dynamic";
 import TimezoneClock from "@/components/time/timezone-clock";
 
-import { WORLD_CLOCK_TIMEZONES } from "@/lib/constants";
+// import { WORLD_CLOCK_TIMEZONES } from "@/lib/constants";
 import LocalNavbar from "@/components/shared/local-navbar";
 import Card from "@/components/home/simple-card";
 
@@ -47,8 +48,11 @@ const navbarItems = [
   },
 ];
 
-export default function Page({ params }: { params: { city: string } }) {
+export default async function Page({ params }: { params: { city: string } }) {
+  const WORLD_CLOCK_TIMEZONES = (await import("@/lib/constants"))
+    .WORLD_CLOCK_TIMEZONES;
   const decodedCity = decodeURIComponent(params.city);
+
   const timezone =
     decodedCity &&
     WORLD_CLOCK_TIMEZONES.find(
@@ -59,8 +63,10 @@ export default function Page({ params }: { params: { city: string } }) {
     <>
       <LocalNavbar items={navbarItems} />
       <Card>
-        <div className="z-10 flex w-full max-w-3xl flex-col gap-5 items-center justify-center px-10 py-5 sm:px-3 ">
-          <h1 className="text-2xl text-bold sm:text-3xl">زمان در {decodedCity}</h1>
+        <div className="z-10 flex w-full max-w-3xl flex-col items-center justify-center gap-5 px-10 py-5 sm:px-3 ">
+          <h1 className="text-bold text-2xl sm:text-3xl">
+            زمان در {decodedCity}
+          </h1>
           {timezone ? (
             <TimezoneClock timezone={timezone} />
           ) : (
