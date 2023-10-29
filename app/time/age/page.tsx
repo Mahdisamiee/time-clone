@@ -59,7 +59,7 @@ const timeParts = [
   },
   {
     title: "تاریخ امروز",
-    url: "/time",
+    url: "/time/today",
   },
   {
     title: "تبدیل تاریخ",

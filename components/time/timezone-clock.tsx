@@ -1,6 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
-import TimezoneSelect, { allTimezones } from "react-timezone-select";
+import { useState } from "react";
+import TimezoneSelect from "react-timezone-select";
 import type { ITimezone } from "react-timezone-select";
 import DigitalClock from "./digital-clock";
 
