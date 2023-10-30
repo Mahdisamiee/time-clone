@@ -172,8 +172,8 @@ export const persianToCalendars = (
     timeZone: "UTC",
   });
 
-  let gD: Date = new Date(Date.UTC(2000, month, day));
-  gD = new Date(gD.setUTCDate(gD.getUTCDate() + 226867));
+  let gD: Date = new Date(Date.UTC(2000, month - 1, day));
+  gD = new Date(gD.setUTCDate(gD.getUTCDate() + 226895)); // Updated days adjustment
 
   const gY: number = gD.getUTCFullYear() - 2000 + year;
   gD = new Date(
@@ -203,9 +203,9 @@ export const persianToCalendars = (
   while (i < 4) {
     [pM, pD, pY] = [...dFormat.format(gD).split("/")];
     if (
-      pD === day.toString() &&
-      pM === month.toString() &&
-      pY.split(" ")[0] === year.toString()
+      parseInt(pD) === day &&
+      parseInt(pM) === month &&
+      parseInt(pY.split(" ")[0]) === year
     ) {
       return formatOut(gD);
     }

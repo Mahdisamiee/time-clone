@@ -78,19 +78,16 @@ const DatePicker = ({ type, date, onChangeDate }: DatePickerType) => {
   const handleSelectDay = (option: OptionType) => {
     setSelectedDay(option.value);
     onChangeDate({ ...date, day: option.value });
-    console.log("day", option);
   };
 
   const handleSelectMonth = (option: OptionType) => {
     setSelectedMonth(option.value);
     onChangeDate({ ...date, month: option.value });
-    console.log("Month", option);
   };
 
   const handleSelectYear = (e: any) => {
     setSelectedYear(e.currentTarget.value);
     onChangeDate({ ...date, year: +e.currentTarget.value });
-    console.log(typeof +e.currentTarget.value);
   };
   // here we add selectedday, selectedmonth, selectedyear
   return (
