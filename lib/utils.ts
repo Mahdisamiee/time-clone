@@ -173,7 +173,7 @@ export const persianToCalendars = (
   });
 
   let gD: Date = new Date(Date.UTC(2000, month - 1, day));
-  gD = new Date(gD.setUTCDate(gD.getUTCDate() + 226895)); // Updated days adjustment
+  gD = new Date(gD.setUTCDate(gD.getUTCDate() + 226895));
 
   const gY: number = gD.getUTCFullYear() - 2000 + year;
   gD = new Date(
