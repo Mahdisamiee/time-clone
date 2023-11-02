@@ -134,6 +134,8 @@ const AgeCalculator = () => {
 
   const handleChangeCalculate = (e: React.MouseEvent) => {
     setSelectedType(e.currentTarget.textContent);
+    setSelectedDay(null);
+    setSelectedDay2(null);
   };
 
   const handleDayChange = (e: any) => {
@@ -210,9 +212,9 @@ const AgeCalculator = () => {
         {/* Modal */}
         <button
           onClick={handleCalculateAge}
-          className="mt-20 flex w-1/3 items-center justify-center rounded-md border border-[#1d9bf0] px-3 py-2 text-[#1d9bf0] transition-all duration-75 hover:border-blue-500 hover:bg-blue-500 hover:text-white focus:outline-none active:bg-blue-100"
+          className="mt-20 flex w-1/3 items-center justify-center rounded-md border border-sky-600 px-3 py-2 text-sky-700 transition-all duration-75 hover:border-sky-600 hover:bg-sky-500 hover:text-white focus:outline-none active:bg-sky-200"
         >
-          <p className=" ">محاسبه</p>
+          <p>محاسبه</p>
         </button>
         <>{selectedDay ? ResultModal({ result, selectedDay, calcType: selectedType }) : null}</>
       </div>

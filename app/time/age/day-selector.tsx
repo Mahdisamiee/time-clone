@@ -18,11 +18,6 @@ const DaySelector = ({
   onDayChange,
   onDay2Change,
 }: DayTypeSelectType) => {
-  const selectTypeRef = useRef<HTMLDivElement>(null);
-
-  const handleSelectTypeFocus = () => {
-    selectTypeRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <>
@@ -33,7 +28,7 @@ const DaySelector = ({
             <DatePicker
               value={selectedDay}
               onChange={onDayChange}
-              inputPlaceholder="روز تولدتان را انتخاب کنید"
+              inputPlaceholder="تاریخ تولد اول را انتخاب کنید"
               shouldHighlightWeekends
               colorPrimary="#9c88ff"
               locale="fa" // for Persian calendar
@@ -41,7 +36,7 @@ const DaySelector = ({
             <DatePicker
               value={selectedDay2}
               onChange={onDay2Change}
-              inputPlaceholder="روز تولدتان را انتخاب کنید"
+              inputPlaceholder="تاریخ تولد دوم را انتخاب کنید"
               shouldHighlightWeekends
               colorPrimary="#9c88ff"
               locale="fa" // for Persian calendar
@@ -63,8 +58,4 @@ const DaySelector = ({
 };
 
 export default DaySelector;
-const popoverMenuItems = [
-  "محاسبه سن و تاریخ تولد",
-  "محاسبه اختلاف سن دو نفر",
-  "محاسبه سن قمری",
-];
+

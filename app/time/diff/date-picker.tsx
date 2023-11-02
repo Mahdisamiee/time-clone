@@ -1,6 +1,6 @@
 "use client";
 import Selector from "@/components/time/selector";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type DatePickerType = {
   type?: number;
@@ -66,11 +66,6 @@ const MONTH_ISLAMIC_OPTIONS: OptionType[] = [
 // const MONTH
 
 const DatePicker = ({ type, date, onChangeDate }: DatePickerType) => {
-  // const [selectedDate, setselectedDate] = useState<{
-  //   year: number | null;
-  //   month: number | null;
-  //   day: number | null;
-  // }>({ year: null, month: null, day: null });
   const [selectedDay, setSelectedDay] = useState<any>(null);
   const [selectedMonth, setSelectedMonth] = useState<any>(null);
   const [selectedYear, setSelectedYear] = useState<string>("");
@@ -123,8 +118,3 @@ const DatePicker = ({ type, date, onChangeDate }: DatePickerType) => {
 };
 
 export default DatePicker;
-// border-color: hsl(0, 0%, 80%);
-//     border-radius: 4px;
-//     border-style: solid;
-//     border-width: 1px;
-//     box-sizing: border-box;

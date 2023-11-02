@@ -37,17 +37,17 @@ const ResultModal = ({
           </a>
           {details?.calcType === "محاسبه سن و تاریخ تولد" ? (
             <>
-              <h3 className="mb-10 text-3xl font-bold">
+              <h3 className="mb-10 text-3xl font-bold text-gray-800">
                 سن شما مطابق تقویم شمسی
               </h3>
-              <hr className="mb-10 mt-2 h-1 w-full rounded bg-blue-400" />
+              <hr className="mb-10 mt-2 h-1 w-full rounded bg-sky-300" />
               <p className="text-2xl text-gray-500">
                 سن شما {details?.result.years} سال و {details?.result.months}{" "}
                 ماه و {details?.result.days} روز است.
               </p>
-              <hr className="mb-10 mt-2 h-1 w-full rounded bg-blue-400" />
-              <p className="text-md text-gray-500">
-                <h4 className="text-lg inline text-blue-500">قمری : </h4>
+              <hr className="mb-10 mt-2 h-1 w-full rounded bg-sky-300" />
+              <h4 className="text-md text-gray-500">
+                <p className="inline text-lg text-sky-800">قمری : </p>
                 {persianToCalendars(
                   details.selectedDay.year,
                   details.selectedDay.month,
@@ -58,9 +58,9 @@ const ResultModal = ({
                     locale: "fa",
                   },
                 )}
-              </p>
-              <p className="text-md text-gray-500">
-              <h4 className="text-lg inline text-blue-500">میلادی : </h4>
+              </h4>
+              <h4 className="text-md text-gray-500">
+                <p className="inline text-lg text-sky-800">میلادی : </p>
                 {persianToCalendars(
                   details.selectedDay.year,
                   details.selectedDay.month,
@@ -71,22 +71,24 @@ const ResultModal = ({
                     locale: "en",
                   },
                 )}
-              </p>
+              </h4>
             </>
           ) : details?.calcType === "محاسبه اختلاف سن دو نفر" ? (
             <>
-              <h3 className="mb-10 text-3xl font-bold">
-                اختلاف سن شما
+              <h3 className="mb-10 text-3xl font-bold text-gray-800">
+                اختلاف سن دو نفر
               </h3>
-              <hr className="mb-10 mt-2 h-1 w-full rounded bg-blue-400" />
+              <hr className="mb-10 mt-2 h-1 w-full rounded bg-sky-300" />
               <p className="text-2xl text-gray-500">
-                اختلاف سن شما : {details?.result.years} سال و{" "}
+                اختلاف سن دو نفر برابر : {details?.result.years} سال و{" "}
                 {details?.result.months} ماه و {details?.result.days} روز است.
               </p>
             </>
           ) : (
             <>
-              <h3 className="mb-10 text-3xl font-bold">محاسبه سن قمری شما</h3>
+              <h3 className="mb-10 text-3xl font-bold text-gray-800">
+                محاسبه سن قمری شما
+              </h3>
               <hr className="mb-10 mt-2 h-0.5 w-full rounded bg-gray-200" />
               <p className="text-2xl text-gray-500">
                 سن قمری شما : {details?.result.years} سال و{" "}
@@ -110,13 +112,20 @@ export function useResultModal() {
       result: { years: number; months: number; days: number };
       selectedDay: { year: number; month: number; day: number };
     }) => {
-      return (
-        <ResultModal
-          showResultModal={showResultModal}
-          setResultDemoModal={setResultDemoModal}
-          details={details}
-        />
-      );
+      if (details.result && details.selectedDay)
+        return (
+          <ResultModal
+            showResultModal={showResultModal}
+            setResultDemoModal={setResultDemoModal}
+            details={details}
+          />
+        );
+      else
+        return (
+          <>
+            <p>مشکلی در نمایش پیش آمده است. لطفا یکبار دیگر امتحان کنید</p>
+          </>
+        );
     },
     [showResultModal, setResultDemoModal],
   );
