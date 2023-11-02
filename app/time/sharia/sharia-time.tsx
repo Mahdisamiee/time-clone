@@ -113,7 +113,7 @@ const ShariaTime = ({ city }: { city?: string }) => {
     <div className="flex h-full w-5/6 flex-col items-center justify-between text-center sm:w-full">
       <div className="my-4 my-6 w-full p-1 md:p-4">
         {prayerTimes ? (
-          <ul className="grid h-full w-full grid-cols-1 gap-4 text-xl text-blue-600 sm:gap-8 sm:text-2xl">
+          <ul className="grid h-full w-full grid-cols-1 gap-4 text-xl text-sky-600 sm:gap-8 sm:text-2xl">
             <li>
               <h4>
                 <p className="inline text-gray-700">امروز : </p>{" "}
@@ -138,37 +138,37 @@ const ShariaTime = ({ city }: { city?: string }) => {
           <ul className="grid h-full w-full grid-cols-2 gap-8 px-3 text-center text-base sm:text-xl ">
             <li>
               <h4>
-                <p className="inline text-blue-500">اذان صبح</p> :{" "}
+                <p className="inline text-sky-600">اذان صبح</p> :{" "}
                 {prayerTimes.Imsaak}
               </h4>
             </li>
             <li>
               <h4>
-                <p className="inline text-blue-500">طلوع آفتاب</p> :{" "}
+                <p className="inline text-sky-600">طلوع آفتاب</p> :{" "}
                 {prayerTimes.Sunrise}
               </h4>
             </li>
             <li>
               <h4>
-                <p className="inline text-blue-500">اذان ظهر</p> :{" "}
+                <p className="inline text-sky-600">اذان ظهر</p> :{" "}
                 {prayerTimes.Noon}
               </h4>
             </li>
             <li>
               <h4>
-                <p className="inline text-blue-500">غروب آفتاب</p> :{" "}
+                <p className="inline text-sky-600">غروب آفتاب</p> :{" "}
                 {prayerTimes.Sunset}
               </h4>
             </li>
             <li>
               <h4>
-                <p className="inline text-blue-500">اذان مغرب</p> :{" "}
+                <p className="inline text-sky-600">اذان مغرب</p> :{" "}
                 {prayerTimes.Maghreb}
               </h4>
             </li>
             <li>
               <h4>
-                <p className="inline text-blue-500">نیمه شب</p> :{" "}
+                <p className="inline text-sky-600">نیمه شب</p> :{" "}
                 {prayerTimes.Midnight}
               </h4>
             </li>
