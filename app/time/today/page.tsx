@@ -2,9 +2,7 @@ import { Metadata } from "next";
 import LocalNavbar from "@/components/shared/local-navbar";
 
 export const metadata: Metadata = {
-  // i think should use dynamic functin here instead of static object
   title: "تاریخ امروز (امروز چندمه)",
-  // description: "تاریخ امروز ایران ، امروز چندمه و چند شنبه است ، تاریخ میلادی و شمسی و قمری امروز چندم است",
   description:
     "امروز چندم است، تاریخ امروز ایران، تاریخ امروز به شمسی میلادی قمری و روسی، امروز به میلادی شمسی و قمری چندم است، امروز چند شنبه است",
   keywords: [
@@ -17,6 +15,9 @@ export const metadata: Metadata = {
     "امروز چندشنبه است",
     "امروز چندمه",
   ],
+  alternates: {
+    canonical: `https://kit365.ir/time/today`,
+  },
 };
 
 const navbarItems = [

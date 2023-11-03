@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     "زمان بین دو تاریخ میلادی",
     "زمان بین دو تاریخ قمری",
   ],
+  alternates: {
+    canonical: `https://kit365.ir/time/diff`,
+  },
 };
 
 const Conversion = () => {

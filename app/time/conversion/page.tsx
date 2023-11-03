@@ -23,6 +23,10 @@ export const metadata: Metadata = {
     "امروز به شمسی",
     "امروز به میلادی",
   ],
+
+  alternates: {
+    canonical: `https://kit365.ir/time/conversion`,
+  },
 };
 
 const Conversion = () => {

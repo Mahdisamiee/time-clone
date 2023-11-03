@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     "اذان مغرب",
     "نیمه شب شرعی",
   ],
+  alternates: {
+    canonical: `https://kit365.ir/time/sharia`,
+  },
 };
 
 export default function Sharia() {

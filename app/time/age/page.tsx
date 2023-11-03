@@ -19,6 +19,9 @@ export const metadata: Metadata = {
     "تبدیل تاریخ تولد به میلادی",
     "تبدیل تاریخ تولد به قمری",
   ],
+  alternates: {
+    canonical: `https://kit365.ir/time/age`,
+  },
 };
 
 export default function Age() {
