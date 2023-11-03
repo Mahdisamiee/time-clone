@@ -68,7 +68,7 @@ const Today = () => {
           <ul className="grid h-full w-full grid-rows-4 gap-8 px-3 text-center text-base sm:text-xl ">
             {languages &&
               languages.map((lang) => (
-                <li className="grid w-full grid-cols-6 gap-4 p-2 text-stone-800">
+                <li key={lang} className="grid w-full grid-cols-6 gap-4 p-2 text-stone-800">
                   <h4 className="col-span-4 inline-block py-2 text-right align-middle text-2xl text-sky-950">
                     {new Intl.DateTimeFormat(lang, DateFormatOptions).format(
                       today,
