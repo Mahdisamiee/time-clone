@@ -18,6 +18,9 @@ export const metadata: Metadata = {
     "محاسبه سن و فاصله دو تاریخ",
     "",
   ],
+  alternates: {
+    canonical: `https://kit365.ir/time`,
+  },
 };
 
 export default function TimeContainer() {
