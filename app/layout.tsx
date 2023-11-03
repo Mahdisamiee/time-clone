@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     default: "کیت 365 | ابزارهای مورد نیاز در روزهای سال",
     template: "%s | کیت 365",
   },
-  description:
+  description: 
     "کیت365 - ساعت دقیق امروز و تقویم، اوقات شرعی و اذان امروز، محاسبه آنلاین، تبدیل تاریخ و واحد، نقشه و فاصله",
 
   keywords: [
