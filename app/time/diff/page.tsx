@@ -39,20 +39,29 @@ const Conversion = () => {
 export default Conversion;
 
 const navbarItems = [
+  
   {
     title: "تاریخ امروز",
-    url: "/time",
+    url: "/time/today",
   },
   {
     title: "تقویم ایران",
     url: "/time/calendar",
   },
   {
-    title: "محاسبه سن",
-    url: "/time/age",
+    title: "تبدیل تاریخ",
+    url: "/time/conversion",
   },
   {
-    title: "فاصله دو تاریخ",
-    url: "/time/diff",
+    title: "اوقات شرعی",
+    url: "/time/sharia",
+  },
+  {
+    title: "ساعت کشورها",
+    url: "/time/worldclock",
+  },
+  {
+    title: "محاسبه سن",
+    url: "/time/age",
   },
 ];

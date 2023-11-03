@@ -20,7 +20,7 @@ const SelectType = ({selectedType, onSelectType} : SelectTypeProps) => {
         onChange={onSelectType}
         options={options}
         maxMenuHeight={200}
-        placeholder="انتخاب نوع تبدیل..."
+        placeholder="انتخاب نوع محاسبه دو تاریخ..."
       />
   )
 }

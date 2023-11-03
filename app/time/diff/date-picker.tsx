@@ -8,7 +8,7 @@ type DatePickerType = {
     year: number | null;
     month: number | null;
     day: number | null;
-  };
+  } | null;
   onChangeDate: (obj: any) => void;
 };
 type OptionType = {
@@ -108,7 +108,7 @@ const DatePicker = ({ type, date, onChangeDate }: DatePickerType) => {
       />
       <input
         type="number"
-        className="rounded-md border-[#ccc] transition-all duration-100 hover:border-[#B3B3B3]"
+        className="rounded-md border-[#ccc] transition-all duration-100 hover:border-[#B3B3B3] text-center sm:text-right"
         value={selectedYear}
         onChange={handleSelectYear}
         placeholder="وارد کردن سال"
