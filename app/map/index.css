@@ -1,0 +1,13 @@
+
+.map .ol-overlaycontainer-stopevent{
+    @apply 
+        flex
+        flex-col
+        items-start;
+}
+.map .ol-zoom .ol-zoom-out, .ol-zoom-in  {
+    @apply 
+        bg-gray-50
+        px-2
+        mx-1;
+}

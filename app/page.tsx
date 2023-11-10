@@ -53,7 +53,7 @@ const tools = [
   },
   {
     title: "نقشه و فاصله",
-    url: "",
+    url: "/map",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
