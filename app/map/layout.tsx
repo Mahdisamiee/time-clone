@@ -1,13 +1,11 @@
-import {ReactNode} from 'react';
+import { ReactNode } from "react";
 
-// add Metadata here
-
-const layout = ({children} : {children: ReactNode}) => {
+const layout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className='z-10 flex justify-center align-center w-full p-3 sm:p-5 text-center'>
-        {children}
+    <div className="align-center z-10 flex w-full justify-center p-3 text-center sm:p-5">
+      {children}
     </div>
-  )
-}
+  );
+};
 
-export default layout
+export default layout;
