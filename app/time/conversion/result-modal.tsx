@@ -37,11 +37,11 @@ const ResultModal = ({
               ))}
             <hr className="my-2 mb-10 mt-2 h-0.5 w-full rounded bg-blue-400" />
             <p className="text-2xl text-gray-500">here we put more info!</p>
-            <a href="https://precedent.dev">
+            <a href="https://kit365.ir">
               <Image
                 src="/logo.png"
-                alt="Precedent Logo"
-                className="h-10 w-10 rounded-full"
+                alt="Kit365 Logo"
+                className="h-7 w-7 rounded-full"
                 width={20}
                 height={20}
               />

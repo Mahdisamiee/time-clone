@@ -31,17 +31,19 @@ const ResultModal = ({
             <hr className="mb-10 mt-2 h-0.5 w-full rounded bg-blue-400" />
             {details.results &&
               details.results.map((result) => (
-                <p key={result} className="text-lg sm:text-xl text-gray-700">
+                <p key={result} className="text-lg text-gray-700 sm:text-xl py-1 sm:py-2">
                   {result}
                 </p>
               ))}
             <hr className="my-2 mb-10 mt-2 h-0.5 w-full rounded bg-blue-400" />
-            <p className="text-2xl text-gray-500">here we put more info!</p>
-            <a href="https://precedent.dev">
+            <p className="text-md text-gray-500">
+              نکته: در محاسبه، خود روز مبنا محاسبه نشده است
+            </p>
+            <a href="https://kit365.ir">
               <Image
                 src="/logo.png"
-                alt="Precedent Logo"
-                className="h-10 w-10 rounded-full"
+                alt="Kit365 Logo"
+                className="h-7 w-7 mt-4 rounded-full"
                 width={20}
                 height={20}
               />
