@@ -21,10 +21,11 @@ const LiveClock: React.FC<ClockProps> = ({ timeZone }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
+        const response = await fetch(
           `https://worldtimeapi.org/api/timezone/${timeZone}`,
         );
-        const serverTime = timezoneMoment(response.data.datetime);
+        const res= await response.json();
+        const serverTime = timezoneMoment(res.datetime);
         const localTime = timezoneMoment();
         const difference = serverTime.diff(localTime) + 1000;
         setAdjustedTime(timezoneMoment().add(difference, "milliseconds"));

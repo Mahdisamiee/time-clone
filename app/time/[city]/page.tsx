@@ -28,6 +28,14 @@ export async function generateMetadata({
   };
 }
 
+export async function generateStaticParams() {
+  const cities = ((await import("@/lib/constants")).WORLD_CLOCK_TIMEZONES)
+ 
+  return cities.map((item) => ({
+    city: item.label,
+  }))
+}
+
 const navbarItems = [
   {
     title: "تاریخ امروز",
@@ -46,6 +54,8 @@ const navbarItems = [
     url: "/time/diff",
   },
 ];
+
+
 
 export default async function Page({ params }: { params: { city: string } }) {
   const WORLD_CLOCK_TIMEZONES = (await import("@/lib/constants"))

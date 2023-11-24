@@ -2,11 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Select from "react-select";
-import axios from "axios";
 import { dayFormatter } from "@/lib/utils";
-import Option from '@/components/time/select-city-option';
+import Option from "@/components/time/select-city-option";
 // options should go to new js file to access from "Sharia" & "Time" component
-
+import {WORLD_SHARIA_CITIES} from '@/lib/constants';
 type PrayerTimesResponse = {
   CityLName: string;
   CityName: string;
@@ -30,59 +29,17 @@ type PrayerTimesResponse = {
   TodayQamari: string;
 };
 
-
-const options = [
-  { value: 1, label: "تهران" },
-  { value: 13, label: "مشهد" },
-  { value: 6, label: "تبریز" },
-  { value: 11, label: "قم" },
-  { value: 2, label: "اصفهان" },
-  { value: 8, label: "شیراز" },
-  { value: 14, label: "یزد" },
-  { value: 3, label: "ارومیه" },
-  { value: 19, label: "کرمان" },
-  { value: 5, label: "اهواز" },
-  { value: 15, label: "بجنورد" },
-  { value: 18, label: "گرگان" },
-  { value: 17, label: "ساری" },
-  { value: 16, label: "رشت" },
-  { value: 26, label: "اردبیل" },
-  { value: 27, label: "سمنان" },
-  { value: 10, label: "قزوین" },
-  { value: 25, label: "زنجان" },
-  { value: 22, label: "سنندج" },
-  { value: 21, label: "کرمانشاه" },
-  { value: 24, label: "همدان" },
-  { value: 827, label: "بیرجند" },
-  { value: 29, label: "ایلام" },
-  { value: 30, label: "خرم آباد" },
-  { value: 31, label: "شهرکرد" },
-  { value: 32, label: "یاسوج" },
-  { value: 20, label: "بوشهر" },
-  { value: 12, label: "زاهدان" },
-  { value: 7, label: "بندرعباس" },
-  { value: 4, label: "اراک" },
-  { value: 9, label: "کرج" },
-  { value: 342, label: "دزفول" },
-  { value: 115, label: "کوالالامپور" },
-  { value: 991, label: "ساوه" },
-  { value: 578, label: "شاهرود" },
-  { value: 479, label: "بروجرد" },
-  { value: 450, label: "مرند" },
-  { value: 822, label: "سبزوار" },
-  { value: 976, label: "استانبول" },
-  { value: 968, label: "کیش", subLabel: "ایران" },
-];
-
-
-
 const ShariaTime = ({ city }: { city?: string }) => {
   // for select the code of city
   const [selectedOption, setSelectedOption] = useState<
-    { value: number; label: string; subLabel?: string } | any
+    { value: number; label: string; subLabel?: string; lLabel?: string } | any
   >(
     city
-      ? options.find((option) => option.label === city)
+      ? WORLD_SHARIA_CITIES.find(
+          (option) =>
+            option.label === city ||
+            option.lLabel?.toLocaleLowerCase() === city,
+        )
       : { value: 1, label: "تهران" },
   );
   // to save the Sharia times
@@ -92,19 +49,18 @@ const ShariaTime = ({ city }: { city?: string }) => {
 
   useEffect(() => {
     async function fetchPrayerTimes(
-      city: string,
+      cityId: string,
     ): Promise<PrayerTimesResponse> {
-      const response = await axios.get(
-        `https://prayer.aviny.com/api/prayertimes/${city}`,
+      const response = await fetch(
+        `https://prayer.aviny.com/api/prayertimes/${cityId}`,
       );
-      const data = response.data;
+      const res = await response.json();
+      const data = res;
       return data;
     }
     async function loadPrayerTimes() {
       const times = await fetchPrayerTimes(selectedOption.value); // Replace 'Tehran' with any city in Iran
       setPrayerTimes(times);
-      console.log("here => ");
-      console.log(selectedOption);
     }
     loadPrayerTimes();
   }, [selectedOption]);
@@ -129,7 +85,7 @@ const ShariaTime = ({ city }: { city?: string }) => {
         className="w-full text-center text-lg sm:w-3/4 sm:text-right"
         defaultValue={selectedOption}
         onChange={setSelectedOption}
-        options={options}
+        options={WORLD_SHARIA_CITIES}
         maxMenuHeight={200}
         components={{ Option }}
       />

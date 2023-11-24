@@ -1,6 +1,6 @@
-import Select, { components, OptionProps } from "react-select";
+import { components, OptionProps } from "react-select";
 
-const Option = (props: OptionProps<{ label: string; subLabel?: string }, false>) => {
+const SelectOption = (props: OptionProps<{ label: string; subLabel?: string }, false>) => {
     const { label, subLabel } = props.data || {};
     return (
       <components.Option {...props}>
@@ -12,4 +12,4 @@ const Option = (props: OptionProps<{ label: string; subLabel?: string }, false>)
     );
   };
 
-export default Option
+export default SelectOption

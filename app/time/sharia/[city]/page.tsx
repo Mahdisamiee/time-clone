@@ -31,6 +31,24 @@ export async function generateMetadata({
   };
 }
 
+
+// to create pages and use in auto-creating sitemap.xml
+export async function generateStaticParams() {
+  const cities = (await import("@/lib/constants")).WORLD_SHARIA_CITIES;
+
+  let result: { city: string }[] = [];
+  cities.map((item) => {
+    result.push({
+      city: item.label,
+    });
+    item.lLabel &&
+      result.push({
+        city: item.lLabel,
+      });
+  });
+  return result;
+}
+
 export default function Page({ params }: { params: { city: string } }) {
   const decodedCity = decodeURIComponent(params.city);
   return (
