@@ -31,7 +31,6 @@ const LocalNavbar = ({ items }: LocalNavbarItems) => {
     7: "col-span-2 sm:col-span-3 md:col-span-7",
     8: "col-span-2 sm:col-span-3 md:col-span-4",
   };
-  console.log("items => ", gridVariants[items.length - 1]);
   return (
     <div
       className={`z-10 grid ${gridVariants[items.length]} auto-rows-auto gap-5`}
