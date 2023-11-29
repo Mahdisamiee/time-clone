@@ -27,12 +27,7 @@ export const metadata: Metadata = {
 export default function TimeContainer() {
   return (
     <>
-      <LocalNavbar items={timeParts} />
-      <div
-        className={`z-10 grid grid-cols-1 gap-5 md:grid-cols-${timeParts.length}`}
-      >
-        {/* <hr className={`col-span-6 mb-10 mt-2 w-full`} /> */}
-      </div>
+      <LocalNavbar items={navbarItems} />
       <div className="z-10 w-full max-w-3xl px-5 xl:px-0">
         <div
           className="mx-auto mt-8 flex animate-fade-up flex-col items-center justify-center space-x-5 opacity-0"
@@ -50,7 +45,7 @@ export default function TimeContainer() {
   );
 }
 
-const timeParts = [
+const navbarItems = [
   {
     title: "تقویم ایران",
     url: "time/calendar",

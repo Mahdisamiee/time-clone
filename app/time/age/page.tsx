@@ -31,7 +31,7 @@ export default function Age() {
 
   return (
     <>
-        <LocalNavbar items={timeParts} />
+        <LocalNavbar items={navbarItems} />
       <div className="z-10 w-full max-w-3xl px-5 xl:px-0">
         <AgeCalculator />
       </div>
@@ -39,7 +39,7 @@ export default function Age() {
   );
 }
 
-const timeParts = [
+const navbarItems = [
   {
     title: "تقویم ایران",
     url: "/time/calendar",
