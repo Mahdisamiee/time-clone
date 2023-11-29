@@ -66,8 +66,8 @@ const tools = [
     ),
   },
   {
-    title: "تبدیل واحد‌های رایج",
-    url: "/map",
+    title: "تبدیل واحد",
+    url: "/calc/unit",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"

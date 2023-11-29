@@ -73,7 +73,7 @@ const tools = [
   },
   {
     title: "تبدیل واحد",
-    url: "",
+    url: "/calc",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -3,5 +3,5 @@
 const dev = process.env.NODE_ENV !== "production";
 
 module.exports = {
-  siteUrl: dev ? "http://localhost:3000" : "https://kit365.ir",
+  siteUrl: "https://kit365.ir",
 };
