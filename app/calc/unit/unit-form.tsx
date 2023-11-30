@@ -35,38 +35,44 @@ const UnitForm = () => {
   const [toUnit, setToUnit] = useState();
   const [value, setValue] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
+  const [result, setResult] = useState(null);
 
   /**
    * #### Change Calculation Mode
-   * 
+   *
    * fetch new unit depends on specific each Calculation Mode(length, time, mass ,...)
-   * @param option 
+   * @param option
    */
   const handleSelectMode = async (option: OptionType) => {
     setSelectedMode(() => option.value);
     setLoading(true);
-    const res = await fetch(
-      `https://kit365.ir/api/conversions-api/generic-conv/${option.value}/`,
-      {
-        cache: "force-cache",
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          "Content-Type": "application/json",
+    try {
+      const res = await fetch(
+        `https://kit365.ir/api/conversions-api/generic-conv/${option.value}/`,
+        {
+          cache: "force-cache",
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            "Content-Type": "application/json",
+          },
         },
-      },
-    );
-    const result = await res.json();
-    const units = result.untis;
-    setUnitOptions(() => createUnitOptions(units));
-    setLoading(false);
+      );
+      const result = await res.json();
+      const units = result.untis;
+      setUnitOptions(() => createUnitOptions(units));
+    } catch (error: any) {
+      console.log(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   /**
    * #### Change Value
-   * 
+   *
    * to set the value of input box and update "value" State
-   * @param e 
+   * @param e
    */
   const handleChangeValue = (e: any) => {
     setValue(e.currentTarget.value);
@@ -74,7 +80,7 @@ const UnitForm = () => {
 
   /**
    * Submit Data to API and get back Result
-   * @param e 
+   * @param e
    */
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -99,6 +105,7 @@ const UnitForm = () => {
       );
       const result = await res.json();
       console.log(result);
+      setResult(result.result);
       setLoading(false);
     } catch (error: any) {
       console.log(error.message);
@@ -117,6 +124,7 @@ const UnitForm = () => {
         isLoading={loading}
         isDisabled={loading}
       />
+      {/* Calc Settings (from, to, val) Box */}
       <div className={`grid w-full grid-cols-1 gap-5 sm:w-3/4 sm:grid-cols-3`}>
         {/* from_unit Selector */}
         <Select
@@ -157,6 +165,15 @@ const UnitForm = () => {
       >
         محاسبه
       </button>
+
+      {result !== null ? (
+        <div className="mt-5 text-center">
+          <h1 className="text-2xl text-sky-950">
+            نتیجه تبدیل از {fromUnit} به {toUnit} :{" "}
+          </h1>
+          <p className="mt-5 text-2xl tracking-wide text-sky-600">{result}</p>
+        </div>
+      ) : null}
     </div>
   );
 };

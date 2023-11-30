@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   ],
 
   alternates: {
-    canonical: `https://kit365.ir/time/conversion`,
+    canonical: `https://kit365.ir/calc/temp`,
   },
 };
 
