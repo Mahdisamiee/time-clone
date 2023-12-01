@@ -1,9 +1,8 @@
 "use client";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useId, useState } from "react";
 import Select from "react-select";
 
-const options = [
+const modeOptions = [
   { value: "length", label: "طول" },
   { value: "time", label: "زمان" },
   { value: "mass", label: "جرم" },
@@ -63,8 +62,7 @@ const UnitForm = () => {
       );
       const result = await res.json();
       const units = result.units;
-      console.log(result);
-      setUnitOptions(() => createUnitOptions(units));
+      units && setUnitOptions(() => createUnitOptions(units));
     } catch (error: any) {
       console.log(error.message);
     } finally {
@@ -88,6 +86,15 @@ const UnitForm = () => {
    */
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    if (
+      selectedMode === null ||
+      fromUnit === null ||
+      toUnit === null ||
+      value === ""
+    ) {
+      alert("لطفا مقادیر تمام فیلدها را انتخاب نمایید");
+      return;
+    }
     try {
       const payload = {
         unit: selectedMode,
@@ -108,7 +115,6 @@ const UnitForm = () => {
         },
       );
       const result = await res.json();
-      console.log(result);
       setResult(result.result);
     } catch (error: any) {
       console.log(error.message);
@@ -121,18 +127,20 @@ const UnitForm = () => {
     <div className="flex flex-col items-center justify-around gap-5 py-10">
       {/* Unit Format Selector */}
       <Select
+        instanceId={useId()}
         className="w-full text-center text-lg sm:w-3/4 sm:text-right"
         defaultValue={selectedMode}
         onChange={handleSelectMode}
-        options={options}
+        options={modeOptions}
         placeholder={"انتخاب نوع تبدیل"}
         isLoading={loading}
         isDisabled={loading}
       />
       {/* Calc Settings (from, to, val) Box */}
-      <div className={`grid w-full grid-cols-1 gap-5 sm:w-3/4 sm:grid-cols-3`}>
+      <div className="grid w-full grid-cols-1 gap-5 sm:w-3/4 sm:grid-cols-3">
         {/* from_unit Selector */}
         <Select
+          instanceId={useId()}
           className="w-full text-center text-lg sm:text-right"
           defaultValue={fromUnit}
           onChange={(option: any) => setFromUnit(option.value)}
@@ -143,6 +151,7 @@ const UnitForm = () => {
         />
         {/* to_unit Selector */}
         <Select
+          instanceId={useId()}
           className="w-full text-center text-lg sm:text-right"
           defaultValue={toUnit}
           onChange={(option: any) => setToUnit(option.value)}

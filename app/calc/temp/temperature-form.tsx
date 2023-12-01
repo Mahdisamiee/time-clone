@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useId, useState } from "react";
 import Select from "react-select";
 
 const options = [
@@ -67,11 +67,14 @@ const TemperatureForm = () => {
   return (
     <div className="flex flex-col items-center justify-around gap-5 py-10">
       <Select
+        instanceId={useId()}
         className="w-full text-center text-lg sm:w-3/4 sm:text-right"
         value={selectedMode}
         onChange={handleSelectMode}
         options={options}
         placeholder={"انتخاب حالت تبدیل"}
+        isLoading={loading}
+        isDisabled={loading}
       />
       <input
         type="number"
@@ -79,6 +82,7 @@ const TemperatureForm = () => {
         value={value}
         onChange={handleChangeValue}
         placeholder="وارد کردن دما"
+        disabled={loading}
       />
       <button
         onClick={handleSubmit}
