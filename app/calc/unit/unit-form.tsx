@@ -50,7 +50,10 @@ const UnitForm = () => {
       const res = await fetch(
         `https://kit365.ir/api/conversions-api/generic-conv/${option.value}/`,
         {
-          cache: "force-cache",
+          cache: "no-cache",
+          next: {
+            revalidate: 0,
+          },
           method: "GET",
           headers: {
             accept: "application/json",
@@ -59,7 +62,8 @@ const UnitForm = () => {
         },
       );
       const result = await res.json();
-      const units = result.untis;
+      const units = result.units;
+      console.log(result);
       setUnitOptions(() => createUnitOptions(units));
     } catch (error: any) {
       console.log(error.message);
@@ -106,9 +110,10 @@ const UnitForm = () => {
       const result = await res.json();
       console.log(result);
       setResult(result.result);
-      setLoading(false);
     } catch (error: any) {
       console.log(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 

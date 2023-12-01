@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Select from "react-select";
 
 const options = [
@@ -17,12 +17,14 @@ type OptionType = {
 };
 
 const TemperatureForm = () => {
-  const [selectedMode, setSelectedMode] = useState<any>(null);
+  const [selectedMode, setSelectedMode] = useState<OptionType | null>(null);
   const [value, setValue] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
+  const [result, setResult] = useState(null);
 
-  const handleSelectMode = (option: OptionType) => {
-    setSelectedMode(() => option.value);
+  const handleSelectMode = (option: OptionType | null) => {
+    if (option === null) return;
+    setSelectedMode(() => option);
   };
 
   const handleChangeValue = (e: any) => {
@@ -32,31 +34,41 @@ const TemperatureForm = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    if (selectedMode === null || value === "") {
+      alert("لطفا حالت  تبدیل یا مقدار تبدیل را وارد کنید!");
+      return;
+    }
     try {
-      const payload = { conv_mode: selectedMode, val: value };
+      const payload = { conv_mode: selectedMode?.value, val: value };
       setLoading(true);
       const res = await fetch(
-        "https://kit365.ir/api/conversions-api/temp-conv",
+        "https://kit365.ir/api/conversions-api/temp-conv/",
         {
           method: "POST",
           headers: {
             accept: "application/json",
             "Content-Type": "application/json",
           },
+          cache: "no-cache",
+          next: {
+            revalidate: 0,
+          },
           body: JSON.stringify(payload),
         },
       );
-      setLoading(false);
-      console.log(res);
+      const result = await res.json();
+      setResult(() => result.result);
     } catch (error: any) {
       console.log(error.message);
+    } finally {
+      setLoading(false);
     }
   };
   return (
     <div className="flex flex-col items-center justify-around gap-5 py-10">
       <Select
         className="w-full text-center text-lg sm:w-3/4 sm:text-right"
-        defaultValue={selectedMode}
+        value={selectedMode}
         onChange={handleSelectMode}
         options={options}
         placeholder={"انتخاب حالت تبدیل"}
@@ -76,6 +88,13 @@ const TemperatureForm = () => {
       >
         محاسبه
       </button>
+
+      {result !== null ? (
+        <div className="mt-5 text-center">
+          <h1 className="text-2xl text-sky-950">نتیجه {selectedMode?.label}</h1>
+          <p className="mt-5 text-2xl tracking-wide text-sky-600">{result}</p>
+        </div>
+      ) : null}
     </div>
   );
 };
