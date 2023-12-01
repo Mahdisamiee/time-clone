@@ -11,7 +11,7 @@ export default async function Home() {
           return (
             <li
               key={tool.title}
-              className={`relative col-span-2 flex h-36 flex-col items-stretch justify-between overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md`}
+              className="relative col-span-2 flex h-36 flex-col items-stretch justify-between overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md"
             >
               <Link
                 href={tool.url}
