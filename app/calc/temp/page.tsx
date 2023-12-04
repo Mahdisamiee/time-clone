@@ -3,7 +3,7 @@ import TemperatureForm from "./temperature-form";
 import LocalNavbar from "@/components/shared/local-navbar";
 
 export const metadata: Metadata = {
-  title: "تبدیل دما",
+  title: "تبدیل واحد‌های دما",
   description: "تبدیل سلسیوس، فارانهایت، کلوین به یکدیگر و  برعکس",
   keywords: [
     "تبدیل دما",

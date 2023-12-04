@@ -7,7 +7,7 @@ const modeOptions = [
   { value: "time", label: "زمان" },
   { value: "mass", label: "جرم" },
   { value: "area", label: "مساحت" },
-  { value: "data-transfer", label: "سرعت انتقال - data transfer" },
+  { value: "data-transfer", label: "پهنای باند - data transfer" },
   { value: "digital-storage", label: "حافظه - digital storage" },
   { value: "energy", label: "انرژی" },
   { value: "volume", label: "حجم" },
