@@ -1,3 +1,4 @@
+import Link from "next/link";
 export default function Footer() {
   return (
     <footer id="footer" className="text-sm text-gray-600">
@@ -11,77 +12,95 @@ export default function Footer() {
         <div className="mx-auto flex max-w-screen-xl flex-row items-center justify-around text-center sm:flex-row sm:flex-col">
           <ul className="mb-4 flex flex-col justify-center gap-4 px-4 py-2 sm:flex-row">
             <li>
-              <a
-                href="/apps"
+              <Link
+                href="/time/today"
                 className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
               >
-                Apps
-              </a>
+                تاریخ امروز
+              </Link>
             </li>
             <li>
-              <a
-                href="/widgets"
+              <Link
+                href="/time/age"
                 className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
               >
-                Widgets
-              </a>
+                محاسبه سن
+              </Link>
             </li>
             <li>
-              <a
-                href="/time_zone_news"
+              <Link
+                href="/time/sharia"
                 className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
               >
-                Time zone news
-              </a>
+                اوقات شرعی
+              </Link>
             </li>
             <li>
-              <a
-                href="/mailing_list"
+              <Link
+                href="/time/conversion"
                 className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
               >
-                Newsletter
-              </a>
+                تبدیل تاریخ
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/time/worldclock"
+                className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
+              >
+                ساعت کشورها
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/time/diff"
+                className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
+              >
+                فاصله دو تاریخ
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/time/calendar"
+                className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
+              >
+                تقویم ایران
+              </Link>
             </li>
           </ul>
           <ul className="mb-4 flex flex-col justify-center gap-4 px-4 py-2 sm:flex-row">
             <li>
-              <a
-                href="/apps"
+              <Link
+                href="/map/distance"
                 className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
               >
-                Apps
-              </a>
+                فاصله شهرها
+              </Link>
             </li>
             <li>
-              <a
-                href="/widgets"
+              <Link
+                href="/calc/unit"
                 className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
               >
-                Widgets
-              </a>
+                تبدیل واحد
+              </Link>
             </li>
             <li>
-              <a
-                href="/time_zone_news"
+              <Link
+                href="/calc/temp"
                 className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
               >
-                Time zone news
-              </a>
-            </li>
-            <li>
-              <a
-                href="/mailing_list"
-                className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
-              >
-                Newsletter
-              </a>
+                تبدیل دما
+              </Link>
             </li>
           </ul>
         </div>
 
         <div className="text-base">
-          <span className="text-blue-500">کیت 365</span> ، ابزار‌های متنوع برای
-          رفع نیاز‌ها و خواسته‌های روزانه.
+          <Link href="/" className="text-sky-600">
+           کیت365
+          </Link>{" "}
+          ، ابزار‌های متنوع برای رفع نیاز‌ها و خواسته‌های روزانه.
           <br />
         </div>
         {/* <div
@@ -100,8 +119,8 @@ export default function Footer() {
           <p className="mb-4 text-gray-500">
             Designed By{" "}
             <a
-              className="ext-blue-500 font-medium underline transition-colors"
-              href="https://www.linkedin.com/company/innofinity"
+              className="text-md text-sky-600 underline transition-colors"
+              href="https://www.linkedin.com/company/innofinityteam"
               target="_blank"
               rel="noopener noreferrer"
             >
