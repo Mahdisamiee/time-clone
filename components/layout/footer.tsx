@@ -2,7 +2,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer id="footer" className="text-sm text-gray-600">
-      <div className="absolute w-full border-t border-gray-200 bg-white px-4 py-5 text-center font-lale">
+      <div className="absolute w-full border-t border-gray-200 bg-white px-4 py-5 text-center font-vazir">
         <h2 className="mb-2 text-xl font-bold text-gray-700">
           هرچی دلت میخواد اینجا پیدا کن | 365 روز سال هستیم
         </h2>

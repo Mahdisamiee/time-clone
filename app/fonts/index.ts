@@ -1,6 +1,6 @@
 import localFont from "next/font/local";
 import { Inter } from "next/font/google";
-import { Lalezar, Vazirmatn, Handjet } from "next/font/google";
+import { Lalezar, Vazirmatn } from "next/font/google";
 
 export const sfPro = localFont({
   src: "./SF-Pro-Display-Medium.otf",
@@ -18,6 +18,6 @@ export const lalezar = Lalezar({
 });
 export const vazirmatn = Vazirmatn({
   variable: "--font-vazirmatn",
-  weight: ["400", "500", "700"],
+  weight: ["700"],
   subsets: ["latin", "arabic"],
 });

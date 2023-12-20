@@ -48,7 +48,7 @@ const LocalClock: React.FC = () => {
       {timeValue ? (
         <>
           <h1
-            className="my-5 animate-fade-up bg-gradient-to-bl from-black to-stone-500 bg-clip-text text-center font-lale text-2xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:text-5xl"
+            className="my-5 animate-fade-up bg-gradient-to-bl from-black to-stone-500 bg-clip-text text-center font-vazir text-2xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:text-5xl"
             style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
           >
             زمان دقیق شما
@@ -61,7 +61,7 @@ const LocalClock: React.FC = () => {
             size={isDesktop ? 300 : 200}
           />
           <p
-            className="mt-6 animate-fade-up text-center font-lale text-gray-500 opacity-0 md:text-xl"
+            className="mt-6 animate-fade-up text-center font-vazir text-gray-500 opacity-0 md:text-xl"
             style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
           >
             <Balancer>{timeZone.split("/").join(" , ")}</Balancer>
