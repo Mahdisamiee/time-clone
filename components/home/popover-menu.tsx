@@ -17,7 +17,7 @@ export default function PopoverMenu({
   return (
     <Popover
       content={
-        <div className="w-full rounded-md bg-white p-2 sm:w-60">
+        <div className="w-full rounded-md bg-white p-2 sm:w-72">
           {items.map((item, index) => (
             <button
               key={`${item}-${index}`}
@@ -37,7 +37,7 @@ export default function PopoverMenu({
     >
       <button
         onClick={() => setOpenPopover(!openPopover)}
-        className="text-xl flex w-60 items-center justify-between rounded-md border border-gray-300 px-5 py-3 transition-all duration-75 hover:border-gray-800 focus:outline-none active:bg-gray-100 mt-10"
+        className="text-lg flex w-72 items-center justify-between rounded-md border border-gray-300 px-3 py-1 transition-all duration-75 hover:border-gray-800 focus:outline-none active:bg-gray-100 mt-10"
       >
         <p className="text-gray-600">{value}</p>
         <ChevronDown

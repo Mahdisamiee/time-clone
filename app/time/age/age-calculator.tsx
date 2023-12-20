@@ -190,7 +190,7 @@ const AgeCalculator = () => {
         style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
       >
         <div
-          className="mb-5 flex w-full max-w-3xl flex-col items-center justify-items-center p-10 px-5 xl:px-0"
+          className="mb-5 flex w-full max-w-3xl flex-col items-center justify-items-center py-7 px-3 xl:px-0"
           ref={selectTypeRef}
           onClick={handleSelectTypeFocus}
         >

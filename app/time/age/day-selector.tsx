@@ -22,13 +22,13 @@ const DaySelector = ({
   return (
     <>
       
-      <div className="z-10 text-2xl">
+      <div className="z-10 text-xl">
         {selectedType === "محاسبه اختلاف سن دو نفر" ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <DatePicker
               value={selectedDay}
               onChange={onDayChange}
-              inputPlaceholder="تاریخ تولد اول را انتخاب کنید"
+              inputPlaceholder="انتخاب تاریخ تولد اول"
               shouldHighlightWeekends
               colorPrimary="#9c88ff"
               locale="fa" // for Persian calendar
@@ -36,7 +36,7 @@ const DaySelector = ({
             <DatePicker
               value={selectedDay2}
               onChange={onDay2Change}
-              inputPlaceholder="تاریخ تولد دوم را انتخاب کنید"
+              inputPlaceholder="انتخاب تاریخ تولد دوم"
               shouldHighlightWeekends
               colorPrimary="#9c88ff"
               locale="fa" // for Persian calendar
@@ -46,7 +46,7 @@ const DaySelector = ({
           <DatePicker
             value={selectedDay}
             onChange={onDayChange}
-            inputPlaceholder="روز تولدتان را انتخاب کنید"
+            inputPlaceholder="انتخاب روز تولد"
             shouldHighlightWeekends
             colorPrimary="#9c88ff"
             locale="fa" // for Persian calendar
