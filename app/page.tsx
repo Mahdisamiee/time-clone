@@ -72,7 +72,7 @@ const tools = [
     ),
   },
   {
-    title: "تبدیل واحد",
+    title: "تبدیل‌ ها",
     url: "/calc",
     icon: (
       <svg
@@ -92,7 +92,7 @@ const tools = [
     ),
   },
   {
-    title: "وضعیت آب و هوا",
+    title: "ارز و رمزارز",
     url: "/weather",
     icon: (
       <svg

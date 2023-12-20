@@ -7,8 +7,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "تبدیل واحد",
-  description: "تبدیل تمام واحد های موجود به هم",
+  title: "تبدیل‌ ها",
+  description: "تبدیل تمام واحد‌ ها به هم و برعکس",
   keywords: [],
   alternates: {
     canonical: `https://kit365.ir/calc`,
