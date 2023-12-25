@@ -1,31 +1,10 @@
+import ToolsListMapper from "@/components/shared/tools-list-mapper";
 import Link from "next/link";
 
 export default async function Home() {
   return (
     <div className="z-10 w-full max-w-screen-lg px-5 xl:px-0">
-      <ul
-        className="mx-auto mt-6 grid animate-fade-up grid-cols-1 gap-20 px-5 opacity-0 md:grid-cols-6"
-        style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
-      >
-        {tools.map((tool) => {
-          return (
-            <li
-              key={tool.title}
-              className="relative col-span-2 flex h-36 flex-col items-stretch justify-between overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md"
-            >
-              <Link
-                href={tool.url}
-                target="_top"
-                rel="noreferrer"
-                className="duration-450 flex h-36 max-w-full animate-fade-up flex-col items-center justify-center space-x-2 overflow-hidden rounded-xl px-7 py-2 text-3xl transition-colors hover:bg-blue-100"
-              >
-                <p className="mb-2 font-light text-[#1d9bf0]">{tool.title}</p>
-                <p>{tool.icon}</p>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <ToolsListMapper tools={tools} />
     </div>
   );
 }

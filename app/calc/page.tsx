@@ -5,6 +5,7 @@ import ShariaTime from "@/app/time/sharia/sharia-time";
 // import MainCalendar from "@/components/time/calendar";
 import { Metadata } from "next";
 import Link from "next/link";
+import ToolsListMapper from "@/components/shared/tools-list-mapper";
 
 export const metadata: Metadata = {
   title: "تبدیل‌ ها",
@@ -18,29 +19,7 @@ export const metadata: Metadata = {
 export default async function Home() {
   return (
     <div className="z-10 w-full max-w-screen-lg px-5 xl:px-0">
-      <ul
-        className="mx-auto mt-6 grid animate-fade-up grid-cols-1 gap-20 px-5 opacity-0 md:grid-cols-6"
-        style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
-      >
-        {tools.map((tool) => {
-          return (
-            <li
-              key={tool.title}
-              className="relative col-span-2 flex h-40 flex-col items-stretch justify-between overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md"
-            >
-              <Link
-                href={tool.url}
-                target="_top"
-                rel="noreferrer"
-                className="duration-450 flex h-40 max-w-full animate-fade-up flex-col items-center justify-center space-x-2 overflow-hidden rounded-xl px-7 py-2 text-3xl transition-colors hover:bg-blue-100"
-              >
-                <p className="mb-2 font-light text-[#1d9bf0]">{tool.title}</p>
-                <p>{tool.icon}</p>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <ToolsListMapper tools={tools} />
     </div>
   );
 }
@@ -81,26 +60,6 @@ const tools = [
           stroke-linecap="round"
           stroke-linejoin="round"
           d="M6 13.5V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 9.75V10.5"
-        />
-      </svg>
-    ),
-  },
-  {
-    title: "تبدیل وزن به حجم",
-    url: "",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth="1.5"
-        stroke="#1d9bf0"
-        className="h-12 w-12"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"
         />
       </svg>
     ),
