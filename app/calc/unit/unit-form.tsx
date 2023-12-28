@@ -1,5 +1,5 @@
 "use client";
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import Select from "react-select";
 
 const modeOptions = [
@@ -27,7 +27,11 @@ const createUnitOptions = (units: string[]) => {
   }));
 };
 
-const UnitForm = () => {
+const UnitForm = ({
+  unitData,
+}: {
+  unitData?: { fromUnit: string; toUnit: string };
+}) => {
   const [selectedMode, setSelectedMode] = useState<any>(null);
   const [unitOptions, setUnitOptions] = useState<any>();
   const [fromUnit, setFromUnit] = useState();
@@ -123,8 +127,12 @@ const UnitForm = () => {
     }
   };
 
+  useEffect(() => {
+    console.table(unitData);
+  }, []);
+
   return (
-    <div className="flex flex-col items-center justify-around gap-5 py-10">
+    <div className="z-10 flex flex-col items-center justify-around gap-5 py-10">
       {/* Unit Format Selector */}
       <Select
         instanceId={useId()}
