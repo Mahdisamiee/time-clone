@@ -26,9 +26,9 @@ const ToolsListMapper = ({ tools }: MainToolsListProps) => {
               href={tool.url}
               target="_top"
               rel="noreferrer"
-              className="duration-450 flex h-40 max-w-full animate-fade-up flex-col items-center justify-center space-x-2 overflow-hidden rounded-xl px-7 py-2 text-3xl transition-colors hover:bg-blue-100"
+              className="duration-450 flex h-40 max-w-full animate-fade-up flex-col items-center justify-center space-x-2 overflow-hidden rounded-xl px-6 py-1 text-2xl transition-colors hover:bg-sky-100"
             >
-              <p className="mb-2 font-light text-[#1d9bf0]">{tool.title}</p>
+              <p className="mb-2 font-light text-sky-500">{tool.title}</p>
               <p>{tool.icon}</p>
             </Link>
           </li>
