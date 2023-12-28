@@ -14,17 +14,19 @@ type ConversionResult = {
 };
 
 export async function fetchUnitOptions(mode: string): Promise<ApiResponse> {
-  const response = await fetch(
-    `https://kit365.ir/api/conversions-api/generic-conv/${mode}/`,
-    {
-      cache: "no-cache",
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        "Content-Type": "application/json",
-      },
+  const API_URL =
+    mode === "temp"
+      ? `https://kit365.ir/api/conversions-api/temp-conv/`
+      : `https://kit365.ir/api/conversions-api/generic-conv/${mode}/`;
+      
+  const response = await fetch(API_URL, {
+    cache: "no-cache",
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      "Content-Type": "application/json",
     },
-  );
+  });
 
   if (!response.ok) {
     throw new Error(`HTTP error! Status: ${response.status}`);

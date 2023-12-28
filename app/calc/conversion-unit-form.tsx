@@ -1,4 +1,5 @@
 "use client";
+import { UnitMode } from "@/lib/models/calc";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, MouseEvent, useEffect, useId, useState } from "react";
 import Select from "react-select";
@@ -8,18 +9,11 @@ import {
   validateForm,
 } from "services/unit-services";
 
-const createUnitOptions = (units: string[]) => {
-  return units.map((unit) => ({
-    value: unit,
-    label: `${unit.toLocaleUpperCase()}`,
-  }));
-};
-
 const ConversionUnitForm = ({
   unitMode,
   unitData,
 }: {
-  unitMode: string;
+  unitMode: UnitMode;
   unitData?: string;
 }) => {
   const router = useRouter();
@@ -96,7 +90,7 @@ const ConversionUnitForm = ({
 
   return (
     <div className="z-10 flex flex-col items-center justify-around gap-5 py-10">
-      <h3>نوع تبدیل رو از پدر میگیرم</h3>
+      <h1 className="text-xl text-sky-600 my-4">تبدیل {unitMode.toLocaleUpperCase()}</h1>
       {/* Calc Settings (from, to, val) Box */}
       <div className="grid w-full grid-cols-1 gap-5 sm:w-3/4 sm:grid-cols-3">
         {/* from_unit Selector */}
@@ -160,3 +154,22 @@ const ConversionUnitForm = ({
 };
 
 export default ConversionUnitForm;
+
+const createUnitOptions = (units: string[]) => {
+  return units.map((unit) => ({
+    value: unit,
+    label: `${unit.toLocaleUpperCase()}`,
+  }));
+};
+
+// const defaultUnitsForMode: Record<UnitMode, { fromUnit: string; toUnit: string }> = {
+//   length: { fromUnit: 'meter', toUnit: 'mile' },
+//   area: { fromUnit: 'squareMeter', toUnit: 'squareKilometer' },
+//   mass: { fromUnit: 'kilogram', toUnit: 'pound' },
+//   time: {fromUnit: '', toUnit: ''},
+//   data-transfer: {fromUnit: '', toUnit: ''},
+//   // ... other modes
+// };
+
+// const [fromUnit, setFromUnit] = useState(defaultUnitsForMode[unitMode].fromUnit);
+// const [toUnit, setToUnit] = useState(defaultUnitsForMode[unitMode].toUnit);
