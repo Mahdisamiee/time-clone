@@ -4,8 +4,6 @@ import ConversionUnitForm from "../../conversion-unit-form";
 
 const UnitOptions = ({ params }: { params: { options: string } }) => {
 
-
-
   return (
     <>
       {/* <LocalNavbar items={navbarItems} /> */}
@@ -13,7 +11,7 @@ const UnitOptions = ({ params }: { params: { options: string } }) => {
       <div className="z-10 w-full max-w-3xl px-5 xl:px-0">
         {/* here we add our first client component */}
         <p>حالا options تاثیر دارند</p>
-        <ConversionUnitForm unitMode="length" />
+        <ConversionUnitForm unitMode="length" unitData={params.options}/>
       </div>
     </>
   );

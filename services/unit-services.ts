@@ -4,8 +4,8 @@ type ApiResponse = {
 
 type ConversionPayload = {
   unit: string;
-  from_unit: string;
-  to_unit: string;
+  from_unit: string | undefined;
+  to_unit: string | undefined;
   val: string;
 };
 

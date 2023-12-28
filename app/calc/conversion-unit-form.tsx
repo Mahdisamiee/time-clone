@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { ChangeEvent, MouseEvent, useEffect, useId, useState } from "react";
 import Select from "react-select";
 import {
@@ -14,7 +15,15 @@ const createUnitOptions = (units: string[]) => {
   }));
 };
 
-const ConversionUnitForm = ({ unitMode }: { unitMode: string }) => {
+const ConversionUnitForm = ({
+  unitMode,
+  unitData,
+}: {
+  unitMode: string;
+  unitData?: string;
+}) => {
+  const router = useRouter();
+
   const [unitOptions, setUnitOptions] = useState<any>();
   const [fromUnit, setFromUnit] = useState("");
   const [toUnit, setToUnit] = useState("");
@@ -23,31 +32,48 @@ const ConversionUnitForm = ({ unitMode }: { unitMode: string }) => {
   const [result, setResult] = useState(null);
 
   useEffect(() => {
-    const handleUnitOptions = async () => {
-      try {
-        setLoading(true);
-        const result = await fetchUnitOptions(unitMode);
-        const units = result.units;
-        if (units) {
-          setUnitOptions(createUnitOptions(units));
-        }
-      } catch (error: any) {
-        console.error("Failed to fetch unit options:", error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-    console.log("hello");
-    handleUnitOptions();
-  }, []);
+    if (unitMode) {
+      setLoading(true);
+      fetchUnitOptions(unitMode)
+        .then((result) => {
+          if (result.units) setUnitOptions(createUnitOptions(result.units));
+        })
+        .catch((error) =>
+          console.error("Failed to fetch unit options:", error.message),
+        )
+        .finally(() => setLoading(false));
+    }
+  }, [unitMode]);
 
-  function handleChangeValue(event: ChangeEvent<HTMLInputElement>): void {
+  useEffect(() => {
+    if (unitData && unitData.includes("-to-")) {
+      const [initialFromUnit, initialToUnit] = unitData.split("-to-");
+      setFromUnit(initialFromUnit);
+      setToUnit(initialToUnit);
+    }
+  }, [unitData]);
+
+  // This function updates the route based on the selected units
+  const updateRoute = (newFromUnit: string, newToUnit: string) => {
+    const newPath = `/calc/${unitMode}/${newFromUnit}-to-${newToUnit}`;
+    router.push(newPath);
+  };
+
+  const handleFromUnitChange = (option: { value: string }) => {
+    setFromUnit(option.value);
+    updateRoute(option.value, toUnit);
+  };
+
+  const handleToUnitChange = (option: { value: string }) => {
+    setToUnit(option.value);
+    updateRoute(fromUnit, option.value);
+  };
+
+  const handleChangeValue = (event: ChangeEvent<HTMLInputElement>) =>
     setValue(event.currentTarget.value);
-  }
 
   const handleSubmit = async (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-
     const payload = {
       unit: unitMode,
       from_unit: fromUnit,
@@ -55,14 +81,12 @@ const ConversionUnitForm = ({ unitMode }: { unitMode: string }) => {
       val: value,
     };
 
-    if (!validateForm(payload)) {
-      return;
-    }
+    if (!validateForm(payload)) return;
 
+    setLoading(true);
     try {
-      setLoading(true);
-      const result = await postConversion(payload);
-      setResult(result.result);
+      const conversionResult = await postConversion(payload);
+      setResult(conversionResult.result);
     } catch (error: any) {
       console.error("Error during conversion:", error.message);
     } finally {
@@ -80,7 +104,10 @@ const ConversionUnitForm = ({ unitMode }: { unitMode: string }) => {
           instanceId={useId()}
           className="w-full text-center text-lg sm:text-right"
           defaultValue={fromUnit}
-          onChange={(option: any) => setFromUnit(option.value)}
+          value={unitOptions?.find(
+            (option: { value: string }) => option.value === fromUnit,
+          )}
+          onChange={handleFromUnitChange}
           options={unitOptions}
           placeholder={"تبدیل از "}
           isLoading={loading}
@@ -91,7 +118,10 @@ const ConversionUnitForm = ({ unitMode }: { unitMode: string }) => {
           instanceId={useId()}
           className="w-full text-center text-lg sm:text-right"
           defaultValue={toUnit}
-          onChange={(option: any) => setToUnit(option.value)}
+          value={unitOptions?.find(
+            (option: { value: string }) => option.value === toUnit,
+          )}
+          onChange={handleToUnitChange}
           options={unitOptions}
           placeholder={"تبدیل به"}
           isLoading={loading}
