@@ -9,3 +9,7 @@ export type UnitMode =
   | "volume"
   | "speed"
   | "pressure";
+
+  export interface UnitDefaults {
+    [key: string]: { fromUnit: string; toUnit: string };
+  }

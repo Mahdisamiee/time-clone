@@ -1,5 +1,5 @@
 "use client";
-import { UnitMode } from "@/lib/models/calc";
+import { UnitDefaults, UnitMode } from "@/lib/models/calc";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, MouseEvent, useEffect, useId, useState } from "react";
 import Select from "react-select";
@@ -18,9 +18,10 @@ const ConversionUnitForm = ({
 }) => {
   const router = useRouter();
 
+  const defaults = defaultUnitsForMode[unitMode];
+  const [fromUnit, setFromUnit] = useState(defaults ? defaults.fromUnit : "");
+  const [toUnit, setToUnit] = useState(defaults ? defaults.toUnit : "");
   const [unitOptions, setUnitOptions] = useState<any>();
-  const [fromUnit, setFromUnit] = useState("");
-  const [toUnit, setToUnit] = useState("");
   const [value, setValue] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
   const [result, setResult] = useState(null);
@@ -90,7 +91,9 @@ const ConversionUnitForm = ({
 
   return (
     <div className="z-10 flex flex-col items-center justify-around gap-5 py-10">
-      <h1 className="text-xl text-sky-600 my-4">تبدیل {unitMode.toLocaleUpperCase()}</h1>
+      <h1 className="my-4 text-xl text-sky-600">
+        تبدیل {unitMode.toLocaleUpperCase()}
+      </h1>
       {/* Calc Settings (from, to, val) Box */}
       <div className="grid w-full grid-cols-1 gap-5 sm:w-3/4 sm:grid-cols-3">
         {/* from_unit Selector */}
@@ -162,14 +165,19 @@ const createUnitOptions = (units: string[]) => {
   }));
 };
 
-// const defaultUnitsForMode: Record<UnitMode, { fromUnit: string; toUnit: string }> = {
-//   length: { fromUnit: 'meter', toUnit: 'mile' },
-//   area: { fromUnit: 'squareMeter', toUnit: 'squareKilometer' },
-//   mass: { fromUnit: 'kilogram', toUnit: 'pound' },
-//   time: {fromUnit: '', toUnit: ''},
-//   data-transfer: {fromUnit: '', toUnit: ''},
-//   // ... other modes
-// };
+const defaultUnitsForMode: UnitDefaults = {
+  length: { fromUnit: "meter", toUnit: "mile" },
+  area: { fromUnit: "squaremeter", toUnit: "squarekilometer" },
+  mass: { fromUnit: "kilogram", toUnit: "gram" },
+  time: { fromUnit: "second", toUnit: "milisecond" },
+  "data-transfer": { fromUnit: "bitpersecond", toUnit: "kilobitpersecond" },
+  "digital-storage": { fromUnit: "byte", toUnit: "kilobyte" },
+  energy: { fromUnit: "joule", toUnit: "kilojoule" },
+  volume: { fromUnit: "liter", toUnit: "mililiter" },
+  speed: { fromUnit: "meterpersecond", toUnit: "kilometerperhour" },
+  pressure: { fromUnit: "pascal", toUnit: "bar" },
+  // ... other modes
+};
 
 // const [fromUnit, setFromUnit] = useState(defaultUnitsForMode[unitMode].fromUnit);
 // const [toUnit, setToUnit] = useState(defaultUnitsForMode[unitMode].toUnit);
