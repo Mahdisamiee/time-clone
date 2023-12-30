@@ -147,7 +147,7 @@ const ConversionUnitForm = ({
 
       {result !== null ? (
         <div className="mt-5 text-center">
-          <h1 className="text-2xl text-sky-950">
+          <h1 className="text-2xl text-sky-950 capitalize">
             نتیجه تبدیل از {fromUnit} به {toUnit} :{" "}
           </h1>
           <p className="mt-5 text-2xl tracking-wide text-sky-600">{result}</p>
