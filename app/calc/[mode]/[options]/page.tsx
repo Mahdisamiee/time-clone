@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import LocalNavbar from "@/components/shared/local-navbar";
 import ConversionUnitForm from "../../conversion-unit-form";
 import { UnitMode } from "@/lib/models/calc";
+import Link from "next/link";
+import LinearNavLink from "@/components/shared/linear-nav-link";
 
 const UnitOptions = ({
   params,
@@ -14,10 +16,12 @@ const UnitOptions = ({
 
       <div className="z-10 w-full max-w-3xl px-5 xl:px-0">
         {/* here we add our first client component */}
-        <p>لینک شماره 1 / لینک شماره 2 / لینک شماره 3</p>
+        <LinearNavLink params={params} />
         <ConversionUnitForm unitMode={params.mode} unitData={params.options} />
       </div>
     </>
   );
 };
 export default UnitOptions;
+
+export const dynamicParams = false; // true | false,
