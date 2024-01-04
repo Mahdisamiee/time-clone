@@ -31,7 +31,10 @@ const ResultModal = ({
             <hr className="mb-10 mt-2 h-0.5 w-full rounded bg-blue-400" />
             {details.results &&
               details.results.map((result) => (
-                <p key={result} className="text-lg text-gray-700 sm:text-xl py-1 sm:py-2">
+                <p
+                  key={result}
+                  className="py-1 text-lg text-gray-700 sm:py-2 sm:text-xl"
+                >
                   {result}
                 </p>
               ))}
@@ -39,11 +42,11 @@ const ResultModal = ({
             <p className="text-md text-gray-500">
               نکته: در محاسبه، خود روز مبنا محاسبه نشده است
             </p>
-            <a href="https://kit365.ir">
+            <a href="https://harchi.app">
               <Image
                 src="/logo.png"
-                alt="Kit365 Logo"
-                className="h-7 w-7 mt-4 rounded-full"
+                alt="Harchi Logo"
+                className="mt-4 h-7 w-7 rounded-full"
                 width={20}
                 height={20}
               />

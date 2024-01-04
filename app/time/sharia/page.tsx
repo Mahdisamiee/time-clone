@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "نیمه شب شرعی",
   ],
   alternates: {
-    canonical: `https://kit365.ir/time/sharia`,
+    canonical: `https://harchi.app/time/sharia`,
   },
 };
 

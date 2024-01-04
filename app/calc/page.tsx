@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: "تبدیل تمام واحد‌ ها به هم و برعکس",
   keywords: [],
   alternates: {
-    canonical: `https://kit365.ir/calc`,
+    canonical: `https://harchi.app/calc`,
   },
 };
 

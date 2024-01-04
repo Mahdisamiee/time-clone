@@ -1,4 +1,3 @@
-
 import { Metadata } from "next";
 import ConversionDate from "./conversion-date";
 import LocalNavbar from "@/components/shared/local-navbar";
@@ -25,7 +24,7 @@ export const metadata: Metadata = {
   ],
 
   alternates: {
-    canonical: `https://kit365.ir/time/conversion`,
+    canonical: `https://harchi.app/time/conversion`,
   },
 };
 

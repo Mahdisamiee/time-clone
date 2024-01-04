@@ -3,4 +3,4 @@ User-agent: *
 Disallow: /
 
 
-Sitemap: https://kit365.ir/sitemap.xml
+Sitemap: https://harchi.app/sitemap.xml

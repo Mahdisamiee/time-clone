@@ -131,7 +131,7 @@ const DistanceMap: React.FC = () => {
         };
 
         const response = await axios.post(
-          "https://kit365.ir/api/map-api/dist-mat/",
+          "https://harchi.app/api/map-api/dist-mat/",
           payload,
           {
             headers: {
@@ -153,7 +153,7 @@ const DistanceMap: React.FC = () => {
   };
 
   return (
-    <div className=" grid h-full w-full grid-cols-1 md:grid-cols-2 gap-10 ">
+    <div className=" grid h-full w-full grid-cols-1 gap-10 md:grid-cols-2 ">
       <div className="">
         <div
           ref={mapRef}

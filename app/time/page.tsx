@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "",
   ],
   alternates: {
-    canonical: `https://kit365.ir/time`,
+    canonical: `https://harchi.app/time`,
   },
 };
 

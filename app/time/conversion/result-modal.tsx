@@ -31,16 +31,16 @@ const ResultModal = ({
             <hr className="mb-10 mt-2 h-0.5 w-full rounded bg-blue-400" />
             {details.results &&
               details.results.map((result) => (
-                <p key={result} className="text-lg sm:text-xl text-gray-700">
+                <p key={result} className="text-lg text-gray-700 sm:text-xl">
                   {result}
                 </p>
               ))}
             <hr className="my-2 mb-10 mt-2 h-0.5 w-full rounded bg-blue-400" />
             <p className="text-2xl text-gray-500">here we put more info!</p>
-            <a href="https://kit365.ir">
+            <a href="https://harchi.app">
               <Image
                 src="/logo.png"
-                alt="Kit365 Logo"
+                alt="Harchi Logo"
                 className="h-7 w-7 rounded-full"
                 width={20}
                 height={20}

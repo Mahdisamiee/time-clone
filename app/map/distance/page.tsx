@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     "فاصله تهران تا یزد",
   ],
   alternates: {
-    canonical: `https://kit365.ir/map/distance`,
+    canonical: `https://harchi.app/map/distance`,
   },
 };
 

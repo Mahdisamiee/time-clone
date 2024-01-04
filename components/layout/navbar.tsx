@@ -25,7 +25,7 @@ export default function NavBar() {
               height="30"
               className="ml-2 rounded-sm"
             ></Image>
-            <p>کیت 365 | هر روز، یک راهکار</p>
+            <p> harchi.app | هر روز، یک راهکار</p>
           </Link>
         </div>
       </div>

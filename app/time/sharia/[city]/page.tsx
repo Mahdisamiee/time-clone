@@ -9,7 +9,7 @@ export async function generateMetadata({
   const decodedCity = decodeURIComponent(params.city);
   return {
     title: `اوقات شرعی ${decodedCity} | زمان طلوع و غروب آفتاب + زمان اذان`,
-    description: `اوقات شرعی دقیق شهر ${decodedCity} | طلوع و غروب دقیق آفتاب ${decodedCity} به همراه زمان دقیق اذان صبح، اذان ظهر و اذان مغرب | کیت ۳۶۵`,
+    description: `اوقات شرعی دقیق شهر ${decodedCity} | طلوع و غروب دقیق آفتاب ${decodedCity} هرچی`,
     keywords: [
       `اوقات شرعی دقیق ${decodedCity}`,
       `زمان دقیق طلوع و غروب ${decodedCity}`,
@@ -26,11 +26,10 @@ export async function generateMetadata({
       `نیمه شب شرعی ${decodedCity}`,
     ],
     alternates: {
-      canonical: `https://kit365.ir/time/sharia/${decodedCity}`,
+      canonical: `https://harchi.app/time/sharia/${decodedCity}`,
     },
   };
 }
-
 
 // to create pages and use in auto-creating sitemap.xml
 export async function generateStaticParams() {

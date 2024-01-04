@@ -19,7 +19,7 @@ type ConversionResult = {
 
 export async function fetchGenericModes(): Promise<GenericResponse> {
   const response = await fetch(
-    `https://kit365.ir/api/conversions-api/generic-conv/`,
+    `https://harchi.app/api/conversions-api/generic-conv/`,
     {
       cache: "no-cache",
       method: "GET",
@@ -40,8 +40,8 @@ export async function fetchGenericModes(): Promise<GenericResponse> {
 export async function fetchUnitOptions(mode: string): Promise<ApiResponse> {
   const API_URL =
     mode === "temp"
-      ? `https://kit365.ir/api/conversions-api/temp-conv/`
-      : `https://kit365.ir/api/conversions-api/generic-conv/${mode}/`;
+      ? `https://harchi.app/api/conversions-api/temp-conv/`
+      : `https://harchi.app/api/conversions-api/generic-conv/${mode}/`;
 
   const response = await fetch(API_URL, {
     cache: "no-cache",
@@ -63,7 +63,7 @@ export async function postConversion(
   payload: ConversionPayload,
 ): Promise<ConversionResult> {
   const response = await fetch(
-    "https://kit365.ir/api/conversions-api/generic-conv/",
+    "https://harchi.app/api/conversions-api/generic-conv/",
     {
       method: "POST",
       headers: {

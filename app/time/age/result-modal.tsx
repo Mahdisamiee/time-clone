@@ -26,7 +26,7 @@ const ResultModal = ({
     <Modal showModal={showResultModal} setShowModal={setResultDemoModal}>
       <div className="h-2/3 w-full overflow-hidden md:max-w-md md:rounded-2xl md:border md:border-gray-100 md:shadow-xl">
         <div className="flex h-full flex-col items-center justify-center space-y-3 bg-white px-4 py-6 pt-8 text-center md:space-y-6 md:px-16">
-          <a href="https://kit365.ir">
+          <a href="https://harchi.app">
             <Image
               src="/logo.png"
               alt="Precedent Logo"

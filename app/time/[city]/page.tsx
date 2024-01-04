@@ -13,8 +13,8 @@ export async function generateMetadata({
   const decodedCity = decodeURIComponent(params.city);
   return {
     title: `ساعت دقیق ${decodedCity} | زمان جهانی ${decodedCity}`,
-    description: `ساعت و زمان دقیق  ${decodedCity} | زمان دقیق به وقت ${decodedCity}  | زمان الان ${decodedCity} | کیت365`,
-    // description: `ساعت دقیق {لندن} | زمان دقیق به وقت {لندن} | زمان الان {لندن}$ | کیت365`,
+    description: `ساعت و زمان دقیق  ${decodedCity} | زمان دقیق به وقت ${decodedCity}  | زمان الان ${decodedCity} | هرچی`,
+    // description: `ساعت دقیق {لندن} | زمان دقیق به وقت {لندن} | زمان الان {لندن}$ | هرچی`,
     keywords: [
       `زمان در ${decodedCity}`,
       `ساعت الان ${decodedCity}`,
@@ -23,17 +23,17 @@ export async function generateMetadata({
       `اختلاف ساعت جهانی در ${decodedCity}`,
     ],
     alternates: {
-      canonical: `https://kit365.ir/time/${decodedCity}`,
+      canonical: `https://harchi.app/time/${decodedCity}`,
     },
   };
 }
 
 export async function generateStaticParams() {
-  const cities = ((await import("@/lib/constants")).WORLD_CLOCK_TIMEZONES)
- 
+  const cities = (await import("@/lib/constants")).WORLD_CLOCK_TIMEZONES;
+
   return cities.map((item) => ({
     city: item.label,
-  }))
+  }));
 }
 
 const navbarItems = [
@@ -54,8 +54,6 @@ const navbarItems = [
     url: "/time/diff",
   },
 ];
-
-
 
 export default async function Page({ params }: { params: { city: string } }) {
   const WORLD_CLOCK_TIMEZONES = (await import("@/lib/constants"))

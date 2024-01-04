@@ -98,7 +98,7 @@ export default function Footer() {
 
         <div className="text-base">
           <Link href="/" className="text-sky-600">
-           کیت365
+           هرچی
           </Link>{" "}
           ، ابزار‌های متنوع برای رفع نیاز‌ها و خواسته‌های روزانه.
           <br />

@@ -5,7 +5,7 @@ import DiffOfDates from "./diff-date";
 export const metadata: Metadata = {
   title: "محاسبه فاصله بین دو تاریخ",
   description:
-    "محاسبه فاصله زمانی بین دو تاریخ، محاسبه تعداد روز و ماه های بین دو تاریخ بر اساس تقویم های شمسی میلادی قمری | کیت 365",
+    "محاسبه فاصله زمانی بین دو تاریخ، محاسبه تعداد روز و ماه های بین دو تاریخ بر اساس تقویم های شمسی میلادی قمری | هرچی",
   keywords: [
     "فاصله بین دو تاریخ",
     "فاصله زمانی بین دو تاریخ",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     "زمان بین دو تاریخ قمری",
   ],
   alternates: {
-    canonical: `https://kit365.ir/time/diff`,
+    canonical: `https://harchi.app/time/diff`,
   },
 };
 

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "تبدیل تاریخ تولد به قمری",
   ],
   alternates: {
-    canonical: `https://kit365.ir/time/age`,
+    canonical: `https://harchi.app/time/age`,
   },
 };
 
@@ -31,7 +31,7 @@ export default function Age() {
 
   return (
     <>
-        <LocalNavbar items={navbarItems} />
+      <LocalNavbar items={navbarItems} />
       <div className="z-10 w-full max-w-3xl px-5 xl:px-0">
         <AgeCalculator />
       </div>
