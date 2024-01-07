@@ -72,7 +72,7 @@ const tools = [
   },
   {
     title: "ارز و رمزارز",
-    url: "/weather",
+    url: "/currency",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
