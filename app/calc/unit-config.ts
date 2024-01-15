@@ -15,6 +15,7 @@ export const defaultUnitsForMode: UnitDefaults = {
 
 
 export const createUnitOptions = (units: string[]) => {
+  console.log(units)
   return units.map((unit) => ({
     value: unit,
     label: `${unit.toLocaleUpperCase()}`,
