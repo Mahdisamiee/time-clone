@@ -37,7 +37,7 @@ const GoldCalculateForm = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-10 py-2 md:grid-cols-5">
+    <div className="grid w-full grid-cols-1 place-content-around gap-10 py-2 md:grid-cols-5">
       <div className="col-span-1 flex flex-col items-center justify-around gap-10 md:col-span-3">
         <h1 className="text-xl capitalize text-sky-500">
           محاسبه خرید و فروش طلا
@@ -128,52 +128,51 @@ const GoldCalculateForm = () => {
 
       <div className="col-span-1 md:col-span-2">
         <h1 className="text-xl capitalize text-sky-950">نتیجه تبدیل</h1>
-        {result ? (
-          <div className="mt-5 text-center">
-            <ul className="sm:text-md grid h-full w-full grid-rows-4 gap-4 px-3 text-center text-base ">
-              <li className="grid w-full grid-cols-4 gap-1">
-                <h4 className="col-span-4 md:col-span-2 inline-block py-2 text-right align-middle text-sky-600">
-                  قیمت نهایی:
-                </h4>
-                <span className="text-md col-span-4 md:col-span-2 inline-block whitespace-nowrap rounded bg-sky-200 px-1 py-2 text-center align-middle font-bold text-sky-800 ">
-                  {result.finallCost}
-                </span>
-              </li>
-              <li className="grid w-full grid-cols-4 gap-1">
-                <h4 className="col-span-4 md:col-span-2 inline-block py-2 text-right align-middle text-sky-600">
-                  قیمت خام طلا:
-                </h4>
-                <span className="text-md col-span-4 md:col-span-2 inline-block whitespace-nowrap rounded bg-sky-200 px-1 py-2 text-center align-middle font-bold text-sky-800 ">
-                  {result.goldCost}
-                </span>
-              </li>
-              <li className="grid w-full grid-cols-4 gap-1">
-                <h4 className="col-span-4 md:col-span-2 inline-block py-2 text-right align-middle text-sky-600">
-                  میزان اجرت:
-                </h4>
-                <span className="text-md col-span-4 md:col-span-2 inline-block whitespace-nowrap rounded bg-sky-200 px-1 py-2 text-center align-middle font-bold text-sky-800 ">
-                  {result.feeCost}
-                </span>
-              </li>
-              <li className="grid w-full grid-cols-4 gap-1">
-                <h4 className="col-span-4 md:col-span-2 inline-block py-2 text-right align-middle text-sky-600">
-                  مقدار مالیات:
-                </h4>
-                <span className="text-md col-span-4 md:col-span-2 inline-block whitespace-nowrap rounded bg-sky-200 px-1 py-2 text-center align-middle font-bold text-sky-800 ">
-                  {result.taxCost}
-                </span>
-              </li>
-              <li className="grid w-full grid-cols-4 gap-1">
-                <h4 className="col-span-4 md:col-span-2 inline-block py-2 text-right align-middle text-sky-600">
-                  سود فروشنده:
-                </h4>
-                <span className="text-md col-span-4 md:col-span-2 inline-block whitespace-nowrap rounded bg-sky-200 px-1 py-2 text-center align-middle font-bold text-sky-800 ">
-                  {result.sellerProfit}
-                </span>
-              </li>
-            </ul>
-          </div>
-        ) : null}
+
+        <div className="mt-5 text-center">
+          <ul className="sm:text-md grid h-full w-full grid-rows-4 gap-4 px-3 text-center text-base ">
+            <li className="grid w-full grid-cols-4 gap-1">
+              <h4 className="col-span-4 inline-block py-2 text-right align-middle text-sky-600 md:col-span-2">
+                قیمت نهایی:
+              </h4>
+              <span className="text-md col-span-4 inline-block whitespace-nowrap rounded bg-sky-200 px-1 py-2 text-center align-middle font-bold text-sky-800 md:col-span-2 ">
+                {result?.finallCost}
+              </span>
+            </li>
+            <li className="grid w-full grid-cols-4 gap-1">
+              <h4 className="col-span-4 inline-block py-2 text-right align-middle text-sky-600 md:col-span-2">
+                قیمت خام طلا:
+              </h4>
+              <span className="text-md col-span-4 inline-block whitespace-nowrap rounded bg-sky-200 px-1 py-2 text-center align-middle font-bold text-sky-800 md:col-span-2 ">
+                {result?.goldCost}
+              </span>
+            </li>
+            <li className="grid w-full grid-cols-4 gap-1">
+              <h4 className="col-span-4 inline-block py-2 text-right align-middle text-sky-600 md:col-span-2">
+                میزان اجرت:
+              </h4>
+              <span className="text-md col-span-4 inline-block whitespace-nowrap rounded bg-sky-200 px-1 py-2 text-center align-middle font-bold text-sky-800 md:col-span-2 ">
+                {result?.feeCost}
+              </span>
+            </li>
+            <li className="grid w-full grid-cols-4 gap-1">
+              <h4 className="col-span-4 inline-block py-2 text-right align-middle text-sky-600 md:col-span-2">
+                مقدار مالیات:
+              </h4>
+              <span className="text-md col-span-4 inline-block whitespace-nowrap rounded bg-sky-200 px-1 py-2 text-center align-middle font-bold text-sky-800 md:col-span-2 ">
+                {result?.taxCost}
+              </span>
+            </li>
+            <li className="grid w-full grid-cols-4 gap-1">
+              <h4 className="col-span-4 inline-block py-2 text-right align-middle text-sky-600 md:col-span-2">
+                سود فروشنده:
+              </h4>
+              <span className="text-md col-span-4 inline-block whitespace-nowrap rounded bg-sky-200 px-1 py-2 text-center align-middle font-bold text-sky-800 md:col-span-2 ">
+                {result?.sellerProfit}
+              </span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
