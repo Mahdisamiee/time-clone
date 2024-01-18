@@ -10,7 +10,7 @@ async function getCurencyData(currName: string) {
 }
 
 export default function GoldLivePurchase({ title }: { title: string }) {
-  const [data, setData] = useState<CurrenciesDataProperties>(); 
+  const [data, setData] = useState<CurrenciesDataProperties>();
 
   const path = usePathname();
 
@@ -27,13 +27,13 @@ export default function GoldLivePurchase({ title }: { title: string }) {
 
   return (
     <div className="py-4">
-      <h1 className="block text-2xl text-sky-900">{title}</h1>
+      <h1 className="block text-xl text-sky-900 sm:text-2xl">{title}</h1>
 
-      <h2 className="my-10 block text-5xl tracking-wide text-sky-600">
+      <h2 className="my-10 block text-3xl tracking-wide text-sky-600 sm:text-5xl">
         5,600,452
       </h2>
 
-      <h3 className="text-2xl text-sky-900">تومان</h3>
+      <h3 className="text-xl text-sky-900 sm:text-2xl">تومان</h3>
       <p className="text-md my-10 tracking-wide text-sky-600">
         شنبه، 23 آذر 1402
       </p>
