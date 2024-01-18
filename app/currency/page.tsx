@@ -38,12 +38,4 @@ const tools = [
     title: "قیمت یورو",
     url: "/currency/price_eur",
   },
-  {
-    title: "نفت برنت",
-    url: "/currency/energy-brent-oil",
-  },
-  {
-    title: "بیت کوین",
-    url: "/currency/bitcoin",
-  },
 ];
