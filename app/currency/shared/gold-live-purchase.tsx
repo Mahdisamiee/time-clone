@@ -1,6 +1,29 @@
-import React from "react";
+"use client";
+import { API_BASE_URL, CURRENCIES_API } from "@/lib/api-constants";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
-const GoldLivePurchase = ({ title }: { title: string }) => {
+async function getCurencyData(currName: string) {
+  const res = await fetch(`${API_BASE_URL}/${CURRENCIES_API}/${currName}`);
+  return res.json();
+}
+
+export default function GoldLivePurchase({ title }: { title: string }) {
+  const [data, setData] = useState(null); 
+
+  const path = usePathname();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const arr = path.split("/");
+      const currency = arr[arr.length - 1];
+      const result = await getCurencyData(currency);
+      setData(result);
+    };
+
+    // fetchData();
+  }, [path]);
+
   return (
     <div className="py-4">
       <h1 className="block text-2xl text-sky-900">{title}</h1>
@@ -15,6 +38,4 @@ const GoldLivePurchase = ({ title }: { title: string }) => {
       </p>
     </div>
   );
-};
-
-export default GoldLivePurchase;
+}
