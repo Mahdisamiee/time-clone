@@ -11,8 +11,8 @@ export default async function CurrencyHome() {
 
 const tools = [
   {
-    title: "طلا",
-    url: "/currency/gold",
+    title: "طلا 18 عیار",
+    url: "/currency/geram18",
   },
   {
     title: "انس طلا",
@@ -21,10 +21,6 @@ const tools = [
   {
     title: "مثقال طلا",
     url: "/currency/mesghal",
-  },
-  {
-    title: "طلا 18 عیار",
-    url: "/currency/geram18",
   },
   {
     title: "سکه طلا",

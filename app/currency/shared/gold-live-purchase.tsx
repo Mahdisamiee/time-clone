@@ -25,7 +25,6 @@ export default function GoldLivePurchase({
     const fetchData = async () => {
       const result = await getCurencyData(currName);
       setData(result);
-      console.log(result);
     };
 
     fetchData();
@@ -33,13 +32,15 @@ export default function GoldLivePurchase({
 
   return (
     <div className="py-4">
-      <h1 className="block text-xl text-sky-900 sm:text-2xl">{title}</h1>
+      <h1 className="block text-xl text-sky-900 sm:text-2xl">
+        {title ? title : data?.item}
+      </h1>
 
       <h2 className="my-10 block text-3xl tracking-wide text-sky-600 sm:text-5xl">
         {data?.price}
       </h2>
 
-      <h3 className="text-xl text-sky-900 sm:text-2xl">تومان</h3>
+      <h3 className="text-xl text-sky-900 sm:text-2xl">ریال</h3>
       <p className="text-md my-10 tracking-wide text-sky-600">
         {data?.date} - {data?.time}
       </p>
