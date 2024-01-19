@@ -5,7 +5,10 @@ import { useEffect, useState } from "react";
 import { CurrencyDataProperties } from "./models/currecncies-data";
 
 async function getCurencyData(currName: string) {
-  const res = await fetch(`${API_BASE_URL}/${CURRENCIES_API}/${currName}`);
+  const res = await fetch(`${API_BASE_URL}/${CURRENCIES_API}/${currName}`, {
+    next: { revalidate: 100 },
+    cache: "no-store",
+  });
   return res.json();
 }
 
