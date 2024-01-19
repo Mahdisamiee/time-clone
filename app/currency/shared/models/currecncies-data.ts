@@ -1,9 +1,21 @@
-
 export interface CurrencyDataProperties {
-    item: string;
-    price: string; // 5,600,452 <- this format and be تومان
-    rate: string;
-    date: string ; // شنبه، 30 دی 1402 <- this format or better
-    // flag : red or green | minus or plus -> no idea
+  currencies: CurrencyItem[];
+  date: string;
+  time: string;
 }
 
+export interface CurrencySpecific {
+  item: string;
+  price: string;
+  rate: string;
+  flag: string;
+  date: string;
+  time: string;
+}
+
+export interface CurrencyItem {
+  item: string;
+  price: string;
+  rate: string;
+  flag: string;
+}

@@ -6,7 +6,7 @@ import SharedLayout from "../shared/shared-layout";
 const GoldPage = () => {
   return (
     <SharedLayout
-      livePurchase={<GoldLivePurchase title="قیمت لحظه‌ای دلار : " />}
+      livePurchase={<GoldLivePurchase title="قیمت لحظه‌ای دلار : " currName="دلار"/>}
       calculateForm={<GoldCalculateForm />}
       summaryPurchase={<CurrenciesLivePurchase />}
     />

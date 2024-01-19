@@ -6,11 +6,13 @@ import SharedLayout from "../shared/shared-layout";
 const GoldPage = async () => {
   return (
     <SharedLayout
-      livePurchase={<GoldLivePurchase title="قیمت لحظه‌ای 1 گرم طلا:" />}
+      livePurchase={
+        <GoldLivePurchase title="قیمت لحظه‌ای 1 گرم طلا:" currName="" />
+      }
       calculateForm={<GoldCalculateForm />}
       summaryPurchase={<CurrenciesLivePurchase />}
     />
   );
 };
 
-export default GoldPage;
+// export default GoldPage;

@@ -1,10 +1,13 @@
 "use client";
 import { API_BASE_URL, CURRENCIES_API } from "@/lib/api-constants";
 import React, { useEffect, useState } from "react";
-import { CurrencyDataProperties } from "./models/currecncies-data";
+import {
+  CurrencyDataProperties,
+  CurrencyItem,
+} from "./models/currecncies-data";
 
 async function getCurenciesData() {
-  const res = await fetch(`${API_BASE_URL}/${CURRENCIES_API}`, {
+  const res = await fetch(`${API_BASE_URL}/${CURRENCIES_API}/`, {
     next: { revalidate: 100 },
     cache: "no-store",
   });
@@ -12,13 +15,13 @@ async function getCurenciesData() {
 }
 
 const CurrenciesLivePurchase = () => {
-  const [currData, setCurrData] = useState<CurrencyDataProperties[]>([]);
+  const [currData, setCurrData] = useState<CurrencyItem[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await getCurenciesData();
-        setCurrData(result);
+        setCurrData(result.currencies);
       } catch (error) {
         throw new Error("مشکلی در دریافت اطلاعات پیش آمده است!").message;
       }

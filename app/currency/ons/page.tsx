@@ -7,7 +7,7 @@ import CurrenciesLivePurchase from "../shared/currencies-live-purchase";
 const GoldPage = () => {
   return (
     <SharedLayout
-      livePurchase={<GoldLivePurchase title="قیمت لحظه‌ای 1 انس طلا : " />}
+      livePurchase={<GoldLivePurchase title="قیمت لحظه‌ای 1 انس طلا : " currName="انس طلا"/>}
       calculateForm={<GoldCalculateForm />}
       summaryPurchase={<CurrenciesLivePurchase />}
     />
