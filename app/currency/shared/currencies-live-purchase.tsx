@@ -4,7 +4,10 @@ import React, { useEffect, useState } from "react";
 import { CurrencyDataProperties } from "./models/currecncies-data";
 
 async function getCurenciesData() {
-  const res = await fetch(`${API_BASE_URL}/${CURRENCIES_API}`);
+  const res = await fetch(`${API_BASE_URL}/${CURRENCIES_API}`, {
+    next: { revalidate: 100 },
+    cache: "no-store",
+  });
   return res.json();
 }
 
@@ -25,19 +28,16 @@ const CurrenciesLivePurchase = () => {
   }, []);
 
   return (
-    <div
-      
-      className="flex flex-row gap-10 w-full h-full justify-between items-center overflow-x-auto overflow-y-hidden"
-    >
+    <div className="flex h-full w-full flex-row items-center justify-between gap-10 overflow-x-auto overflow-y-hidden">
       {currData
         ? currData.map((curr) => (
             <div
               key={curr.item}
-              className="flex-1 flex flex-col flex-nowrap whitespace-nowrap items-start justify-between "
+              className="flex flex-1 flex-col flex-nowrap items-start justify-between whitespace-nowrap "
             >
-              <h3 className="text-sky-900 text-nowrap">{curr.item}</h3>
+              <h3 className="text-nowrap text-sky-900">{curr.item}</h3>
               <p className="tracking-wide text-sky-600">{curr.price}</p>
-              <p className="tracking-wide text-sky-600 text-sm"> {curr.rate}</p>
+              <p className="text-sm tracking-wide text-sky-600"> {curr.rate}</p>
             </div>
           ))
         : null}
