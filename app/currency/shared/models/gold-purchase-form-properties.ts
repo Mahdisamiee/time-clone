@@ -7,9 +7,9 @@ export interface GoldPurchaseFormPropertis {
 }
 
 export interface GoldCalculatedFormProperties {
-  goldCost: number;
-  feeCost: number;
-  sellerProfit: number;
-  taxCost: number;
-  finallCost: number;
+  goldCost: string;
+  feeCost: string;
+  sellerProfit: string;
+  taxCost: string;
+  finallCost: string;
 }

@@ -11,13 +11,18 @@ const SharedLayout = ({
   summaryPurchase?: ReactNode;
 }) => {
   return (
-    <div className="grid h-full w-full grid-cols-1 justify-items-stretch gap-10 px-10 md:grid-cols-8 ">
+    <div className="grid h-full w-full grid-cols-1 justify-items-stretch gap-10 px-10 md:grid-cols-9 ">
       <div className="col-span-1 md:col-span-3">
         <SimpleCard>{livePurchase}</SimpleCard>
       </div>
-      <div className="col-span-1 md:col-span-5">
+      <div className="col-span-1 md:col-span-6">
         <SimpleCard>{calculateForm}</SimpleCard>
       </div>
+      {summaryPurchase ? (
+        <div className="col-span-1 md:col-span-9">
+          <SimpleCard>{summaryPurchase}</SimpleCard>
+        </div>
+      ) : null}
     </div>
   );
 };

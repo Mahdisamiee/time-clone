@@ -2,7 +2,7 @@
 import { API_BASE_URL, CURRENCIES_API } from "@/lib/api-constants";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { CurrenciesDataProperties } from "./models/currecncies-data";
+import { CurrencyDataProperties } from "./models/currecncies-data";
 
 async function getCurencyData(currName: string) {
   const res = await fetch(`${API_BASE_URL}/${CURRENCIES_API}/${currName}`);
@@ -10,7 +10,7 @@ async function getCurencyData(currName: string) {
 }
 
 export default function GoldLivePurchase({ title }: { title: string }) {
-  const [data, setData] = useState<CurrenciesDataProperties>();
+  const [data, setData] = useState<CurrencyDataProperties>();
 
   const path = usePathname();
 

@@ -41,7 +41,7 @@ const GoldCalculateForm = () => {
           محاسبه خرید و فروش به تومان
         </h1>
         {/* Calc Settings (from, to, val) Box */}
-        <div className="grid w-full grid-cols-1 gap-3 md:grid-cols-3">
+        <div className="grid w-full grid-cols-1 gap-3 lg:grid-cols-3">
           {/* from_unit Selector */}
 
           {/* value to Convert selector */}
@@ -130,42 +130,42 @@ const GoldCalculateForm = () => {
         <div className="mt-5 text-center">
           <ul className="sm:text-md grid h-full w-full grid-rows-4 gap-4 px-3 text-center text-base ">
             <li className="grid w-full grid-cols-4 gap-1">
-              <h4 className="col-span-4 inline-block py-2 text-right align-middle text-sky-600 md:col-span-2">
+              <h4 className="col-span-4 inline-block py-2 text-right align-middle text-sky-600 lg:col-span-2">
                 قیمت نهایی:
               </h4>
-              <span className="text-md col-span-4 inline-block whitespace-nowrap rounded bg-sky-200 px-1 py-2 text-center align-middle font-bold text-sky-800 md:col-span-2 ">
+              <span className="text-md col-span-4 inline-block whitespace-nowrap rounded bg-sky-200 px-1 py-2 text-center align-middle font-bold text-sky-800 lg:col-span-2 ">
                 {result?.finallCost}
               </span>
             </li>
             <li className="grid w-full grid-cols-4 gap-1">
-              <h4 className="col-span-4 inline-block py-2 text-right align-middle text-sky-600 md:col-span-2">
+              <h4 className="col-span-4 inline-block py-2 text-right align-middle text-sky-600 lg:col-span-2">
                 قیمت خام طلا:
               </h4>
-              <span className="text-md col-span-4 inline-block whitespace-nowrap rounded bg-sky-200 px-1 py-2 text-center align-middle font-bold text-sky-800 md:col-span-2 ">
+              <span className="text-md col-span-4 inline-block whitespace-nowrap rounded bg-sky-200 px-1 py-2 text-center align-middle font-bold text-sky-800 lg:col-span-2 ">
                 {result?.goldCost}
               </span>
             </li>
             <li className="grid w-full grid-cols-4 gap-1">
-              <h4 className="col-span-4 inline-block py-2 text-right align-middle text-sky-600 md:col-span-2">
+              <h4 className="col-span-4 inline-block py-2 text-right align-middle text-sky-600 lg:col-span-2">
                 میزان اجرت:
               </h4>
-              <span className="text-md col-span-4 inline-block whitespace-nowrap rounded bg-sky-200 px-1 py-2 text-center align-middle font-bold text-sky-800 md:col-span-2 ">
+              <span className="text-md col-span-4 inline-block whitespace-nowrap rounded bg-sky-200 px-1 py-2 text-center align-middle font-bold text-sky-800 lg:col-span-2 ">
                 {result?.feeCost}
               </span>
             </li>
             <li className="grid w-full grid-cols-4 gap-1">
-              <h4 className="col-span-4 inline-block py-2 text-right align-middle text-sky-600 md:col-span-2">
+              <h4 className="col-span-4 inline-block py-2 text-right align-middle text-sky-600 lg:col-span-2">
                 مقدار مالیات:
               </h4>
-              <span className="text-md col-span-4 inline-block whitespace-nowrap rounded bg-sky-200 px-1 py-2 text-center align-middle font-bold text-sky-800 md:col-span-2 ">
+              <span className="text-md col-span-4 inline-block whitespace-nowrap rounded bg-sky-200 px-1 py-2 text-center align-middle font-bold text-sky-800 lg:col-span-2 ">
                 {result?.taxCost}
               </span>
             </li>
             <li className="grid w-full grid-cols-4 gap-1">
-              <h4 className="col-span-4 inline-block py-2 text-right align-middle text-sky-600 md:col-span-2">
+              <h4 className="col-span-4 inline-block py-2 text-right align-middle text-sky-600 lg:col-span-2">
                 سود فروشنده:
               </h4>
-              <span className="text-md col-span-4 inline-block whitespace-nowrap rounded bg-sky-200 px-1 py-2 text-center align-middle font-bold text-sky-800 md:col-span-2 ">
+              <span className="text-md col-span-4 inline-block whitespace-nowrap rounded bg-sky-200 px-1 py-2 text-center align-middle font-bold text-sky-800 lg:col-span-2 ">
                 {result?.sellerProfit}
               </span>
             </li>
