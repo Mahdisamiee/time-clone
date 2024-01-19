@@ -1,6 +1,5 @@
 "use client";
 import { API_BASE_URL, CURRENCIES_API } from "@/lib/api-constants";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CurrencySpecific } from "./models/currecncies-data";
 

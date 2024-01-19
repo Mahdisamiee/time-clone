@@ -1,5 +1,4 @@
 import ToolsListMapper from "@/components/shared/tools-list-mapper";
-import React from "react";
 
 export default async function CurrencyHome() {
   return (

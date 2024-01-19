@@ -1,10 +1,7 @@
 "use client";
 import { API_BASE_URL, CURRENCIES_API } from "@/lib/api-constants";
-import React, { useEffect, useState } from "react";
-import {
-  CurrencyDataProperties,
-  CurrencyItem,
-} from "./models/currecncies-data";
+import { useEffect, useState } from "react";
+import { CurrencyItem } from "./models/currecncies-data";
 
 async function getCurenciesData() {
   const res = await fetch(`${API_BASE_URL}/${CURRENCIES_API}/`, {
