@@ -7,7 +7,7 @@ const SharedLayout = ({
   summaryPurchase,
 }: {
   livePurchase: ReactNode;
-  calculateForm: ReactNode;
+  calculateForm?: ReactNode;
   summaryPurchase?: ReactNode;
 }) => {
   return (
@@ -15,9 +15,11 @@ const SharedLayout = ({
       <div className="col-span-1 md:col-span-3">
         <SimpleCard>{livePurchase}</SimpleCard>
       </div>
-      <div className="col-span-1 md:col-span-6">
-        <SimpleCard>{calculateForm}</SimpleCard>
-      </div>
+      {calculateForm ? (
+        <div className="col-span-1 md:col-span-6">
+          <SimpleCard>{calculateForm}</SimpleCard>
+        </div>
+      ) : null}
       {summaryPurchase ? (
         <div className="col-span-1 md:col-span-9">
           <SimpleCard>{summaryPurchase}</SimpleCard>

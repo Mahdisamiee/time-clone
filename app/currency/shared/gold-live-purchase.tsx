@@ -41,7 +41,7 @@ export default function GoldLivePurchase({
 
       <h3 className="text-xl text-sky-900 sm:text-2xl">ریال</h3>
       <p className="text-md my-10 tracking-wide text-sky-600">
-        {data?.date} - {data?.time}
+        {data?.date} - ساعت:  {new Date().getHours()}:{new Date().getMinutes()}
       </p>
     </div>
   );

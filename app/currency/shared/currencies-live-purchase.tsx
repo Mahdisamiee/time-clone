@@ -35,7 +35,7 @@ const CurrenciesLivePurchase = () => {
               key={curr.item}
               className="flex flex-1 flex-col flex-nowrap items-start justify-between whitespace-nowrap "
             >
-              <h3 className="text-nowrap text-sky-900">{curr.item}</h3>
+              <h3 className="text-nowrap ">{curr.item}</h3>
               <p className="tracking-wide text-sky-600">{curr.price}</p>
               <p className="text-sm tracking-wide text-sky-600"> {curr.rate}</p>
             </div>

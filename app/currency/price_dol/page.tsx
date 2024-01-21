@@ -1,8 +1,29 @@
 import { Metadata } from "next";
+import ArzCalculateForm from "../shared/arz-calculate-form";
 import CurrenciesLivePurchase from "../shared/currencies-live-purchase";
-import GoldCalculateForm from "../shared/gold-calculate-form";
 import GoldLivePurchase from "../shared/gold-live-purchase";
 import SharedLayout from "../shared/shared-layout";
+
+const GoldPage = () => {
+  return (
+    <SharedLayout
+      livePurchase={
+        <GoldLivePurchase title="قیمت لحظه‌ای دلار : " currName="دلار" />
+      }
+      calculateForm={
+        <ArzCalculateForm
+          vahed="اسکناس"
+          country="آمریکا"
+          market="داخلی"
+          type="ارز آزاد"
+        />
+      }
+      summaryPurchase={<CurrenciesLivePurchase />}
+    />
+  );
+};
+
+export default GoldPage;
 
 export const metadata: Metadata = {
   title: "قیمت لحظه‌ای دلار",
@@ -36,23 +57,8 @@ export const metadata: Metadata = {
     "دلار آمریکا لحظه‌ای",
     "دلار لحظه‌ای امروز",
     "دلار آمریکا لحظه‌ای امروز",
-
   ],
   alternates: {
     canonical: `https://harchi.app/currency/coin`,
   },
 };
-
-
-
-const GoldPage = () => {
-  return (
-    <SharedLayout
-      livePurchase={<GoldLivePurchase title="قیمت لحظه‌ای دلار : " currName="دلار"/>}
-      calculateForm={<GoldCalculateForm />}
-      summaryPurchase={<CurrenciesLivePurchase />}
-    />
-  );
-};
-
-export default GoldPage;
