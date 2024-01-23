@@ -42,9 +42,9 @@ const CurrenciesForm = () => {
                     {curr.rate}
                   </span>
                 </div>
-                <p className="my-3 text-2xl tracking-wide text-sky-600 sm:text-4xl">
+                <p className="my-4 text-2xl tracking-wide text-sky-600 sm:text-4xl">
                   {curr.price}
-                  <h3 className="text-md text-sky-900 sm:text-lg">ریال</h3>
+                  <span className="text-md text-sky-900 sm:text-lg mr-1">ریال</span>
                 </p>
               </div>
             </SimpleCard>

@@ -5,13 +5,13 @@ import { UnitMode } from "@/lib/models/calc";
 import { fetchGenericModes } from "services/unit-services";
 import LinearNavLink from "@/components/shared/linear-nav-link";
 
-// export async function generateStaticParams() {
-//   const result = await fetchGenericModes();
-//   const modes = await result.generic;
-//   return modes.map((mode: string) => ({
-//     mode: mode,
-//   }));
-// }
+export async function generateStaticParams() {
+  const result = await fetchGenericModes();
+  const modes = await result.generic;
+  return modes.map((mode: string) => ({
+    mode: mode,
+  }));
+}
 
 const UnitHome = ({ params }: { params: { mode: UnitMode } }) => {
   return (

@@ -1,8 +1,6 @@
-import { Metadata } from "next";
-import Link from "next/link";
-import { MouseEvent } from "react";
-import AgeCalculator from "./age-calculator";
 import LocalNavbar from "@/components/shared/local-navbar";
+import { Metadata } from "next";
+import AgeCalculator from "./age-calculator";
 
 export const metadata: Metadata = {
   title: "محاسبه سن دقیق",
@@ -25,10 +23,7 @@ export const metadata: Metadata = {
 };
 
 export default function Age() {
-  const handleChangeCalculate = (e: MouseEvent) => {
-    console.log(e.currentTarget.innerHTML);
-  };
-
+  
   return (
     <>
       <LocalNavbar items={navbarItems} />

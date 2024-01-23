@@ -1,7 +1,6 @@
 // MapContainer.tsx
-import LocalNavbar from "@/components/shared/local-navbar";
-import MapContainer from "./distance-map";
 import { Metadata } from "next";
+import MapContainer from "./distance-map";
 
 const timeParts = [
   {
