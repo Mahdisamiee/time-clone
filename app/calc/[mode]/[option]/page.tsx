@@ -6,21 +6,22 @@ import Link from "next/link";
 import LinearNavLink from "@/components/shared/linear-nav-link";
 import { fetchGenericModes, fetchUnitOptions } from "services/unit-services";
 
-// export async function generateStaticParams({
-//   params: { mode },
-// }: {
-//   params: { mode: UnitMode };
-// }) {
-//   const result = await fetch(
-//     `https://harchi.app/api/conversions-api/generic-conv/${mode}/`,
-//   ).then((res) => res.json());
+export async function generateStaticParams({
+  params: { mode },
+}: {
+  params: { mode: UnitMode };
+}) {
+  const result = await fetchUnitOptions(mode);
+  const units = result.units;
 
-//   const units = result.units;
-
-//   return units?.map((unit: any) => {
-//     return { option: `${unit.value}` };
-//   });
-// }
+  const arr = units!.map((unit: any) => {
+    return units!.map((unit2: any) => {
+      return { option: unit.value + "-" + unit2.value };
+    });
+  });
+  console.log("Herrirrrrr ", arr);
+  return arr.flat(1);
+}
 
 const UnitOptions = ({
   params,
@@ -29,16 +30,11 @@ const UnitOptions = ({
 }) => {
   return (
     <>
-      {/* <LocalNavbar items={navbarItems} /> */}
-
-      <div className="z-10 w-full max-w-3xl px-5 xl:px-0">
-        {/* here we add our first client component */}
-        <LinearNavLink params={params} />
-        <ConversionUnitForm unitMode={params.mode} unitData={params.option} />
-      </div>
+      <LinearNavLink params={params} />
+      <ConversionUnitForm unitMode={params.mode} unitData={params.option} />
     </>
   );
 };
 export default UnitOptions;
 
-export const dynamicParams = true; // true | false,
+// export const dynamicParams = false; // true | false,

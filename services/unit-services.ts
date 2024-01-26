@@ -1,5 +1,5 @@
 type ApiResponse = {
-  units?: string[];
+  units?: {value: string, label: string, flabel: string}[];
 };
 
 type GenericResponse = {

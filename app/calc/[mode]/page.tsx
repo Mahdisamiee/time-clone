@@ -8,20 +8,18 @@ import LinearNavLink from "@/components/shared/linear-nav-link";
 export async function generateStaticParams() {
   const result = await fetchGenericModes();
   const modes = await result.generic;
-  return modes.map((mode: string) => ({
+  const arr = modes.map((mode: string) => ({
     mode: mode,
   }));
+  console.log("MODEEEEEEEEEEEEEE", arr);
+  return arr;
 }
 
 const UnitHome = ({ params }: { params: { mode: UnitMode } }) => {
   return (
     <>
-      {/* <LocalNavbar items={navbarItems} /> */}
-
-      <div className="z-10 w-full max-w-3xl px-5 xl:px-0">
-        <LinearNavLink params={params} />
-        <ConversionUnitForm unitMode={params.mode} />
-      </div>
+      <LinearNavLink params={params} />
+      <ConversionUnitForm unitMode={params.mode} />
     </>
   );
 };
