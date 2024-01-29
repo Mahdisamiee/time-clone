@@ -6,6 +6,10 @@ import Link from "next/link";
 import LinearNavLink from "@/components/shared/linear-nav-link";
 import { fetchGenericModes, fetchUnitOptions } from "services/unit-services";
 
+
+
+
+
 export async function generateStaticParams({
   params: { mode },
 }: {
@@ -19,7 +23,6 @@ export async function generateStaticParams({
       return { option: unit.value + "-" + unit2.value };
     });
   });
-  console.log("Herrirrrrr ", arr);
   return arr.flat(1);
 }
 

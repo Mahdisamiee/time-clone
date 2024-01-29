@@ -9,8 +9,21 @@ import ToolsListMapper from "@/components/shared/tools-list-mapper";
 
 export const metadata: Metadata = {
   title: "تبدیل‌ ها",
-  description: "تبدیل تمام واحد‌ ها به هم و برعکس",
-  keywords: [],
+  description:
+    "تبدیل دما، طول، زمان، جرم، مساحت، پهنای باند، حافظه دیجیتال، انرژِی، حجم، سرعت، فشار به هم و برعکس",
+  keywords: [
+    "تبدیل دما",
+    "تبدیل طول",
+    "تبدیل زمان",
+    "تبدیل جرم",
+    "تبدیل مساحت",
+    "تبدیل پهنای باند",
+    "تبدیل حافظه دیجیتال",
+    "تبدیل انرژی",
+    "تبدیل حجم",
+    "تبدیل سرعت",
+    "تبدیل فشار",
+  ],
   alternates: {
     canonical: `https://harchi.app/calc`,
   },

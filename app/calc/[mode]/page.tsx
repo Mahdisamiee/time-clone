@@ -2,18 +2,8 @@ import { Metadata } from "next";
 import LocalNavbar from "@/components/shared/local-navbar";
 import ConversionUnitForm from "../conversion-unit-form";
 import { UnitMode } from "@/lib/models/calc";
-import { fetchGenericModes } from "services/unit-services";
+import { fetchGenericModes, fetchUnitOptions } from "services/unit-services";
 import LinearNavLink from "@/components/shared/linear-nav-link";
-
-export async function generateStaticParams() {
-  const result = await fetchGenericModes();
-  const modes = await result.generic;
-  const arr = modes.map((mode: string) => ({
-    mode: mode,
-  }));
-  console.log("MODEEEEEEEEEEEEEE", arr);
-  return arr;
-}
 
 const UnitHome = ({ params }: { params: { mode: UnitMode } }) => {
   return (
@@ -24,3 +14,42 @@ const UnitHome = ({ params }: { params: { mode: UnitMode } }) => {
   );
 };
 export default UnitHome;
+
+export async function generateStaticParams() {
+  const result = await fetchGenericModes();
+  const modes = await result.generic;
+  const arr = modes.map((mode: string) => ({
+    mode: mode,
+  }));
+  return arr;
+}
+
+export async function generateMetadata({
+  params: { mode },
+}: {
+  params: { mode: UnitMode };
+}): Promise<Metadata> {
+  const result = await fetchUnitOptions(mode);
+  const units = result.units;
+  let computedKeywords = units!.map(
+    (unit) =>
+      `تبدیل ${unit.flabel}, تبدیل مقدار ${unit.flabel}, تبدیل ${unit.label}, تبدیل مقدار ${unit.label}`,
+  );
+  let complicatedKeywords = units!
+    .map((unit1) => {
+      return units!.map(
+        (unit2) =>
+          `تبدیل ${unit1.flabel} به ${unit2.flabel} , تبدیل مقدار ${unit1.flabel} به ${unit2.flabel}, تبدیل ${unit1.label} به ${unit2.label}, تبدیل مقدار ${unit1.label} به ${unit2.label}`,
+      );
+    })
+    .flat(1);
+
+  return {
+    title: `محاسبه و تبدیل واحد‌های ${mode}`,
+    description: `تبدیل انواع ${mode} | تبدیل دقیق واحد های  ${mode} | harchi.app`,
+    keywords: [...computedKeywords, ...complicatedKeywords],
+    alternates: {
+      canonical: `https://harchi.app/time/${mode}`,
+    },
+  };
+}
