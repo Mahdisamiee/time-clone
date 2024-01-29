@@ -1,14 +1,53 @@
-import { Metadata } from "next";
-import LocalNavbar from "@/components/shared/local-navbar";
-import ConversionUnitForm from "../../conversion-unit-form";
-import { UnitMode } from "@/lib/models/calc";
-import Link from "next/link";
 import LinearNavLink from "@/components/shared/linear-nav-link";
-import { fetchGenericModes, fetchUnitOptions } from "services/unit-services";
+import { UnitMode } from "@/lib/models/calc";
+import { Metadata } from "next";
+import { fetchUnitOptions } from "services/unit-services";
+import ConversionUnitForm from "../../conversion-unit-form";
 
+const UnitOptions = ({
+  params,
+}: {
+  params: { option: string; mode: UnitMode };
+}) => {
+  return (
+    <>
+      <LinearNavLink params={params} />
+      <ConversionUnitForm unitMode={params.mode} unitData={params.option} />
+    </>
+  );
+};
+export default UnitOptions;
 
+export async function generateMetadata({
+  params: { mode, option },
+}: {
+  params: { mode: UnitMode; option: string };
+}): Promise<Metadata> {
+  const result = await fetchUnitOptions(mode);
+  const units = result.units;
+  let titleParts = option.split("-to-");
+  let computedKeywords = units!.map(
+    (unit) =>
+      `تبدیل ${titleParts[0]}, تبدیل مقدار ${titleParts[0]}, تبدیل ${titleParts[1]}, تبدیل مقدار ${titleParts[1]}`,
+  );
+  let complicatedKeywords = units!
+    .map((unit1) => {
+      return units!.map(
+        (unit2) =>
+          `تبدیل ${titleParts[0]} به ${titleParts[1]} , تبدیل مقدار ${titleParts[0]} به ${titleParts[1]}, تبدیل واحد ${titleParts[0]} به ${titleParts[1]}`,
+      );
+    })
+    .flat(1);
 
-
+  return {
+    title: `محاسبه و تبدیل ${titleParts[0]} به ${titleParts[1]}`,
+    description: `تبدیل انواع ${mode} | تبدیل دقیق واحد های  ${mode} | تبدیل واحد ${titleParts[0]} به ${titleParts[1]} | harchi.app`,
+    keywords: [...computedKeywords, ...complicatedKeywords],
+    alternates: {
+      canonical: `https://harchi.app/time/${mode}/${option}`,
+    },
+  };
+}
 
 export async function generateStaticParams({
   params: { mode },
@@ -25,19 +64,3 @@ export async function generateStaticParams({
   });
   return arr.flat(1);
 }
-
-const UnitOptions = ({
-  params,
-}: {
-  params: { option: string; mode: UnitMode };
-}) => {
-  return (
-    <>
-      <LinearNavLink params={params} />
-      <ConversionUnitForm unitMode={params.mode} unitData={params.option} />
-    </>
-  );
-};
-export default UnitOptions;
-
-// export const dynamicParams = false; // true | false,

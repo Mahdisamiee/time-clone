@@ -49,7 +49,7 @@ export async function generateMetadata({
     description: `تبدیل انواع ${mode} | تبدیل دقیق واحد های  ${mode} | harchi.app`,
     keywords: [...computedKeywords, ...complicatedKeywords],
     alternates: {
-      canonical: `https://harchi.app/time/${mode}`,
+      canonical: `https://harchi.app/calc/${mode}`,
     },
   };
 }
