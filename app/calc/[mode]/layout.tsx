@@ -1,8 +1,5 @@
-import LinearNavLink from "@/components/shared/linear-nav-link";
-import { UnitMode } from "@/lib/models/calc";
-import { fetchGenericModes } from "services/unit-services";
-import ConversionUnitForm from "../conversion-unit-form";
 import { ReactNode } from "react";
+import { fetchGenericModes } from "services/unit-services";
 
 export async function generateStaticParams() {
   const result = await fetchGenericModes();
@@ -13,10 +10,6 @@ export async function generateStaticParams() {
 }
 
 const UnitHome = ({ children }: { children: ReactNode }) => {
-  return (
-    <div className="z-10 w-full max-w-3xl px-5 xl:px-0">
-      {children}
-    </div>
-  );
+  return <div className="z-10 w-full max-w-3xl px-5 xl:px-0">{children}</div>;
 };
 export default UnitHome;
