@@ -1,6 +1,6 @@
 
 User-agent: *
-allow: /
+Disallow: /
 
 
 Sitemap: https://harchi.app/sitemap.xml
