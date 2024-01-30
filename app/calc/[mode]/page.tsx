@@ -15,15 +15,6 @@ const UnitHome = ({ params }: { params: { mode: UnitMode } }) => {
 };
 export default UnitHome;
 
-export async function generateStaticParams() {
-  const result = await fetchGenericModes();
-  const modes = await result.generic;
-  const arr = modes.map((mode: string) => ({
-    mode: mode,
-  }));
-  return arr;
-}
-
 export async function generateMetadata({
   params: { mode },
 }: {

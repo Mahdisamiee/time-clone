@@ -4,19 +4,21 @@ import { Metadata } from "next";
 import { fetchUnitOptions } from "services/unit-services";
 import ConversionUnitForm from "../../conversion-unit-form";
 
-const UnitOptions = ({
-  params,
+export async function generateStaticParams({
+  params: { mode },
 }: {
-  params: { option: string; mode: UnitMode };
-}) => {
-  return (
-    <>
-      <LinearNavLink params={params} />
-      <ConversionUnitForm unitMode={params.mode} unitData={params.option} />
-    </>
-  );
-};
-export default UnitOptions;
+  params: { mode: UnitMode };
+}) {
+  const result = await fetchUnitOptions(mode);
+  const units = result.units;
+
+  const arr = units!.map((unit: any) => {
+    return units!.map((unit2: any) => {
+      return { option: unit.value + "-" + unit2.value };
+    });
+  });
+  return arr.flat(1);
+}
 
 export async function generateMetadata({
   params: { mode, option },
@@ -49,18 +51,20 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams({
-  params: { mode },
+const UnitOptions = ({
+  params,
 }: {
-  params: { mode: UnitMode };
-}) {
-  const result = await fetchUnitOptions(mode);
-  const units = result.units;
+  params: { option: string; mode: UnitMode };
+}) => {
+  return (
+    <>
+      <LinearNavLink params={params} />
+      <ConversionUnitForm unitMode={params.mode} unitData={params.option} />
+    </>
+  );
+};
+export default UnitOptions;
 
-  const arr = units!.map((unit: any) => {
-    return units!.map((unit2: any) => {
-      return { option: unit.value + "-" + unit2.value };
-    });
-  });
-  return arr.flat(1);
-}
+
+
+
