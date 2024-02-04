@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const LinearNavLink = ({
+const BreadcrumbNavbar = ({
   params,
 }: {
   params: { mode?: string; options?: string };
@@ -52,4 +52,4 @@ const LinearNavLink = ({
   );
 };
 
-export default LinearNavLink;
+export default BreadcrumbNavbar;

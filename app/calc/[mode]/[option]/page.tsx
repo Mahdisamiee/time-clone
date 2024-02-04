@@ -1,4 +1,4 @@
-import LinearNavLink from "@/components/shared/linear-nav-link";
+import BreadcrumbNavbar from "@/components/shared/breadcrumb-navbar";
 import { UnitMode } from "@/lib/models/calc";
 import { Metadata } from "next";
 import { fetchUnitOptions } from "services/unit-services";
@@ -58,13 +58,9 @@ const UnitOptions = ({
 }) => {
   return (
     <>
-      <LinearNavLink params={params} />
+      <BreadcrumbNavbar params={params} />
       <ConversionUnitForm unitMode={params.mode} unitData={params.option} />
     </>
   );
 };
 export default UnitOptions;
-
-
-
-

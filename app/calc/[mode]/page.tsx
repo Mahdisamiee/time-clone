@@ -3,12 +3,12 @@ import LocalNavbar from "@/components/shared/local-navbar";
 import ConversionUnitForm from "../conversion-unit-form";
 import { UnitMode } from "@/lib/models/calc";
 import { fetchGenericModes, fetchUnitOptions } from "services/unit-services";
-import LinearNavLink from "@/components/shared/linear-nav-link";
+import BreadcrumbNavbar from "@/components/shared/breadcrumb-navbar";
 
 const UnitHome = ({ params }: { params: { mode: UnitMode } }) => {
   return (
     <>
-      <LinearNavLink params={params} />
+      <BreadcrumbNavbar params={params} />
       <ConversionUnitForm unitMode={params.mode} />
     </>
   );
