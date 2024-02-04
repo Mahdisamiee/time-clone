@@ -290,7 +290,6 @@ export default async function RootLayout({
 
       <body
         className={cx(
-          lalezar.variable,
           vazirmatn.variable,
         )}
       >
