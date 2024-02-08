@@ -1,11 +1,5 @@
-import Card from "@/components/home/card";
-import LiveClock from "@/components/time/timezone-clock";
-import AnalogClock from "@/components/time/analog-clock";
-import ShariaTime from "@/app/time/sharia/sharia-time";
-// import MainCalendar from "@/components/time/calendar";
-import { Metadata } from "next";
-import Link from "next/link";
 import ToolsListMapper from "@/components/shared/tools-list-mapper";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "تبدیل‌ ها",
