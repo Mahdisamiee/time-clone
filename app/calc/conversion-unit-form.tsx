@@ -33,7 +33,7 @@ const ConversionUnitForm = ({
       fetchUnitOptions(unitMode)
         .then((result) => {
           if (result.units) setUnitOptions(result.units);
-          console.log(result.units)
+          console.log(result.units);
         })
         .catch((error) =>
           console.error("Failed to fetch unit options:", error.message),
@@ -52,6 +52,7 @@ const ConversionUnitForm = ({
 
   // This function updates the route based on the selected units
   const updateRoute = (newFromUnit: string, newToUnit: string) => {
+    setResult(null);
     const newPath = `/calc/${unitMode}/${newFromUnit}-to-${newToUnit}`;
     router.push(newPath);
   };
@@ -71,21 +72,21 @@ const ConversionUnitForm = ({
 
   const handleSubmit = async (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    const payload = {
-      unit: unitMode,
-      from_unit: fromUnit,
-      to_unit: toUnit,
-      val: value,
-    };
-
-    if (!validateForm(payload)) return;
-
-    setLoading(true);
     try {
+      setLoading(true);
+      const payload = {
+        unit: unitMode,
+        from_unit: fromUnit,
+        to_unit: toUnit,
+        val: value,
+      };
+
+      if (!validateForm(payload)) return;
+
       const conversionResult = await postConversion(payload);
       setResult(conversionResult.result);
     } catch (error: any) {
-      console.error("Error during conversion:", error.message);
+      alert("مشکلی در تبدیل پیش آمده، لطفا دوباره امتحان کنید.")
     } finally {
       setLoading(false);
     }
@@ -93,7 +94,7 @@ const ConversionUnitForm = ({
 
   return (
     <div className="z-10 flex flex-col items-center justify-around gap-5 py-10">
-      <h1 className="my-4 text-xl text-sky-500 capitalize">
+      <h1 className="my-4 text-xl capitalize text-sky-500">
         محاسبه و تبدیل واحد‌های {unitMode}
       </h1>
       {/* Calc Settings (from, to, val) Box */}
@@ -148,7 +149,7 @@ const ConversionUnitForm = ({
 
       {result !== null ? (
         <div className="mt-5 text-center">
-          <h1 className="text-2xl text-sky-950 capitalize">
+          <h1 className="text-2xl capitalize text-sky-950">
             نتیجه تبدیل از {fromUnit} به {toUnit} :{" "}
           </h1>
           <p className="mt-5 text-2xl tracking-wide text-sky-600">{result}</p>
@@ -159,5 +160,3 @@ const ConversionUnitForm = ({
 };
 
 export default ConversionUnitForm;
-
-
