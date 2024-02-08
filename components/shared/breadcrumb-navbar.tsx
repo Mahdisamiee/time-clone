@@ -4,9 +4,9 @@ import React from "react";
 const BreadcrumbNavbar = ({
   params,
 }: {
-  params: { mode?: string; options?: string };
+  params?: { mode?: string; options?: string };
 }) => {
-  const options = params.options?.split("-to-");
+  const options = params?.options?.split("-to-");
   return (
     <>
       <span>
@@ -15,37 +15,41 @@ const BreadcrumbNavbar = ({
           href="/calc"
           target="_top"
           rel="noreferrer"
-          className="text-sky-500 hover:text-sky-700 transition ease-in-out capitalize"
+          className="capitalize text-sky-500 transition ease-in-out hover:text-sky-700"
         >
           تبدیل ها
         </Link>
       </span>
       <span> / </span>
-      <span>
-        {" "}
-        <Link
-          href={`/calc/${params.mode}`}
-          target="_top"
-          rel="noreferrer"
-          className="text-sky-500 hover:text-sky-700 transition ease-in-out capitalize"
-        >
-          تبدیل {params.mode}
-        </Link>
-      </span>
-      {options ? (
+      {params ? (
         <>
-          <span> / </span>
           <span>
             {" "}
             <Link
-              href={`/calc/${params.mode}/${params.options}`}
+              href={`/calc/${params.mode}`}
               target="_top"
               rel="noreferrer"
-              className="text-sky-500 hover:text-sky-700 transition ease-in-out capitalize"
+              className="capitalize text-sky-500 transition ease-in-out hover:text-sky-700"
             >
-              محاسبه {options[0]} به {options[1]}
+              تبدیل {params.mode}
             </Link>
           </span>
+          {options ? (
+            <>
+              <span> / </span>
+              <span>
+                {" "}
+                <Link
+                  href={`/calc/${params.mode}/${params.options}`}
+                  target="_top"
+                  rel="noreferrer"
+                  className="capitalize text-sky-500 transition ease-in-out hover:text-sky-700"
+                >
+                  محاسبه {options[0]} به {options[1]}
+                </Link>
+              </span>
+            </>
+          ) : null}
         </>
       ) : null}
     </>

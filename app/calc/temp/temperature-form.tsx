@@ -1,4 +1,5 @@
 "use client";
+import SpinnerLoading from "@/components/shared/spinner-loading";
 import { useId, useState } from "react";
 import Select from "react-select";
 
@@ -98,6 +99,8 @@ const TemperatureForm = () => {
           <h1 className="text-2xl text-sky-950">نتیجه {selectedMode?.label}</h1>
           <p className="mt-5 text-2xl tracking-wide text-sky-600">{result}</p>
         </div>
+      ) : loading && result == null ? (
+        <SpinnerLoading />
       ) : null}
     </div>
   );

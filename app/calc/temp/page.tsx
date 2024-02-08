@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import TemperatureForm from "./temperature-form";
 import LocalNavbar from "@/components/shared/local-navbar";
+import BreadcrumbNavbar from "@/components/shared/breadcrumb-navbar";
 
 export const metadata: Metadata = {
   title: "تبدیل واحد‌های دما",
@@ -32,7 +33,7 @@ const TemperatureHome = () => {
       {/* <LocalNavbar items={navbarItems} /> */}
 
       <div className="z-10 w-full max-w-3xl px-5 xl:px-0">
-        {/* here we add our first client component */}
+        <BreadcrumbNavbar params={{ mode: "Temperature" }} />
         <TemperatureForm />
       </div>
     </>
