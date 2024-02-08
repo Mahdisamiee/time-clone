@@ -9,6 +9,7 @@ import {
   validateForm,
 } from "services/unit-services";
 import { createUnitOptions, defaultUnitsForMode } from "./unit-config";
+import SpinnerLoading from "@/components/shared/spinner-loading";
 
 const ConversionUnitForm = ({
   unitMode,
@@ -86,7 +87,7 @@ const ConversionUnitForm = ({
       const conversionResult = await postConversion(payload);
       setResult(conversionResult.result);
     } catch (error: any) {
-      alert("مشکلی در تبدیل پیش آمده، لطفا دوباره امتحان کنید.")
+      alert("مشکلی در تبدیل پیش آمده، لطفا دوباره امتحان کنید.");
     } finally {
       setLoading(false);
     }
@@ -154,6 +155,8 @@ const ConversionUnitForm = ({
           </h1>
           <p className="mt-5 text-2xl tracking-wide text-sky-600">{result}</p>
         </div>
+      ) : loading && result == null ? (
+        <SpinnerLoading />
       ) : null}
     </div>
   );
