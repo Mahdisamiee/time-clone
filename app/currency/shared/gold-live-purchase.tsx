@@ -2,6 +2,7 @@
 import { API_BASE_URL, CURRENCIES_API } from "@/lib/api-constants";
 import { useEffect, useState } from "react";
 import { CurrencySpecific } from "./models/currecncies-data";
+import SpinnerLoading from "@/components/shared/spinner-loading";
 
 async function getCurencyData(currName: string) {
   const res = await fetch(`${API_BASE_URL}/${CURRENCIES_API}/${currName}/`, {
@@ -18,7 +19,7 @@ export default function GoldLivePurchase({
   title: string;
   currName: string;
 }) {
-  const [data, setData] = useState<CurrencySpecific>();
+  const [data, setData] = useState<CurrencySpecific | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,14 +36,23 @@ export default function GoldLivePurchase({
         {title ? title : data?.item}
       </h1>
 
-      <h2 className="my-10 block text-3xl tracking-wide text-sky-600 sm:text-5xl">
-        {data?.price}
-      </h2>
+      {data !== null ? (
+        <>
+          <h2 className="my-10 block text-3xl tracking-wide text-sky-600 sm:text-5xl">
+            {data?.price}
+          </h2>
 
-      <h3 className="text-xl text-sky-900 sm:text-2xl">ریال</h3>
-      <p className="text-md my-10 tracking-wide text-sky-600">
-        {data?.date} - ساعت:  {new Date().getHours()}:{new Date().getMinutes()}
-      </p>
+          <h3 className="text-xl text-sky-900 sm:text-2xl">ریال</h3>
+          <p className="text-md my-10 tracking-wide text-sky-600">
+            {data?.date} - ساعت: {new Date().getHours()}:
+            {new Date().getMinutes()}
+          </p>
+        </>
+      ) : (
+        <div className="my-5">
+          <SpinnerLoading />
+        </div>
+      )}
     </div>
   );
 }
