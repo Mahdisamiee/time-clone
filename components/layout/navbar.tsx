@@ -19,11 +19,11 @@ export default function NavBar() {
         <div className="mx-5 flex h-16 w-full max-w-screen-xl items-center justify-between">
           <Link href="/" className="flex items-center font-vazir text-2xl">
             <Image
-              src="/logo.png"
+              src="/puzzle.png"
               alt="Time logo"
-              width="30"
-              height="30"
-              className="ml-2 rounded-sm"
+              width="90"
+              height="90"
+              className="ml-1 rounded-sm"
             ></Image>
             <p> هرچی | هرچی که بگی !</p>
           </Link>

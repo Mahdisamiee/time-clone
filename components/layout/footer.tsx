@@ -1,10 +1,38 @@
 import Link from "next/link";
+
+const unitList = [
+  {
+    title: "تبدیل دما",
+    href: "/calc/temp",
+  },
+  {
+    title: "تبدیل طول",
+    href: "/calc/length",
+  },
+  {
+    title: "تبدیل جرم",
+    href: "/calc/mass",
+  },
+  {
+    title: "تبدیل سرعت",
+    href: "/calc/speed",
+  },
+  {
+    title: "تبدیل فشار",
+    href: "/calc/pressure",
+  },
+  {
+    title: "تبدیل حجم",
+    href: "/calc/volume",
+  },
+];
+
 export default function Footer() {
   return (
     <footer id="footer" className="text-sm text-gray-600">
       <div className="absolute w-full border-t border-gray-200 bg-white px-4 py-5 text-center font-vazir">
-        <h2 className="mb-2 text-xl font-bold text-gray-700">
-          هرچی دلت میخواد اینجا پیدا کن | 365 روز سال هستیم
+        <h2 className="mb-2 text-lg font-bold text-gray-700">
+          هرچی | هرچی که بگی ، هرجا و هروقت
         </h2>
         {/* <p className="mb-4 text-gray-500">ابزارهای تبدیل و مدیریت زمان</p> */}
 
@@ -98,7 +126,7 @@ export default function Footer() {
 
         <div className="text-base">
           <Link href="/" className="text-sky-600">
-           هرچی
+            هرچی
           </Link>{" "}
           ، ابزار‌های متنوع برای رفع نیاز‌ها و خواسته‌های روزانه.
           <br />
