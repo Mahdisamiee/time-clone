@@ -2,11 +2,15 @@ import { ReactNode } from "react";
 import { fetchGenericModes } from "services/unit-services";
 
 export async function generateStaticParams() {
-  const result = await fetchGenericModes();
-  const modes = await result.generic;
-  return modes.map((mode: string) => ({
-    mode: mode,
-  }));
+  try {
+    const result = await fetchGenericModes();
+    const modes = await result.generic;
+    return modes.map((mode: string) => ({
+      mode: mode,
+    }));
+  } catch (error) {
+    return [];
+  }
 }
 
 const UnitHome = ({ children }: { children: ReactNode }) => {

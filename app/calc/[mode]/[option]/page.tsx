@@ -4,21 +4,21 @@ import { Metadata } from "next";
 import { fetchUnitOptions } from "services/unit-services";
 import ConversionUnitForm from "../../conversion-unit-form";
 
-export async function generateStaticParams({
-  params: { mode },
-}: {
-  params: { mode: UnitMode };
-}) {
-  const result = await fetchUnitOptions(mode);
-  const units = result.units;
+// export async function generateStaticParams({
+//   params: { mode },
+// }: {
+//   params: { mode: UnitMode };
+// }) {
+//   const result = await fetchUnitOptions(mode);
+//   const units = result.units;
 
-  const arr = units!.map((unit: any) => {
-    return units!.map((unit2: any) => {
-      return { option: unit.value + "-" + unit2.value };
-    });
-  });
-  return arr.flat(1);
-}
+//   const arr = units!.map((unit: any) => {
+//     return units!.map((unit2: any) => {
+//       return { option: unit.value + "-" + unit2.value };
+//     });
+//   });
+//   return arr.flat(1);
+// }
 
 export async function generateMetadata({
   params: { mode, option },
