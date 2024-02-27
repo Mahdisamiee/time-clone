@@ -1,11 +1,12 @@
 import Card from "@/components/home/card";
 import LiveClock from "@/components/time/timezone-clock";
 import AnalogClock from "@/components/time/analog-clock";
-import ShariaTime from "@/app/time/sharia/sharia-time";
+
 // import MainCalendar from "@/components/time/calendar";
 import { Metadata } from "next";
 import Link from "next/link";
 import LocalNavbar from "@/components/shared/local-navbar";
+import ShariaTime from "./sharia/sharia-time";
 
 export const metadata: Metadata = {
   title: "ساعت و زمان",
