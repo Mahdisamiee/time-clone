@@ -44,7 +44,7 @@ const ResultModal = ({
             </p>
             <a href="https://harchi.app">
               <Image
-                src="/logo.png"
+                src="/logo2.png"
                 alt="Harchi Logo"
                 className="mt-4 h-7 w-7 rounded-full"
                 width={20}

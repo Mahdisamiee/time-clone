@@ -19,8 +19,8 @@ export default function NavBar() {
         <div className="mx-5 flex h-16 w-full max-w-screen-xl items-center justify-between">
           <Link href="/" className="flex items-center font-vazir text-2xl">
             <Image
-              src="/puzzle.png"
-              alt="Time logo"
+              src="/logo2.png"
+              alt="Harchi.app logo"
               width="90"
               height="90"
               className="ml-1 rounded-sm"

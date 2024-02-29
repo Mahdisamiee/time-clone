@@ -39,7 +39,7 @@ const ResultModal = ({
             <p className="text-2xl text-gray-500">here we put more info!</p>
             <a href="https://harchi.app">
               <Image
-                src="/logo.png"
+                src="/logo2.png"
                 alt="Harchi Logo"
                 className="h-7 w-7 rounded-full"
                 width={20}
