@@ -26,7 +26,7 @@ export default async function OG() {
         }}
       >
         <img
-          src={new URL("../public/logo.png", import.meta.url).toString()}
+          src={new URL("../public/logo2.png", import.meta.url).toString()}
           alt="Batime.ir Logo"
           tw="w-20 h-20 mb-4 opacity-95"
         />
