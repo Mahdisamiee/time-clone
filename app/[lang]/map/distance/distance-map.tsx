@@ -35,7 +35,7 @@ const DistanceMap: React.FC = () => {
           anchor: [0.5, 1],
           anchorXUnits: "fraction",
           anchorYUnits: "fraction",
-          src: "  /marker.png",
+          src: "/marker.png",
           scale: 0.09,
         }),
         stroke: new Stroke({
