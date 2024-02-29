@@ -6,7 +6,9 @@ import Script from "next/script";
 import { Suspense } from "react";
 import { vazirmatn } from "./fonts";
 import "./globals.css";
-import { getDictionary } from "./dictionaries";
+import { Locale } from "i18n-config";
+import { dir } from "i18next";
+import { languages } from "../i18n/settings";
 
 const GTM_ID = "GTM-TN59LRQS";
 
@@ -31,16 +33,19 @@ export const metadata: Metadata = {
   themeColor: "#FFF",
 };
 
+export async function generateStaticParams() {
+  return languages.map((lng) => ({ lng }))
+}
+
 export default async function RootLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { lang: string };
+  params: { lang: Locale };
 }) {
-  const dict = await getDictionary(params.lang);
   return (
-    <html lang={params.lang} dir={params.lang === "fa" ? "rtl" : "ltr"}>
+    <html lang={params.lang} dir={dir(params.lang)}>
       {/* Analytics */}
       <Script id="google-tag-manager" strategy="afterInteractive">
         {`
