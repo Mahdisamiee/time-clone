@@ -1,13 +1,11 @@
 import Modal from "@/components/shared/modal";
 import {
-  useState,
   Dispatch,
   SetStateAction,
   useCallback,
   useMemo,
+  useState,
 } from "react";
-import Image from "next/image";
-// import { persianToCalendars } from "@/lib/utils";
 
 const ResultModal = ({
   showResultModal,
@@ -36,15 +34,8 @@ const ResultModal = ({
                 </p>
               ))}
             <hr className="my-2 mb-10 mt-2 h-0.5 w-full rounded bg-blue-400" />
-            <p className="text-2xl text-gray-500">here we put more info!</p>
-            <a href="https://harchi.app">
-              <Image
-                src="/logo2.png"
-                alt="Harchi Logo"
-                className="h-7 w-7 rounded-full"
-                width={20}
-                height={20}
-              />
+            <a href="https://harchi.app" className="text-sky-600">
+              Harchi.app | هرچی
             </a>
           </>
         </div>

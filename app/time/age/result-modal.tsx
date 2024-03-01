@@ -26,14 +26,8 @@ const ResultModal = ({
     <Modal showModal={showResultModal} setShowModal={setResultDemoModal}>
       <div className="h-2/3 w-full overflow-hidden md:max-w-md md:rounded-2xl md:border md:border-gray-100 md:shadow-xl">
         <div className="flex h-full flex-col items-center justify-center space-y-3 bg-white px-4 py-6 pt-8 text-center md:space-y-6 md:px-16">
-          <a href="https://harchi.app">
-            <Image
-              src="/logo2.png"
-              alt="Precedent Logo"
-              className="h-7 w-7 rounded-full"
-              width={20}
-              height={20}
-            />
+          <a href="https://harchi.app" className="text-sky-600">
+            Harchi.app | هرچی
           </a>
           {details?.calcType === "محاسبه سن و تاریخ تولد" ? (
             <>
