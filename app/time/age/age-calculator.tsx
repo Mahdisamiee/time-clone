@@ -5,6 +5,7 @@ import HijriMoment from "moment-hijri";
 import { useResultModal } from "./result-modal";
 import DaySelector from "./day-selector";
 import PopoverMenu from "@/components/home/popover-menu";
+import { ageCalculatorService } from "./services/age-calculator-service";
 
 interface BirthDate {
   day: number;
@@ -50,15 +51,23 @@ const calculateAge = (jalaliBirthDate: BirthDate): ResultDetail => {
   return { years, months, days };
 };
 
-const calculateIslamicAgeFromJalali = (jalaliBirthDate: BirthDate): ResultDetail => {
+const calculateIslamicAgeFromJalali = (
+  jalaliBirthDate: BirthDate,
+): ResultDetail => {
   // Convert Jalali to Gregorian
-  const gregorianBirthDate = moment(`${jalaliBirthDate.year}-${jalaliBirthDate.month}-${jalaliBirthDate.day}`, 'jYYYY-jMM-jDD').startOf('day');
+  const gregorianBirthDate = moment(
+    `${jalaliBirthDate.year}-${jalaliBirthDate.month}-${jalaliBirthDate.day}`,
+    "jYYYY-jMM-jDD",
+  ).startOf("day");
 
   // Convert Gregorian to Islamic
-  const islamicBirthDate = HijriMoment(gregorianBirthDate.format('YYYY-MM-DD'), 'YYYY-MM-DD').startOf('day');
+  const islamicBirthDate = HijriMoment(
+    gregorianBirthDate.format("YYYY-MM-DD"),
+    "YYYY-MM-DD",
+  ).startOf("day");
 
   // Get today's Islamic date
-  const todayIslamic = HijriMoment().startOf('day');
+  const todayIslamic = HijriMoment().startOf("day");
 
   // Calculate age
   let years = todayIslamic.iYear() - islamicBirthDate.iYear();
@@ -67,7 +76,10 @@ const calculateIslamicAgeFromJalali = (jalaliBirthDate: BirthDate): ResultDetail
 
   if (days < 0) {
     months -= 1;
-    days += HijriMoment.iDaysInMonth(islamicBirthDate.iYear(), islamicBirthDate.iMonth());
+    days += HijriMoment.iDaysInMonth(
+      islamicBirthDate.iYear(),
+      islamicBirthDate.iMonth(),
+    );
   }
 
   if (months < 0) {
@@ -105,7 +117,6 @@ const calculateAgeDiff = (
 
   return { years, months, days };
 };
-
 
 const popoverMenuItems = [
   "محاسبه سن و تاریخ تولد",
@@ -145,33 +156,32 @@ const AgeCalculator = () => {
     setSelectedDay2(e);
   };
 
-  const handleCalculateAge = () => {
-    console.log(selectedDay, selectedType);
+  const handleCalculateAge = async () => {
     if (selectedDay === null) {
       alert("لطفا تاریخ تولد خودتون رو مشخص کنید");
     } else {
       switch (selectedType) {
         case "محاسبه سن و تاریخ تولد": {
+          // const result = await ageCalculatorService({
+          //   date_type: "jalali",
+          //   start_year: selectedDay.year,
+          //   start_month: selectedDay.month,
+          //   start_day: selectedDay.day,
+          // });
           const calculatedAge = calculateAge(selectedDay);
+          // console.log("date that born until today",result, calculatedAge)
           setResult(calculatedAge);
           setResultDemoModal(true);
           break;
         }
         case "محاسبه اختلاف سن دو نفر": {
-          const diff = calculateAgeDiff(
-            selectedDay,
-            selectedDay2,
-          );
-          console.log(diff);
+          const diff = calculateAgeDiff(selectedDay, selectedDay2);
           setResult(diff);
           setResultDemoModal(true);
           break;
         }
         case "محاسبه سن قمری": {
-          const calculatedAge = calculateIslamicAgeFromJalali(
-            selectedDay,
-          );
-          console.log(calculatedAge);
+          const calculatedAge = calculateIslamicAgeFromJalali(selectedDay);
           setResult(calculatedAge);
           setResultDemoModal(true);
           break;
@@ -190,7 +200,7 @@ const AgeCalculator = () => {
         style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
       >
         <div
-          className="mb-5 flex w-full max-w-3xl flex-col items-center justify-items-center py-7 px-3 xl:px-0"
+          className="mb-5 flex w-full max-w-3xl flex-col items-center justify-items-center px-3 py-7 xl:px-0"
           ref={selectTypeRef}
           onClick={handleSelectTypeFocus}
         >
@@ -216,7 +226,11 @@ const AgeCalculator = () => {
         >
           <p>محاسبه</p>
         </button>
-        <>{selectedDay ? ResultModal({ result, selectedDay, calcType: selectedType }) : null}</>
+        <>
+          {selectedDay
+            ? ResultModal({ result, selectedDay, calcType: selectedType })
+            : null}
+        </>
       </div>
     </div>
   );

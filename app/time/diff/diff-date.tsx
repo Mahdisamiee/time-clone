@@ -7,6 +7,8 @@ import moment from "moment-jalaali";
 import SelectType from "./select-type";
 import DatePicker from "./date-picker";
 import { useResultModal } from "./result-modal";
+import { DiffDateCalculator } from "./models/diff-date-values";
+import { ageCalculatorService } from "./services/diff-date-calculator";
 
 interface BirthDate {
   day: number;
@@ -60,7 +62,6 @@ const calculateDateDiff = (
     [date1, date2] = [date2, date1];
   }
 
-
   let years = date2.jYear() - date1.jYear();
   let months = date2.jMonth() - date1.jMonth();
   let days = date2.jDate() - date1.jDate();
@@ -75,16 +76,15 @@ const calculateDateDiff = (
     months += 12;
   }
 
-
   return { years, months, days };
 };
 
 const DiffOfDates = () => {
   const { setShowResultModal, ResultModal } = useResultModal();
   const [selectedType, setSelectedType] = useState<{
-    value: number;
+    value: string;
     label: string;
-  }>({ value: 1, label: "محاسبه به سال شمسی" });
+  }>({ value: "jalali", label: "محاسبه به سال شمسی" });
 
   const [selectedDate, setSelectedDate] = useState<any>({
     year: null,
@@ -99,7 +99,7 @@ const DiffOfDates = () => {
 
   const [results, setResults] = useState<string[]>([]);
 
-  const handleSelectType = (option: { value: number; label: string }) => {
+  const handleSelectType = (option: { value: string; label: string }) => {
     console.log("option---->", option);
     setSelectedType(option);
   };
@@ -119,9 +119,7 @@ const DiffOfDates = () => {
     setSelectedDate2(value);
   };
 
-  const handleSubmit = (e: any) => {
-    console.log(e);
-
+  const handleSubmit = async (e: any) => {
     try {
       if (
         !isSelectedDateValid(selectedDate) ||
@@ -130,14 +128,20 @@ const DiffOfDates = () => {
       )
         throw new Error("تاریخ های انتخابی را به طور کامل وارد کنید");
 
-      let dateDiff = calculateDateDiff(
-        selectedDate,
-        selectedDate2,
-        selectedType.value,
-      );
+      let payload: DiffDateCalculator = {
+        date_type: "jalali",
+        start_year: selectedDate.year,
+        start_month: selectedDate.month,
+        start_day: selectedDate.day,
+        end_year: selectedDate2.year,
+        end_month: selectedDate2.month,
+        end_day: selectedDate2.day,
+      };
+      let dateDiff = await ageCalculatorService(payload);
       setResults([
-        `تفاوت دو تاریخ انتخابی برابر است با : ${dateDiff.years} سال و ${dateDiff.months} ماه و ${dateDiff.days} روز.`,
+        `تفاوت دو تاریخ انتخابی برابر است با : ${dateDiff.year} سال و ${dateDiff.month} ماه و ${dateDiff.day} روز.`,
       ]);
+
       setShowResultModal(true);
     } catch (error: any) {
       alert(error.message);

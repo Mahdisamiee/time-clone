@@ -11,6 +11,7 @@ import {
   persianToCalendars,
 } from "@/lib/utils";
 import { useResultModal } from "./result-modal";
+import { dateConversionService } from "./services/date-conversion-service";
 
 const ConversionDate = () => {
   const { setShowResultModal, ResultModal } = useResultModal();
@@ -40,7 +41,7 @@ const ConversionDate = () => {
     setSelectedDate(value);
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     let jalaaliDate;
     let gregorianDate;
@@ -51,7 +52,6 @@ const ConversionDate = () => {
       // شمسی به میلادی و قمری
       case 1:
         try {
-          const testGregoriDate = convertJalaliToGregorian(selectedDate);
           if (selectedDate.year && selectedDate.month && selectedDate.day) {
             let gregorianResult = persianToCalendars(
               selectedDate.year,
@@ -73,6 +73,16 @@ const ConversionDate = () => {
                 locale: "fa",
               },
             );
+            // console.log(
+            //   await dateConversionService({
+            //     conversiontype: "j2h",
+            //     year: selectedDate.year,
+            //     month: selectedDate.month,
+            //     day: selectedDate.day,
+            //   }),
+            //   hijriResult
+            // );
+            // console.log(hijriResult)
 
             setResults([gregorianResult, hijriResult]);
             setShowResultModal(true);
