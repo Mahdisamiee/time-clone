@@ -3,7 +3,7 @@ import Selector from "@/components/time/selector";
 import { useState } from "react";
 
 type DatePickerType = {
-  type?: number;
+  type?: string;
   date: {
     year: number | null;
     month: number | null;
@@ -96,9 +96,9 @@ const DatePicker = ({ type, date, onChangeDate }: DatePickerType) => {
       />
       <Selector
         options={
-          type == 1
+          type == "jalali"
             ? MONTH_JALAALI_OPTIONS
-            : type == 2
+            : type == "gregorian"
             ? MONTH_GEOR_OPTIONS
             : MONTH_ISLAMIC_OPTIONS
         }
@@ -108,7 +108,7 @@ const DatePicker = ({ type, date, onChangeDate }: DatePickerType) => {
       />
       <input
         type="number"
-        className="rounded-md border-[#ccc] transition-all duration-100 hover:border-[#B3B3B3] text-center sm:text-right"
+        className="rounded-md border-[#ccc] text-center transition-all duration-100 hover:border-[#B3B3B3] sm:text-right"
         value={selectedYear}
         onChange={handleSelectYear}
         placeholder="وارد کردن سال"

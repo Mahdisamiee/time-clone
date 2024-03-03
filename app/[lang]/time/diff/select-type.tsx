@@ -1,28 +1,27 @@
-
 import Select from "react-select";
 
 const options = [
-    { value: 1, label: "محاسبه به سال شمسی" },
-    { value: 2, label: "محاسبه به سال میلادی" },
-    { value: 3, label: "محاسبه به سال قمری" },
-]
+  { value: "jalali", label: "محاسبه به سال شمسی" },
+  { value: "gregorian", label: "محاسبه به سال میلادی" },
+  { value: "hijri", label: "محاسبه به سال قمری" },
+];
 
 type SelectTypeProps = {
-    selectedType: { value: number; label: string } | null;
-    onSelectType : (e:any) => void;
-}
+  selectedType: { value: string; label: string } | null;
+  onSelectType: (e: any) => void;
+};
 
-const SelectType = ({selectedType, onSelectType} : SelectTypeProps) => {
+const SelectType = ({ selectedType, onSelectType }: SelectTypeProps) => {
   return (
     <Select
-        className="w-full sm:w-3/4 text-center text-lg sm:text-right"
-        defaultValue={selectedType}
-        onChange={onSelectType}
-        options={options}
-        maxMenuHeight={200}
-        placeholder="انتخاب نوع محاسبه دو تاریخ..."
-      />
-  )
-}
+      className="w-full text-center text-lg sm:w-3/4 sm:text-right"
+      defaultValue={selectedType}
+      onChange={onSelectType}
+      options={options}
+      maxMenuHeight={200}
+      placeholder="انتخاب نوع محاسبه دو تاریخ..."
+    />
+  );
+};
 
-export default SelectType
+export default SelectType;

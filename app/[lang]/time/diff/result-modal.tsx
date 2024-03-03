@@ -42,14 +42,8 @@ const ResultModal = ({
             <p className="text-md text-gray-500">
               نکته: در محاسبه، خود روز مبنا محاسبه نشده است
             </p>
-            <a href="https://harchi.app">
-              <Image
-                src="/logo2.png"
-                alt="Harchi Logo"
-                className="mt-4 h-7 w-7 rounded-full"
-                width={20}
-                height={20}
-              />
+            <a href="https://harchi.app" className="text-sky-600">
+              Harchi.app | هرچی
             </a>
           </>
         </div>
