@@ -21,10 +21,10 @@ export const metadata: Metadata = {
 };
 
 const navbarItems = [
-  {
-    title: "تقویم ایران",
-    url: "/time/calendar",
-  },
+  // {
+  //   title: "تقویم ایران",
+  //   url: "/time/calendar",
+  // },
   {
     title: "محاسبه سن",
     url: "/time/age",

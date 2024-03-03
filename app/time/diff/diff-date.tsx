@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 
-import moment from "moment-jalaali";
-
 import SelectType from "./select-type";
 import DatePicker from "./date-picker";
 import { useResultModal } from "./result-modal";
@@ -16,19 +14,7 @@ interface BirthDate {
   year: number;
 }
 
-const createMomentFromJalali = (jalaliDate: BirthDate) => {
-  return moment(
-    `${jalaliDate.year}-${jalaliDate.month}-${jalaliDate.day}`,
-    "jYYYY-jMM-jDD",
-  ).startOf("day");
-};
 
-const createMomentFromHijri = (hijriDate: BirthDate) => {
-  return moment(
-    `${hijriDate.year}-${hijriDate.month}-${hijriDate.day}`,
-    "iYYYY-iMM-iDD",
-  ).startOf("day");
-};
 
 const isSelectedDateValid = (birthDate: BirthDate | null): boolean => {
   if (birthDate === null) {
@@ -40,44 +26,7 @@ const isSelectedDateValid = (birthDate: BirthDate | null): boolean => {
     birthDate.year !== null
   );
 };
-const calculateDateDiff = (
-  birthDate1: BirthDate,
-  birthDate2: BirthDate,
-  selectedType: number,
-) => {
-  let date1, date2;
 
-  if (selectedType === 1) {
-    date1 = createMomentFromJalali(birthDate1);
-    date2 = createMomentFromJalali(birthDate2);
-  } else if (selectedType === 3) {
-    date1 = createMomentFromHijri(birthDate1);
-    date2 = createMomentFromHijri(birthDate2);
-  } else {
-    date1 = moment(birthDate1);
-    date2 = moment(birthDate2);
-  }
-
-  if (date2.isBefore(date1)) {
-    [date1, date2] = [date2, date1];
-  }
-
-  let years = date2.jYear() - date1.jYear();
-  let months = date2.jMonth() - date1.jMonth();
-  let days = date2.jDate() - date1.jDate();
-
-  if (days < 0) {
-    months -= 1;
-    days += moment.jDaysInMonth(date1.jYear(), date1.jMonth());
-  }
-
-  if (months < 0) {
-    years -= 1;
-    months += 12;
-  }
-
-  return { years, months, days };
-};
 
 const DiffOfDates = () => {
   const { setShowResultModal, ResultModal } = useResultModal();

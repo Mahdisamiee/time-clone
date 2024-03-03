@@ -47,8 +47,8 @@ export default function TimeContainer() {
 
 const navbarItems = [
   {
-    title: "تقویم ایران",
-    url: "time/calendar",
+    title: "امروز",
+    url: "time/today",
   },
   {
     title: "محاسبه سن",
