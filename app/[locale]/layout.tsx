@@ -1,11 +1,11 @@
-import Script from "next/script";
-import { Metadata } from "next";
-import "./globals.css";
-import { sfPro, inter, lalezar, vazirmatn } from "./fonts";
-import cx from "classnames";
-import Nav from "@/components/layout/nav";
 import Footer from "@/components/layout/footer";
+import Nav from "@/components/layout/nav";
+import cx from "classnames";
+import { Metadata } from "next";
+import Script from "next/script";
 import { Suspense } from "react";
+import { vazirmatn } from "./fonts";
+import "./globals.css";
 
 const GTM_ID = "GTM-TN59LRQS";
 
@@ -288,11 +288,7 @@ export default async function RootLayout({
         `}
       </Script>
 
-      <body
-        className={cx(
-          vazirmatn.variable,
-        )}
-      >
+      <body className={cx(vazirmatn.variable)}>
         <div className="fixed h-screen w-full bg-gradient-to-bl from-indigo-50 via-white to-cyan-100" />
         <Suspense fallback="...">
           {/* @ts-expect-error Server Component */}

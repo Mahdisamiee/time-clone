@@ -1,18 +1,18 @@
 "use client";
 // MapContainer.tsx
-import React, { FormEvent, useEffect, useRef, useState } from "react";
+import axios from "axios";
+import { Feature } from "ol";
 import Map from "ol/Map";
 import View from "ol/View";
-import { Draw } from "ol/interaction";
-import { OSM, Vector as VectorSource } from "ol/source";
-import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
-import { LineString, Point } from "ol/geom";
-import { Feature } from "ol";
-import { fromLonLat, toLonLat } from "ol/proj";
-import { Style, Fill, Icon, Stroke } from "ol/style";
 import { defaults as defaultControls } from "ol/control";
+import { LineString, Point } from "ol/geom";
+import { Draw } from "ol/interaction";
+import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
+import { fromLonLat, toLonLat } from "ol/proj";
+import { OSM, Vector as VectorSource } from "ol/source";
+import { Fill, Icon, Stroke, Style } from "ol/style";
+import React, { FormEvent, useEffect, useRef, useState } from "react";
 import "./index.css";
-import axios from "axios";
 
 const DistanceMap: React.FC = () => {
   const mapRef = useRef<HTMLDivElement>(null);

@@ -1,5 +1,4 @@
 import ToolsListMapper from "@/components/shared/tools-list-mapper";
-import Link from "next/link";
 
 export default async function Home() {
   return (
