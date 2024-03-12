@@ -34,7 +34,6 @@ const ConversionUnitForm = ({
       fetchUnitOptions(unitMode)
         .then((result) => {
           if (result.units) setUnitOptions(result.units);
-          console.log(result.units);
         })
         .catch((error) =>
           console.error("Failed to fetch unit options:", error.message),
