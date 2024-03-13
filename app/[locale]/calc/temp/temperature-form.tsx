@@ -8,7 +8,7 @@ const options = [
   { value: "fahrenheit2celsius", label: "تبدیل فارانهایت به سلسیوس" },
   { value: "celsius2kelvin", label: "تبدیل سلسیوس به کلوین" },
   { value: "kelvin2celsius", label: "تبدیل کلوین به سلسیوس" },
-  { value: "kelvin2f", label: "تبدیل کلوین به فارانهایت" },
+  { value: "kelvin2fahrenheit", label: "تبدیل کلوین به فارانهایت" },
   { value: "fahrenheit2kelvin", label: "تبدیل فارانهایت به کلوین" },
 ];
 
@@ -30,7 +30,6 @@ const TemperatureForm = () => {
 
   const handleChangeValue = (e: any) => {
     setValue(e.currentTarget.value);
-    console.log(e.currentTarget.value);
   };
 
   const handleSubmit = async (e: any) => {
