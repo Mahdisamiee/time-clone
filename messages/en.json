@@ -1,6 +1,7 @@
 {
     "Index": {
         "title": "Harchi",
+        "description": "All You Need",
         "metadata": {
             "title": {
                 "default": "Harchi | usefull kit for all days",
@@ -12,5 +13,9 @@
     "Conversion": {},
     "Currency": {},
     "Map": {},
-    "Time": {}
+    "Time": {},
+    "LocaleSwitcher": {
+        "label": "Change language",
+        "locale": "{locale, select, fa {Persian} en {English} other {Unknown}}"
+    }
 }

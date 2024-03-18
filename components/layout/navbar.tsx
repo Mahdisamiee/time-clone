@@ -3,9 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import useScroll from "@/lib/hooks/use-scroll";
+import LocaleSwitcer from "./locale-switcher";
+import { useTranslations } from "next-intl";
 
 export default function NavBar() {
   const scrolled = useScroll(50);
+  const t = useTranslations("Index");
 
   return (
     <>
@@ -25,8 +28,11 @@ export default function NavBar() {
               height="90"
               className="ml-1 rounded-sm"
             ></Image>
-            <p> هرچی | هرچی که بگی !</p>
+            <p>
+              {t("title")} | {t("description")}
+            </p>
           </Link>
+          <LocaleSwitcer />
         </div>
       </div>
     </>

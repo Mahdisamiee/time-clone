@@ -1,6 +1,7 @@
 {
     "Index": {
         "title": "هرچی",
+        "description" :"هرچی که بگی",
         "metadata": {
             "title": {
                 "default": "هرچی | ابزارهای مورد نیاز در روزهای سال",
@@ -12,5 +13,10 @@
     "Conversion": {},
     "Currency": {},
     "Map": {},
-    "Time": {}
+    "Time": {},
+
+    "LocaleSwitcher": {
+        "label": "تغییر زبان",
+        "locale": "{locale, select, fa {فارسی} en {English} other {Unknown}}"
+    }
 }
