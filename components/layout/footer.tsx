@@ -3,27 +3,27 @@ import Link from "next/link";
 const unitList = [
   {
     title: "تبدیل دما",
-    href: "/calc/temp",
+    href: "/conversion/temp",
   },
   {
     title: "تبدیل طول",
-    href: "/calc/length",
+    href: "/conversion/length",
   },
   {
     title: "تبدیل جرم",
-    href: "/calc/mass",
+    href: "/conversion/mass",
   },
   {
     title: "تبدیل سرعت",
-    href: "/calc/speed",
+    href: "/conversion/speed",
   },
   {
     title: "تبدیل فشار",
-    href: "/calc/pressure",
+    href: "/conversion/pressure",
   },
   {
     title: "تبدیل حجم",
-    href: "/calc/volume",
+    href: "/conversion/volume",
   },
 ];
 
@@ -107,7 +107,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href="/calc/unit"
+                href="/conversion/unit"
                 className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
               >
                 تبدیل واحد
@@ -115,7 +115,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href="/calc/temp"
+                href="/conversion/temp"
                 className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
               >
                 تبدیل دما

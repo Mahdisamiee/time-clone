@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "تبدیل فشار",
   ],
   alternates: {
-    canonical: `https://harchi.app/calc`,
+    canonical: `https://harchi.app/conversion`,
   },
 };
 
@@ -34,46 +34,46 @@ export default async function Home() {
 const tools = [
   {
     title: "تبدیل دما",
-    url: "/calc/temp",
+    url: "/conversion/temp",
   },
   {
     title: "تبدیل طول",
-    url: "/calc/length",
+    url: "/conversion/length",
   },
   {
     title: "تبدیل زمان",
-    url: "/calc/time",
+    url: "/conversion/time",
   },
   {
     title: "تبدیل جرم",
-    url: "/calc/mass",
+    url: "/conversion/mass",
   },
   {
     title: "تبدیل مساحت",
-    url: "/calc/area",
+    url: "/conversion/area",
   },
   {
     title: "تبدیل پهنای باند",
-    url: "/calc/data-transfer",
+    url: "/conversion/data-transfer",
   },
   {
     title: "تبدیل حافظه دیجیتال",
-    url: "/calc/digital-storage",
+    url: "/conversion/digital-storage",
   },
   {
     title: "تبدیل انرژی",
-    url: "/calc/energy",
+    url: "/conversion/energy",
   },
   {
     title: "تبدیل حجم",
-    url: "/calc/volume",
+    url: "/conversion/volume",
   },
   {
     title: "تبدیل سرعت",
-    url: "/calc/speed",
+    url: "/conversion/speed",
   },
   {
     title: "تبدیل فشار",
-    url: "/calc/pressure",
+    url: "/conversion/pressure",
   },
 ];

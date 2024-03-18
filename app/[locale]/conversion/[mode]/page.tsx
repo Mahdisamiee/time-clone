@@ -1,5 +1,5 @@
 import BreadcrumbNavbar from "@/components/shared/breadcrumb-navbar";
-import { UnitMode } from "@/lib/models/calc";
+import { UnitMode } from "@/lib/models/conversion";
 import { Metadata } from "next";
 import { fetchUnitOptions } from "services/unit-services";
 import ConversionUnitForm from "../conversion-unit-form";
@@ -40,7 +40,7 @@ export async function generateMetadata({
       description: `تبدیل انواع ${mode} | تبدیل دقیق واحد های  ${mode} | harchi.app`,
       keywords: [...computedKeywords, ...complicatedKeywords],
       alternates: {
-        canonical: `https://harchi.app/calc/${mode}`,
+        canonical: `https://harchi.app/conversion/${mode}`,
       },
     };
   } catch (error) {
@@ -48,7 +48,7 @@ export async function generateMetadata({
       title: `محاسبه و تبدیل واحد‌های ${mode}`,
       description: `تبدیل انواع ${mode} | تبدیل دقیق واحد های  ${mode} | harchi.app`,
       alternates: {
-        canonical: `https://harchi.app/calc/${mode}`,
+        canonical: `https://harchi.app/conversion/${mode}`,
       },
     };
   }

@@ -12,7 +12,7 @@ const BreadcrumbNavbar = ({
       <span>
         {" "}
         <Link
-          href="/calc"
+          href="/conversion"
           target="_top"
           rel="noreferrer"
           className="capitalize text-sky-500 transition ease-in-out hover:text-sky-700"
@@ -26,7 +26,7 @@ const BreadcrumbNavbar = ({
           <span>
             {" "}
             <Link
-              href={`/calc/${params.mode}`}
+              href={`/conversion/${params.mode}`}
               target="_top"
               rel="noreferrer"
               className="capitalize text-sky-500 transition ease-in-out hover:text-sky-700"
@@ -40,7 +40,7 @@ const BreadcrumbNavbar = ({
               <span>
                 {" "}
                 <Link
-                  href={`/calc/${params.mode}/${params.options}`}
+                  href={`/conversion/${params.mode}/${params.options}`}
                   target="_top"
                   rel="noreferrer"
                   className="capitalize text-sky-500 transition ease-in-out hover:text-sky-700"

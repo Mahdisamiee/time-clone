@@ -1,5 +1,5 @@
 "use client";
-import { UnitDefaults, UnitMode } from "@/lib/models/calc";
+import { UnitDefaults, UnitMode } from "@/lib/models/conversion";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, MouseEvent, useEffect, useId, useState } from "react";
 import Select from "react-select";
@@ -53,7 +53,7 @@ const ConversionUnitForm = ({
   // This function updates the route based on the selected units
   const updateRoute = (newFromUnit: string, newToUnit: string) => {
     setResult(null);
-    const newPath = `/calc/${unitMode}/${newFromUnit}-to-${newToUnit}`;
+    const newPath = `/conversion/${unitMode}/${newFromUnit}-to-${newToUnit}`;
     router.push(newPath);
   };
 
