@@ -1,5 +1,16 @@
 {
     "Index": {
-        "title": "Hello world!"
-    }
+        "title": "Harchi",
+        "metadata": {
+            "title": {
+                "default": "Harchi | usefull kit for all days",
+                "template": "Harchi"
+            },
+            "description": "Harchi - ساعت دقیق امروز، تقویم، اوقات شرعی، اذان امروز، محاسبه آنلاین، تبدیل تاریخ، تبدیل واحد، نقشه و فاصله"
+        }
+    },
+    "Conversion": {},
+    "Currency": {},
+    "Map": {},
+    "Time": {}
 }

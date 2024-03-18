@@ -1,6 +1,13 @@
 import ToolsListMapper from "@/components/shared/tools-list-mapper";
+import { unstable_setRequestLocale } from "next-intl/server";
 
-export default async function Home() {
+type Props = {
+  params: { locale: string };
+};
+
+export default async function Home({ params: { locale } }: Props) {
+  unstable_setRequestLocale(locale);
+
   return (
     <div className="z-10 w-full max-w-screen-lg px-5 xl:px-0">
       <ToolsListMapper tools={tools} />
