@@ -1,6 +1,5 @@
 "use client";
 // MapContainer.tsx
-import axios from "axios";
 import { Feature } from "ol";
 import Map from "ol/Map";
 import View from "ol/View";
@@ -12,9 +11,12 @@ import { fromLonLat, toLonLat } from "ol/proj";
 import { OSM, Vector as VectorSource } from "ol/source";
 import { Fill, Icon, Stroke, Style } from "ol/style";
 import React, { FormEvent, useEffect, useRef, useState } from "react";
+import Select from "react-select";
 import "./index.css";
 import { CalculatedDistance } from "./models/calculated-distance";
-import { distanceCalculator } from "../services/distance-calculator";
+import { distanceCalculator } from "./services/distance-calculator";
+import useFetchCities from "./hooks/fetch-cities";
+import { SelectableCitiesOption } from "./models/selectable-cities-option";
 
 const DistanceMap: React.FC = () => {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -22,6 +24,9 @@ const DistanceMap: React.FC = () => {
   const [result, setResult] = useState<CalculatedDistance | null>();
   const [points, setPoints] = useState<Feature<Point>[]>([]);
   const vectorSourceRef = useRef<VectorSource>(new VectorSource());
+  const { options } = useFetchCities();
+  const [origin, setOrigin] = useState<any>();
+  const [destination, setDestination] = useState<any>();
 
   // set Map Settings
   useEffect(() => {
@@ -65,14 +70,15 @@ const DistanceMap: React.FC = () => {
     });
 
     // Add Draw interaction
-    const draw = new Draw({
+    const pointDraw = new Draw({
       source: vectorSourceRef.current,
       type: "Point", // Change to 'LineString', 'Polygon', etc. as needed
     });
-    initialMap.addInteraction(draw);
+    initialMap.addInteraction(pointDraw);
 
-    draw.on("drawend", (e) => {
+    pointDraw.on("drawend", (e) => {
       const feature = e.feature as Feature<Point>;
+      console.log(feature);
 
       setPoints((prevPoints) => {
         let points = [...prevPoints, feature];
@@ -90,10 +96,6 @@ const DistanceMap: React.FC = () => {
       });
     });
 
-    // **** Add Snap interaction
-    // const snap = new Snap({ source: vectorSourceRef.current });
-    // initialMap.addInteraction(snap);
-
     setMap(initialMap);
     // Clean up on unmount
     return () => {
@@ -106,6 +108,8 @@ const DistanceMap: React.FC = () => {
     vectorSourceRef.current.clear();
     setPoints([]);
     setResult(null);
+    setOrigin(null);
+    setDestination(null);
   };
 
   const handleSendCoords = async (e: FormEvent) => {
@@ -144,12 +148,75 @@ const DistanceMap: React.FC = () => {
     }
   };
 
+  const handleSelectOrigin = (origin: SelectableCitiesOption) => {
+    const point = new Feature({
+      geometry: new Point(fromLonLat(origin.value)),
+    });
+    setPoints((prevPoints) => {
+      let points = [...prevPoints, point];
+
+      // If there are now three points, remove the first one from the map and the array
+      if (points.length > 2) {
+        // Remove the oldest point from the map's vector source
+        const oldestFeature = points.shift(); // Remove and get the first item
+        if (oldestFeature) {
+          vectorSourceRef.current.removeFeature(oldestFeature);
+        }
+      }
+
+      return points;
+    });
+    setOrigin(origin);
+
+    vectorSourceRef.current.addFeature(point);
+  };
+
+  const handleSelectDestination = (origin: SelectableCitiesOption) => {
+    const point = new Feature({
+      geometry: new Point(fromLonLat(origin.value)),
+    });
+    setPoints((prevPoints) => {
+      let points = [...prevPoints, point];
+
+      // If there are now three points, remove the first one from the map and the array
+      if (points.length > 2) {
+        // Remove the oldest point from the map's vector source
+        const oldestFeature = points.shift(); // Remove and get the first item
+        if (oldestFeature) {
+          vectorSourceRef.current.removeFeature(oldestFeature);
+        }
+      }
+
+      return points;
+    });
+    setDestination(origin);
+
+    vectorSourceRef.current.addFeature(point);
+  };
+
   return (
     <div className="grid h-full w-full grid-cols-1 gap-10 md:grid-cols-2 ">
-      <div >
+      <div className="flex flex-col gap-2">
+        <div className="flex flex-col justify-between gap-2 sm:flex-row">
+          <Select
+            className="flex-1"
+            defaultValue={origin}
+            value={origin}
+            onChange={handleSelectOrigin}
+            options={options}
+          ></Select>
+
+          <Select
+            className="flex-1"
+            defaultValue={destination}
+            value={destination}
+            onChange={handleSelectDestination}
+            options={options}
+          ></Select>
+        </div>
         <div
           ref={mapRef}
-          className="map  h-[30rem] w-full overflow-hidden rounded-lg bg-blue-200 p-1 shadow-lg"
+          className="map  h-96 w-full overflow-hidden rounded-lg bg-blue-200 p-1 shadow-lg"
         ></div>
 
         <div className="grid grid-cols-4 gap-5">
@@ -176,7 +243,6 @@ const DistanceMap: React.FC = () => {
           با انتخاب 2 نقطه در نقشه فاصله بین آن ها و زمان لازم برای حرکت بین
           آنها را مشاهده نمایید
         </p>
-        
 
         {!!result ? (
           <div className=" mt-5 flex h-2/3 flex-col items-center justify-around py-10">

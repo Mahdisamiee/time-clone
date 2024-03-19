@@ -1,5 +1,5 @@
-import { CalculatedDistance } from "../distance/models/calculated-distance";
-import { DistanceCalculatorOptions } from "../distance/models/distance-calculator-options";
+import { CalculatedDistance } from "../models/calculated-distance";
+import { DistanceCalculatorOptions } from "../models/distance-calculator-options";
 
 export async function distanceCalculator(
   payLoad: DistanceCalculatorOptions,

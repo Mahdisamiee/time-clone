@@ -37,7 +37,7 @@ const localeSwitcherSelect = ({ children, defaultValue, label }: Props) => {
     >
       <p className="sr-only">{label}</p>
       <select
-        className="inline-flex appearance-none rounded-md bg-transparent py-1"
+        className="inline-flex appearance-none rounded-md border-[#ccc] bg-transparent py-1 transition-all duration-100 hover:border-[#B3B3B3]"
         defaultValue={defaultValue}
         disabled={isPending}
         onChange={onSelectChange}
