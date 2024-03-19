@@ -1,21 +1,5 @@
-// MapContainer.tsx
 import { Metadata } from "next";
-import MapContainer from "./distance-map";
-
-const timeParts = [
-  {
-    title: "نقشه و مکان",
-    url: "/time/calendar",
-  },
-  {
-    title: "وقت و زمان",
-    url: "/time/today",
-  },
-  {
-    title: "علمی و مهندسی",
-    url: "/time/conversion",
-  },
-];
+import DistanceMap from "./distance-map";
 
 export const metadata: Metadata = {
   title: "فاصله شهر‌ها و راههای شهرهای ایران و جهان",
@@ -41,8 +25,7 @@ export const metadata: Metadata = {
 const MapPage: React.FC = () => {
   return (
     <div className="">
-      {/* <LocalNavbar items={timeParts}/> */}
-      <MapContainer />
+      <DistanceMap />
     </div>
   );
 };

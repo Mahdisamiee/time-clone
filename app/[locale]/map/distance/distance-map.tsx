@@ -13,11 +13,13 @@ import { OSM, Vector as VectorSource } from "ol/source";
 import { Fill, Icon, Stroke, Style } from "ol/style";
 import React, { FormEvent, useEffect, useRef, useState } from "react";
 import "./index.css";
+import { CalculatedDistance } from "./models/calculated-distance";
+import { distanceCalculator } from "../services/distance-calculator";
 
 const DistanceMap: React.FC = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<Map>();
-  const [result, setResult] = useState<any>();
+  const [result, setResult] = useState<CalculatedDistance | null>();
   const [points, setPoints] = useState<Feature<Point>[]>([]);
   const vectorSourceRef = useRef<VectorSource>(new VectorSource());
 
@@ -35,7 +37,7 @@ const DistanceMap: React.FC = () => {
           anchor: [0.5, 1],
           anchorXUnits: "fraction",
           anchorYUnits: "fraction",
-          src: "  /marker.png",
+          src: "/marker.png",
           scale: 0.09,
         }),
         stroke: new Stroke({
@@ -73,18 +75,18 @@ const DistanceMap: React.FC = () => {
       const feature = e.feature as Feature<Point>;
 
       setPoints((prevPoints) => {
-        let newPoints = [...prevPoints, feature];
+        let points = [...prevPoints, feature];
 
         // If there are now three points, remove the first one from the map and the array
-        if (newPoints.length > 2) {
+        if (points.length > 2) {
           // Remove the oldest point from the map's vector source
-          const oldestFeature = newPoints.shift(); // Remove and get the first item
+          const oldestFeature = points.shift(); // Remove and get the first item
           if (oldestFeature) {
             vectorSourceRef.current.removeFeature(oldestFeature);
           }
         }
 
-        return newPoints;
+        return points;
       });
     });
 
@@ -129,18 +131,8 @@ const DistanceMap: React.FC = () => {
           dest_lat: dest[1],
           dest_lon: dest[0],
         };
-
-        const response = await axios.post(
-          "https://harchi.app/api/map-api/dist-mat/",
-          payload,
-          {
-            headers: {
-              accept: "application/json",
-              "Content-Type": "application/json",
-            },
-          },
-        );
-        setResult(response.data);
+        const response = await distanceCalculator(payload);
+        setResult(response);
       } catch (error) {
         console.error(error);
       }
@@ -154,7 +146,7 @@ const DistanceMap: React.FC = () => {
 
   return (
     <div className="grid h-full w-full grid-cols-1 gap-10 md:grid-cols-2 ">
-      <div className="">
+      <div >
         <div
           ref={mapRef}
           className="map  h-[30rem] w-full overflow-hidden rounded-lg bg-blue-200 p-1 shadow-lg"
@@ -184,6 +176,7 @@ const DistanceMap: React.FC = () => {
           با انتخاب 2 نقطه در نقشه فاصله بین آن ها و زمان لازم برای حرکت بین
           آنها را مشاهده نمایید
         </p>
+        
 
         {!!result ? (
           <div className=" mt-5 flex h-2/3 flex-col items-center justify-around py-10">
