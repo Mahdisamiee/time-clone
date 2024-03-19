@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   ],
 
   alternates: {
-    canonical: `https://harchi.app/calc/temp`,
+    canonical: `https://harchi.app/conversion/temp`,
   },
 };
 

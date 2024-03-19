@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import ShariaTime from "@/app/time/sharia/sharia-time";
+import ShariaTime from "../sharia-time";
+
 
 export async function generateMetadata({
   params,

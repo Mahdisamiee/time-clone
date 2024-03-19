@@ -1,5 +1,5 @@
 import BreadcrumbNavbar from "@/components/shared/breadcrumb-navbar";
-import { UnitMode } from "@/lib/models/calc";
+import { UnitMode } from "@/lib/models/conversion";
 import { Metadata } from "next";
 import { fetchUnitOptions } from "services/unit-services";
 import ConversionUnitForm from "../../conversion-unit-form";

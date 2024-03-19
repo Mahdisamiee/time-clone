@@ -1,0 +1,22 @@
+{
+    "Index": {
+        "title": "هرچی",
+        "description" :"هرچی که بگی",
+        "metadata": {
+            "title": {
+                "default": "هرچی | ابزارهای مورد نیاز در روزهای سال",
+                "template": "هرچی"
+            },
+            "description": "هرچی - ساعت دقیق امروز، تقویم، اوقات شرعی، اذان امروز، محاسبه آنلاین، تبدیل تاریخ، تبدیل واحد، نقشه و فاصله"
+        }
+    },
+    "Conversion": {},
+    "Currency": {},
+    "Map": {},
+    "Time": {},
+
+    "LocaleSwitcher": {
+        "label": "تغییر زبان",
+        "locale": "{locale, select, fa {فارسی} en {English} other {Unknown}}"
+    }
+}

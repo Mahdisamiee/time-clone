@@ -1,4 +1,4 @@
-import { UnitDefaults } from "@/lib/models/calc";
+import { UnitDefaults } from "@/lib/models/conversion";
 
 export const defaultUnitsForMode: UnitDefaults = {
   length: { fromUnit: "meter", toUnit: "mile" },
@@ -13,9 +13,8 @@ export const defaultUnitsForMode: UnitDefaults = {
   pressure: { fromUnit: "pascal", toUnit: "bar" },
 };
 
-
 export const createUnitOptions = (units: string[]) => {
-  console.log(units)
+  console.log(units);
   return units.map((unit) => ({
     value: unit,
     label: `${unit.toLocaleUpperCase()}`,
