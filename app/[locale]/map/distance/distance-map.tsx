@@ -1,5 +1,6 @@
 "use client";
 // MapContainer.tsx
+import { useRouter } from "next/navigation";
 import { Feature } from "ol";
 import Map from "ol/Map";
 import View from "ol/View";
@@ -10,24 +11,57 @@ import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
 import { fromLonLat, toLonLat } from "ol/proj";
 import { OSM, Vector as VectorSource } from "ol/source";
 import { Fill, Icon, Stroke, Style } from "ol/style";
-import React, { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import Select from "react-select";
 import "./index.css";
 import { CalculatedDistance } from "./models/calculated-distance";
-import { distanceCalculator } from "./services/distance-calculator";
-import useFetchCities from "./hooks/fetch-cities";
 import { SelectableCitiesOption } from "./models/selectable-cities-option";
+import { distanceCalculator } from "./services/distance-calculator";
+import { fetchCities } from "./services/fetch-cities";
 
-const DistanceMap: React.FC = () => {
+const DistanceMap = ({ path }: { path?: string }) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<Map>();
   const [result, setResult] = useState<CalculatedDistance | null>();
   const [points, setPoints] = useState<Feature<Point>[]>([]);
   const vectorSourceRef = useRef<VectorSource>(new VectorSource());
-  const { options } = useFetchCities();
+  const [options, setOptions] = useState<SelectableCitiesOption[]>([]);
   const [origin, setOrigin] = useState<any>();
   const [destination, setDestination] = useState<any>();
+  const [pathOrigin, setPathOrigin] = useState("tehran");
+  const [pathDestination, setPathDestination] = useState("isfahan");
+  const router = useRouter();
 
+  useEffect(() => {
+    async function findPath() {
+      const cities: SelectableCitiesOption[] = await fetchCities();
+      setOptions(cities);
+      if (path && path.includes("-to-")) {
+        const [originPath, destPath] = path.split("-to-");
+        setPathOrigin(originPath);
+        setPathDestination(destPath);
+        if (cities) {
+          const newOrigin = cities?.find(
+            (option) => option.label.toLowerCase() === originPath.toLowerCase(),
+          );
+          const newDestination = cities?.find(
+            (option) => option.label.toLowerCase() === destPath.toLowerCase(),
+          );
+          if (newOrigin) {
+            setOrigin(newOrigin);
+            addPoint(newOrigin!);
+          }
+          if (newDestination) {
+            setDestination(newDestination);
+            addPoint(newDestination);
+          }
+
+          console.log(originPath.toLowerCase(), newOrigin);
+        }
+      }
+    }
+    findPath();
+  }, [path]);
   // set Map Settings
   useEffect(() => {
     // Create raster and vector layers
@@ -103,6 +137,35 @@ const DistanceMap: React.FC = () => {
     };
   }, []);
 
+  // This function updates the route based on the selected units
+  const updateRoute = (originPath: string, destPath: string) => {
+    setResult(null);
+    const newPath = `/map/distance/${originPath}-to-${destPath}`;
+    router.push(newPath);
+  };
+
+  const addPoint = (newOrigin: SelectableCitiesOption) => {
+    const point = new Feature({
+      geometry: new Point(fromLonLat(newOrigin.value)),
+    });
+    setPoints((prevPoints) => {
+      let points = [...prevPoints, point];
+
+      // If there are now three points, remove the first one from the map and the array
+      if (points.length > 2) {
+        // Remove the oldest point from the map's vector source
+        const oldestFeature = points.shift(); // Remove and get the first item
+        if (oldestFeature) {
+          vectorSourceRef.current.removeFeature(oldestFeature);
+        }
+      }
+
+      return points;
+    });
+
+    vectorSourceRef.current.addFeature(point);
+  };
+
   const handleClearMap = (e: FormEvent) => {
     e.preventDefault();
     vectorSourceRef.current.clear();
@@ -148,50 +211,18 @@ const DistanceMap: React.FC = () => {
     }
   };
 
-  const handleSelectOrigin = (origin: SelectableCitiesOption) => {
-    const point = new Feature({
-      geometry: new Point(fromLonLat(origin.value)),
-    });
-    setPoints((prevPoints) => {
-      let points = [...prevPoints, point];
-
-      // If there are now three points, remove the first one from the map and the array
-      if (points.length > 2) {
-        // Remove the oldest point from the map's vector source
-        const oldestFeature = points.shift(); // Remove and get the first item
-        if (oldestFeature) {
-          vectorSourceRef.current.removeFeature(oldestFeature);
-        }
-      }
-
-      return points;
-    });
-    setOrigin(origin);
-
-    vectorSourceRef.current.addFeature(point);
+  const handleSelectOrigin = (newOrigin: SelectableCitiesOption) => {
+    setOrigin(newOrigin);
+    setPathOrigin(newOrigin.label);
+    // updateRoute(newOrigin.label, pathDestination);
+    addPoint(newOrigin);
   };
 
-  const handleSelectDestination = (origin: SelectableCitiesOption) => {
-    const point = new Feature({
-      geometry: new Point(fromLonLat(origin.value)),
-    });
-    setPoints((prevPoints) => {
-      let points = [...prevPoints, point];
-
-      // If there are now three points, remove the first one from the map and the array
-      if (points.length > 2) {
-        // Remove the oldest point from the map's vector source
-        const oldestFeature = points.shift(); // Remove and get the first item
-        if (oldestFeature) {
-          vectorSourceRef.current.removeFeature(oldestFeature);
-        }
-      }
-
-      return points;
-    });
-    setDestination(origin);
-
-    vectorSourceRef.current.addFeature(point);
+  const handleSelectDestination = (newOrigin: SelectableCitiesOption) => {
+    setDestination(newOrigin);
+    setPathDestination(newOrigin.label);
+    // updateRoute(pathOrigin, newOrigin.label);
+    addPoint(newOrigin);
   };
 
   return (

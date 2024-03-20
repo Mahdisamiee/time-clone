@@ -1,5 +1,7 @@
 import { Metadata } from "next";
-import DistanceMap from "./distance-map";
+import DistanceMap from "../distance-map";
+import { fetchCities } from "../services/fetch-cities";
+import { SelectableCitiesOption } from "../models/selectable-cities-option";
 
 export const metadata: Metadata = {
   title: "فاصله شهر‌ها و راههای شهرهای ایران و جهان",
@@ -22,12 +24,34 @@ export const metadata: Metadata = {
   },
 };
 
-const MapPage = () => {
+export async function generateStaticParams({
+  params: { path },
+}: {
+  params: { path: string };
+}) {
+  try {
+    const options = await fetchCities();
+    const result = options!
+      .map((unit: SelectableCitiesOption) => {
+        return options!.map((unit2: SelectableCitiesOption) => {
+          return { path: unit.label + "-to-" + unit2.label };
+        });
+      })
+      .flat(1);
+
+    console.log("HERE DISTANCE",result);
+    return result;
+  } catch (error) {
+    return [];
+  }
+}
+
+const CitiesPage = ({ params: { path } }: { params: { path: string } }) => {
   return (
     <div className="">
-      <DistanceMap />
+      <DistanceMap path={path} />
     </div>
   );
 };
 
-export default MapPage;
+export default CitiesPage;

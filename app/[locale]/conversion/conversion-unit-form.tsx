@@ -1,5 +1,6 @@
 "use client";
-import { UnitDefaults, UnitMode } from "@/lib/models/conversion";
+import SpinnerLoading from "@/components/shared/spinner-loading";
+import { UnitMode } from "@/lib/models/conversion";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, MouseEvent, useEffect, useId, useState } from "react";
 import Select from "react-select";
@@ -8,8 +9,7 @@ import {
   postConversion,
   validateForm,
 } from "services/unit-services";
-import { createUnitOptions, defaultUnitsForMode } from "./unit-config";
-import SpinnerLoading from "@/components/shared/spinner-loading";
+import { defaultUnitsForMode } from "./unit-config";
 
 const ConversionUnitForm = ({
   unitMode,

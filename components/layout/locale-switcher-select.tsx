@@ -9,7 +9,7 @@ type Props = {
   label: string;
 };
 
-const localeSwitcherSelect = ({ children, defaultValue, label }: Props) => {
+const LocaleSwitcherSelect = ({ children, defaultValue, label }: Props) => {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
@@ -48,4 +48,4 @@ const localeSwitcherSelect = ({ children, defaultValue, label }: Props) => {
   );
 };
 
-export default localeSwitcherSelect;
+export default LocaleSwitcherSelect;
