@@ -18,7 +18,11 @@ export const metadata: Metadata = {
     "تبدیل تاریخ تولد به قمری",
   ],
   alternates: {
-    canonical: `https://harchi.app/time/age`,
+    canonical: `/time/age`,
+    languages: {
+      fa: `/fa/time/age`,
+      en: `/en/time/age`,
+    },
   },
 };
 

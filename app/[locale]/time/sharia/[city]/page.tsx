@@ -27,7 +27,11 @@ export async function generateMetadata({
       `نیمه شب شرعی ${decodedCity}`,
     ],
     alternates: {
-      canonical: `https://harchi.app/time/sharia/${decodedCity}`,
+      canonical: `/time/sharia/${decodedCity}`,
+      languages: {
+        fa: `/fa/sharia/${decodedCity}`,
+        en: `/en/sharia/${decodedCity}`,
+      },
     },
   };
 }

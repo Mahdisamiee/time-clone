@@ -22,7 +22,11 @@ export const metadata: Metadata = {
     "",
   ],
   alternates: {
-    canonical: `https://harchi.app/currency/all`,
+    canonical: `/currency/all`,
+    languages: {
+      fa: `/fa/currency/all`,
+      en: `/en/currency/all`,
+    },
   },
 };
 

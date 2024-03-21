@@ -19,7 +19,11 @@ export const metadata: Metadata = {
     "تبدیل فشار",
   ],
   alternates: {
-    canonical: `https://harchi.app/conversion`,
+    canonical: `/conversion`,
+    languages: {
+      fa: `/fa/conversion`,
+      en: `/en/conversion`,
+    },
   },
 };
 

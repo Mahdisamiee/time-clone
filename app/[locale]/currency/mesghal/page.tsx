@@ -31,7 +31,11 @@ export const metadata: Metadata = {
 
   ],
   alternates: {
-    canonical: `https://harchi.app/currency/coin`,
+    canonical: `/currency/mesghal`,
+    languages: {
+      fa: `/fa/currency/mesghal`,
+      en: `/en/currency/mesghal`,
+    },
   },
 };
 

@@ -24,7 +24,11 @@ export const metadata: Metadata = {
   ],
 
   alternates: {
-    canonical: `https://harchi.app/time/conversion`,
+    canonical: `/time/conversion`,
+    languages: {
+      fa: `/fa/time/conversion`,
+      en: `/en/time/conversion`,
+    },
   },
 };
 

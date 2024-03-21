@@ -31,7 +31,11 @@ export const metadata: Metadata = {
 
   ],
   alternates: {
-    canonical: `https://harchi.app/currency/coin`,
+    canonical: `/currency/geram18`,
+    languages: {
+      fa: `/fa/currency/geram18`,
+      en: `/en/currency/geram18`,
+    },
   },
 };
 

@@ -18,7 +18,11 @@ export const metadata: Metadata = {
     "فاصله تهران تا یزد",
   ],
   alternates: {
-    canonical: `https://harchi.app/map/distance`,
+    canonical: `/map/distance`,
+    languages: {
+      fa: `/fa/map/distance`,
+      en: `/en/map/distance`,
+    },
   },
 };
 

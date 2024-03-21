@@ -52,13 +52,17 @@ export async function generateMetadata({
       description: `تبدیل انواع ${mode} | تبدیل دقیق واحد های  ${mode} | تبدیل واحد ${titleParts[0]} به ${titleParts[1]} | harchi.app`,
       keywords: [...computedKeywords, ...complicatedKeywords],
       alternates: {
-        canonical: `https://harchi.app/time/${mode}/${option}`,
+        canonical: `/conversion/${mode}/${option}`,
+        languages: {
+          fa: `/fa/conversion/${mode}/${option}`,
+          en: `/en/conversion/${mode}/${option}`,
+        },
       },
     };
   } catch (error) {
     return {
       alternates: {
-        canonical: `https://harchi.app/time/${mode}/${option}`,
+        canonical: `/conversion/${mode}/${option}`,
       },
     };
   }

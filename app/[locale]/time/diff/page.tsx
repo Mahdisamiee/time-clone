@@ -21,7 +21,11 @@ export const metadata: Metadata = {
     "زمان بین دو تاریخ قمری",
   ],
   alternates: {
-    canonical: `https://harchi.app/time/diff`,
+    canonical: `/time/diff`,
+    languages: {
+      fa: `/fa/time/diff`,
+      en: `/en/time/diff`,
+    },
   },
 };
 

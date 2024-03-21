@@ -23,7 +23,11 @@ export async function generateMetadata({
       `اختلاف ساعت جهانی در ${decodedCity}`,
     ],
     alternates: {
-      canonical: `https://harchi.app/time/${decodedCity}`,
+      canonical: `/time/${decodedCity}`,
+      languages: {
+        fa: `/fa/time/${decodedCity}`,
+        en: `/en/time/${decodedCity}`,
+      },
     },
   };
 }

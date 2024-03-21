@@ -40,7 +40,11 @@ export async function generateMetadata({
       description: `تبدیل انواع ${mode} | تبدیل دقیق واحد های  ${mode} | harchi.app`,
       keywords: [...computedKeywords, ...complicatedKeywords],
       alternates: {
-        canonical: `https://harchi.app/conversion/${mode}`,
+        canonical: `/conversion/${mode}`,
+        languages: {
+          fa: `/fa/conversion/${mode}`,
+          en: `/en/conversion/${mode}`,
+        },
       },
     };
   } catch (error) {
@@ -48,7 +52,11 @@ export async function generateMetadata({
       title: `محاسبه و تبدیل واحد‌های ${mode}`,
       description: `تبدیل انواع ${mode} | تبدیل دقیق واحد های  ${mode} | harchi.app`,
       alternates: {
-        canonical: `https://harchi.app/conversion/${mode}`,
+        canonical: `/conversion/${mode}`,
+        languages: {
+          fa: `/fa/conversion/${mode}`,
+          en: `/en/conversion/${mode}`,
+        },
       },
     };
   }

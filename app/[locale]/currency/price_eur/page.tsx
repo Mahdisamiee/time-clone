@@ -47,6 +47,10 @@ export const metadata: Metadata = {
     "یورو لحظه‌ای امروز",
   ],
   alternates: {
-    canonical: `https://harchi.app/currency/coin`,
+    canonical: `/currency/price_eur`,
+    languages: {
+      fa: `/fa/currency/price_eur`,
+      en: `/en/currency/price_eur`,
+    },
   },
 };

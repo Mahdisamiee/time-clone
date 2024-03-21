@@ -26,8 +26,16 @@ export async function generateMetadata({
 
   return {
     title: {
+      template: ` %s | ${t("Index.metadata.title.template")}`,
       default: t("Index.metadata.title.default"),
-      template: `${t("Index.metadata.title.template")} | %s`,
+    },
+    metadataBase: new URL("https://harchi.app"),
+    alternates: {
+      canonical: "/",
+      languages: {
+        fa: "/fa",
+        en: "/en",
+      },
     },
   };
 }

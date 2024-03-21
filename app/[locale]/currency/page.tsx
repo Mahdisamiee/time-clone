@@ -23,7 +23,11 @@ export const metadata: Metadata = {
     "انس طلا",
   ],
   alternates: {
-    canonical: `https://harchi.app/currency`,
+    canonical: `/currency`,
+    languages: {
+      fa: `/fa/currency`,
+      en: `/en/currency`,
+    },
   },
 };
 

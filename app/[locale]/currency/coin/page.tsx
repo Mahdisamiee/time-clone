@@ -26,7 +26,11 @@ export const metadata: Metadata = {
     "قیمت سکه تک فروشی امروز",
   ],
   alternates: {
-    canonical: `https://harchi.app/currency/coin`,
+    canonical: `/currency/coin`,
+    languages: {
+      fa: `/fa/currency/coin`,
+      en: `/en/currency/coin`,
+    },
   },
 };
 

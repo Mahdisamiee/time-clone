@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import ShariaTime from "./sharia-time";
 
 export const metadata: Metadata = {
-  // i think should use dynamic functin here instead of static object
   title: "اوقات شرعی",
   description: "اوقات شرعی شهرها",
   keywords: [
@@ -16,7 +15,11 @@ export const metadata: Metadata = {
     "نیمه شب شرعی",
   ],
   alternates: {
-    canonical: `https://harchi.app/time/sharia`,
+    canonical: `/time/sharia`,
+    languages: {
+      fa: `/fa/time/sharia`,
+      en: `/en/time/sharia`,
+    },
   },
 };
 

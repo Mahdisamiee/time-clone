@@ -59,6 +59,10 @@ export const metadata: Metadata = {
     "دلار آمریکا لحظه‌ای امروز",
   ],
   alternates: {
-    canonical: `https://harchi.app/currency/coin`,
+    canonical: `/currency/price_dol`,
+    languages: {
+      fa: `/fa/currency/price_dol`,
+      en: `/en/currency/price_dol`,
+    },
   },
 };

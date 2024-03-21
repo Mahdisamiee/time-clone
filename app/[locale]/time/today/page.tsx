@@ -16,7 +16,11 @@ export const metadata: Metadata = {
     "امروز چندمه",
   ],
   alternates: {
-    canonical: `https://harchi.app/time/today`,
+    canonical: `/time/today`,
+    languages: {
+      fa: `/fa/time/today`,
+      en: `/en/time/today`,
+    },
   },
 };
 
