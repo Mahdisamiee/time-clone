@@ -45,6 +45,30 @@
                 "title": "Sharia time {city} | Sunrise and sunset time + Adhan time",
                 "description": "Exact Sharia times of the city {city} | Exact sunrise and sunset of {city}"
             }
+        },
+        "Diff": {
+            "metadata": {
+                "title": "Calculate the distance between two dates",
+                "description": "Calculation of the time interval between two dates, calculation of the number of days and months between two dates based on the solar and lunar calendars"
+            },
+            "ResultModal": {
+                "title": "Select date equal to other calendars",
+                "notice": "Note: In the calculation, the base day is not calculated"
+            },
+            "Type": {
+                "jallali": "Calculation in solar year",
+                "gregorian": "Calculation in gregorian year",
+                "hijri": "Calculation in hijri year",
+                "placeholder": "Selecting the type of calculation of two dates..."
+            },
+            "DatePicker": {
+                "selectDay": "Select Day",
+                "selectMonth": "Select Month",
+                "selectYear": "Input Year"
+            },
+            "calculate": "Submit",
+            "message": "The difference between the two selected dates is equal to: {year}, {month}, and {day}.",
+            "errorMessage": "Enter the dates of your choice completely"
         }
     },
     "LocaleSwitcher": {

@@ -1,10 +1,5 @@
+import { useTranslations } from "next-intl";
 import Select from "react-select";
-
-const options = [
-  { value: "jalali", label: "محاسبه به سال شمسی" },
-  { value: "gregorian", label: "محاسبه به سال میلادی" },
-  { value: "hijri", label: "محاسبه به سال قمری" },
-];
 
 type SelectTypeProps = {
   selectedType: { value: string; label: string } | null;
@@ -12,6 +7,12 @@ type SelectTypeProps = {
 };
 
 const SelectType = ({ selectedType, onSelectType }: SelectTypeProps) => {
+  const t = useTranslations("Time.Diff.Type");
+  const options = [
+    { value: "jalali", label: t("jallali") },
+    { value: "gregorian", label: t("gregorian") },
+    { value: "hijri", label: t("hijri") },
+  ];
   return (
     <Select
       className="w-full text-center text-lg sm:w-3/4 sm:text-right"
@@ -19,7 +20,7 @@ const SelectType = ({ selectedType, onSelectType }: SelectTypeProps) => {
       onChange={onSelectType}
       options={options}
       maxMenuHeight={200}
-      placeholder="انتخاب نوع محاسبه دو تاریخ..."
+      placeholder={t("placeholder")}
     />
   );
 };

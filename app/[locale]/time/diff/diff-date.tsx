@@ -7,14 +7,13 @@ import DatePicker from "./date-picker";
 import { useResultModal } from "./result-modal";
 import { DiffDateCalculator } from "./models/diff-date-values";
 import { ageCalculatorService } from "./services/diff-date-calculator";
+import { useTranslations } from "next-intl";
 
 interface BirthDate {
   day: number;
   month: number;
   year: number;
 }
-
-
 
 const isSelectedDateValid = (birthDate: BirthDate | null): boolean => {
   if (birthDate === null) {
@@ -27,13 +26,13 @@ const isSelectedDateValid = (birthDate: BirthDate | null): boolean => {
   );
 };
 
-
 const DiffOfDates = () => {
+  const t = useTranslations("Time.Diff");
   const { setShowResultModal, ResultModal } = useResultModal();
   const [selectedType, setSelectedType] = useState<{
     value: string;
     label: string;
-  }>({ value: "jalali", label: "محاسبه به سال شمسی" });
+  } | null>(null);
 
   const [selectedDate, setSelectedDate] = useState<any>({
     year: null,
@@ -75,7 +74,7 @@ const DiffOfDates = () => {
         !isSelectedDateValid(selectedDate2) ||
         selectedType === null
       )
-        throw new Error("تاریخ های انتخابی را به طور کامل وارد کنید");
+        throw new Error(t("errorMessage"));
 
       let payload: DiffDateCalculator = {
         date_type: "jalali",
@@ -88,7 +87,11 @@ const DiffOfDates = () => {
       };
       let dateDiff = await ageCalculatorService(payload);
       setResults([
-        `تفاوت دو تاریخ انتخابی برابر است با : ${dateDiff.year} سال و ${dateDiff.month} ماه و ${dateDiff.day} روز.`,
+        t("message", {
+          year: dateDiff.year,
+          month: dateDiff.month,
+          day: dateDiff.day,
+        }),
       ]);
 
       setShowResultModal(true);
@@ -115,9 +118,9 @@ const DiffOfDates = () => {
       <button
         onClick={handleSubmit}
         type="submit"
-        className="text-md font-md mb-2 block w-full rounded bg-sky-500 px-6 pb-2 pt-2.5 uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-sky-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-sky-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-sky-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] sm:w-3/4"
+        className="text-md font-md mb-2 block w-full rounded bg-sky-500 px-6 pb-2 pt-2.5 uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-sky-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-sky-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-sky-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] sm:w-3/4 dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
       >
-        محاسبه
+        {t("calculate")}
       </button>
       {ResultModal({ results })}
     </div>
