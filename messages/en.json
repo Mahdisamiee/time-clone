@@ -7,15 +7,56 @@
                 "default": "Harchi | usefull kit for all days",
                 "template": "Harchi"
             },
-            "description": "Harchi - ساعت دقیق امروز، تقویم، اوقات شرعی، اذان امروز، محاسبه آنلاین، تبدیل تاریخ، تبدیل واحد، نقشه و فاصله"
+            "description": "Harchi - Today's exact time, clock, sharia time, today's call to prayer, online calculation, date conversion, unit conversion, map and distance, cities distance"
         }
     },
     "Conversion": {},
     "Currency": {},
     "Map": {},
-    "Time": {},
+    "Time": {
+        "metadata": {
+            "title": "time and date",
+            "description": "Tools for declaring time and time, Sharia times of cities and exact dates, determining and converting various calendars and time"
+        },
+        "Links": {
+            "today": "Today",
+            "ageCalculation": "Age Calculation",
+            "shariaTime": "Sharia Time",
+            "dateConvert": "Date Converting",
+            "worldClock": "World Clock",
+            "dayDiff": "Date Difference"
+        },
+        "Today": {
+            "metadata": {
+                "title": "Today's Date",
+                "description": "Today's date, today's date is in the lunar and Russian solar calendar, today is in the solar and lunar calendar, what day is it today?"
+            },
+            "title": "Today's Date"
+        },
+        "Sharia": {
+            "today": "Today",
+            "imaask": "Imaask",
+            "sunrise": "Sunrise",
+            "noon": "Noon",
+            "sunset": "Sunset",
+            "maghreb": "Maghreb",
+            "midnight": "Midnight",
+            "metadata": {
+                "title": "Sharia time {city} | Sunrise and sunset time + Adhan time",
+                "description": "Exact Sharia times of the city {city} | Exact sunrise and sunset of {city}"
+            }
+        }
+    },
     "LocaleSwitcher": {
         "label": "Change language",
         "locale": "{locale, select, fa {Persian} en {English} other {Unknown}}"
+    },
+    "Links": {
+        "MainLinks": {
+            "time": "Time & Date",
+            "map": "Map & Distance",
+            "conversion": "Conversions",
+            "currency": "Currency"
+        }
     }
 }

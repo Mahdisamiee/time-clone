@@ -1,11 +1,12 @@
 "use client";
 
+import Option from "@/components/time/select-city-option";
+import { dayFormatter } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import Select from "react-select";
-import { dayFormatter } from "@/lib/utils";
-import Option from "@/components/time/select-city-option";
 // options should go to new js file to access from "Sharia" & "Time" component
-import {WORLD_SHARIA_CITIES} from '@/lib/constants';
+import { WORLD_SHARIA_CITIES } from "@/lib/constants";
+import { useLocale, useTranslations } from "next-intl";
 type PrayerTimesResponse = {
   CityLName: string;
   CityName: string;
@@ -47,6 +48,26 @@ const ShariaTime = ({ city }: { city?: string }) => {
     null,
   );
 
+  const [shariaCities, setShariaCities] = useState<
+    { value: number; label: string }[]
+  >([]);
+
+  const t = useTranslations("Time.Sharia");
+  const locale = useLocale();
+
+  useEffect(() => {
+    const localeOptions: { value: number; label: string }[] =
+      WORLD_SHARIA_CITIES.map((city) => {
+        if (locale == "fa") {
+          return { value: +city.value, label: city.label };
+        } else {
+          return { value: +city.value, label: city.lLabel };
+        }
+      });
+    setShariaCities(localeOptions);
+    console.log(locale);
+  }, [locale]);
+
   useEffect(() => {
     async function fetchPrayerTimes(
       cityId: string,
@@ -72,7 +93,7 @@ const ShariaTime = ({ city }: { city?: string }) => {
           <ul className="grid h-full w-full grid-cols-1 gap-4 text-xl text-sky-600 sm:gap-8 sm:text-2xl">
             <li>
               <h4>
-                <p className="inline text-gray-700">امروز : </p>{" "}
+                <p className="inline text-gray-700">{t("today")} : </p>{" "}
                 {dayFormatter(prayerTimes.Today)}
               </h4>
             </li>
@@ -85,7 +106,7 @@ const ShariaTime = ({ city }: { city?: string }) => {
         className="w-full text-center text-lg sm:w-3/4 sm:text-right"
         defaultValue={selectedOption}
         onChange={setSelectedOption}
-        options={WORLD_SHARIA_CITIES}
+        options={shariaCities}
         maxMenuHeight={200}
         components={{ Option }}
       />
@@ -94,37 +115,37 @@ const ShariaTime = ({ city }: { city?: string }) => {
           <ul className="grid h-full w-full grid-cols-2 gap-8 px-3 text-center text-base sm:text-xl ">
             <li>
               <h4>
-                <p className="inline text-sky-600">اذان صبح</p> :{" "}
+                <p className="inline text-sky-600">{t("imaask")}</p> :{" "}
                 {prayerTimes.Imsaak}
               </h4>
             </li>
             <li>
               <h4>
-                <p className="inline text-sky-600">طلوع آفتاب</p> :{" "}
+                <p className="inline text-sky-600">{t("sunrise")}</p> :{" "}
                 {prayerTimes.Sunrise}
               </h4>
             </li>
             <li>
               <h4>
-                <p className="inline text-sky-600">اذان ظهر</p> :{" "}
+                <p className="inline text-sky-600">{t("noon")}</p> :{" "}
                 {prayerTimes.Noon}
               </h4>
             </li>
             <li>
               <h4>
-                <p className="inline text-sky-600">غروب آفتاب</p> :{" "}
+                <p className="inline text-sky-600">{t("sunset")}</p> :{" "}
                 {prayerTimes.Sunset}
               </h4>
             </li>
             <li>
               <h4>
-                <p className="inline text-sky-600">اذان مغرب</p> :{" "}
+                <p className="inline text-sky-600">{t("maghreb")}</p> :{" "}
                 {prayerTimes.Maghreb}
               </h4>
             </li>
             <li>
               <h4>
-                <p className="inline text-sky-600">نیمه شب</p> :{" "}
+                <p className="inline text-sky-600">{t("midnight")}</p> :{" "}
                 {prayerTimes.Midnight}
               </h4>
             </li>

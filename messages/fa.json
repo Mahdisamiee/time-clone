@@ -1,7 +1,7 @@
 {
     "Index": {
         "title": "هرچی",
-        "description" :"هرچی که بگی",
+        "description": "هرچی که بگی",
         "metadata": {
             "title": {
                 "default": "هرچی | ابزارهای مورد نیاز در روزهای سال",
@@ -13,10 +13,50 @@
     "Conversion": {},
     "Currency": {},
     "Map": {},
-    "Time": {},
-
+    "Time": {
+        "metadata": {
+            "title": "ساعت و زمان",
+            "description": "ابزارهای اعلام وقت و زمان، اوقات شرعی شهرها و تاریخ دقیق، تعیین و تبدیل انواع تقویم ها و زمان"
+        },
+        "Links": {
+            "today": "امروز",
+            "ageCalculation": "محاسبه سن",
+            "shariaTime": "اوقات شرعی",
+            "dateConvert": "تبدیل تاریخ",
+            "worldClock": "ساعت کشورها",
+            "dayDiff": "فاصله دو تاریخ"
+        },
+        "Today": {
+            "metadata": {
+                "title": "تاریخ امروز | امروز چندمه؟",
+                "description": "امروز چندم است، تاریخ امروز ایران، تاریخ امروز به شمسی میلادی قمری و روسی، امروز به میلادی شمسی و قمری چندم است، امروز چند شنبه است"
+            },
+            "title": "تاریخ امروز"
+        },
+        "Sharia": {
+            "today": "امروز",
+            "imaask": "اذان صبح",
+            "sunrise": "طلوع آفتاب",
+            "noon": "اذان ظهر",
+            "sunset": "غروب آفتاب",
+            "maghreb": "اذان مغرب",
+            "midnight": "نیمه شب",
+            "metadata": {
+                "title": "اوقات شرعی {city} | زمان طلوع و غروب آفتاب + زمان اذان",
+                "description": "اوقات شرعی دقیق شهر {city} | طلوع و غروب دقیق آفتاب {city}"
+            }
+        }
+    },
     "LocaleSwitcher": {
         "label": "تغییر زبان",
         "locale": "{locale, select, fa {فارسی} en {English} other {Unknown}}"
+    },
+    "Links": {
+        "MainLinks": {
+            "time": "وقت و زمان",
+            "map": "نقشه و فاصله",
+            "conversion": "تبدیل‌ ها",
+            "currency": "طلا و ارز"
+        }
     }
 }

@@ -1,27 +1,24 @@
-
 import LocalNavbar from "@/components/shared/local-navbar";
+import { useTranslations } from "next-intl";
 import { ReactNode } from "react";
 
-const navbarItems = [
-  {
-    title: "تاریخ امروز",
-    url: "/time/today",
-  },
-  {
-    title: "تقویم ایران",
-    url: "/time/calendar",
-  },
-  {
-    title: "تبدیل تاریخ",
-    url: "/time/conversion",
-  },
-  {
-    title: "ساعت کشورها",
-    url: "/time/worldclock",
-  },
-];
-
 export default function Layout({ children }: { children: ReactNode }) {
+  const t = useTranslations("Time.Links");
+  const navbarItems = [
+    {
+      title: t("today"),
+      url: "/time/today",
+    },
+    {
+      title: t("dateConvert"),
+      url: "/time/conversion",
+    },
+    {
+      title: t("worldClock"),
+      url: "/time/worldclock",
+    },
+  ];
+
   return (
     <div className="z-10 flex w-full max-w-3xl flex-col items-center justify-center px-10 sm:px-3">
       <LocalNavbar items={navbarItems} />

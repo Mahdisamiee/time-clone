@@ -56,8 +56,8 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={locale == "fa" ? "rtl" : "ltr"}>
       <body className={cx(vazirmatn.className, sfPro.className)}>
+        <div className="fixed h-screen w-full bg-gradient-to-bl from-indigo-50 via-white to-cyan-100" />
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <div className="fixed h-screen w-full bg-gradient-to-bl from-indigo-50 via-white to-cyan-100" />
           <Suspense fallback="...">
             {/* @ts-expect-error Server Component */}
             <Nav />
