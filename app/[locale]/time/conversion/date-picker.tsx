@@ -1,5 +1,6 @@
 "use client";
 import Selector from "@/components/time/selector";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 type DatePickerType = {
@@ -74,6 +75,7 @@ const DatePicker = ({ type, date, onChangeDate }: DatePickerType) => {
   const [selectedDay, setSelectedDay] = useState<any>(null);
   const [selectedMonth, setSelectedMonth] = useState<any>(null);
   const [selectedYear, setSelectedYear] = useState<string>("");
+  const t = useTranslations("Time.Conversion.DatePicker");
 
   const handleSelectDay = (option: OptionType) => {
     setSelectedDay(option.value);
@@ -97,7 +99,7 @@ const DatePicker = ({ type, date, onChangeDate }: DatePickerType) => {
         options={DAY_OPTIONS}
         selectedOption={selectedDay}
         onSelectOption={handleSelectDay}
-        label="انتخاب روز"
+        label={t("selectDay")}
       />
       <Selector
         options={
@@ -109,14 +111,14 @@ const DatePicker = ({ type, date, onChangeDate }: DatePickerType) => {
         }
         selectedOption={selectedMonth}
         onSelectOption={handleSelectMonth}
-        label="انتخاب ماه"
+        label={t("selectMonth")}
       />
       <input
         type="number"
         className="rounded-md border-[#ccc] transition-all duration-100 hover:border-[#B3B3B3]"
         value={selectedYear}
         onChange={handleSelectYear}
-        placeholder="وارد کردن سال"
+        placeholder={t("selectYear")}
       />
     </div>
   );

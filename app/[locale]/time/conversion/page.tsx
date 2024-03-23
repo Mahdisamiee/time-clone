@@ -1,38 +1,70 @@
 import { Metadata } from "next";
 import ConversionDate from "./conversion-date";
 import LocalNavbar from "@/components/shared/local-navbar";
+import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
-export const metadata: Metadata = {
-  title: "تبدیل تاریخ شمسی میلادی قمری",
-  description:
-    "تبدیل تاریخ شمسی به میلادی ، میلادی به شمسی ، تبدیل تاریخ تولد به میلادی ، مبدل تاریخ و تبدیل تقویم به شمسی و میلادی و قمری",
-  keywords: [
-    "تبدیل تاریخ",
-    "تبدیل تاریخ تولد",
-    "تبدیل تاریخ شمسی به میلادی",
-    "تبدیل تاریخ تولد به قمری",
-    "تبدیل تاریخ به قمری",
-    "تبدیل تاریخ به میلادی",
-    "تبدیل تاریخ میلادی به شمسی",
-    "تبدیل تاریخ میلادی به قمری",
-    "تبدیل تاریخ به قمری",
-    "تاریخ امروز به میلادی",
-    "تاریخ امروز به قمری",
-    "امروز به قمری",
-    "امروز به شمسی",
-    "امروز به میلادی",
-  ],
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("Time.Conversion.metadata");
+  return {
+    title: t("title"),
+    description: t("description"),
+    keywords: [
+      "تبدیل تاریخ",
+      "تبدیل تاریخ تولد",
+      "تبدیل تاریخ شمسی به میلادی",
+      "تبدیل تاریخ تولد به قمری",
+      "تبدیل تاریخ به قمری",
+      "تبدیل تاریخ به میلادی",
+      "تبدیل تاریخ میلادی به شمسی",
+      "تبدیل تاریخ میلادی به قمری",
+      "تبدیل تاریخ به قمری",
+      "تاریخ امروز به میلادی",
+      "تاریخ امروز به قمری",
+      "امروز به قمری",
+      "امروز به شمسی",
+      "امروز به میلادی",
+      "Change date",
+      "Change date of birth",
+      "Convert Shamsi date to Gregorian",
+      "Convert date of birth to lunar",
+      "Convert date to lunar",
+      "Convert date to Gregorian",
+      "Conversion of Gregorian date to solar",
+      "Converting Gregorian date to lunar",
+      "Convert date to lunar",
+      "Today's date in AD",
+      "Today's Lunar Date",
+      "Today to Shamsi",
+      "today in the AD",
+    ],
 
-  alternates: {
-    canonical: `/time/conversion`,
-    languages: {
-      fa: `/fa/time/conversion`,
-      en: `/en/time/conversion`,
+    alternates: {
+      canonical: `/time/conversion`,
+      languages: {
+        fa: `/fa/time/conversion`,
+        en: `/en/time/conversion`,
+      },
     },
-  },
-};
+  };
+}
 
 const Conversion = () => {
+  const t = useTranslations("Time.Links");
+  const navbarItems = [
+    {
+      title: t("today"),
+      url: "/time/today",
+    },
+    {
+      title: t("ageCalculation"),
+      url: "/time/age",
+    },
+    {
+      title: t("dayDiff"),
+      url: "/time/diff",
+    },
+  ];
   return (
     <>
       <LocalNavbar items={navbarItems} />
@@ -45,22 +77,3 @@ const Conversion = () => {
   );
 };
 export default Conversion;
-
-const navbarItems = [
-  {
-    title: "تاریخ امروز",
-    url: "/time",
-  },
-  {
-    title: "تقویم ایران",
-    url: "/time/calendar",
-  },
-  {
-    title: "محاسبه سن",
-    url: "/time/age",
-  },
-  {
-    title: "فاصله دو تاریخ",
-    url: "/time/diff",
-  },
-];

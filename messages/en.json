@@ -69,6 +69,28 @@
             "calculate": "Submit",
             "message": "The difference between the two selected dates is equal to: {year}, {month}, and {day}.",
             "errorMessage": "Enter the dates of your choice completely"
+        },
+        "Conversion": {
+            "metadata": {
+                "title": "Convert the solar calendar to the lunar calendar",
+                "description": "Convert solar date to Gregorian, Gregorian to solar, convert date of birth to Gregorian, date converter and convert calendar to solar, Gregorian and lunar"
+            },
+            "ResultModal": {
+                "title": "Select date equal to other calendars",
+                "notice": "Note: In the calculation, the base day is not calculated"
+            },
+            "DatePicker": {
+                "selectDay": "Select Day",
+                "selectMonth": "Select Month",
+                "selectYear": "Input Year"
+            },
+            "SelectType": {
+                "j2gh": "Jallali to Gregorian and Hijri",
+                "g2jh": "Gregorian to Jallali and Hijri",
+                "h2jg": "Hijri to Gregorian and Jallali",
+                "placeholder":"Selecting the type of calculation..."
+            },
+            "calculate": "Submit"
         }
     },
     "LocaleSwitcher": {
