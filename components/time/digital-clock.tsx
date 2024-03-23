@@ -1,9 +1,9 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import timezoneMoment from "moment-timezone";
 import moment from "moment";
+import timezoneMoment from "moment-timezone";
 import "moment/locale/fa";
+import { useLocale } from "next-intl";
+import React, { useEffect, useState } from "react";
 import Clock from "react-live-clock";
 import Balancer from "react-wrap-balancer";
 
@@ -12,9 +12,9 @@ interface ClockProps {
   // timeCity: string;
 }
 
-moment.locale("fa");
-
 const LiveClock: React.FC<ClockProps> = ({ timeZone }) => {
+  const locale = useLocale();
+  moment.locale(locale);
   const [adjustedTime, setAdjustedTime] =
     useState<timezoneMoment.Moment | null>(null);
 
@@ -24,7 +24,7 @@ const LiveClock: React.FC<ClockProps> = ({ timeZone }) => {
         const response = await fetch(
           `https://worldtimeapi.org/api/timezone/${timeZone}`,
         );
-        const res= await response.json();
+        const res = await response.json();
         const serverTime = timezoneMoment(res.datetime);
         const localTime = timezoneMoment();
         const difference = serverTime.diff(localTime) + 1000;
@@ -38,9 +38,8 @@ const LiveClock: React.FC<ClockProps> = ({ timeZone }) => {
         }, 1000);
 
         return () => clearInterval(interval);
-      } catch (error:any) {
-        console.error("Failed to fetch the date and time:", error);
-        alert(error.message)
+      } catch (error: any) {
+        alert(error.message);
       }
     };
     fetchData();
@@ -48,11 +47,8 @@ const LiveClock: React.FC<ClockProps> = ({ timeZone }) => {
 
   return (
     <div className="flex w-full flex-col items-center text-center">
-      <h1>
-        زمان دقیق در <span className="text-blue-500 mx-2">{timeZone}</span> 
-      </h1>
       <div
-        className="text-10xl animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm text-7xl md:leading-[5rem]"
+        className="text-10xl animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center text-7xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:leading-[5rem]"
         style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
       >
         {adjustedTime && (
@@ -66,10 +62,10 @@ const LiveClock: React.FC<ClockProps> = ({ timeZone }) => {
       </div>
 
       <p
-        className="mt-6 animate-fade-up text-center text-gray-500 opacity-0 md:text-xl w-full"
+        className="mt-6 w-full animate-fade-up text-center text-gray-500 opacity-0 md:text-xl"
         style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
       >
-        <Balancer >
+        <Balancer>
           {adjustedTime && adjustedTime.format("dddd, MMMM D, YYYY")}
         </Balancer>
       </p>

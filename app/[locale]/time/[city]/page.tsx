@@ -4,6 +4,7 @@ import TimezoneClock from "@/components/time/timezone-clock";
 // import { WORLD_CLOCK_TIMEZONES } from "@/lib/constants";
 import LocalNavbar from "@/components/shared/local-navbar";
 import Card from "@/components/home/simple-card";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -11,16 +12,21 @@ export async function generateMetadata({
   params: { city: string };
 }): Promise<Metadata> {
   const decodedCity = decodeURIComponent(params.city);
+  const t = await getTranslations("Time.CitiesTime.metadata");
   return {
-    title: `ساعت دقیق ${decodedCity} | زمان جهانی ${decodedCity}`,
-    description: `ساعت و زمان دقیق  ${decodedCity} | زمان دقیق به وقت ${decodedCity}  | زمان الان ${decodedCity} | هرچی`,
-    // description: `ساعت دقیق {لندن} | زمان دقیق به وقت {لندن} | زمان الان {لندن}$ | هرچی`,
+    title: t("title", { city: decodedCity }),
+    description: t("description", { city: decodedCity }),
     keywords: [
       `زمان در ${decodedCity}`,
       `ساعت الان ${decodedCity}`,
       `ساعت دقیق ${decodedCity}`,
       `زمان به وقت ${decodedCity}`,
       `اختلاف ساعت جهانی در ${decodedCity}`,
+      `time in ${decodedCity}`,
+      `The time is ${decodedCity}`,
+      `exact time of ${decodedCity}`,
+      `time to time ${decodedCity}`,
+      `world time difference in ${decodedCity}`,
     ],
     alternates: {
       canonical: `/time/${decodedCity}`,
@@ -40,26 +46,22 @@ export async function generateStaticParams() {
   }));
 }
 
-const navbarItems = [
-  {
-    title: "تاریخ امروز",
-    url: "/time",
-  },
-  {
-    title: "تقویم ایران",
-    url: "/time/calendar",
-  },
-  {
-    title: "محاسبه سن",
-    url: "/time/age",
-  },
-  {
-    title: "فاصله دو تاریخ",
-    url: "/time/diff",
-  },
-];
-
 export default async function Page({ params }: { params: { city: string } }) {
+  const t = await getTranslations("Time");
+  const navbarItems = [
+    {
+      title: t("Links.today"),
+      url: "/time",
+    },
+    {
+      title: t("Links.ageCalculation"),
+      url: "/time/age",
+    },
+    {
+      title: t("Links.dayDiff"),
+      url: "/time/diff",
+    },
+  ];
   const WORLD_CLOCK_TIMEZONES = (await import("@/lib/constants"))
     .WORLD_CLOCK_TIMEZONES;
   const decodedCity = decodeURIComponent(params.city);
@@ -76,12 +78,12 @@ export default async function Page({ params }: { params: { city: string } }) {
       <Card>
         <div className="z-10 flex w-full max-w-3xl flex-col items-center justify-center gap-5 px-10 py-5 sm:px-3 ">
           <h1 className="text-bold text-2xl sm:text-3xl">
-            زمان در {decodedCity}
+            {t("CitiesTime.title", { city: decodedCity })}
           </h1>
           {timezone ? (
             <TimezoneClock timezone={timezone} />
           ) : (
-            <p>منطقه انتخاب شده موجود نیست !</p>
+            <p>{t("CitiesTime.error")}</p>
           )}
         </div>
       </Card>

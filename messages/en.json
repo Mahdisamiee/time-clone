@@ -121,8 +121,16 @@
                 "diffResult": "The age difference between two people is: {years} years, {months} months, and {days} days.",
                 "hijriResultTitle": "Calculate your hijri age",
                 "hijriResult": "Your hijri age is {years} years and {months} months and {days} days.",
-                "error" : "There is a problem with the show. Please try again"
+                "error": "There is a problem with the show. Please try again"
             }
+        },
+        "CitiesTime": {
+            "metadata": {
+                "title": "Exact time in {city} | World time in {city}",
+                "description": "Exact time in {city} , Exact time in {city} , Current time in {city} , Harchi"
+            },
+            "title": "Time in {city}",
+            "error": "The selected area is not available!"
         }
     },
     "LocaleSwitcher": {
