@@ -144,5 +144,11 @@
             "conversion": "تبدیل‌ ها",
             "currency": "طلا و ارز"
         }
+    },
+    "Component":{
+        "AnalogClock":{
+            "title": "زمان دقیق شما",
+            "loadingMessage" : "زمان دقیق شما داره مشخص میشه!....."
+        }
     }
 }

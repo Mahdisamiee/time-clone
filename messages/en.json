@@ -144,5 +144,11 @@
             "conversion": "Conversions",
             "currency": "Currency"
         }
+    },
+    "Component":{
+        "AnalogClock":{
+            "title": "Your Exact Time",
+            "loadingMessage" : "Your exact time is being determined! ....."
+        }
     }
 }

@@ -5,11 +5,14 @@ import ReactClock from "react-clock";
 import "react-clock/dist/Clock.css";
 import Balancer from "react-wrap-balancer";
 import axios from "axios";
+import { useTranslations } from "next-intl";
 
 const LocalClock: React.FC = () => {
   const [timeValue, setTimeValue] = useState<any | null>(null);
   const [timeZone, setTimeZone] = useState<string>("");
   const isDesktop = useMediaQuery({ query: "(min-width:1224px)" });
+
+  const t = useTranslations("Component.AnalogClock");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,7 +54,7 @@ const LocalClock: React.FC = () => {
             className="my-5 animate-fade-up bg-gradient-to-bl from-black to-stone-500 bg-clip-text text-center font-vazir text-2xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:text-5xl"
             style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
           >
-            زمان دقیق شما
+            {t("title")}
           </h1>
 
           <ReactClock
@@ -67,7 +70,9 @@ const LocalClock: React.FC = () => {
             <Balancer>{timeZone.split("/").join(" , ")}</Balancer>
           </p>
         </>
-      ) : <p className="h-96 min-h-full p-10 m-12">زمان دقیق شما داره مشخص میشه!.....</p>}
+      ) : (
+        <p className="m-12 h-96 min-h-full p-10">{t("loadingMessage")}</p>
+      )}
     </div>
   );
 };
