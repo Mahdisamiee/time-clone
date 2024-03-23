@@ -1,5 +1,5 @@
 export interface CalculatedAgeValues {
-  year: string;
-  month: string;
-  day: string;
+  years: number;
+  months: number;
+  days: number;
 }

@@ -1,13 +1,13 @@
 import Modal from "@/components/shared/modal";
+import { persianToCalendars } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 import {
-  useState,
   Dispatch,
   SetStateAction,
   useCallback,
   useMemo,
+  useState,
 } from "react";
-import Image from "next/image";
-import { persianToCalendars } from "@/lib/utils";
 
 const ResultModal = ({
   showResultModal,
@@ -22,6 +22,8 @@ const ResultModal = ({
     selectedDay: { year: number; month: number; day: number };
   };
 }) => {
+  const t = useTranslations("Time.Age.ResultModal");
+
   return (
     <Modal showModal={showResultModal} setShowModal={setResultDemoModal}>
       <div className="h-2/3 w-full overflow-hidden md:max-w-md md:rounded-2xl md:border md:border-gray-100 md:shadow-xl">
@@ -29,18 +31,21 @@ const ResultModal = ({
           <a href="https://harchi.app" className="text-sky-600">
             Harchi.app | هرچی
           </a>
-          {details?.calcType === "محاسبه سن و تاریخ تولد" ? (
+          {details?.calcType === t("calculateAge") ? (
             <>
               <h3 className="mb-10 text-3xl font-bold text-gray-800">
-                سن شما مطابق تقویم شمسی
+                {t("resultTitle")}
               </h3>
               <hr className="mb-10 mt-2 h-1 w-full rounded bg-sky-300" />
               <p className="text-2xl text-gray-500">
-                سن شما {details?.result.years} سال و {details?.result.months}{" "}
-                ماه و {details?.result.days} روز است.
+                {t("result", {
+                  years: details?.result.years,
+                  months: details?.result.months,
+                  days: details?.result.days,
+                })}
               </p>
               <hr className="mb-10 mt-2 h-1 w-full rounded bg-sky-300" />
-              <h4 className="text-md text-gray-500">
+              {/* <h4 className="text-md text-gray-500">
                 <p className="inline text-lg text-sky-800">قمری : </p>
                 {persianToCalendars(
                   details.selectedDay.year,
@@ -65,29 +70,34 @@ const ResultModal = ({
                     locale: "en",
                   },
                 )}
-              </h4>
+              </h4> */}
             </>
-          ) : details?.calcType === "محاسبه اختلاف سن دو نفر" ? (
+          ) : details?.calcType === t("ageDiff") ? (
             <>
               <h3 className="mb-10 text-3xl font-bold text-gray-800">
-                اختلاف سن دو نفر
+                {t("diffResultTitle")}
               </h3>
               <hr className="mb-10 mt-2 h-1 w-full rounded bg-sky-300" />
               <p className="text-2xl text-gray-500">
-                اختلاف سن دو نفر برابر : {details?.result.years} سال و{" "}
-                {details?.result.months} ماه و {details?.result.days} روز است.
+                {t("diffResult", {
+                  years: details?.result.years,
+                  months: details?.result.months,
+                  days: details?.result.days,
+                })}
               </p>
             </>
           ) : (
             <>
               <h3 className="mb-10 text-3xl font-bold text-gray-800">
-                محاسبه سن قمری شما
+                {t("hijriResultTitle")}
               </h3>
               <hr className="mb-10 mt-2 h-0.5 w-full rounded bg-gray-200" />
               <p className="text-2xl text-gray-500">
-                سن قمری شما : {details?.result.years} سال و{" "}
-                {details?.result.months} ماه و {details?.result.days} روز قمری
-                است.
+                {t("hijriResult", {
+                  years: details?.result.years,
+                  months: details?.result.months,
+                  days: details?.result.days,
+                })}
               </p>
             </>
           )}
@@ -99,7 +109,7 @@ const ResultModal = ({
 
 export function useResultModal() {
   const [showResultModal, setResultDemoModal] = useState(false);
-
+  const t = useTranslations("Time.Age.ResultModal");
   const ResultModalCallback = useCallback(
     (details: {
       calcType: string | null;
@@ -117,7 +127,7 @@ export function useResultModal() {
       else
         return (
           <>
-            <p>مشکلی در نمایش پیش آمده است. لطفا یکبار دیگر امتحان کنید</p>
+            <p>{t("error")}</p>
           </>
         );
     },

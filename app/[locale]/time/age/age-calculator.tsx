@@ -6,6 +6,7 @@ import { useResultModal } from "./result-modal";
 import DaySelector from "./day-selector";
 import PopoverMenu from "@/components/home/popover-menu";
 import { ageCalculatorService } from "./services/age-calculator-service";
+import { useLocale, useTranslations } from "next-intl";
 
 interface BirthDate {
   day: number;
@@ -118,18 +119,16 @@ const calculateAgeDiff = (
   return { years, months, days };
 };
 
-const popoverMenuItems = [
-  "محاسبه سن و تاریخ تولد",
-  "محاسبه اختلاف سن دو نفر",
-  "محاسبه سن قمری",
-];
-
 const AgeCalculator = () => {
+  const t = useTranslations("Time.Age.AgeCalculator");
+  const locale = useLocale();
+  const popoverMenuItems = [t("calculateAge"), t("ageDiff"), t("hijriAge")];
+
   const { ResultModal, setResultDemoModal } = useResultModal();
   const [selectedDay, setSelectedDay] = useState<any>(null);
   const [selectedDay2, setSelectedDay2] = useState<any>(null);
   const [selectedType, setSelectedType] = useState<string | null>(
-    "انتخاب نوع محاسبه",
+    t("typeSelect"),
   );
   const [result, setResult] = useState<ResultDetail>({
     years: 1300,
@@ -158,36 +157,40 @@ const AgeCalculator = () => {
 
   const handleCalculateAge = async () => {
     if (selectedDay === null) {
-      alert("لطفا تاریخ تولد خودتون رو مشخص کنید");
+      alert(t("alertSelectBirthDate"));
     } else {
       switch (selectedType) {
-        case "محاسبه سن و تاریخ تولد": {
-          // const result = await ageCalculatorService({
-          //   date_type: "jalali",
-          //   start_year: selectedDay.year,
-          //   start_month: selectedDay.month,
-          //   start_day: selectedDay.day,
-          // });
+        case t("calculateAge"): {
+          const result = await ageCalculatorService({
+            date_type: locale == "fa" ? "jalali" : "gregorian",
+            start_year: selectedDay.year,
+            start_month: selectedDay.month,
+            start_day: selectedDay.day,
+          });
           const calculatedAge = calculateAge(selectedDay);
-          // console.log("date that born until today",result, calculatedAge)
-          setResult(calculatedAge);
+          console.log("date that born until today", result, calculatedAge);
+          setResult({
+            days: result.days,
+            months: result.months,
+            years: result.years,
+          });
           setResultDemoModal(true);
           break;
         }
-        case "محاسبه اختلاف سن دو نفر": {
+        case t("ageDiff"): {
           const diff = calculateAgeDiff(selectedDay, selectedDay2);
           setResult(diff);
           setResultDemoModal(true);
           break;
         }
-        case "محاسبه سن قمری": {
+        case t("hijriAge"): {
           const calculatedAge = calculateIslamicAgeFromJalali(selectedDay);
           setResult(calculatedAge);
           setResultDemoModal(true);
           break;
         }
         default:
-          alert("نوع محاسبه را انتخاب کنید");
+          alert(t("alertSelectType"));
           break;
       }
     }
@@ -224,7 +227,7 @@ const AgeCalculator = () => {
           onClick={handleCalculateAge}
           className="mt-20 flex w-1/3 items-center justify-center rounded-md border border-sky-600 px-3 py-2 text-sky-700 transition-all duration-75 hover:border-sky-600 hover:bg-sky-500 hover:text-white focus:outline-none active:bg-sky-200"
         >
-          <p>محاسبه</p>
+          <p>{t("submit")}</p>
         </button>
         <>
           {selectedDay

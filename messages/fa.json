@@ -91,6 +91,38 @@
                 "placeholder": "انتخاب نوع تبدیل ..."
             },
             "calculate": "محاسبه"
+        },
+        "Age": {
+            "metadata": {
+                "title": "محاسبه سن دقیق",
+                "description": "محاسبه سن دقیق بر مبنای سال و ماه و روز تولد و تعیین اختلاف سن ، محاسبه تاریخ تولد مطابق تقویم میلادی شمسی قمری"
+            },
+            "AgeCalculator": {
+                "calculateAge": "محاسبه سن و تاریخ تولد",
+                "ageDiff": "محاسبه اختلاف سن دو نفر",
+                "hijriAge": "محاسبه سن قمری",
+                "typeSelect": "انتخاب نوع محاسبه",
+                "alertSelectBirthDate": "تاریخ تولد خودتون رو مشخص کنید",
+                "alertSelectType": "نوع محاسبه را انتخاب کنید",
+                "submit": "محاسبه"
+            },
+            "DaySelector": {
+                "dateDiff": "محاسبه اختلاف سن دو نفر",
+                "firstDate": "انتخاب تاریخ تولد اول",
+                "secondDate": "انتخاب تاریخ تولد دوم",
+                "selectBirthDate": "انتخاب روز تولد"
+            },
+            "ResultModal": {
+                "calculateAge": "محاسبه سن و تاریخ تولد",
+                "ageDiff": "محاسبه اختلاف سن دو نفر",
+                "resultTitle": "سن شما مطابق تقویم انتخابی",
+                "result": "سن شما {years} سال و {months} ماه و {days} روز است.",
+                "diffResultTitle": "اختلاف سن دو نفر",
+                "diffResult": "اختلاف سن دو نفر برابر : {years} سال و  {months} ماه و {days} روز است.",
+                "hijriResultTitle": "محاسبه سن قمری شما",
+                "hijriResult": "سن قمری شما {years} سال و {months} ماه و {days} روز است.",
+                "error" : "مشکلی در نمایش پیش آمده است. لطفا یکبار دیگر امتحان کنید"
+            }
         }
     },
     "LocaleSwitcher": {

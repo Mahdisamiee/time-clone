@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
+import { useLocale, useTranslations } from "next-intl";
 
 type DayTypeSelectType = {
   selectedDay: any;
@@ -18,38 +19,39 @@ const DaySelector = ({
   onDayChange,
   onDay2Change,
 }: DayTypeSelectType) => {
+  const t = useTranslations("Time.Age.DaySelector");
+  const locale = useLocale();
 
   return (
     <>
-      
       <div className="z-10 text-xl">
-        {selectedType === "محاسبه اختلاف سن دو نفر" ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {selectedType === t("dateDiff") ? (
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <DatePicker
               value={selectedDay}
               onChange={onDayChange}
-              inputPlaceholder="انتخاب تاریخ تولد اول"
+              inputPlaceholder={t("firstDate")}
               shouldHighlightWeekends
               colorPrimary="#9c88ff"
-              locale="fa" // for Persian calendar
+              locale={locale} // for Persian calendar
             />
             <DatePicker
               value={selectedDay2}
               onChange={onDay2Change}
-              inputPlaceholder="انتخاب تاریخ تولد دوم"
+              inputPlaceholder={t("secondDate")}
               shouldHighlightWeekends
               colorPrimary="#9c88ff"
-              locale="fa" // for Persian calendar
+              locale={locale} // for Persian calendar
             />
           </div>
         ) : (
           <DatePicker
             value={selectedDay}
             onChange={onDayChange}
-            inputPlaceholder="انتخاب روز تولد"
+            inputPlaceholder={t("selectBirthDate")}
             shouldHighlightWeekends
             colorPrimary="#9c88ff"
-            locale="fa" // for Persian calendar
+            locale={locale} // for Persian calendar
           />
         )}
       </div>
@@ -58,4 +60,3 @@ const DaySelector = ({
 };
 
 export default DaySelector;
-

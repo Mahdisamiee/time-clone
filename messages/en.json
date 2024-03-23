@@ -88,9 +88,41 @@
                 "j2gh": "Jallali to Gregorian and Hijri",
                 "g2jh": "Gregorian to Jallali and Hijri",
                 "h2jg": "Hijri to Gregorian and Jallali",
-                "placeholder":"Selecting the type of calculation..."
+                "placeholder": "Selecting the type of calculation..."
             },
             "calculate": "Submit"
+        },
+        "Age": {
+            "metadata": {
+                "title": "Calculate the exact age",
+                "description": "Calculate the exact age based on the year, month and day of birth and determine the age difference, calculate the date of birth according to the solar and lunar calendar"
+            },
+            "AgeCalculator": {
+                "calculateAge": "Calculation of age and birth date",
+                "ageDiff": "Calculate the age difference between two people",
+                "hijriAge": "Hijri age calculation",
+                "typeSelect": "Select the type of calculation",
+                "alertSelectBirthDate": "Please Specify your Birth Date",
+                "alertSelectType": "Please Select the Calculation Type",
+                "submit": "Submit"
+            },
+            "DaySelector": {
+                "dateDiff": "Calculate the age difference between two people",
+                "firstDate": "Choose the first birthday",
+                "secondDate": "Choose the second birthday",
+                "selectBirthDate": "Choose a birthday"
+            },
+            "ResultModal": {
+                "calculateAge": "Calculation of age and birth date",
+                "ageDiff": "Calculate the age difference between two people",
+                "resultTitle": "Your Age According to the Selected Calendar",
+                "result": "Your age is {years} years and {months} months and {days} days.",
+                "diffResultTitle": "Difference in the age of two people",
+                "diffResult": "The age difference between two people is: {years} years, {months} months, and {days} days.",
+                "hijriResultTitle": "Calculate your hijri age",
+                "hijriResult": "Your hijri age is {years} years and {months} months and {days} days.",
+                "error" : "There is a problem with the show. Please try again"
+            }
         }
     },
     "LocaleSwitcher": {
