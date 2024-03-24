@@ -48,6 +48,16 @@
                 "title": "محاسبه و تبدیل {from} به {to}",
                 "description": "تبدیل انواع {mode} | تبدیل دقیق واحد های  {mode} | تبدیل واحد {from} به {to}"
             }
+        },
+        "Temperature":{
+            "metadata": {
+                "title": "تبدیل واحد‌های دما",
+                "description": "تبدیل سلسیوس، فارانهایت، کلوین به یکدیگر و  برعکس"
+            },
+            "selectType":"انتخاب حالت تبدیل",
+            "valuePlaceholder": "وارد کردن دما",
+            "submit":"محاسبه",
+            "result": "نتیجه"
         }
     },
     "Currency": {
@@ -313,6 +323,20 @@
             "level1": "تبدیل ها",
             "level2": "تبدیل \"{mode}\"",
             "level3": "محاسبه {from} به {to}"
+        },
+        "Footer": {
+            "title": "هرچی | هرچی که بگی ، هرجا و هروقت",
+            "description": "، ابزار‌های متنوع برای رفع نیاز‌ها و خواسته‌های روزانه.",
+            "Links":{
+                "today" :"تاریخ امروز",
+                "age":"محاسبه سن",
+                "sharia":"اوقات شرعی",
+                "conversion":"تبدیل",
+                "worldClock":"ساعت کشورها",
+                "distance": "فاصله شهرها",
+                "temperature":"تبدیل دما",
+                "harchi":"هرچی"
+            }
         }
     },
     "Errors": {

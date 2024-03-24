@@ -1,39 +1,12 @@
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
-const unitList = [
-  {
-    title: "تبدیل دما",
-    href: "/conversion/temp",
-  },
-  {
-    title: "تبدیل طول",
-    href: "/conversion/length",
-  },
-  {
-    title: "تبدیل جرم",
-    href: "/conversion/mass",
-  },
-  {
-    title: "تبدیل سرعت",
-    href: "/conversion/speed",
-  },
-  {
-    title: "تبدیل فشار",
-    href: "/conversion/pressure",
-  },
-  {
-    title: "تبدیل حجم",
-    href: "/conversion/volume",
-  },
-];
-
 export default function Footer() {
+  const t = useTranslations("Component.Footer");
   return (
     <footer id="footer" className="text-sm text-gray-600">
       <div className="absolute w-full border-t border-gray-200 bg-white px-4 py-5 text-center font-vazir">
-        <h2 className="mb-2 text-lg font-bold text-gray-700">
-          هرچی | هرچی که بگی ، هرجا و هروقت
-        </h2>
+        <h2 className="mb-2 text-lg font-bold text-gray-700">{t("title")}</h2>
         {/* <p className="mb-4 text-gray-500">ابزارهای تبدیل و مدیریت زمان</p> */}
 
         {/* لیست ابزار ها */}
@@ -44,7 +17,7 @@ export default function Footer() {
                 href="/time/today"
                 className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
               >
-                تاریخ امروز
+                {t("Links.today")}
               </Link>
             </li>
             <li>
@@ -52,7 +25,7 @@ export default function Footer() {
                 href="/time/age"
                 className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
               >
-                محاسبه سن
+                {t("Links.age")}
               </Link>
             </li>
             <li>
@@ -60,15 +33,15 @@ export default function Footer() {
                 href="/time/sharia"
                 className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
               >
-                اوقات شرعی
+                {t("Links.sharia")}
               </Link>
             </li>
             <li>
               <Link
-                href="/time/conversion"
+                href="/conversion"
                 className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
               >
-                تبدیل تاریخ
+                {t("Links.conversion")}
               </Link>
             </li>
             <li>
@@ -76,23 +49,7 @@ export default function Footer() {
                 href="/time/worldclock"
                 className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
               >
-                ساعت کشورها
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/time/diff"
-                className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
-              >
-                فاصله دو تاریخ
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/time/calendar"
-                className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
-              >
-                تقویم ایران
+                {t("Links.worldClock")}
               </Link>
             </li>
           </ul>
@@ -102,15 +59,7 @@ export default function Footer() {
                 href="/map/distance"
                 className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
               >
-                فاصله شهرها
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/conversion/unit"
-                className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
-              >
-                تبدیل واحد
+                {t("Links.distance")}
               </Link>
             </li>
             <li>
@@ -118,7 +67,7 @@ export default function Footer() {
                 href="/conversion/temp"
                 className="px-3 py-1 text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
               >
-                تبدیل دما
+                {t("Links.temperature")}
               </Link>
             </li>
           </ul>
@@ -126,9 +75,9 @@ export default function Footer() {
 
         <div className="text-base">
           <Link href="/" className="text-sky-600">
-            هرچی
+            {t("Links.harchi")}
           </Link>{" "}
-          ، ابزار‌های متنوع برای رفع نیاز‌ها و خواسته‌های روزانه.
+          {t("description")}
           <br />
         </div>
         {/* <div
@@ -142,7 +91,7 @@ export default function Footer() {
         </div> */}
         <div
           id="footerlangs"
-          className="mt-2 flex flex-wrap justify-center gap-2"
+          className="mt-5 flex flex-wrap justify-center gap-2"
         >
           <p className="mb-4 text-gray-500">
             Designed By{" "}

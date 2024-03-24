@@ -48,6 +48,16 @@
                 "title": "Calculate and convert {from} to {to}",
                 "description": "{mode} type conversion | {mode} exact unit conversion | {from} to {to} unit conversion"
             }
+        },
+        "Temperature": {
+            "metadata": {
+                "title": "Convert Temperature Units",
+                "description": "Convert Celsius, Fahrenheit, Kelvin to each other and vice versa"
+            },
+            "selectType": "Select Conversion Mode",
+            "valuePlaceholder": "Enter Temperature",
+            "submit": "Submit",
+            "result": "Result"
         }
     },
     "Currency": {
@@ -313,6 +323,20 @@
             "level1": "Conversions",
             "level2": "Convert \"{mode}\"",
             "level3": "Calculate {from} to {to}"
+        },
+        "Footer": {
+            "title": "Harchi | whatever you say, wherever and whenever",
+            "description": "Various tools to meet daily needs and desires.",
+            "Links": {
+                "today": "Today's Date",
+                "age": "Calculate Age",
+                "sharia": "Sharia Times",
+                "conversion": "Conversion",
+                "worldClock": "Country Clocks",
+                "distance": "Distance of Cities",
+                "temperature": "Temperature Conversion",
+                "harchi": "Harchi"
+            }
         }
     },
     "Errors": {

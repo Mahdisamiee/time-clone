@@ -24,7 +24,6 @@
     "@vercel/og": "^0.0.26",
     "axios": "^1.4.0",
     "classnames": "^2.3.2",
-    "date-fns": "^2.30.0",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "focus-trap-react": "^10.0.2",
@@ -41,7 +40,6 @@
     "next-sitemap": "^4.2.3",
     "ol": "^8.1.0",
     "react": "18.2.0",
-    "react-calendar": "^4.6.0",
     "react-clock": "^4.5.0",
     "react-dom": "18.2.0",
     "react-live-clock": "^6.1.15",
@@ -51,9 +49,7 @@
     "react-select": "^5.7.4",
     "react-timezone-select": "^2.1.2",
     "react-wrap-balancer": "^0.3.0",
-    "sharp": "^0.33.2",
-    "typescript": "4.9.4",
-    "use-debounce": "^9.0.3"
+    "typescript": "4.9.4"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",
