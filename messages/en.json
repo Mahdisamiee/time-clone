@@ -11,7 +11,104 @@
         }
     },
     "Conversion": {},
-    "Currency": {},
+    "Currency": {
+        "metadata": {
+            "title": "List of currencies and gold",
+            "description": "calculation and conversion of the price of gold, coins, gold annas, 18 karat gold, dollars and euros"
+        },
+        "Links": {
+            "geram18": "18 carat gold",
+            "ons": "Ons Gold",
+            "mesghal": "Meshghal Gold",
+            "coin": "Gold coin",
+            "priceDol": "Dollar price",
+            "priceEur": "Euro price"
+        },
+        "Shared": {
+            "rial": "Rial",
+            "time": "Time",
+            "calculate": "Buy and sell calculation in Tomans",
+            "taxChangeLabel": "Change with tax calculation",
+            "goldValue": "Gold value (grams)",
+            "goldGramPrice": "Price of 1 gram of gold",
+            "profitPercent": "seller's profit percentage",
+            "taxPercent": "Tax Percent",
+            "feePercent": "fee percentage",
+            "submit": "calculate",
+            "changeResult": "Conversion result",
+            "finalPrice": "Final Price",
+            "goldCost": "Raw Gold Price",
+            "feeCost": "fee amount",
+            "taxCost": "Tax Amount",
+            "sellerProfit": "seller profit",
+            "vahed": "Unit",
+            "country": "Country",
+            "market": "Market type",
+            "type": "Branch"
+        },
+        "PriceEur": {
+            "metadata": {
+                "title": "Euro spot price",
+                "description": "The spot price of the euro today, the calculation of the purchase and sale of the euro in real time"
+            },
+            "title": "Euro Spot Price: ",
+            "currName": "Euro",
+            "vahed": "Banknote",
+            "country": "European Region",
+            "market": "Domestic Market",
+            "type": "Free Currency"
+        },
+        "PriceDol": {
+            "metadata": {
+                "title": "Dollar spot price",
+                "description": "The spot price of the dollar today, the calculation of the purchase and sale of the dollar in real time"
+            },
+            "title": "Dollar Spot Price: ",
+            "currName": "Dollar",
+            "vahed": "Banknote",
+            "country": "America (USA)",
+            "market": "Domestic Market",
+            "type": "Free Currency"
+        },
+        "Ons": {
+            "metadata": {
+                "title": "Momentary price of Ounce gold",
+                "description": "Instant price of gold today, calculation of purchase and sale of gold in real time"
+            },
+            "title": "Current Price of 1 Ounce of Gold: ",
+            "currName": "انس طلا"
+        },
+        "Mesghal": {
+            "metadata": {
+                "title": "Spot Gold Shekel Price",
+                "description": "The current price of a shekel of gold today, the calculation of buying and selling of a shekel of gold in real time"
+            },
+            "title": "Spot Price of 1 Gold Shekel :",
+            "currName": "مثقال طلا"
+        },
+        "Geram18": {
+            "metadata": {
+                "title": "Current price of 18 karat gold",
+                "description": "Current price of 18 carat gold today, calculation of buying and selling of new and second hand 18 carat gold in real time"
+            },
+            "title": "Current price of 18 karat gold: ",
+            "currName": "طلا ۱۸"
+        },
+        "Coin": {
+            "metadata": {
+                "title": "Current Gold Coin Price",
+                "description": "Today's gold coin price and calculation of buying and selling gold, gold coin, gold annas, 18 karat gold today"
+            },
+            "title": "Current coin price: ",
+            "currName": "سکه"
+        },
+        "All": {
+            "metadata": {
+                "title": "Current price of gold and currency",
+                "description": "The current price of gold, 1 ounce of gold, gold coins, dollar price, euro price, Brent oil, bitcoin. Calculation of the price of buying and selling gold. Calculation of tax, interest, wages, raw price of buying and selling gold and stock market index"
+            }
+        }
+    },
     "Map": {
         "metadata": {
             "title": "Distance of cities | roads of cities in Iran and the world",
@@ -173,5 +270,8 @@
             "title": "Your Exact Time",
             "loadingMessage": "Your exact time is being determined! ....."
         }
+    },
+    "Errors": {
+        "fetchErrorMessage": "There is a Problem Receiving Information!"
     }
 }

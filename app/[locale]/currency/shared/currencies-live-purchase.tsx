@@ -3,6 +3,7 @@ import { API_BASE_URL, CURRENCIES_API } from "@/lib/api-constants";
 import { useEffect, useState } from "react";
 import { CurrencyItem } from "./models/currecncies-data";
 import SpinnerLoading from "@/components/shared/spinner-loading";
+import { useTranslations } from "next-intl";
 
 async function getCurenciesData() {
   const res = await fetch(`${API_BASE_URL}/${CURRENCIES_API}/`, {
@@ -13,6 +14,7 @@ async function getCurenciesData() {
 }
 
 const CurrenciesLivePurchase = () => {
+  const t = useTranslations("Errors");
   const [currData, setCurrData] = useState<CurrencyItem[] | null>(null);
 
   useEffect(() => {
@@ -21,7 +23,7 @@ const CurrenciesLivePurchase = () => {
         const result = await getCurenciesData();
         setCurrData(result.currencies);
       } catch (error) {
-        throw new Error("مشکلی در دریافت اطلاعات پیش آمده است!").message;
+        throw new Error(t("fetchErrorMessage")).message;
       }
     };
 

@@ -3,47 +3,61 @@ import CurrenciesLivePurchase from "../shared/currencies-live-purchase";
 import GoldCalculateForm from "../shared/gold-calculate-form";
 import GoldLivePurchase from "../shared/gold-live-purchase";
 import SharedLayout from "../shared/shared-layout";
+import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
-export const metadata: Metadata = {
-  title: "قیمت لحظه‌ای طلا 18 عیار",
-  description:
-    "قیمت لحظه ای طلا 18 عیار امروز ، محاسبه خرید و فروش طلا 18 عیار نو و دست دوم به صورت لحظه‌ای",
-  keywords: [
-    "قیمت طلا 18 عیار",
-    "قیمت لحظه‌ای طلا 18 عیار",
-    "قیمت طلا 18 عیار امروز",
-    "طلا 18 عیار دست دوم",
-    "طلا 18 عیار دست دوم امروز",
-    "قیمت طلا 18 عیار دست دوم",
-    "قیمت طلا 18 عیار دست دوم امروز",
-    "طلا 18 عیار 740",
-    "طلا 18 عیار 740 امروز",
-    "قیمت طلا 18 عیار 740",
-    "قیمت طلا 18 عیار 740 امروز",
-    "طلا 18 عیار چند",
-    "طلا 18 عیار چند امروز",
-    "قیمت طلا 18 عیار چند",
-    "قیمت طلا 18 عیار چند امروز",
-    "طلا 18 عیار",
-    "طلا 18 عیار امروز",
-    "طلا 18 عیار لحظه‌ای",
-    "طلا 18 عیار لحظه‌ای امروز",
-
-  ],
-  alternates: {
-    canonical: `/currency/geram18`,
-    languages: {
-      fa: `/fa/currency/geram18`,
-      en: `/en/currency/geram18`,
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("Currency.Geram18.metadata");
+  return {
+    title: t("title"),
+    description: t("description"),
+    keywords: [
+      "قیمت انس طلا",
+      "قیمت لحظه‌ای انس طلا",
+      "قیمت انس طلا امروز",
+      "انس طلا دست دوم",
+      "انس طلا دست دوم امروز",
+      "قیمت انس طلا دست دوم",
+      "قیمت انس طلا دست دوم امروز",
+      "انس طلا چند",
+      "انس طلا چند امروز",
+      "قیمت انس طلا چند",
+      "قیمت انس طلا چند امروز",
+      "انس طلا",
+      "انس طلا امروز",
+      "انس طلا لحظه‌ای",
+      "انس طلا لحظه‌ای امروز",
+      "The price of gold",
+      "Instantaneous price of gold",
+      "Today's gold price",
+      "second-hand gold ounce",
+      "ounce gold today",
+      "The price of gold",
+      "Today's Second Hand Gold Price",
+      "ounce gold ?",
+      "ounce gold How Many Today",
+      "How much is the price of gold?",
+      "How much is the price of gold today?",
+      "ounce Gold",
+      "ounce Gold Today",
+    ],
+    alternates: {
+      canonical: `/currency/ons`,
+      languages: {
+        fa: `/fa/currency/ons`,
+        en: `/en/currency/ons`,
+      },
     },
-  },
-};
-
+  };
+}
 
 const GoldPage = () => {
+  const t = useTranslations("Currency.Geram18");
   return (
     <SharedLayout
-      livePurchase={<GoldLivePurchase title="قیمت لحظه‌ای طلا 18 عیار" currName="طلا ۱۸"/>}
+      livePurchase={
+        <GoldLivePurchase title={t("title")} currName={t("currName")} />
+      }
       calculateForm={<GoldCalculateForm />}
       summaryPurchase={<CurrenciesLivePurchase />}
     />

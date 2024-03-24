@@ -3,19 +3,20 @@ import ArzCalculateForm from "../shared/arz-calculate-form";
 import CurrenciesLivePurchase from "../shared/currencies-live-purchase";
 import GoldLivePurchase from "../shared/gold-live-purchase";
 import SharedLayout from "../shared/shared-layout";
+import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 const GoldPage = () => {
+  const t = useTranslations("Currency.PriceEur");
   return (
     <SharedLayout
-      livePurchase={
-        <GoldLivePurchase title="قیمت لحظه‌ای یورو : " currName="یورو" />
-      }
+      livePurchase={<GoldLivePurchase title={t("title")} currName="یورو" />}
       calculateForm={
         <ArzCalculateForm
-          vahed="اسکناس"
-          country="منطقه اروپا"
-          market="بازار داخلی"
-          type="ارز آزاد"
+          vahed={t("vahed")}
+          country={t("country")}
+          market={t("market")}
+          type={t("type")}
         />
       }
       summaryPurchase={<CurrenciesLivePurchase />}
@@ -25,32 +26,49 @@ const GoldPage = () => {
 
 export default GoldPage;
 
-export const metadata: Metadata = {
-  title: "قیمت لحظه‌ای یورو",
-  description:
-    "قیمت لحظه‌ای یورو امروز ، محاسبه خرید و فروش یورو به صورت لحظه‌ای",
-  keywords: [
-    "قیمت یورو",
-    "قیمت لحظه‌ای یورو",
-    "قیمت یورو امروز",
-    "یورو دست دوم",
-    "یورو دست دوم امروز",
-    "قیمت یورو دست دوم",
-    "قیمت یورو دست دوم امروز",
-    "یورو چند",
-    "یورو چند امروز",
-    "قیمت یورو چند",
-    "قیمت یورو چند امروز",
-    "یورو",
-    "یورو امروز",
-    "یورو لحظه‌ای",
-    "یورو لحظه‌ای امروز",
-  ],
-  alternates: {
-    canonical: `/currency/price_eur`,
-    languages: {
-      fa: `/fa/currency/price_eur`,
-      en: `/en/currency/price_eur`,
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("Currency.PriceEur.metadata");
+  return {
+    title: t("title"),
+    description: t("description"),
+    keywords: [
+      "قیمت یورو",
+      "قیمت لحظه‌ای یورو",
+      "قیمت یورو امروز",
+      "یورو دست دوم",
+      "یورو دست دوم امروز",
+      "قیمت یورو دست دوم",
+      "قیمت یورو دست دوم امروز",
+      "یورو چند",
+      "یورو چند امروز",
+      "قیمت یورو چند",
+      "قیمت یورو چند امروز",
+      "یورو",
+      "یورو امروز",
+      "یورو لحظه‌ای",
+      "یورو لحظه‌ای امروز",
+      "Euro's Price",
+      "Euro spot price",
+      "Today's Euro Price",
+      "second hand euro",
+      "Today's Second Hand Euro",
+      "second hand euro price",
+      "Today's used euro price",
+      "a few euros",
+      "how many euros today",
+      "How much is the price of Euros",
+      "How much is the price of the euro today?",
+      "euro",
+      "Euro Today",
+      "Instant Euro",
+      "Today's Moment Euro",
+    ],
+    alternates: {
+      canonical: `/currency/price_eur`,
+      languages: {
+        fa: `/fa/currency/price_eur`,
+        en: `/en/currency/price_eur`,
+      },
     },
-  },
-};
+  };
+}

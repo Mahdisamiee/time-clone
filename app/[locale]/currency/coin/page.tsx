@@ -3,6 +3,7 @@ import CurrenciesLivePurchase from "../shared/currencies-live-purchase";
 import GoldCalculateForm from "../shared/gold-calculate-form";
 import GoldLivePurchase from "../shared/gold-live-purchase";
 import SharedLayout from "../shared/shared-layout";
+import { useTranslations } from "next-intl";
 
 export const metadata: Metadata = {
   title: "قیمت لحظه‌ای سکه طلا",
@@ -35,10 +36,11 @@ export const metadata: Metadata = {
 };
 
 const GoldPage = () => {
+  const t = useTranslations("Currency.Coin");
   return (
     <SharedLayout
       livePurchase={
-        <GoldLivePurchase title="قیمت لحظه‌ای سکه" currName="سکه" />
+        <GoldLivePurchase title={t("title")} currName={t("currName")} />
       }
       calculateForm={<GoldCalculateForm />}
       summaryPurchase={<CurrenciesLivePurchase />}
