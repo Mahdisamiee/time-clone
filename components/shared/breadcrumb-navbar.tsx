@@ -1,11 +1,12 @@
+import { useTranslations } from "next-intl";
 import Link from "next/link";
-import React from "react";
 
 const BreadcrumbNavbar = ({
   params,
 }: {
   params?: { mode?: string; options?: string };
 }) => {
+  const t = useTranslations("Component.BreadcrumbNavbar");
   const options = params?.options?.split("-to-");
   return (
     <>
@@ -17,7 +18,7 @@ const BreadcrumbNavbar = ({
           rel="noreferrer"
           className="capitalize text-sky-500 transition ease-in-out hover:text-sky-700"
         >
-          تبدیل ها
+          {t("level1")}
         </Link>
       </span>
       <span> / </span>
@@ -31,7 +32,7 @@ const BreadcrumbNavbar = ({
               rel="noreferrer"
               className="capitalize text-sky-500 transition ease-in-out hover:text-sky-700"
             >
-              تبدیل {params.mode}
+              {t("level2", { mode: params.mode })}
             </Link>
           </span>
           {options ? (
@@ -45,7 +46,7 @@ const BreadcrumbNavbar = ({
                   rel="noreferrer"
                   className="capitalize text-sky-500 transition ease-in-out hover:text-sky-700"
                 >
-                  محاسبه {options[0]} به {options[1]}
+                  {t("level3", { from: options[0], to: options[1] })}
                 </Link>
               </span>
             </>

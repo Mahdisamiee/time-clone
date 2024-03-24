@@ -10,7 +10,46 @@
             "description": "Harchi - Today's exact time, clock, sharia time, today's call to prayer, online calculation, date conversion, unit conversion, map and distance, cities distance"
         }
     },
-    "Conversion": {},
+    "Conversion": {
+        "metadata": {
+            "title": "Conversions",
+            "description": "Conversion of temperature, length, time, mass, area, bandwidth, digital memory, energy, volume, speed, pressure to and vice versa"
+        },
+        "Links": {
+            "temp": "Temperature conversion",
+            "length": "Length conversion",
+            "time": "Time conversion",
+            "mass": "Mass conversion",
+            "area": "Area conversion",
+            "dataTransfer": "Bandwidth conversion",
+            "digitalStorage": "Digital memory conversion",
+            "energy": "Energy Conversion",
+            "volume": "Volume conversion",
+            "speed": "Speed conversion",
+            "pressure": "Pressure conversion"
+        },
+        "UnitForm": {
+            "title": "Calculation and Conversion of Units",
+            "from": "Convert From ",
+            "to": "convert To",
+            "value": "Value...",
+            "submit": "Submit",
+            "result": "Conversion result from \"{fromUnit}\" to \"{toUnit}\" : ",
+            "errorMessage": "There was a problem converting, please try again."
+        },
+        "Mode": {
+            "metadata": {
+                "title": "Calculation and conversion of {mode} units",
+                "description": "Conversion of {mode} types | Exact conversion of {mode} units"
+            }
+        },
+        "Options": {
+            "metadata": {
+                "title": "Calculate and convert {from} to {to}",
+                "description": "{mode} type conversion | {mode} exact unit conversion | {from} to {to} unit conversion"
+            }
+        }
+    },
     "Currency": {
         "metadata": {
             "title": "List of currencies and gold",
@@ -269,6 +308,11 @@
         "AnalogClock": {
             "title": "Your Exact Time",
             "loadingMessage": "Your exact time is being determined! ....."
+        },
+        "BreadcrumbNavbar": {
+            "level1": "Conversions",
+            "level2": "Convert \"{mode}\"",
+            "level3": "Calculate {from} to {to}"
         }
     },
     "Errors": {

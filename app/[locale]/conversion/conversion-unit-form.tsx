@@ -10,6 +10,7 @@ import {
   validateForm,
 } from "services/unit-services";
 import { defaultUnitsForMode } from "./unit-config";
+import { useTranslations } from "next-intl";
 
 const ConversionUnitForm = ({
   unitMode,
@@ -18,6 +19,7 @@ const ConversionUnitForm = ({
   unitMode: UnitMode;
   unitData?: string;
 }) => {
+  const t = useTranslations("Conversion.UnitForm");
   const router = useRouter();
 
   const defaults = defaultUnitsForMode[unitMode];
@@ -86,7 +88,7 @@ const ConversionUnitForm = ({
       const conversionResult = await postConversion(payload);
       setResult(conversionResult.result);
     } catch (error: any) {
-      alert("مشکلی در تبدیل پیش آمده، لطفا دوباره امتحان کنید.");
+      alert(t("errorMessage"));
     } finally {
       setLoading(false);
     }
@@ -95,7 +97,7 @@ const ConversionUnitForm = ({
   return (
     <div className="z-10 flex flex-col items-center justify-around gap-5 px-5 py-10">
       <h1 className="my-4 text-xl capitalize text-sky-500">
-        محاسبه و تبدیل واحد‌های {unitMode}
+        {t("title")} {unitMode}
       </h1>
       {/* Calc Settings (from, to, val) Box */}
       <div className="sm-100 grid w-full grid-cols-1 gap-5 sm:grid-cols-3">
@@ -109,7 +111,7 @@ const ConversionUnitForm = ({
           )}
           onChange={handleFromUnitChange}
           options={unitOptions}
-          placeholder={"تبدیل از "}
+          placeholder={t("from")}
           isLoading={loading}
           isDisabled={loading}
         />
@@ -123,7 +125,7 @@ const ConversionUnitForm = ({
           )}
           onChange={handleToUnitChange}
           options={unitOptions}
-          placeholder={"تبدیل به"}
+          placeholder={t("to")}
           isLoading={loading}
           isDisabled={loading}
         />
@@ -134,7 +136,7 @@ const ConversionUnitForm = ({
           value={value}
           onChange={handleChangeValue}
           disabled={loading}
-          placeholder="مقدار..."
+          placeholder={t("value")}
         />
       </div>
       {/* Submit button to Send Data */}
@@ -144,13 +146,13 @@ const ConversionUnitForm = ({
         disabled={loading}
         className="text-md font-md sm-100 mb-2 block w-full rounded bg-blue-500 px-6 pb-2 pt-2.5 uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-blue-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
       >
-        محاسبه
+        {t("submit")}
       </button>
 
       {result !== null ? (
         <div className="mt-5 text-center">
           <h1 className="text-2xl capitalize text-sky-950">
-            نتیجه تبدیل از {fromUnit} به {toUnit} :{" "}
+            {t("result", { fromUnit: fromUnit, toUnit: toUnit })}
           </h1>
           <p className="mt-5 text-2xl tracking-wide text-sky-600">{result}</p>
         </div>
