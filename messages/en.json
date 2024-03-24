@@ -12,7 +12,30 @@
     },
     "Conversion": {},
     "Currency": {},
-    "Map": {},
+    "Map": {
+        "metadata": {
+            "title": "Distance of cities | roads of cities in Iran and the world",
+            "description": "Calculating the distance between cities and roads in Iran, the distance between Istanbul, Karbala, Tehran, Isfahan, Shiraz, Mashhad, Tabriz and all cities to each other, intercity distance finder"
+        },
+        "Links": {
+            "distance": "Distance"
+        },
+        "Loading": {
+            "message": "The map is being loaded..."
+        },
+        "DistanceMap": {
+            "alertSelectCoords": "Please select two positions on the page",
+            "alertNoCoords": "You have not selected a point yet...",
+            "clear": "Clear",
+            "submit": "calculate",
+            "citiesDistance": "Cities Distance",
+            "notice": "By selecting 2 points on the map, see the distance between them and the time required to move between them",
+            "distanceResult": "The Distance between the Points:",
+            "intervalResult": "The Time is equal to :",
+            "hour": "hour",
+            "kilometer": "kilometer"
+        }
+    },
     "Time": {
         "metadata": {
             "title": "time and date",
@@ -145,10 +168,10 @@
             "currency": "Currency"
         }
     },
-    "Component":{
-        "AnalogClock":{
+    "Component": {
+        "AnalogClock": {
             "title": "Your Exact Time",
-            "loadingMessage" : "Your exact time is being determined! ....."
+            "loadingMessage": "Your exact time is being determined! ....."
         }
     }
 }

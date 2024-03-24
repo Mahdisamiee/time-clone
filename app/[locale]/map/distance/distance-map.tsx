@@ -18,6 +18,7 @@ import { CalculatedDistance } from "./models/calculated-distance";
 import { SelectableCitiesOption } from "./models/selectable-cities-option";
 import { distanceCalculator } from "./services/distance-calculator";
 import { fetchCities } from "./services/fetch-cities";
+import { useTranslations } from "next-intl";
 
 const DistanceMap = ({ path }: { path?: string }) => {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -31,6 +32,8 @@ const DistanceMap = ({ path }: { path?: string }) => {
   const [pathOrigin, setPathOrigin] = useState("tehran");
   const [pathDestination, setPathDestination] = useState("isfahan");
   const router = useRouter();
+
+  const t = useTranslations("Map.DistanceMap");
 
   useEffect(() => {
     async function findPath() {
@@ -207,7 +210,7 @@ const DistanceMap = ({ path }: { path?: string }) => {
       // Reset points to allow for new points to be selected
       setPoints([]);
     } else {
-      alert("لطفاً دو موقعیت را در صفحه انتخاب کنید");
+      alert(t("alertSelectCoords"));
     }
   };
 
@@ -256,7 +259,7 @@ const DistanceMap = ({ path }: { path?: string }) => {
             type="submit"
             className="text-md font-md col-span-1 my-3 block w-full rounded bg-gray-400 px-6 pb-2 pt-2.5 uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-gray-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-gray-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-gray-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
           >
-            پاک کردن
+            {t("clear")}
           </button>
           <button
             onClick={handleSendCoords}
@@ -264,41 +267,38 @@ const DistanceMap = ({ path }: { path?: string }) => {
             disabled={points.length !== 2}
             className="text-md font-md col-span-3 my-3 block w-full rounded bg-sky-500 px-6 pb-2 pt-2.5 uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-sky-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-sky-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-sky-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
           >
-            محاسبه
+            {t("submit")}
           </button>
         </div>
       </div>
       <div>
-        <h1 className="text-3xl text-sky-950">فاصله شهرها</h1>
+        <h1 className="text-3xl text-sky-950">{t("citiesDistance")}</h1>
         <p className="text-md mb-10 tracking-wide text-sky-600">
-          با انتخاب 2 نقطه در نقشه فاصله بین آن ها و زمان لازم برای حرکت بین
-          آنها را مشاهده نمایید
+          {t("notice")}
         </p>
 
         {!!result ? (
           <div className=" mt-5 flex h-2/3 flex-col items-center justify-around py-10">
             <div>
-              <h3 className="text-2xl text-sky-900">
-                فاصله دو نقطه انتخاب شده برابر است با :
-              </h3>
+              <h3 className="text-2xl text-sky-900">{t("distanceResult")}</h3>
               <p className="text-2xl tracking-wide text-sky-600">
-                {(result?.distance[0].distance / 1000).toFixed(2)} کیلومتر
+                {(result?.distance[0].distance / 1000).toFixed(2)}{" "}
+                {t("kilometer")}
               </p>
             </div>
             <div>
-              <h3 className="text-2xl text-sky-900">
-                حد فاصل زمانی برابر است با :
-              </h3>
+              <h3 className="text-2xl text-sky-900">{t("intervalResult")}</h3>
               <p className="text-2xl tracking-wide text-sky-600">
-                {(result?.duration[0].duration / 3600).toFixed(2)} ساعت.
+                {new Date(result?.duration[0].duration * 1000)
+                  .toISOString()
+                  .substr(11, 8)}{" "}
+                {t("hour")}
               </p>
             </div>
           </div>
         ) : (
           <div className="align-center flex h-1/2 flex-col justify-center ">
-            <h3 className="text-2xl text-sky-700">
-              هنوز نقطه‌ای انتخاب نکرده‌اید...
-            </h3>
+            <h3 className="text-2xl text-sky-700">{t("alertNoCoords")}</h3>
           </div>
         )}
       </div>

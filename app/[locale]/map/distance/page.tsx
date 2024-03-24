@@ -1,30 +1,44 @@
 import { Metadata } from "next";
 import DistanceMap from "./distance-map";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "فاصله شهر‌ها و راههای شهرهای ایران و جهان",
-  description:
-    "محاسبه فاصله شهرها و مسافت راههای ایران ، فاصله استانبول کربلا تهران اصفهان شیراز مشهد تبریز و تمام شهرها تا یکدیگر ، مسافت یاب بین شهری",
-  keywords: [
-    "فاصله تهران تا اصفهان ",
-    "فاصله وان تا استانبول ",
-    "فاصله تهران تا مشهد ",
-    "فاصله تهران تا تبریز ",
-    "فاصله تهران تا شیراز ",
-    "فاصله تهران تا رشت ",
-    "فاصله اصفهان تا شیراز ",
-    "فاصله وان تا ترابزون ",
-    "فاصله وان تا ازمیر ",
-    "فاصله تهران تا یزد",
-  ],
-  alternates: {
-    canonical: `/map/distance`,
-    languages: {
-      fa: `/fa/map/distance`,
-      en: `/en/map/distance`,
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("Map.metadata");
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    keywords: [
+      "فاصله تهران تا اصفهان ",
+      "فاصله وان تا استانبول ",
+      "فاصله تهران تا مشهد ",
+      "فاصله تهران تا تبریز ",
+      "فاصله تهران تا شیراز ",
+      "فاصله تهران تا رشت ",
+      "فاصله اصفهان تا شیراز ",
+      "فاصله وان تا ترابزون ",
+      "فاصله وان تا ازمیر ",
+      "فاصله تهران تا یزد",
+      "Distance from Tehran to Isfahan",
+      "Distance from Van to Istanbul",
+      "Distance from Tehran to Mashhad",
+      "Distance from Tehran to Tabriz",
+      "Distance from Tehran to Shiraz",
+      "Distance from Tehran to Rasht",
+      "Distance from Isfahan to Shiraz",
+      "Distance from Van to Trabzon",
+      "Distance from Van to Izmir",
+      "Distance from Tehran to Yazd",
+    ],
+    alternates: {
+      canonical: `/map/distance`,
+      languages: {
+        fa: `/fa/map/distance`,
+        en: `/en/map/distance`,
+      },
     },
-  },
-};
+  };
+}
 
 const MapPage = () => {
   return (
