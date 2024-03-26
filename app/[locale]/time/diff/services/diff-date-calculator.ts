@@ -7,7 +7,7 @@ export async function ageCalculatorService(
   ): Promise<DiffDateResult> {
     try {
       const response = await fetch(
-        `https://harchi.app/api/kitcalendar/date-diff/`,
+        `https://whatever.plus/api/kitcalendar/date-diff/`,
         {
           cache: "no-cache",
           method: "POST",

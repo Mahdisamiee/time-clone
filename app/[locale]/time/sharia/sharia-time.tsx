@@ -31,6 +31,10 @@ type PrayerTimesResponse = {
 };
 
 const ShariaTime = ({ city }: { city?: string }) => {
+
+  const t = useTranslations("Time.Sharia");
+  const locale = useLocale();
+
   // for select the code of city
   const [selectedOption, setSelectedOption] = useState<
     { value: number; label: string; subLabel?: string; lLabel?: string } | any
@@ -41,7 +45,7 @@ const ShariaTime = ({ city }: { city?: string }) => {
             option.label === city ||
             option.lLabel?.toLocaleLowerCase() === city,
         )
-      : { value: 1, label: "تهران" },
+      : { value: 1, label: locale == "fa" ? "تهران" : "Tehran" },
   );
   // to save the Sharia times
   const [prayerTimes, setPrayerTimes] = useState<PrayerTimesResponse | null>(
@@ -52,8 +56,7 @@ const ShariaTime = ({ city }: { city?: string }) => {
     { value: number; label: string }[]
   >([]);
 
-  const t = useTranslations("Time.Sharia");
-  const locale = useLocale();
+  
 
   useEffect(() => {
     const localeOptions: { value: number; label: string }[] =

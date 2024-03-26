@@ -10,7 +10,7 @@ export const fetchCities = async (): Promise<SelectableCitiesOption[]> => {
   };
 
   try {
-    const response = await fetch("https://harchi.app/api/map-api/get-cities/");
+    const response = await fetch("https://whatever.plus/api/map-api/get-cities/");
     const result = await response.json();
     return convertData(result);
   } catch (error: any) {

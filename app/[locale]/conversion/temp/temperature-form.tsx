@@ -79,7 +79,7 @@ const TemperatureForm = () => {
       const payload = { conv_mode: selectedMode?.value, val: value };
       setLoading(true);
       const res = await fetch(
-        "https://harchi.app/api/conversions-api/temp-conv/",
+        "https://whatever.plus/api/conversions-api/temp-conv/",
         {
           method: "POST",
           headers: {

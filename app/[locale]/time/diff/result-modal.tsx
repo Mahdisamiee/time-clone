@@ -42,8 +42,8 @@ const ResultModal = ({
             <p className="text-md text-gray-500">
               {t("notice")}
             </p>
-            <a href="https://harchi.app" className="text-sky-600">
-              Harchi.app | هرچی
+            <a href="https://whatever.plus" className="text-sky-600">
+              Whatever.plus | هرچی
             </a>
           </>
         </div>

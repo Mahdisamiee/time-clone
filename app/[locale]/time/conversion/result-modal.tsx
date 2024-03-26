@@ -35,8 +35,8 @@ const ResultModal = ({
                 </p>
               ))}
             <hr className="my-2 mb-10 mt-2 h-0.5 w-full rounded bg-blue-400" />
-            <a href="https://harchi.app" className="text-sky-600">
-              Harchi.app | هرچی
+            <a href="https://whatever.plus" className="text-sky-600">
+              Whatever.plus | هرچی
             </a>
           </>
         </div>

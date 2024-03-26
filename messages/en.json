@@ -1,13 +1,13 @@
 {
     "Index": {
-        "title": "Harchi",
+        "title": "Whatever",
         "description": "All You Need",
         "metadata": {
             "title": {
-                "default": "Harchi | usefull kit for all days",
-                "template": "Harchi"
+                "default": "Whatever | usefull kit for all days",
+                "template": "Whatever"
             },
-            "description": "Harchi - Today's exact time, clock, sharia time, today's call to prayer, online calculation, date conversion, unit conversion, map and distance, cities distance"
+            "description": "Whatever - Today's exact time, clock, sharia time, today's call to prayer, online calculation, date conversion, unit conversion, map and distance, cities distance"
         }
     },
     "Conversion": {
@@ -296,7 +296,7 @@
         "CitiesTime": {
             "metadata": {
                 "title": "Exact time in {city} | World time in {city}",
-                "description": "Exact time in {city} , Exact time in {city} , Current time in {city} , Harchi"
+                "description": "Exact time in {city} , Exact time in {city} , Current time in {city} , Whatever"
             },
             "title": "Time in {city}",
             "error": "The selected area is not available!"
@@ -325,7 +325,7 @@
             "level3": "Calculate {from} to {to}"
         },
         "Footer": {
-            "title": "Harchi | whatever you say, wherever and whenever",
+            "title": "Whatever | whatever you say, wherever and whenever",
             "description": "Various tools to meet daily needs and desires.",
             "Links": {
                 "today": "Today's Date",
@@ -335,7 +335,7 @@
                 "worldClock": "Country Clocks",
                 "distance": "Distance of Cities",
                 "temperature": "Temperature Conversion",
-                "harchi": "Harchi"
+                "whatever": "Whatever"
             }
         }
     },

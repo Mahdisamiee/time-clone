@@ -1,5 +1,5 @@
-<a href="https://harchi.app">
-  <h1 align="center">Harchi</h1>
+<a href="https://whatever.plus">
+  <h1 align="center">Whatever</h1>
 </a>
 
 <p align="center">
@@ -15,7 +15,7 @@
 
 ## Introduction
 
-Harchi is a Lght Weight app to usuall stuff and everyday things we need.
+Whatever.plus is a Lght Weight app to usuall stuff and everyday things we need.
 
 
 

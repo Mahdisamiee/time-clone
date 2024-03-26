@@ -75,7 +75,7 @@ export default function Footer() {
 
         <div className="text-base">
           <Link href="/" className="text-sky-600">
-            {t("Links.harchi")}
+            {t("Links.whatever")}
           </Link>{" "}
           {t("description")}
           <br />

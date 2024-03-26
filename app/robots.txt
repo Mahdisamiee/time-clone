@@ -1,6 +1,6 @@
 
 User-agent: *
-Disallow: /
+Allow: /
 
 
-Sitemap: https://harchi.app/sitemap.xml
+Sitemap: https://whatever.plus/sitemap.xml

@@ -5,7 +5,7 @@ export async function distanceCalculator(
   payLoad: DistanceCalculatorOptions,
 ): Promise<CalculatedDistance> {
   try {
-    const response = await fetch(`https://harchi.app/api/map-api/dist-mat/`, {
+    const response = await fetch(`https://whatever.plus/api/map-api/dist-mat/`, {
       cache: "no-cache",
       method: "POST",
       headers: {

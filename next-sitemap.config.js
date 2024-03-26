@@ -3,5 +3,5 @@
 const dev = process.env.NODE_ENV !== "production";
 
 module.exports = {
-  siteUrl: "https://harchi.app",
+  siteUrl: "https://whatever.plus",
 };
