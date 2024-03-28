@@ -1,5 +1,6 @@
 "use client";
 // MapContainer.tsx
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { Feature } from "ol";
 import Map from "ol/Map";
@@ -13,12 +14,11 @@ import { OSM, Vector as VectorSource } from "ol/source";
 import { Fill, Icon, Stroke, Style } from "ol/style";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import Select from "react-select";
+import { CalculatedDistance } from "../models/calculated-distance";
+import { SelectableCitiesOption } from "../models/selectable-cities-option";
+import { distanceCalculator } from "../services/distance-calculator";
+import { fetchCities } from "../services/fetch-cities";
 import "./index.css";
-import { CalculatedDistance } from "./models/calculated-distance";
-import { SelectableCitiesOption } from "./models/selectable-cities-option";
-import { distanceCalculator } from "./services/distance-calculator";
-import { fetchCities } from "./services/fetch-cities";
-import { useTranslations } from "next-intl";
 
 const DistanceMap = ({ path }: { path?: string }) => {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -139,13 +139,6 @@ const DistanceMap = ({ path }: { path?: string }) => {
       initialMap.setTarget(undefined);
     };
   }, []);
-
-  // This function updates the route based on the selected units
-  const updateRoute = (originPath: string, destPath: string) => {
-    setResult(null);
-    const newPath = `/map/distance/${originPath}-to-${destPath}`;
-    router.push(newPath);
-  };
 
   const addPoint = (newOrigin: SelectableCitiesOption) => {
     const point = new Feature({

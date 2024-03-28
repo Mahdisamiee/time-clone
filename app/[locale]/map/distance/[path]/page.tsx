@@ -1,6 +1,8 @@
-import DistanceMap from "../distance-map";
-import { SelectableCitiesOption } from "../models/selectable-cities-option";
-import { fetchCities } from "../services/fetch-cities";
+import { SelectableCitiesOption } from "../../models/selectable-cities-option";
+import { fetchCities } from "../../services/fetch-cities";
+import dynamic from "next/dynamic";
+// import DistanceMap from "../distance-map";
+const DistanceMap = dynamic(() => import("../distance-map"), { ssr: false });
 
 export async function generateStaticParams({
   params: { path },
