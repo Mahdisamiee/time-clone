@@ -1,9 +1,15 @@
 import { Metadata } from "next";
+import { useTranslations } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
 import CurrenciesLivePurchase from "../shared/currencies-live-purchase";
 import GoldCalculateForm from "../shared/gold-calculate-form";
 import GoldLivePurchase from "../shared/gold-live-purchase";
 import SharedLayout from "../shared/shared-layout";
-import { useTranslations } from "next-intl";
+
+type Props = {
+  params: { locale: string;  };
+};
+
 
 export const metadata: Metadata = {
   title: "قیمت لحظه‌ای سکه طلا",
@@ -35,7 +41,8 @@ export const metadata: Metadata = {
   },
 };
 
-const GoldPage = () => {
+const GoldPage = ({params: {locale}}: Props) => {
+  unstable_setRequestLocale(locale);
   const t = useTranslations("Currency.Coin");
   return (
     <SharedLayout

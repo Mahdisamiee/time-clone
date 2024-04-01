@@ -1,11 +1,17 @@
 import BreadcrumbNavbar from "@/components/shared/breadcrumb-navbar";
 import { UnitMode } from "@/lib/models/conversion";
 import { Metadata } from "next";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { fetchUnitOptions } from "services/unit-services";
 import ConversionUnitForm from "../conversion-unit-form";
-import { getTranslations } from "next-intl/server";
 
-const UnitHome = ({ params }: { params: { mode: UnitMode } }) => {
+type Props = {
+  params: { locale: string;  mode: UnitMode};
+};
+
+
+const UnitHome = ({ params }: Props) => {
+  unstable_setRequestLocale(params.locale);
   return (
     <>
       <BreadcrumbNavbar params={params} />
@@ -19,7 +25,7 @@ export async function generateMetadata({
   params: { mode },
 }: {
   params: { mode: UnitMode };
-}) {
+}): Promise<Metadata> {
   const t = await getTranslations("Conversion.Mode.metadata");
   try {
     const result = await fetchUnitOptions(mode);

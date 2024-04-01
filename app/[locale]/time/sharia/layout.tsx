@@ -1,9 +1,17 @@
+"use client"
 import LocalNavbar from "@/components/shared/local-navbar";
 import { useTranslations } from "next-intl";
 import { ReactNode } from "react";
 
-export default function Layout({ children }: { children: ReactNode }) {
+type Props = {
+  locale: string;
+  children: ReactNode;
+};
+
+export default function Layout({ children, locale }: Props) {
+  // unstable_setRequestLocale(locale);
   const t = useTranslations("Time.Links");
+
   const navbarItems = [
     {
       title: t("today"),

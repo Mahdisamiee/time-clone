@@ -1,6 +1,13 @@
 import ToolsListMapper from "@/components/shared/tools-list-mapper";
 import { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import {
+  getTranslations,
+  unstable_setRequestLocale
+} from "next-intl/server";
+
+type Props = {
+  params: { locale: string;  };
+};
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Currency.metadata");
@@ -49,7 +56,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function CurrencyHome() {
+export default async function CurrencyHome({params: {locale}}: Props) {
+  unstable_setRequestLocale(locale);
   const t = await getTranslations("Currency.Links");
 
   const tools = [

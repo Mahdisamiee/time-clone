@@ -131,7 +131,7 @@ export function useResultModal() {
           </>
         );
     },
-    [showResultModal, setResultDemoModal],
+    [showResultModal, setResultDemoModal, t],
   );
 
   return useMemo(

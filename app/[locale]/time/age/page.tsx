@@ -1,8 +1,12 @@
 import LocalNavbar from "@/components/shared/local-navbar";
 import { Metadata } from "next";
 import AgeCalculator from "./age-calculator";
-import { getTranslations } from "next-intl/server";
-import { useTranslations } from "next-intl";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { useLocale, useTranslations } from "next-intl";
+
+type Props = {
+  params: { locale: string;};
+};
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Time.Age.metadata");
@@ -39,8 +43,10 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function Age() {
+export default function Age({params: {locale}}: Props) {
+  unstable_setRequestLocale(locale);
   const t = useTranslations("Time.Links");
+
   const navbarItems = [
     {
       title: t("dayDiff"),

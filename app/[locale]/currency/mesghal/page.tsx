@@ -1,10 +1,15 @@
 import { Metadata } from "next";
+import { useTranslations } from "next-intl";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import CurrenciesLivePurchase from "../shared/currencies-live-purchase";
 import GoldCalculateForm from "../shared/gold-calculate-form";
 import GoldLivePurchase from "../shared/gold-live-purchase";
 import SharedLayout from "../shared/shared-layout";
-import { getTranslations } from "next-intl/server";
-import { useTranslations } from "next-intl";
+
+type Props = {
+  params: { locale: string;  };
+};
+
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Currency.Mesghal.metadata");
@@ -61,8 +66,10 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const GoldPage = () => {
+const GoldPage = ({params: {locale}}: Props) => {
+  unstable_setRequestLocale(locale);
   const t = useTranslations("Currency.Mesghal");
+  
   return (
     <SharedLayout
       livePurchase={

@@ -1,6 +1,11 @@
 import { Metadata } from "next";
 import DistanceMap from "./distance-map";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { useLocale } from "next-intl";
+
+type Props = {
+  params: { locale: string;  };
+};
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Map.metadata");
@@ -40,7 +45,9 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const MapPage = () => {
+const MapPage = ({params: {locale}}: Props) => {
+  unstable_setRequestLocale(locale);
+  
   return (
     <div className="">
       <DistanceMap />

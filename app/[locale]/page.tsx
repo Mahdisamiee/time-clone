@@ -6,7 +6,9 @@ type Props = {
 };
 
 export default async function Home({ params: { locale } }: Props) {
+  unstable_setRequestLocale(locale);
   const t = await getTranslations("Links.MainLinks");
+  
   const tools = [
     {
       title: t("time"),
@@ -89,7 +91,6 @@ export default async function Home({ params: { locale } }: Props) {
       ),
     },
   ];
-  unstable_setRequestLocale(locale);
 
   return (
     <div className="z-10 w-full max-w-screen-lg px-5 xl:px-0">

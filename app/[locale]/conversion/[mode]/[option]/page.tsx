@@ -1,7 +1,12 @@
 import BreadcrumbNavbar from "@/components/shared/breadcrumb-navbar";
 import { UnitMode } from "@/lib/models/conversion";
+import { unstable_setRequestLocale } from "next-intl/server";
 import { fetchUnitOptions } from "services/unit-services";
 import ConversionUnitForm from "../../conversion-unit-form";
+
+type Props = {
+  params: { locale: string; option: string; mode: UnitMode };
+};
 
 export async function generateStaticParams({
   params: { mode },
@@ -24,11 +29,9 @@ export async function generateStaticParams({
   }
 }
 
-const UnitOptions = ({
-  params,
-}: {
-  params: { option: string; mode: UnitMode };
-}) => {
+const UnitOptions = ({ params }: Props) => {
+  unstable_setRequestLocale(params.locale);
+
   return (
     <>
       <BreadcrumbNavbar params={params} />

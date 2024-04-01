@@ -1,11 +1,15 @@
-import { Metadata } from "next";
-import TemperatureForm from "./temperature-form";
-import LocalNavbar from "@/components/shared/local-navbar";
 import BreadcrumbNavbar from "@/components/shared/breadcrumb-navbar";
-import { getTranslations } from "next-intl/server";
+import { Metadata } from "next";
+import {
+  getTranslations
+} from "next-intl/server";
+import TemperatureForm from "./temperature-form";
+
+
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Conversion.Temperature.metadata");
+
   return {
     title: t("title"),
     description: t("description"),

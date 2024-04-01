@@ -28,7 +28,7 @@ const CurrenciesLivePurchase = () => {
     };
 
     fetchData();
-  }, []);
+  }, [t]);
 
   return (
     <div className="flex h-full w-full flex-row items-center justify-between gap-10 overflow-x-auto overflow-y-hidden">

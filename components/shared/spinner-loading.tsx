@@ -1,3 +1,4 @@
+"use client"
 const SpinnerLoading = () => {
   return (
     <div role="status">

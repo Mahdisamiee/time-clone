@@ -1,10 +1,18 @@
-import type { Metadata, ResolvingMetadata } from "next";
 import TimezoneClock from "@/components/time/timezone-clock";
+import type { Metadata } from "next";
 
 // import { WORLD_CLOCK_TIMEZONES } from "@/lib/constants";
-import LocalNavbar from "@/components/shared/local-navbar";
 import Card from "@/components/home/simple-card";
-import { getTranslations } from "next-intl/server";
+import LocalNavbar from "@/components/shared/local-navbar";
+import {
+  getLocale,
+  getTranslations,
+  unstable_setRequestLocale,
+} from "next-intl/server";
+
+type Props = {
+  params: { locale: string; city: string };
+};
 
 export async function generateMetadata({
   params,
@@ -46,8 +54,10 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Page({ params }: { params: { city: string } }) {
+export default async function Page({ params }: Props) {
+  unstable_setRequestLocale(params.locale);
   const t = await getTranslations("Time");
+
   const navbarItems = [
     {
       title: t("Links.today"),

@@ -4,9 +4,14 @@ import LiveClock from "@/components/time/timezone-clock";
 // import MainCalendar from "@/components/time/calendar";
 import LocalNavbar from "@/components/shared/local-navbar";
 import { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import ShariaTime from "./sharia/sharia-time";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+
+type Props = {
+  params: {locale: string};
+};
+
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Time.metadata");
@@ -35,8 +40,11 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function TimeContainer() {
+export default function TimeContainer({params: {locale}}: Props) {
+  unstable_setRequestLocale(locale);
+  
   const t = useTranslations("Time.Links");
+
   const navbarItems = [
     {
       title: t("today"),

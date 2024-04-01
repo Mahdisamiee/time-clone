@@ -1,7 +1,11 @@
-import React from "react";
-import CurrenciesForm from "./currencies-form";
 import { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import CurrenciesForm from "./currencies-form";
+
+type Props = {
+  params: { locale: string;  };
+};
+
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Currency.All.metadata");
@@ -44,7 +48,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const AllCurrenciesPage = () => {
+const AllCurrenciesPage = ({params: {locale}}: Props) => {
+  unstable_setRequestLocale(locale);
   return (
     <>
       <CurrenciesForm />

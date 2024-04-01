@@ -1,8 +1,12 @@
 import { Metadata } from "next";
 import LocalNavbar from "@/components/shared/local-navbar";
 import DiffOfDates from "./diff-date";
-import { useTranslations } from "next-intl";
-import { getTranslations } from "next-intl/server";
+import { useLocale, useTranslations } from "next-intl";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+
+type Props = {
+  params: { locale: string; };
+};
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Time.Diff.metadata");
@@ -45,8 +49,10 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const Conversion = () => {
+const Conversion = ({params: {locale}}: Props) => {
+  unstable_setRequestLocale(locale);
   const t = useTranslations("Time.Links");
+
   const navbarItems = [
     {
       title: t("today"),

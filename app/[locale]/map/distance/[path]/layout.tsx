@@ -1,8 +1,13 @@
 import { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { ReactNode } from "react";
 import { SelectableCitiesOption } from "../../models/selectable-cities-option";
 import { fetchCities } from "../../services/fetch-cities";
+
+type Props = {
+  params: { locale: string;  };
+  children : ReactNode
+};
 
 export async function generateMetadata({
   params: { path },
@@ -56,8 +61,10 @@ export async function generateMetadata({
   }
 }
 
-const layout = ({ children }: { children: ReactNode }) => {
+const Layout = ({ children, params:{locale} }: Props) => {
+  unstable_setRequestLocale(locale);
+  
   return <>{children}</>;
 };
 
-export default layout;
+export default Layout;

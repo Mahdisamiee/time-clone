@@ -1,28 +1,33 @@
+"use client"
 import { Metadata } from "next";
 import ShariaTime from "./sharia-time";
 
-export const metadata: Metadata = {
-  title: "اوقات شرعی",
-  description: "اوقات شرعی شهرها",
-  keywords: [
-    "اوقات شرعی دقیق",
-    "زمان دقیق طلوع و غروب",
-    "زمان اذان صبح",
-    "طلوع آفتاب",
-    "غروب آفتاب",
-    "اذان ظهر",
-    "اذان مغرب",
-    "نیمه شب شرعی",
-  ],
-  alternates: {
-    canonical: `/time/sharia`,
-    languages: {
-      fa: `/fa/time/sharia`,
-      en: `/en/time/sharia`,
-    },
-  },
+// export const metadata: Metadata = {
+//   title: "اوقات شرعی",
+//   description: "اوقات شرعی شهرها",
+//   keywords: [
+//     "اوقات شرعی دقیق",
+//     "زمان دقیق طلوع و غروب",
+//     "زمان اذان صبح",
+//     "طلوع آفتاب",
+//     "غروب آفتاب",
+//     "اذان ظهر",
+//     "اذان مغرب",
+//     "نیمه شب شرعی",
+//   ],
+//   alternates: {
+//     canonical: `/time/sharia`,
+//     languages: {
+//       fa: `/fa/time/sharia`,
+//       en: `/en/time/sharia`,
+//     },
+//   },
+// };
+
+type Props = {
+  params: { locale: string; };
 };
 
-export default function Sharia() {
+export default function Sharia({params: {locale}}: Props) {
   return <ShariaTime />;
 }

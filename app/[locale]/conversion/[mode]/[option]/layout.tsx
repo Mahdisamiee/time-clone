@@ -1,8 +1,13 @@
 import { UnitMode } from "@/lib/models/conversion";
 import { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { ReactNode } from "react";
 import { fetchUnitOptions } from "services/unit-services";
+
+type Props = {
+  params: { locale: string };
+  children: ReactNode;
+};
 
 export async function generateMetadata({
   params: { mode, option },
@@ -52,8 +57,10 @@ export async function generateMetadata({
   }
 }
 
-const layout = ({ children }: { children: ReactNode }) => {
+const Layout = ({ children, params: { locale } }: Props) => {
+  unstable_setRequestLocale(locale);
+
   return <>{children}</>;
 };
 
-export default layout;
+export default Layout;

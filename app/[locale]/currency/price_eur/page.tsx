@@ -1,13 +1,20 @@
 import { Metadata } from "next";
+import { useTranslations } from "next-intl";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import ArzCalculateForm from "../shared/arz-calculate-form";
 import CurrenciesLivePurchase from "../shared/currencies-live-purchase";
 import GoldLivePurchase from "../shared/gold-live-purchase";
 import SharedLayout from "../shared/shared-layout";
-import { getTranslations } from "next-intl/server";
-import { useTranslations } from "next-intl";
 
-const GoldPage = () => {
+type Props = {
+  params: { locale: string;  };
+};
+
+
+const GoldPage = ({params: {locale}}: Props) => {
+  unstable_setRequestLocale(locale);
   const t = useTranslations("Currency.PriceEur");
+  
   return (
     <SharedLayout
       livePurchase={<GoldLivePurchase title={t("title")} currName="یورو" />}

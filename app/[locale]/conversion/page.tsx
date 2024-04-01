@@ -1,9 +1,17 @@
 import ToolsListMapper from "@/components/shared/tools-list-mapper";
 import { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import {
+  getTranslations,
+  unstable_setRequestLocale
+} from "next-intl/server";
+
+type Props = {
+  params: { locale: string };
+};
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Conversion.metadata");
+
   return {
     title: t("title"),
     description: t("description"),
@@ -41,7 +49,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function Home() {
+export default async function Home({ params: { locale } }: Props) {
+  unstable_setRequestLocale(locale);
   const t = await getTranslations("Conversion.Links");
   const tools = [
     {

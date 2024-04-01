@@ -46,6 +46,7 @@ export default async function RootLayout({
 }: Props) {
   // Enable static rendering
   unstable_setRequestLocale(locale);
+  
   let messages;
   try {
     messages = (await import(`../../messages/${locale}.json`)).default;

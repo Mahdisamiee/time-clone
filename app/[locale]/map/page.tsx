@@ -1,9 +1,17 @@
 import ToolsListMapper from "@/components/shared/tools-list-mapper";
-import { getTranslations } from "next-intl/server";
+import {
+  getTranslations,
+  unstable_setRequestLocale
+} from "next-intl/server";
 
-export default async function Home() {
+type Props = {
+  params: { locale: string;  };
+};
 
-  const t = await getTranslations("Map.Links")
+export default async function Home({params: {locale}}: Props) {
+  unstable_setRequestLocale(locale);
+  const t = await getTranslations("Map.Links");
+  
   const tools = [
     {
       title: t("distance"),
@@ -17,5 +25,3 @@ export default async function Home() {
     </div>
   );
 }
-
-

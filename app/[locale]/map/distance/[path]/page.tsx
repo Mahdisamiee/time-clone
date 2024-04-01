@@ -1,8 +1,14 @@
+import { useLocale } from "next-intl";
 import { SelectableCitiesOption } from "../../models/selectable-cities-option";
 import { fetchCities } from "../../services/fetch-cities";
 import dynamic from "next/dynamic";
+import { unstable_setRequestLocale } from "next-intl/server";
 // import DistanceMap from "../distance-map";
 const DistanceMap = dynamic(() => import("../distance-map"), { ssr: false });
+
+type Props = {
+  params: { locale: string; path: string };
+};
 
 export async function generateStaticParams({
   params: { path },
@@ -24,7 +30,9 @@ export async function generateStaticParams({
   }
 }
 
-const CitiesPage = ({ params: { path } }: { params: { path: string } }) => {
+const CitiesPage = ({ params: { path, locale } }: Props) => {
+  unstable_setRequestLocale(locale);
+  
   return (
     <div className="">
       <DistanceMap path={path} />

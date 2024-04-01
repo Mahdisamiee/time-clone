@@ -1,7 +1,11 @@
 import { Metadata } from "next";
 import LocalNavbar from "@/components/shared/local-navbar";
-import { getTranslations } from "next-intl/server";
-import { useTranslations } from "next-intl";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { useLocale, useTranslations } from "next-intl";
+
+type Props = {
+  params: { locale: string; };
+};
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Time.Today.metadata");
@@ -44,8 +48,10 @@ const DateFormatOptions: any = {
 
 const languages = ["fa", "en-us", "ar-sa", "ru"];
 
-const Today = () => {
+const Today = ({params: {locale}}: Props) => {
+  unstable_setRequestLocale(locale);
   const t = useTranslations("Time");
+  
   const navbarItems = [
     {
       title: t("Links.ageCalculation"),
