@@ -3,7 +3,7 @@ import { API_BASE_URL, CURRENCIES_API } from "@/lib/api-constants";
 import { useEffect, useState } from "react";
 import { CurrencyItem } from "./models/currecncies-data";
 import SpinnerLoading from "@/components/shared/spinner-loading";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 async function getCurenciesData() {
   const res = await fetch(`${API_BASE_URL}/${CURRENCIES_API}/`, {
@@ -15,6 +15,7 @@ async function getCurenciesData() {
 
 const CurrenciesLivePurchase = () => {
   const t = useTranslations("Errors");
+  const locale = useLocale();
   const [currData, setCurrData] = useState<CurrencyItem[] | null>(null);
 
   useEffect(() => {
@@ -38,7 +39,7 @@ const CurrenciesLivePurchase = () => {
             key={curr.item}
             className="flex flex-1 flex-col flex-nowrap items-start justify-between whitespace-nowrap "
           >
-            <h3 className="text-nowrap ">{curr.item}</h3>
+            <h3 className="text-nowrap ">{locale === "fa" ? curr.item : curr.eitem}</h3>
             <p className="tracking-wide text-sky-600">{curr.price}</p>
             <p className="text-sm tracking-wide text-sky-600"> {curr.rate}</p>
           </div>

@@ -1,6 +1,6 @@
 "use client";
 // MapContainer.tsx
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { Feature } from "ol";
 import Map from "ol/Map";
@@ -34,10 +34,11 @@ const DistanceMap = ({ path }: { path?: string }) => {
   const router = useRouter();
 
   const t = useTranslations("Map.DistanceMap");
+  const locale = useLocale()
 
   useEffect(() => {
     async function findPath() {
-      const cities: SelectableCitiesOption[] = await fetchCities();
+      const cities: SelectableCitiesOption[] = await fetchCities(locale);
       setOptions(cities);
       if (path && path.includes("-to-")) {
         const [originPath, destPath] = path.split("-to-");

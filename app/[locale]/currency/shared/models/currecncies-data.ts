@@ -15,6 +15,7 @@ export interface CurrencySpecific {
 
 export interface CurrencyItem {
   item: string;
+  eitem: string;
   price: string;
   rate: string;
   flag: string;
