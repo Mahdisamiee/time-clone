@@ -11,12 +11,10 @@ type Props = {
 };
 
 export async function generateStaticParams({
-  params: { path },
-}: {
-  params: { path: string };
-}) {
+  params: { path , locale},
+}: Props) {
   try {
-    const options = await fetchCities();
+    const options = await fetchCities(locale);
     const result = options!
       .map((unit: SelectableCitiesOption) => {
         return options!.map((unit2: SelectableCitiesOption) => {

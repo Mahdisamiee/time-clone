@@ -65,7 +65,7 @@ const DistanceMap = ({ path }: { path?: string }) => {
       }
     }
     findPath();
-  }, [path]);
+  }, [path, locale]);
   // set Map Settings
   useEffect(() => {
     // Create raster and vector layers

@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getLocale, getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { ReactNode } from "react";
 import { SelectableCitiesOption } from "../../models/selectable-cities-option";
 import { fetchCities } from "../../services/fetch-cities";
@@ -15,9 +15,10 @@ export async function generateMetadata({
   params: { path: string };
 }): Promise<Metadata> {
   const t = await getTranslations("Map.metadata");
+  const locale = await getLocale();
   let pathParts = path.split("-to-");
   try {
-    const options: SelectableCitiesOption[] = await fetchCities();
+    const options: SelectableCitiesOption[] = await fetchCities(locale);
     // let computedKeywords = options
     //   .map((city1) => {
     //     return options.map((city2) => {
