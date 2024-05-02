@@ -4,12 +4,10 @@ import { useTranslations } from "next-intl";
 import { ReactNode } from "react";
 
 type Props = {
-  locale: string;
   children: ReactNode;
 };
 
-export default function Layout({ children, locale }: Props) {
-  // unstable_setRequestLocale(locale);
+export default function Layout({ children }: Props) {
   const t = useTranslations("Time.Links");
 
   const navbarItems = [
