@@ -171,7 +171,7 @@ const AgeCalculator = () => {
           console.log("date that born until today", result, calculatedAge);
           setResult({
             days: result.days,
-            months: result.months,
+            months: result.monthes,
             years: result.years,
           });
           setResultDemoModal(true);

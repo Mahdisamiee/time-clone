@@ -8,6 +8,7 @@ import Nav from "@/components/layout/nav";
 import { sfPro, vazirmatn } from "../fonts";
 import { locales } from "../../config";
 import "../globals.css";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 type Props = {
   children: ReactNode;
@@ -46,7 +47,7 @@ export default async function RootLayout({
 }: Props) {
   // Enable static rendering
   unstable_setRequestLocale(locale);
-  
+
   let messages;
   try {
     messages = (await import(`../../messages/${locale}.json`)).default;
@@ -56,6 +57,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={locale == "fa" ? "rtl" : "ltr"}>
+      <GoogleTagManager gtmId="GTM-KMVJBLN7" />
       <body className={cx(vazirmatn.className, sfPro.className)}>
         <div className="fixed h-screen w-full bg-gradient-to-bl from-indigo-50 via-white to-cyan-100" />
         <NextIntlClientProvider locale={locale} messages={messages}>
