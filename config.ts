@@ -1,6 +1,6 @@
 import { Pathnames } from "next-intl/navigation";
 
-export const locales = ["fa", "en"] as const;
+export const locales = ["en","fa"] as const;
 
 export const pathnames = {
   "/": "/",
