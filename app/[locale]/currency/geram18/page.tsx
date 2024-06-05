@@ -7,9 +7,8 @@ import GoldLivePurchase from "../shared/gold-live-purchase";
 import SharedLayout from "../shared/shared-layout";
 
 type Props = {
-  params: { locale: string;  };
+  params: { locale: string };
 };
-
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Currency.Geram18.metadata");
@@ -45,21 +44,49 @@ export async function generateMetadata(): Promise<Metadata> {
       "How much is the price of gold today?",
       "ounce Gold",
       "ounce Gold Today",
+      "Le prix de l'or",
+      "Prix instantané de l'or",
+      "Le prix de l'or d'aujourd'hui",
+      "once d'or d'occasion",
+      "once d'or aujourd'hui",
+      "Le prix de l'or",
+      "Le prix de l'or d'occasion d'aujourd'hui",
+      "once d'or ?",
+      "once d'or combien aujourd'hui",
+      "Combien coûte l'or ?",
+      "Combien coûte l'or aujourd'hui ?",
+      "once d'or",
+      "once d'or aujourd'hui",
+      "سعر الذهب",
+      "سعر الذهب لحظي",
+      "سعر الذهب اليوم",
+      "أونصة الذهب المستعملة",
+      "أوقية الذهب اليوم",
+      "سعر الذهب",
+      "سعر الذهب المستعمل اليوم",
+      "أوقية الذهب؟",
+      "أوقية الذهب كم اليوم",
+      "كم هو سعر الذهب؟",
+      "كم سعر الذهب اليوم؟",
+      "أوقية الذهب",
+      "أونصة الذهب اليوم",
     ],
     alternates: {
       canonical: `/currency/ons`,
       languages: {
         fa: `/fa/currency/ons`,
         en: `/en/currency/ons`,
+        fr: `/fr/currency/ons`,
+        ar: `/ar/currency/ons`,
       },
     },
   };
 }
 
-const GoldPage = ({params: {locale}}: Props) => {
+const GoldPage = ({ params: { locale } }: Props) => {
   unstable_setRequestLocale(locale);
   const t = useTranslations("Currency.Geram18");
-  
+
   return (
     <SharedLayout
       livePurchase={

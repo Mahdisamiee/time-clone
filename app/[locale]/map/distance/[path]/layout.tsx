@@ -34,12 +34,14 @@ export async function generateMetadata({
         // ...computedKeywords,
         `فاصله بین ${pathParts[0]} تا ${pathParts[1]}`,
         `distance between ${pathParts[0]} and ${pathParts[1]}`,
+        `distance entre ${pathParts[0]} et ${pathParts[1]}`,
       ],
       alternates: {
         canonical: `/map/distance/${path}`,
         languages: {
           fa: `/fa/map/distance/${path}`,
           en: `/en/map/distance/${path}`,
+          fr: `/fr/map/distance/${path}`,
         },
       },
     };
@@ -50,12 +52,16 @@ export async function generateMetadata({
       keywords: [
         `فاصله بین ${pathParts[0]} تا ${pathParts[1]}`,
         `distance between ${pathParts[0]} and ${pathParts[1]}`,
+        `distance entre ${pathParts[0]} et ${pathParts[1]}`,
+        `المسافة بين ${pathParts[0]} و ${pathParts[1]}`
       ],
       alternates: {
         canonical: `/map/distance/${path}`,
         languages: {
           fa: `/fa/map/distance/${path}`,
           en: `/en/map/distance/${path}`,
+          fr: `/fr/map/distance/${path}`,
+          ar: `/ar/map/distance/${path}`,
         },
       },
     };

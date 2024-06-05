@@ -5,9 +5,8 @@ import type { Metadata } from "next";
 import Card from "@/components/home/simple-card";
 import LocalNavbar from "@/components/shared/local-navbar";
 import {
-  getLocale,
   getTranslations,
-  unstable_setRequestLocale,
+  unstable_setRequestLocale
 } from "next-intl/server";
 
 type Props = {
@@ -35,12 +34,24 @@ export async function generateMetadata({
       `exact time of ${decodedCity}`,
       `time to time ${decodedCity}`,
       `world time difference in ${decodedCity}`,
+      `heure dans ${decodedCity}`,
+      `L'heure est ${decodedCity}`,
+      `heure exacte de ${decodedCity}`,
+      `de temps en temps ${decodedCity}`,
+      `différence horaire mondiale en ${decodedCity}`,
+      `الوقت في ${decodedCity}`,
+      `الوقت هو ${decodedCity}`,
+      `الوقت المحدد لـ ${decodedCity}`,
+      `من وقت لآخر ${decodedCity}`,
+      `فارق التوقيت العالمي في ${decodedCity}`,
     ],
     alternates: {
       canonical: `/time/${decodedCity}`,
       languages: {
         fa: `/fa/time/${decodedCity}`,
         en: `/en/time/${decodedCity}`,
+        fr: `/fr/time/${decodedCity}`,
+        ar: `/ar/time/${decodedCity}`,
       },
     },
   };

@@ -41,6 +41,18 @@ export async function generateMetadata(): Promise<Metadata> {
       "Today's Lunar Date",
       "Today to Shamsi",
       "today in the AD",
+      "تغيير التاريخ",
+      "تغيير تاريخ الميلاد",
+      "تحويل التاريخ الشامسي إلى الميلادي",
+      "تحويل تاريخ الميلاد إلى قمري",
+      "تحويل التاريخ إلى قمري",
+      "تحويل التاريخ إلى الميلادي",
+      "تحويل التاريخ الميلادي إلى شمسي",
+      "تحويل التاريخ الميلادي إلى القمري",
+      "تحويل التاريخ إلى قمري",
+      "تاريخ اليوم بالميلاد",
+      "التاريخ القمري اليوم",
+      "اليوم إلى الشامسي",
     ],
 
     alternates: {
@@ -48,6 +60,8 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         fa: `/fa/time/conversion`,
         en: `/en/time/conversion`,
+        fr: `/fr/time/conversion`,
+        ar: `/ar/time/conversion`,
       },
     },
   };

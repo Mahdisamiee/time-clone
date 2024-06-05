@@ -35,6 +35,8 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         fa: `/fa/time`,
         en: `/en/time`,
+        fr: `/fr/time`,
+        ar: `/ar/time`,
       },
     },
   };

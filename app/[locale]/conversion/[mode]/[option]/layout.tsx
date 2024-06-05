@@ -45,6 +45,7 @@ export async function generateMetadata({
         languages: {
           fa: `/fa/conversion/${mode}/${option}`,
           en: `/en/conversion/${mode}/${option}`,
+          fr: `/fr/conversion/${mode}/${option}`,
         },
       },
     };
@@ -52,6 +53,11 @@ export async function generateMetadata({
     return {
       alternates: {
         canonical: `/conversion/${mode}/${option}`,
+        languages: {
+          fa: `/fa/conversion/${mode}/${option}`,
+          en: `/en/conversion/${mode}/${option}`,
+          fr: `/fr/conversion/${mode}/${option}`,
+        },
       },
     };
   }

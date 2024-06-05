@@ -38,6 +38,8 @@ export async function generateMetadata({
       languages: {
         fa: "/fa",
         en: "/en",
+        fr: "/fr",
+        ar: "/ar",
       },
     },
   };
@@ -58,7 +60,7 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale} dir={locale == "fa" ? "rtl" : "ltr"}>
+    <html lang={locale} dir={locale == "fa" || locale == "ar" ? "rtl" : "ltr"}>
         <GoogleTagManager gtmId={GTM_ID ? GTM_ID : "GTM-KMVJBLN7"} />
       <body className={cx(vazirmatn.className, sfPro.className)}>
         <div className="fixed h-screen w-full bg-gradient-to-bl from-indigo-50 via-white to-cyan-100" />

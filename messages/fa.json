@@ -304,7 +304,7 @@
     },
     "LocaleSwitcher": {
         "label": "تغییر زبان",
-        "locale": "{locale, select, fa {فارسی} en {English} other {Unknown}}"
+        "locale": "{locale, select, fa {فارسی} en {English} fr {French} ar {عربی} other {Unknown}}"
     },
     "Links": {
         "MainLinks": {

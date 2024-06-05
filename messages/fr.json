@@ -1,0 +1,345 @@
+{
+    "Index": {
+        "title": "Quoi que ce soit",
+        "description": "Quoi que vous disiez",
+        "metadata": {
+            "title": {
+                "default": "Quoi que ce soit | Outils nécessaires pour les jours de l'année",
+                "template": "Quoi que ce soit"
+            },
+            "description": "Quoi que ce soit - Heure exacte d'aujourd'hui, calendrier, horaires de prière, azan d'aujourd'hui, calcul en ligne, conversion de date, conversion d'unité, carte et distance"
+        }
+    },
+    "Conversion": {
+        "metadata": {
+            "title": "Conversions",
+            "description": "Conversion de température, longueur, temps, masse, surface, bande passante, mémoire numérique, énergie, volume, vitesse, pression entre elles et vice versa"
+        },
+        "Links": {
+            "temp": "Conversion de température",
+            "length": "Conversion de longueur",
+            "time": "Conversion de temps",
+            "mass": "Conversion de masse",
+            "area": "Conversion de surface",
+            "dataTransfer": "Conversion de bande passante",
+            "digitalStorage": "Conversion de mémoire numérique",
+            "energy": "Conversion d'énergie",
+            "volume": "Conversion de volume",
+            "speed": "Conversion de vitesse",
+            "pressure": "Conversion de pression"
+        },
+        "UnitForm": {
+            "title": "Calcul et conversion des unités ",
+            "from": "Conversion de ",
+            "to": "Conversion en",
+            "value": "Valeur...",
+            "submit": "Calculer",
+            "result": "Résultat de la conversion de \"{fromUnit}\" en \"{toUnit}\" : ",
+            "errorMessage": "Un problème est survenu lors de la conversion, veuillez réessayer."
+        },
+        "Mode": {
+            "metadata": {
+                "title": "Calcul et conversion des unités {mode}",
+                "description": "Conversion des différentes {mode} | Conversion précise des unités {mode}"
+            }
+        },
+        "Options": {
+            "metadata": {
+                "title": "Calcul et conversion de {from} en {to}",
+                "description": "Conversion des différentes {mode} | Conversion précise des unités {mode} | Conversion d'unité de {from} en {to}"
+            }
+        },
+        "Temperature":{
+            "metadata": {
+                "title": "Conversion des unités de température",
+                "description": "Conversion Celsius, Fahrenheit, Kelvin entre eux et vice versa"
+            },
+            "selectType":"Choisir le type de conversion",
+            "valuePlaceholder": "Entrer la température",
+            "submit":"Calculer",
+            "result": "Résultat"
+        }
+    },
+    "Currency": {
+        "metadata": {
+            "title": "Liste des devises et de l'or",
+            "description": "Calcul et conversion du prix de l'or, des pièces d'or, de l'once d'or, de l'or 18 carats, du dollar et de l'euro"
+        },
+        "Links": {
+            "geram18": "Or 18 carats",
+            "ons": "Once d'or",
+            "mesghal": "Mesghal d'or",
+            "coin": "Pièce d'or",
+            "priceDol": "Prix du dollar",
+            "priceEur": "Prix de l'euro"
+        },
+        "Shared": {
+            "rial": "Rial",
+            "time": "Heure",
+            "calculate": "Calcul de l'achat et de la vente en tomans",
+            "taxChangeLabel": "Conversion avec calcul de la taxe",
+            "goldValue": "Quantité d'or (gramme)",
+            "goldGramPrice": "Prix de 1 gramme d'or",
+            "profitPercent": "Pourcentage de profit du vendeur",
+            "taxPercent": "Pourcentage de taxe",
+            "feePercent": "Pourcentage de frais",
+            "submit": "Calculer",
+            "changeResult": "Résultat de la conversion",
+            "finalPrice": "Prix final",
+            "goldCost": "Prix brut de l'or",
+            "feeCost": "Montant des frais",
+            "taxCost": "Montant de la taxe",
+            "sellerProfit": "Profit du vendeur",
+            "vahed": "Unité de volume",
+            "country": "Pays",
+            "market": "Type de marché",
+            "type": "Catégorie"
+        },
+        "PriceEur": {
+            "metadata": {
+                "title": "Prix instantané de l'euro",
+                "description": "Prix instantané de l'euro aujourd'hui, calcul d'achat et de vente instantanée de l'euro"
+            },
+            "title": "Prix instantané de l'euro : ",
+            "currName": "Euro",
+            "vahed": "Billet",
+            "country": "Zone euro",
+            "market": "Marché intérieur",
+            "type": "Devise libre"
+        },
+        "PriceDol": {
+            "metadata": {
+                "title": "Prix instantané du dollar",
+                "description": "Prix instantané du dollar aujourd'hui, calcul d'achat et de vente instantanée du dollar"
+            },
+            "title": "Prix instantané du dollar : ",
+            "currName": "Dollar",
+            "vahed": "Billet",
+            "country": "États-Unis",
+            "market": "Marché intérieur",
+            "type": "Devise libre"
+        },
+        "Ons": {
+            "metadata": {
+                "title": "Prix instantané de l'once d'or",
+                "description": "Prix instantané de l'once d'or aujourd'hui, calcul d'achat et de vente instantanée de l'once d'or"
+            },
+            "title": "Prix instantané de 1 once d'or : ",
+            "currName": "Once d'or"
+        },
+        "Mesghal": {
+            "metadata": {
+                "title": "Prix instantané du mesghal d'or",
+                "description": "Prix instantané du mesghal d'or aujourd'hui, calcul d'achat et de vente instantanée du mesghal d'or"
+            },
+            "title": "Prix instantané de 1 mesghal d'or : ",
+            "currName": "Mesghal d'or"
+        },
+        "Geram18": {
+            "metadata": {
+                "title": "Prix instantané de l'or 18 carats",
+                "description": "Prix instantané de l'or 18 carats aujourd'hui, calcul d'achat et de vente instantanée de l'or 18 carats neuf et d'occasion"
+            },
+            "title": "Prix instantané de l'or 18 carats : ",
+            "currName": "Or 18"
+        },
+        "Coin": {
+            "metadata": {
+                "title": "Prix instantané de la pièce d'or",
+                "description": "Prix de la pièce d'or aujourd'hui et calcul d'achat et de vente de l'or, pièce d'or, once d'or, or 18 carats aujourd'hui"
+            },
+            "title": "Prix instantané de la pièce d'or : ",
+            "currName": "Pièce"
+        },
+        "All": {
+            "metadata": {
+                "title": "Prix instantané de l'or et des devises",
+                "description": "Prix instantané de l'or 1 carat once d'or pièce d'or prix du dollar prix de l'euro pétrole Brent bitcoin. Calcul du prix d'achat et de vente de l'or. Calcul de la taxe, du profit, des frais, du prix brut d'achat et de vente de l'or et de l'indice boursier"
+            }
+        }
+    },
+    "Map": {
+        "metadata": {
+            "title": "Distance entre les villes | Routes des villes d'Iran et du monde",
+            "description": "Calcul de la distance entre les villes et des routes de l'Iran, distance entre Istanbul Karbala Téhéran Ispahan Chiraz Machhad Tabriz et toutes les villes entre elles, calculateur de distance interurbain"
+        },
+        "Links": {
+            "distance": "Distance entre les villes"
+        },
+        "Loading": {
+            "message": "La carte est en cours de chargement..."
+        },
+        "DistanceMap": {
+            "alertSelectCoords": "Veuillez sélectionner deux positions sur la carte",
+            "alertNoCoords": "Vous n'avez pas encore sélectionné de point...",
+            "clear": "Effacer",
+            "submit": "Calculer",
+            "citiesDistance": "Distance entre les villes",
+            "notice": "En sélectionnant 2 points sur la carte, vous pouvez voir la distance entre eux et le temps nécessaire pour les parcourir",
+            "distanceResult": "La distance entre les deux points sélectionnés est de :",
+            "intervalResult": "L'intervalle de temps est de :",
+            "hour": "Heure",
+            "kilometer": "Kilomètre"
+        }
+    },
+    "Time": {
+        "metadata": {
+            "title": "Heure et temps",
+            "description": "Outils de gestion du temps et des horaires de prière des villes, date exacte, détermination et conversion des calendriers et du temps"
+        },
+        "Links": {
+            "today": "Aujourd'hui",
+            "ageCalculation": "Calcul de l'âge",
+            "shariaTime": "Horaires de prière",
+            "dateConvert": "Conversion de date",
+            "worldClock": "Horloge mondiale",
+            "dayDiff": "Intervalle entre deux dates"
+        },
+        "Today": {
+            "metadata": {
+                "title": "Date d'aujourd'hui | Quelle est la date aujourd'hui ?",
+                "description": "Quelle est la date aujourd'hui, date d'aujourd'hui en Iran, date d'aujourd'hui en calendrier persan, grégorien, hégirien et russe, quelle est la date aujourd'hui en persan, grégorien et hégirien, quel jour sommes-nous aujourd'hui"
+            },
+            "title": "Date d'aujourd'hui"
+        },
+        "Sharia": {
+            "today": "Aujourd'hui",
+            "imaask": "Adhan du matin",
+            "sunrise": "Lever du soleil",
+            "noon": "Adhan du midi",
+            "sunset": "Coucher du soleil",
+            "maghreb": "Adhan du soir",
+            "midnight": "Minuit",
+            "metadata": {
+                "title": "Horaires de prière de {city} | Heure de lever et de coucher du soleil + heure de l'adhan",
+                "description": "Horaires de prière précis de la ville de {city} | Heure de lever et de coucher du soleil de {city}"
+            }
+        },
+        "Diff": {
+            "metadata": {
+                "title": "Calcul de l'intervalle entre deux dates",
+                "description": "Calcul de l'intervalle de temps entre deux dates, calcul du nombre de jours et de mois entre deux dates selon les calendriers persan, grégorien et hégirien"
+            },
+            "ResultModal": {
+                "title": "La date sélectionnée correspond aux autres calendriers",
+                "notice": "Remarque : lors du calcul, le jour de référence n'est pas inclus"
+            },
+            "Type": {
+                "jallali": "Calcul selon le calendrier persan",
+                "gregorian": "Calcul selon le calendrier grégorien",
+                "hijri": "Calcul selon le calendrier hégirien",
+                "placeholder": "Choisissez le type de calcul entre les deux dates..."
+            },
+            "DatePicker": {
+                "selectDay": "Choisir le jour",
+                "selectMonth": "Choisir le mois",
+                "selectYear": "Entrer l'année"
+            },
+            "calculate": "Calculer",
+            "message": "La différence entre les deux dates sélectionnées est de : {year} ans, {month} mois et {day} jours.",
+            "errorMessage": "Veuillez entrer les dates sélectionnées complètement"
+        },
+        "Conversion": {
+            "metadata": {
+                "title": "Conversion de date persane, grégorienne, hégirienne",
+                "description": "Conversion de date persane en grégorienne, grégorienne en persane, conversion de date de naissance en grégorienne, convertisseur de date et conversion de calendrier en persan, grégorien et hégirien"
+            },
+            "ResultModal": {
+                "title": "La date sélectionnée correspond aux autres calendriers",
+                "notice": "Remarque : lors du calcul, le jour de référence n'est pas inclus"
+            },
+            "DatePicker": {
+                "selectDay": "Choisir le jour",
+                "selectMonth": "Choisir le mois",
+                "selectYear": "Entrer l'année"
+            },
+            "SelectType": {
+                "j2gh": "Persan en grégorien et hégirien",
+                "g2jh": "Grégorien en persan et hégirien",
+                "h2jg": "Hégirien en persan et grégorien",
+                "placeholder": "Choisir le type de conversion..."
+            },
+            "calculate": "Calculer"
+        },
+        "Age": {
+            "metadata": {
+                "title": "Calcul précis de l'âge",
+                "description": "Calcul précis de l'âge basé sur la date de naissance et détermination de la différence d'âge, calcul de la date de naissance selon les calendriers grégorien, persan, hégirien"
+            },
+            "AgeCalculator": {
+                "calculateAge": "Calcul de l'âge et de la date de naissance",
+                "ageDiff": "Calcul de la différence d'âge entre deux personnes",
+                "hijriAge": "Calcul de l'âge hégirien",
+                "typeSelect": "Choisir le type de calcul",
+                "alertSelectBirthDate": "Veuillez indiquer votre date de naissance",
+                "alertSelectType": "Veuillez choisir le type de calcul",
+                "submit": "Calculer"
+            },
+            "DaySelector": {
+                "dateDiff": "Calcul de la différence d'âge entre deux personnes",
+                "firstDate": "Choisir la première date de naissance",
+                "secondDate": "Choisir la deuxième date de naissance",
+                "selectBirthDate": "Choisir la date de naissance"
+            },
+            "ResultModal": {
+                "calculateAge": "Calcul de l'âge et de la date de naissance",
+                "ageDiff": "Calcul de la différence d'âge entre deux personnes",
+                "resultTitle": "Votre âge selon le calendrier sélectionné",
+                "result": "Votre âge est de {years} ans, {months} mois et {days} jours.",
+                "diffResultTitle": "Différence d'âge entre deux personnes",
+                "diffResult": "La différence d'âge entre les deux personnes est de : {years} ans, {months} mois et {days} jours.",
+                "hijriResultTitle": "Calcul de votre âge hégirien",
+                "hijriResult": "Votre âge hégirien est de {years} ans, {months} mois et {days} jours.",
+                "error": "Un problème est survenu lors de l'affichage. Veuillez réessayer"
+            }
+        },
+        "CitiesTime": {
+            "metadata": {
+                "title": "Heure exacte de {city} | Heure mondiale de {city}",
+                "description": "Heure et temps exacts de {city} | Heure exacte à {city} | Heure actuelle à {city} | Quoi que ce soit"
+            },
+            "title": "Heure à {city}",
+            "error": "La région sélectionnée n'existe pas !"
+        }
+    },
+    "LocaleSwitcher": {
+        "label": "Changer de langue",
+        "locale": "{locale, select, fa {Persan} en {Anglais} fr {Français} ar {Arabe} other {Inconnu}}"
+    },
+    "Links": {
+        "MainLinks": {
+            "time": "Temps et heure",
+            "map": "Carte et distance",
+            "conversion": "Conversions",
+            "currency": "Or et devises"
+        }
+    },
+    "Component": {
+        "AnalogClock": {
+            "title": "Votre heure exacte",
+            "loadingMessage": "Votre heure exacte est en cours de détermination!....."
+        },
+        "BreadcrumbNavbar": {
+            "level1": "Conversions",
+            "level2": "Conversion de \"{mode}\"",
+            "level3": "Calcul de {from} en {to}"
+        },
+        "Footer": {
+            "title": "Quoi que ce soit | Quoi que vous disiez, où que ce soit et à tout moment",
+            "description": ", Divers outils pour répondre aux besoins et aux souhaits quotidiens.",
+            "Links":{
+                "today" :"Date d'aujourd'hui",
+                "age":"Calcul de l'âge",
+                "sharia":"Horaires de prière",
+                "conversion":"Conversion",
+                "worldClock":"Horloge mondiale",
+                "distance": "Distance entre les villes",
+                "temperature":"Conversion de température",
+                "whatever":"Quoi que ce soit"
+            }
+        }
+    },
+    "Errors": {
+        "fetchErrorMessage": "Un problème est survenu lors de la récupération des informations!"
+    }
+}

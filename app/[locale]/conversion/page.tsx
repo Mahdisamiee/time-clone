@@ -1,9 +1,6 @@
 import ToolsListMapper from "@/components/shared/tools-list-mapper";
 import { Metadata } from "next";
-import {
-  getTranslations,
-  unstable_setRequestLocale
-} from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 
 type Props = {
   params: { locale: string };
@@ -38,12 +35,36 @@ export async function generateMetadata(): Promise<Metadata> {
       "volume conversion",
       "Velocity Conversion",
       "pressure conversion",
+      "conversion de température",
+      "conversion de longueur",
+      "conversion de temps",
+      "Conversion du crime",
+      "conversion de zone",
+      "Conversion de bande passante",
+      "Conversion de mémoire numérique",
+      "Conversion de l'énergie",
+      "conversion de volume",
+      "Conversion de vitesse",
+      "conversion de pression",
+      "تحويل درجة الحرارة",
+      "تحويل الطول",
+      "تحويل الوقت",
+      "تحويل الجريمة",
+      "تحويل المنطقة",
+      "تحويل عرض النطاق الترددي",
+      "تحويل الذاكرة الرقمية",
+      "تحويل الطاقة",
+      "تحويل الحجم",
+      "تحويل السرعة",
+      "تحويل الضغط",
     ],
     alternates: {
       canonical: `/conversion`,
       languages: {
         fa: `/fa/conversion`,
         en: `/en/conversion`,
+        fr: `/fr/conversion`,
+        ar: `/ar/conversion`,
       },
     },
   };
