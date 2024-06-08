@@ -28,29 +28,7 @@ const createMomentFromJalali = (jalaliDate: BirthDate) => {
   ).startOf("day");
 };
 
-const calculateAge = (jalaliBirthDate: BirthDate): ResultDetail => {
-  const today = moment().startOf("day");
-  const birthDate = moment(
-    `${jalaliBirthDate.year}-${jalaliBirthDate.month}-${jalaliBirthDate.day}`,
-    "jYYYY-jMM-jDD",
-  ).startOf("day");
 
-  let years = today.jYear() - birthDate.jYear();
-  let months = today.jMonth() - birthDate.jMonth();
-  let days = today.jDate() - birthDate.jDate();
-
-  if (days < 0) {
-    months -= 1;
-    days += moment.jDaysInMonth(birthDate.jYear(), birthDate.jMonth());
-  }
-
-  if (months < 0) {
-    years -= 1;
-    months += 12;
-  }
-
-  return { years, months, days };
-};
 
 const calculateIslamicAgeFromJalali = (
   jalaliBirthDate: BirthDate,
@@ -162,17 +140,15 @@ const AgeCalculator = () => {
       switch (selectedType) {
         case t("calculateAge"): {
           const result = await ageCalculatorService({
-            date_type: locale == "fa" ? "jalali" : "gregorian",
+            date_type: locale == "fa" || locale == "ar" ? "jalali" : "gregorian",
             start_year: selectedDay.year,
             start_month: selectedDay.month,
             start_day: selectedDay.day,
           });
-          const calculatedAge = calculateAge(selectedDay);
-          console.log("date that born until today", result, calculatedAge);
           setResult({
-            days: result.days,
-            months: result.monthes,
-            years: result.years,
+            days: result?.days,
+            months: result?.monthes,
+            years: result?.years,
           });
           setResultDemoModal(true);
           break;

@@ -40,7 +40,7 @@ const ResultModal = ({
               <p className="text-2xl text-gray-500">
                 {t("result", {
                   years: details?.result.years,
-                  months: details?.result.months,
+                  months: details?.result?.months,
                   days: details?.result.days,
                 })}
               </p>
@@ -81,7 +81,7 @@ const ResultModal = ({
               <p className="text-2xl text-gray-500">
                 {t("diffResult", {
                   years: details?.result.years,
-                  months: details?.result.months,
+                  months: details?.result?.months,
                   days: details?.result.days,
                 })}
               </p>
@@ -95,7 +95,7 @@ const ResultModal = ({
               <p className="text-2xl text-gray-500">
                 {t("hijriResult", {
                   years: details?.result.years,
-                  months: details?.result.months,
+                  months: details?.result?.months,
                   days: details?.result.days,
                 })}
               </p>
