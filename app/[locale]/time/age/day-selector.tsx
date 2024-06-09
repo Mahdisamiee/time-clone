@@ -33,7 +33,7 @@ const DaySelector = ({
               inputPlaceholder={t("firstDate")}
               shouldHighlightWeekends
               colorPrimary="#9c88ff"
-              locale={locale} // for Persian calendar
+              locale={locale == "fa" ? "fa" : "en"} // for Persian calendar
             />
             <DatePicker
               value={selectedDay2}
@@ -41,7 +41,7 @@ const DaySelector = ({
               inputPlaceholder={t("secondDate")}
               shouldHighlightWeekends
               colorPrimary="#9c88ff"
-              locale={locale} // for Persian calendar
+              locale={locale == "fa" ? "fa" : "en"}
             />
           </div>
         ) : (
@@ -51,7 +51,7 @@ const DaySelector = ({
             inputPlaceholder={t("selectBirthDate")}
             shouldHighlightWeekends
             colorPrimary="#9c88ff"
-            locale={locale} // for Persian calendar
+            locale={locale == "fa" ? "fa" : "en"}
           />
         )}
       </div>

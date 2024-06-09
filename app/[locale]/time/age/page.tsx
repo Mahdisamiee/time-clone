@@ -8,7 +8,6 @@ type Props = {
   params: { locale: string;};
 };
 
-export const dynamic = 'force-dynamic'
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Time.Age.metadata");
