@@ -179,7 +179,9 @@
             "distanceResult": "The Distance between the Points:",
             "intervalResult": "The Time is equal to :",
             "hour": "hour",
-            "kilometer": "kilometer"
+            "kilometer": "kilometer",
+            "selectOrigin": "Origin",
+            "selectDestination": "Destination"
         }
     },
     "Time": {

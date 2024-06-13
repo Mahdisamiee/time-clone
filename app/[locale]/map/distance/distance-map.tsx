@@ -15,9 +15,11 @@ import { Fill, Icon, Stroke, Style } from "ol/style";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import Select from "react-select";
 import { CalculatedDistance } from "../models/calculated-distance";
+import { DistanceCalculatorOptions } from "../models/distance-calculator-options";
 import { SelectableCitiesOption } from "../models/selectable-cities-option";
 import { distanceCalculator } from "../services/distance-calculator";
 import { fetchCities } from "../services/fetch-cities";
+import { findZoomLocale } from "../services/find-locale-coordinate";
 import "./index.css";
 
 const DistanceMap = ({ path }: { path?: string }) => {
@@ -100,8 +102,8 @@ const DistanceMap = ({ path }: { path?: string }) => {
       layers: [raster, vectorLayer],
       controls: defaultControls({ attribution: false, rotate: false }),
       view: new View({
-        center: fromLonLat([54, 33]),
-        zoom: 5,
+        center: fromLonLat(findZoomLocale(locale)),
+        zoom: 3,
         minZoom: 0,
         maxZoom: 28,
       }),
@@ -189,7 +191,7 @@ const DistanceMap = ({ path }: { path?: string }) => {
       try {
         let origin = toLonLat(coordinates[0]);
         let dest = toLonLat(coordinates[1]);
-        const payload = {
+        const payload: DistanceCalculatorOptions = {
           origin_lat: origin[1],
           origin_lon: origin[0],
           dest_lat: dest[1],
@@ -223,8 +225,8 @@ const DistanceMap = ({ path }: { path?: string }) => {
   };
 
   return (
-    <div className="grid h-full w-full grid-cols-1 gap-10 md:grid-cols-2 ">
-      <div className="flex flex-col gap-2">
+    <div className="grid h-full w-full gap-10 grid-cols-1 md:grid-cols-5">
+      <div className="flex flex-col gap-2 col-span-1 md:col-span-2">
         <div className="flex flex-col justify-between gap-2 sm:flex-row">
           <Select
             className="flex-1"
@@ -232,6 +234,7 @@ const DistanceMap = ({ path }: { path?: string }) => {
             value={origin}
             onChange={handleSelectOrigin}
             options={options}
+            placeholder={t("selectOrigin")}
           ></Select>
 
           <Select
@@ -240,6 +243,7 @@ const DistanceMap = ({ path }: { path?: string }) => {
             value={destination}
             onChange={handleSelectDestination}
             options={options}
+            placeholder={t("selectDestination")}
           ></Select>
         </div>
         <div
@@ -251,7 +255,7 @@ const DistanceMap = ({ path }: { path?: string }) => {
           <button
             onClick={handleClearMap}
             type="submit"
-            className="text-md font-md col-span-1 my-3 block w-full rounded bg-gray-400 px-6 pb-2 pt-2.5 uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-gray-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-gray-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-gray-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+            className="text-md font-md col-span-2 md:col-span-1 my-3 block w-full rounded bg-gray-400 px-6 pb-2 pt-2.5 uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-gray-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-gray-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-gray-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
           >
             {t("clear")}
           </button>
@@ -259,13 +263,13 @@ const DistanceMap = ({ path }: { path?: string }) => {
             onClick={handleSendCoords}
             type="submit"
             disabled={points.length !== 2}
-            className="text-md font-md col-span-3 my-3 block w-full rounded bg-sky-500 px-6 pb-2 pt-2.5 uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-sky-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-sky-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-sky-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+            className="text-md font-md col-span-2 md:col-span-3 my-3 block w-full rounded bg-sky-500 px-6 pb-2 pt-2.5 uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-sky-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-sky-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-sky-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
           >
             {t("submit")}
           </button>
         </div>
       </div>
-      <div>
+      <div className="col-span-1 md:col-span-3">
         <h1 className="text-3xl text-sky-950">{t("citiesDistance")}</h1>
         <p className="text-md mb-10 tracking-wide text-sky-600">
           {t("notice")}
@@ -301,3 +305,6 @@ const DistanceMap = ({ path }: { path?: string }) => {
 };
 
 export default DistanceMap;
+
+
+

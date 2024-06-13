@@ -179,7 +179,9 @@
             "distanceResult": "فاصله دو نقطه انتخاب شده برابر است با :",
             "intervalResult": "حد فاصل زمانی برابر است با :",
             "hour": "ساعت",
-            "kilometer": "کیلومتر"
+            "kilometer": "کیلومتر",
+            "selectOrigin":"مبداء",
+            "selectDestination":"مقصد"
         }
     },
     "Time": {

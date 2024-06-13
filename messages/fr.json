@@ -49,14 +49,14 @@
                 "description": "Conversion des différentes {mode} | Conversion précise des unités {mode} | Conversion d'unité de {from} en {to}"
             }
         },
-        "Temperature":{
+        "Temperature": {
             "metadata": {
                 "title": "Conversion des unités de température",
                 "description": "Conversion Celsius, Fahrenheit, Kelvin entre eux et vice versa"
             },
-            "selectType":"Choisir le type de conversion",
+            "selectType": "Choisir le type de conversion",
             "valuePlaceholder": "Entrer la température",
-            "submit":"Calculer",
+            "submit": "Calculer",
             "result": "Résultat"
         }
     },
@@ -179,7 +179,9 @@
             "distanceResult": "La distance entre les deux points sélectionnés est de :",
             "intervalResult": "L'intervalle de temps est de :",
             "hour": "Heure",
-            "kilometer": "Kilomètre"
+            "kilometer": "Kilomètre",
+            "selectOrigin": "Démarrer",
+            "selectDestination": "Destination"
         }
     },
     "Time": {
@@ -327,15 +329,15 @@
         "Footer": {
             "title": "Quoi que ce soit | Quoi que vous disiez, où que ce soit et à tout moment",
             "description": ", Divers outils pour répondre aux besoins et aux souhaits quotidiens.",
-            "Links":{
-                "today" :"Date d'aujourd'hui",
-                "age":"Calcul de l'âge",
-                "sharia":"Horaires de prière",
-                "conversion":"Conversion",
-                "worldClock":"Horloge mondiale",
+            "Links": {
+                "today": "Date d'aujourd'hui",
+                "age": "Calcul de l'âge",
+                "sharia": "Horaires de prière",
+                "conversion": "Conversion",
+                "worldClock": "Horloge mondiale",
                 "distance": "Distance entre les villes",
-                "temperature":"Conversion de température",
-                "whatever":"Quoi que ce soit"
+                "temperature": "Conversion de température",
+                "whatever": "Quoi que ce soit"
             }
         }
     },

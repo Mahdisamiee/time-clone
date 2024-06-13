@@ -179,7 +179,9 @@
             "distanceResult": "المسافة بين النقطتين المحددتين هي :",
             "intervalResult": "الفاصل الزمني هو :",
             "hour": "ساعة",
-            "kilometer": "كيلومتر"
+            "kilometer": "كيلومتر",
+            "selectOrigin": "ابدأ",
+            "selectDestination": "الوجهة"
         }
     },
     "Time": {
