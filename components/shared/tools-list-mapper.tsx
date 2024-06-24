@@ -1,21 +1,19 @@
 import Link from "next/link";
-import React, { ReactNode } from "react";
+import React, { ReactNode, memo } from "react";
 
 interface Tool {
   title: string;
   url: string;
   icon?: ReactNode;
 }
+
 interface MainToolsListProps {
   tools: Tool[];
 }
 
 const ToolsListMapper = ({ tools }: MainToolsListProps) => {
   return (
-    <ul
-      className="mx-auto mt-6 grid animate-fade-up grid-cols-1 gap-20 px-5 opacity-0 md:grid-cols-6"
-      style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
-    >
+    <ul className="mx-auto mt-6 grid grid-cols-1 gap-20 px-5 opacity-1 md:grid-cols-6">
       {tools.map((tool) => {
         return (
           <li
@@ -24,9 +22,10 @@ const ToolsListMapper = ({ tools }: MainToolsListProps) => {
           >
             <Link
               href={tool.url}
+              prefetch={false}
               target="_top"
               rel="noreferrer"
-              className="duration-450 flex h-40 max-w-full animate-fade-up flex-col items-center justify-center space-x-2 overflow-hidden rounded-xl px-6 py-1 text-2xl transition-colors hover:bg-sky-100"
+              className="duration-450 flex h-40 max-w-full flex-col items-center justify-center space-x-2 overflow-hidden rounded-xl px-6 py-1 text-2xl transition-colors hover:bg-sky-100"
             >
               <p className="mb-2 font-light text-sky-500">{tool.title}</p>
               {tool.icon ? <p>{tool.icon}</p> : null}
@@ -38,4 +37,4 @@ const ToolsListMapper = ({ tools }: MainToolsListProps) => {
   );
 };
 
-export default ToolsListMapper;
+export default memo(ToolsListMapper);

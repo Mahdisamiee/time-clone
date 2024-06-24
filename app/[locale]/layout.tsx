@@ -7,10 +7,12 @@ import { unstable_setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { ReactNode, Suspense } from "react";
 import { locales } from "../../config";
-import { sfPro, vazirmatn } from "../fonts";
+import { vazirmatn } from "../fonts";
 import "../globals.css";
 
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID
+
+
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
 type Props = {
   children: ReactNode;
@@ -61,18 +63,17 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={locale == "fa" || locale == "ar" ? "rtl" : "ltr"}>
-        <GoogleTagManager gtmId={GTM_ID ? GTM_ID : "GTM-KMVJBLN7"} />
-      <body className={cx(vazirmatn.className, sfPro.className)}>
+      <GoogleTagManager gtmId={GTM_ID ? GTM_ID : "GTM-KMVJBLN7"} />
+      <body className={cx(vazirmatn.className)}>
         <div className="fixed h-screen w-full bg-gradient-to-bl from-indigo-50 via-white to-cyan-100" />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Suspense fallback="...">
-            {/* @ts-expect-error Server Component */}
             <Nav />
+            <main className="flex min-h-screen w-full flex-col items-center justify-center py-32 font-vazir">
+              {children}
+            </main>
+            <Footer />
           </Suspense>
-          <main className="flex min-h-screen w-full flex-col items-center justify-center py-32 font-vazir">
-            {children}
-          </main>
-          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>
