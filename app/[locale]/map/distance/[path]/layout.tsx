@@ -17,24 +17,19 @@ export async function generateMetadata({
   const t = await getTranslations("Map.metadata");
   const locale = await getLocale();
   let pathParts = path.split("-to-");
+  const [fromCity, toCity] = pathParts;
   try {
     const options: SelectableCitiesOption[] = await fetchCities(locale);
-    // let computedKeywords = options
-    //   .map((city1) => {
-    //     return options.map((city2) => {
-    //       return `فاصله ${city1.label} تا ${city2.label} , فاصله بین ${city1.label} تا ${city2.label}, distance ${city1.label} to ${city2.label}, distance between ${city1.label} to ${city2.label}`;
-    //     });
-    //   })
-    //   .flat(1);
+    const title = `${fromCity} - ${toCity} | ${t("title")}`;
 
     return {
-      title: t("title"),
+      title: title,
       description: t("description"),
       keywords: [
-        // ...computedKeywords,
         `فاصله بین ${pathParts[0]} تا ${pathParts[1]}`,
         `distance between ${pathParts[0]} and ${pathParts[1]}`,
         `distance entre ${pathParts[0]} et ${pathParts[1]}`,
+        `المسافة بين ${pathParts[0]} و ${pathParts[1]}`
       ],
       alternates: {
         canonical: `/map/distance/${path}`,
@@ -42,6 +37,7 @@ export async function generateMetadata({
           fa: `/fa/map/distance/${path}`,
           en: `/en/map/distance/${path}`,
           fr: `/fr/map/distance/${path}`,
+          ar: `/ar/map/distance/${path}`,
         },
       },
     };

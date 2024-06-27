@@ -1,9 +1,8 @@
-import { useLocale } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
+import dynamic from "next/dynamic";
+import Link from "next/link";
 import { SelectableCitiesOption } from "../../models/selectable-cities-option";
 import { fetchCities } from "../../services/fetch-cities";
-import dynamic from "next/dynamic";
-import { unstable_setRequestLocale } from "next-intl/server";
-// import DistanceMap from "../distance-map";
 const DistanceMap = dynamic(() => import("../distance-map"), { ssr: false });
 
 type Props = {
@@ -11,7 +10,7 @@ type Props = {
 };
 
 export async function generateStaticParams({
-  params: { path , locale},
+  params: { path, locale },
 }: Props) {
   try {
     const options = await fetchCities(locale);
@@ -30,10 +29,37 @@ export async function generateStaticParams({
 
 const CitiesPage = ({ params: { path, locale } }: Props) => {
   unstable_setRequestLocale(locale);
-  
+
+  // Extract city names from the path
+  const [fromCity, toCity] = path.split("-to-");
+
+  // Define an array of cities for demonstration purposes
+  const cities = ["tehran", "yazd", "tabriz", "mashhad", "rasht", "qom", ];
+
   return (
-    <div className="">
+    <div className="flex flex-col gap-4">
       <DistanceMap path={path} />
+
+      <div className="back-links mt-5">
+        <h2 className="mb-4 text-2xl font-bold text-gray-800">
+          Explore more distances:
+        </h2>
+        <ul className="flex flex-wrap gap-2 ">
+          {cities.map((city) => (
+            <li
+              key={city}
+              className="rounded-md bg-blue-100 p-2 hover:bg-blue-200"
+            >
+              <Link
+                href={`/map/distance/${fromCity}-to-${city}`}
+                className="text-sm text-sky-600 hover:text-sky-800"
+              >
+                {`${fromCity} to ${toCity}`}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

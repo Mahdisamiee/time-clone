@@ -61,8 +61,6 @@ const DistanceMap = ({ path }: { path?: string }) => {
             setDestination(newDestination);
             addPoint(newDestination);
           }
-
-          console.log(originPath.toLowerCase(), newOrigin);
         }
       }
     }
@@ -198,9 +196,11 @@ const DistanceMap = ({ path }: { path?: string }) => {
           dest_lon: dest[0],
         };
         const response = await distanceCalculator(payload);
+        console.log(response);
         setResult(response);
       } catch (error) {
-        console.error(error);
+        throw new Error();
+        setResult(null)
       }
 
       // Reset points to allow for new points to be selected
@@ -275,19 +275,19 @@ const DistanceMap = ({ path }: { path?: string }) => {
           {t("notice")}
         </p>
 
-        {!!result ? (
+        {!!result && result !== null && result.distance && result.distance[0] && result.duration && result.duration[0]? (
           <div className=" mt-5 flex h-2/3 flex-col items-center justify-around py-10">
             <div>
               <h3 className="text-2xl text-sky-900">{t("distanceResult")}</h3>
               <p className="text-2xl tracking-wide text-sky-600">
-                {(result?.distance[0].distance / 1000).toFixed(2)}{" "}
+                {(result?.distance[0]?.distance / 1000).toFixed(2)}{" "}
                 {t("kilometer")}
               </p>
             </div>
             <div>
               <h3 className="text-2xl text-sky-900">{t("intervalResult")}</h3>
               <p className="text-2xl tracking-wide text-sky-600">
-                {new Date(result?.duration[0].duration * 1000)
+                {new Date(result?.duration[0]?.duration * 1000)
                   .toISOString()
                   .substr(11, 8)}{" "}
                 {t("hour")}

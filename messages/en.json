@@ -161,7 +161,7 @@
     "Map": {
         "metadata": {
             "title": "Distance of cities | roads of cities in Iran and the world",
-            "description": "Calculating the distance between cities and roads in Iran, the distance between Istanbul, Karbala, Tehran, Isfahan, Shiraz, Mashhad, Tabriz and all cities to each other, intercity distance finder"
+            "description": "Calculating the distance between cities and roads in world, the distance between Istanbul, Karbala, Tehran, Isfahan, Shiraz, Mashhad, Tabriz and all cities to each other, intercity distance finder"
         },
         "Links": {
             "distance": "Distance"
