@@ -54,7 +54,7 @@ const CitiesPage = ({ params: { path, locale } }: Props) => {
                 href={`/map/distance/${fromCity}-to-${city}`}
                 className="text-sm text-sky-600 hover:text-sky-800"
               >
-                {`${fromCity} to ${toCity}`}
+                {`${fromCity} to ${city}`}
               </Link>
             </li>
           ))}

@@ -1,9 +1,90 @@
 import ToolsListMapper from "@/components/shared/tools-list-mapper";
+import { Metadata } from "next";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 
 type Props = {
   params: { locale: string };
 };
+
+export async function generateMetadata({
+  params: { path },
+}: {
+  params: { path: string };
+}): Promise<Metadata> {
+  const t = await getTranslations("Map.metadata");
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    keywords: [
+      "distance calculator",
+      "محاسبه فاصله",
+      "distance de trajet",
+      "temps de voyage",
+      "distance between isfahan and tehran",
+      "مخطط الرحلة",
+      "حاسبة المسافة",
+      "مسافة المشي",
+      "زمان سفر",
+      "planificateur d'itinéraire",
+      "distance à pied",
+      "distance routière",
+      "وقت السفر",
+      "مسافة السفر",
+      "journey distance",
+      "calculateur de distance",
+      "distance entre les villes",
+      "فاصله شهرها",
+      "walking distance",
+      "travel distance",
+      "road distance",
+      "map distance",
+      "travel time",
+      "driving distance",
+      "city distance",
+      "route planner",
+      "distance calculator",
+      "routeplanner",
+      "distance",
+      "routeplanner",
+      "anwb routeplanner",
+      "routeplanner anwb",
+      "routeplanner fiets",
+      "fiets routeplanner",
+      "routeplanner auto",
+      "routeplanner google",
+      "aa routeplanners",
+      "routeplanners anwb",
+      "anwb route planner",
+      "route anwb planner",
+      "routeplanner falk",
+      "routeplanner van anwb",
+      "routeplanners",
+      "city distance",
+      "driving distance",
+      "travel time",
+      "anwb routeplanner fiets",
+      "google maps routeplanner auto",
+      "beste routeplanner auto",
+      "mappy routeplanner",
+      "routeplanner van punt naar punt",
+      "routeplanner fietsen",
+      "anwb routeplanner auto",
+      "routenet routeplanner",
+      "routeplanner fiets anwb",
+      "routeplanner vab",
+    ],
+    alternates: {
+      canonical: `/map/distance`,
+      languages: {
+        fa: `/fa/map/distance`,
+        en: `/en/map/distance`,
+        fr: `/fr/map/distance`,
+        ar: `/ar/map/distance`,
+      },
+    },
+  };
+}
 
 export default async function Home({ params: { locale } }: Props) {
   unstable_setRequestLocale(locale);

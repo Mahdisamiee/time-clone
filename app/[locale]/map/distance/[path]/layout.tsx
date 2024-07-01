@@ -1,12 +1,16 @@
 import { Metadata } from "next";
-import { getLocale, getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import {
+  getLocale,
+  getTranslations,
+  unstable_setRequestLocale,
+} from "next-intl/server";
 import { ReactNode } from "react";
 import { SelectableCitiesOption } from "../../models/selectable-cities-option";
 import { fetchCities } from "../../services/fetch-cities";
 
 type Props = {
-  params: { locale: string;  };
-  children : ReactNode
+  params: { locale: string };
+  children: ReactNode;
 };
 
 export async function generateMetadata({
@@ -26,10 +30,37 @@ export async function generateMetadata({
       title: title,
       description: t("description"),
       keywords: [
-        `فاصله بین ${pathParts[0]} تا ${pathParts[1]}`,
-        `distance between ${pathParts[0]} and ${pathParts[1]}`,
-        `distance entre ${pathParts[0]} et ${pathParts[1]}`,
-        `المسافة بين ${pathParts[0]} و ${pathParts[1]}`
+        `فاصله بین ${fromCity} تا ${toCity}`,
+        `distance between ${fromCity} and ${toCity}`,
+        `distance entre ${fromCity} et ${toCity}`,
+        `المسافة بين ${fromCity} و ${toCity}`,
+        "distance calculator",
+        "محاسبه فاصله",
+        "distance de trajet",
+        "temps de voyage",
+        "distance between isfahan and tehran",
+        "مخطط الرحلة",
+        "حاسبة المسافة",
+        "مسافة المشي",
+        "زمان سفر",
+        "planificateur d'itinéraire",
+        "distance à pied",
+        "distance routière",
+        "وقت السفر",
+        "مسافة السفر",
+        "journey distance",
+        "calculateur de distance",
+        "distance entre les villes",
+        "فاصله شهرها",
+        "walking distance",
+        "travel distance",
+        "road distance",
+        "map distance",
+        "travel time",
+        "driving distance",
+        "city distance",
+        "route planner",
+        "distance calculator",
       ],
       alternates: {
         canonical: `/map/distance/${path}`,
@@ -46,10 +77,10 @@ export async function generateMetadata({
       title: t("title"),
       description: t("description"),
       keywords: [
-        `فاصله بین ${pathParts[0]} تا ${pathParts[1]}`,
-        `distance between ${pathParts[0]} and ${pathParts[1]}`,
-        `distance entre ${pathParts[0]} et ${pathParts[1]}`,
-        `المسافة بين ${pathParts[0]} و ${pathParts[1]}`
+        `فاصله بین ${fromCity} تا ${toCity}`,
+        `distance between ${fromCity} and ${toCity}`,
+        `distance entre ${fromCity} et ${toCity}`,
+        `المسافة بين ${fromCity} و ${toCity}`,
       ],
       alternates: {
         canonical: `/map/distance/${path}`,
@@ -64,9 +95,9 @@ export async function generateMetadata({
   }
 }
 
-const Layout = ({ children, params:{locale} }: Props) => {
+const Layout = ({ children, params: { locale } }: Props) => {
   unstable_setRequestLocale(locale);
-  
+
   return <>{children}</>;
 };
 

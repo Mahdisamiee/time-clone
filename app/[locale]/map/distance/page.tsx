@@ -2,9 +2,10 @@ import { Metadata } from "next";
 import DistanceMap from "./distance-map";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { useLocale } from "next-intl";
+import { Link } from "lucide-react";
 
 type Props = {
-  params: { locale: string;  };
+  params: { locale: string };
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -54,6 +55,33 @@ export async function generateMetadata(): Promise<Metadata> {
       "المسافة من فان إلى طرابزون",
       "المسافة من فان إلى إزمير",
       "المسافة من طهران إلى يزد",
+      "distance calculator",
+      "محاسبه فاصله",
+      "distance de trajet",
+      "temps de voyage",
+      "distance between isfahan and tehran",
+      "مخطط الرحلة",
+      "حاسبة المسافة",
+      "مسافة المشي",
+      "زمان سفر",
+      "planificateur d'itinéraire",
+      "distance à pied",
+      "distance routière",
+      "وقت السفر",
+      "مسافة السفر",
+      "journey distance",
+      "calculateur de distance",
+      "distance entre les villes",
+      "فاصله شهرها",
+      "walking distance",
+      "travel distance",
+      "road distance",
+      "map distance",
+      "travel time",
+      "driving distance",
+      "city distance",
+      "route planner",
+      "distance calculator",
     ],
     alternates: {
       canonical: `/map/distance`,
@@ -67,12 +95,36 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const MapPage = ({params: {locale}}: Props) => {
+const MapPage = ({ params: { locale } }: Props) => {
   unstable_setRequestLocale(locale);
-  
+
+  const cities = ["tehran", "yazd", "tabriz", "mashhad", "rasht", "qom", ];
+
+
   return (
     <div className="">
       <DistanceMap />
+
+      {/* <div className="back-links mt-5">
+        <h2 className="mb-4 text-2xl font-bold text-gray-800">
+          Explore more distances:
+        </h2>
+        <ul className="flex flex-wrap gap-2 ">
+          {cities.map((city) => (
+            <li
+              key={city}
+              className="rounded-md bg-blue-100 p-2 hover:bg-blue-200"
+            >
+              <Link
+                href={`/map/distance/${fromCity}-to-${city}`}
+                className="text-sm text-sky-600 hover:text-sky-800"
+              >
+                {`${fromCity} to ${city}`}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div> */}
     </div>
   );
 };
