@@ -1,4 +1,4 @@
-import { unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { SelectableCitiesOption } from "../../models/selectable-cities-option";
@@ -27,8 +27,9 @@ export async function generateStaticParams({
   }
 }
 
-const CitiesPage = ({ params: { path, locale } }: Props) => {
+const CitiesPage = async ({ params: { path, locale } }: Props) => {
   unstable_setRequestLocale(locale);
+  const t = await getTranslations("Map.BackLinks");
 
   // Extract city names from the path
   const [fromCity, toCity] = path.split("-to-");
@@ -42,7 +43,7 @@ const CitiesPage = ({ params: { path, locale } }: Props) => {
 
       <div className="back-links mt-5">
         <h2 className="mb-4 text-2xl font-bold text-gray-800">
-          Explore more distances:
+          {t("ExploreMore")} :
         </h2>
         <ul className="flex flex-wrap gap-2 ">
           {cities.map((city) => (

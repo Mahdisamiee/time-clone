@@ -163,6 +163,9 @@
             "title": "Distance entre les villes | Routes des villes d'Iran et du monde",
             "description": "Calcul de la distance entre les villes et des routes de l'Iran, distance entre Istanbul Karbala Téhéran Ispahan Chiraz Machhad Tabriz et toutes les villes entre elles, calculateur de distance interurbain"
         },
+        "BackLinks": {
+            "ExploreMore": "découvrir plus de villes"
+        },
         "Links": {
             "distance": "Distance entre les villes"
         },
