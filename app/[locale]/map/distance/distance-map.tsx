@@ -139,7 +139,7 @@ const DistanceMap = ({ path }: { path?: string }) => {
     return () => {
       initialMap.setTarget(undefined);
     };
-  }, []);
+  }, [locale]);
 
   const addPoint = (newOrigin: SelectableCitiesOption) => {
     const point = new Feature({

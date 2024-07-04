@@ -33,6 +33,7 @@ const CitiesPage = async ({ params: { path, locale } }: Props) => {
 
   // Extract city names from the path
   const [fromCity, toCity] = path.split("-to-");
+  
 
   // Define an array of cities for demonstration purposes
   const cities = ["tehran", "yazd", "tabriz", "mashhad", "rasht", "qom", ];
@@ -49,7 +50,7 @@ const CitiesPage = async ({ params: { path, locale } }: Props) => {
           {cities.map((city) => (
             <li
               key={city}
-              className="rounded-md bg-blue-100 p-2 hover:bg-blue-200"
+              className="rounded-xl bg-blue-100 p-2 hover:bg-blue-200"
             >
               <Link
                 href={`/map/distance/${fromCity}-to-${city}`}
