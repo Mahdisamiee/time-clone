@@ -337,53 +337,20 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home({ params: { locale } }: Props) {
-  unstable_setRequestLocale(locale);
+  // unstable_setRequestLocale(locale);
   const t = await getTranslations("Conversion.Links");
   const tools = [
-    {
-      title: t("temp"),
-      url: "/conversion/temp",
-    },
-    {
-      title: t("length"),
-      url: "/conversion/length",
-    },
-    {
-      title: t("time"),
-      url: "/conversion/time",
-    },
-    {
-      title: t("mass"),
-      url: "/conversion/mass",
-    },
-    {
-      title: t("area"),
-      url: "/conversion/area",
-    },
-    {
-      title: t("dataTransfer"),
-      url: "/conversion/data-transfer",
-    },
-    {
-      title: t("digitalStorage"),
-      url: "/conversion/digital-storage",
-    },
-    {
-      title: t("energy"),
-      url: "/conversion/energy",
-    },
-    {
-      title: t("volume"),
-      url: "/conversion/volume",
-    },
-    {
-      title: t("speed"),
-      url: "/conversion/speed",
-    },
-    {
-      title: t("pressure"),
-      url: "/conversion/pressure",
-    },
+    { title: t("temp"), url: "/conversion/temp" },
+    { title: t("length"), url: "/conversion/length" },
+    { title: t("time"), url: "/conversion/time" },
+    { title: t("mass"), url: "/conversion/mass" },
+    { title: t("area"), url: "/conversion/area" },
+    { title: t("dataTransfer"), url: "/conversion/data-transfer" },
+    { title: t("digitalStorage"), url: "/conversion/digital-storage" },
+    { title: t("energy"), url: "/conversion/energy" },
+    { title: t("volume"), url: "/conversion/volume" },
+    { title: t("speed"), url: "/conversion/speed" },
+    { title: t("pressure"), url: "/conversion/pressure" },
   ];
   return (
     <div className="z-10 w-full max-w-screen-lg px-5 xl:px-0">

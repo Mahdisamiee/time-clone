@@ -4,6 +4,7 @@ const withNextIntl = createNextIntlPlugin("./i18n.ts");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactProductionProfiling: true,
   poweredByHeader: false,
   reactStrictMode: true,
   swcMinify: true,
