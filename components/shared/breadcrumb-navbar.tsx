@@ -1,4 +1,5 @@
 "use client"
+// use to be server side
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 
