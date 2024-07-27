@@ -1,13 +1,13 @@
 {
     "Index": {
-        "title": "Quoi que ce soit",
-        "description": "Quoi que vous disiez",
+        "title": "Tout",
+        "description": "tout ce que vous voulez",
         "metadata": {
             "title": {
-                "default": "Quoi que ce soit | Outils nécessaires pour les jours de l'année",
-                "template": "Quoi que ce soit"
+                "default": "Tout | Outils nécessaires pour les jours de l'année",
+                "template": "Tout"
             },
-            "description": "Quoi que ce soit - Heure exacte d'aujourd'hui, calendrier, horaires de prière, azan d'aujourd'hui, calcul en ligne, conversion de date, conversion d'unité, carte et distance"
+            "description": "Tout - Heure exacte d'aujourd'hui, calendrier, horaires de prière, azan d'aujourd'hui, calcul en ligne, conversion de date, conversion d'unité, carte et distance"
         }
     },
     "Conversion": {
@@ -314,7 +314,7 @@
     "Links": {
         "MainLinks": {
             "time": "Temps et heure",
-            "map": "Carte et distance",
+            "map": "Carte",
             "conversion": "Conversions",
             "currency": "Or et devises"
         }

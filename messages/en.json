@@ -314,7 +314,7 @@
     "Links": {
         "MainLinks": {
             "time": "Time & Date",
-            "map": "Map & Distance",
+            "map": "Distance",
             "conversion": "Conversions",
             "currency": "Currency"
         }

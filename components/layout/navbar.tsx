@@ -25,17 +25,20 @@ function NavBar() {
     <>
       <div className={navbarClasses}>
         <div className="mx-5 flex h-16 w-full max-w-screen-xl items-center justify-between">
-          <Link href="/" className="flex items-center font-vazir text-xl">
+          <Link
+            href="/"
+            className="sm:text-md text-md flex items-center font-vazir sm:text-lg md:text-2xl"
+          >
             <Image
               src="/logo2.png"
-              alt="Time logo"
+              alt="Whatever logo"
               width="90"
               height="90"
               className="ml-1 rounded-sm"
               priority
             ></Image>
-            <p>{t("title")}</p>
-            <p className="hidden md:inline-block">| {t("description")}</p>
+            <p className="">{t("title")} </p>
+            <p className="hidden md:inline-block"> | {t("description")}</p>
           </Link>
           <LocaleSwitcer />
         </div>
