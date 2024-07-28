@@ -1,8 +1,16 @@
 "use client";
 import SpinnerLoading from "@/components/shared/spinner-loading";
 import { UnitMode } from "@/lib/models/conversion";
+import debounce from "lodash.debounce";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import { ChangeEvent, MouseEvent, useEffect, useId, useState } from "react";
+import {
+  ChangeEvent,
+  MouseEvent,
+  useCallback,
+  useEffect,
+  useState
+} from "react";
 import Select from "react-select";
 import {
   fetchUnitOptions,
@@ -10,7 +18,6 @@ import {
   validateForm,
 } from "services/unit-services";
 import { defaultUnitsForMode } from "./unit-config";
-import { useTranslations } from "next-intl";
 
 const ConversionUnitForm = ({
   unitMode,
@@ -36,7 +43,6 @@ const ConversionUnitForm = ({
       fetchUnitOptions(unitMode)
         .then((result) => {
           if (result.units) setUnitOptions(result.units);
-          console.log(result.units)
         })
         .catch((error) =>
           console.error("Failed to fetch unit options:", error.message),
@@ -53,21 +59,23 @@ const ConversionUnitForm = ({
     }
   }, [unitData]);
 
-  // This function updates the route based on the selected units
-  const updateRoute = (newFromUnit: string, newToUnit: string) => {
-    setResult(null);
-    const newPath = `/conversion/${unitMode}/${newFromUnit}-to-${newToUnit}`;
-    router.push(newPath);
-  };
+  const updateRoute = useCallback(
+    debounce((newFromUnit: string, newToUnit: string) => {
+      const newPath = `/conversion/${unitMode}/${newFromUnit}-to-${newToUnit}`;
+      router.push(newPath);
+      setResult(null);
+    }, 300),
+    [unitMode],
+  );
 
   const handleFromUnitChange = (option: { value: string }) => {
-    setFromUnit(option.value);
     updateRoute(option.value, toUnit);
+    setFromUnit(option.value);
   };
 
   const handleToUnitChange = (option: { value: string }) => {
-    setToUnit(option.value);
     updateRoute(fromUnit, option.value);
+    setToUnit(option.value);
   };
 
   const handleChangeValue = (event: ChangeEvent<HTMLInputElement>) =>
@@ -100,11 +108,8 @@ const ConversionUnitForm = ({
       <h1 className="my-4 text-xl capitalize text-sky-500">
         {t("title")} {unitMode}
       </h1>
-      {/* Calc Settings (from, to, val) Box */}
       <div className="sm-100 grid w-full grid-cols-1 gap-5 sm:grid-cols-3">
-        {/* from_unit Selector */}
         <Select
-          instanceId={useId()}
           className="w-full text-center text-lg sm:text-right"
           defaultValue={fromUnit}
           value={unitOptions?.find(
@@ -116,9 +121,7 @@ const ConversionUnitForm = ({
           isLoading={loading}
           isDisabled={loading}
         />
-        {/* to_unit Selector */}
         <Select
-          instanceId={useId()}
           className="w-full text-center text-lg sm:text-right"
           defaultValue={toUnit}
           value={unitOptions?.find(
@@ -130,7 +133,6 @@ const ConversionUnitForm = ({
           isLoading={loading}
           isDisabled={loading}
         />
-        {/* value to Convert selector */}
         <input
           type="number"
           className="w-full rounded-md border-[#ccc] transition-all duration-100 hover:border-[#B3B3B3]"
@@ -140,7 +142,6 @@ const ConversionUnitForm = ({
           placeholder={t("value")}
         />
       </div>
-      {/* Submit button to Send Data */}
       <button
         onClick={handleSubmit}
         type="submit"

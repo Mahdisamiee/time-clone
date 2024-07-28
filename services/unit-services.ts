@@ -21,7 +21,7 @@ export async function fetchGenericModes(): Promise<GenericResponse> {
   const response = await fetch(
     `https://whatever.plus/api/conversions-api/generic-conv/`,
     {
-      cache: "no-cache",
+      cache: "force-cache",
       method: "GET",
       headers: {
         accept: "application/json",
@@ -44,7 +44,7 @@ export async function fetchUnitOptions(mode: string): Promise<ApiResponse> {
       : `https://whatever.plus/api/conversions-api/generic-conv/${mode}/`;
 
   const response = await fetch(API_URL, {
-    cache: "no-cache",
+    cache: "force-cache",
     method: "GET",
     headers: {
       accept: "application/json",
