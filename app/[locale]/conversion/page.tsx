@@ -337,7 +337,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home({ params: { locale } }: Props) {
-  // unstable_setRequestLocale(locale);
+  unstable_setRequestLocale(locale);
   const t = await getTranslations("Conversion.Links");
   const tools = [
     { title: t("temp"), url: "/conversion/temp" },
