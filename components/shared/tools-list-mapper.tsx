@@ -13,21 +13,20 @@ interface MainToolsListProps {
 
 const ToolsListMapper = ({ tools }: MainToolsListProps) => {
   return (
-    <ul className="mx-auto mt-6 grid grid-cols-1 gap-20 px-5 opacity-1 md:grid-cols-6">
+    <ul className="mx-auto mt-6 grid grid-cols-4 gap-8 px-2 opacity-1 md:grid-cols-8">
       {tools.map((tool) => {
         return (
           <li
             key={tool.title}
-            className="relative col-span-2 flex h-40 flex-col items-stretch justify-between overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md"
+            className="relative col-span-2 flex h-32 flex-col items-stretch justify-between overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md"
           >
             <Link
-              href={tool.url}
-              prefetch={false}
-              target="_top"
+              className="duration-450 flex h-32 max-w-full flex-col items-center justify-center space-x-2 overflow-hidden rounded-xl px-6 py-1 text-md md:text-xl transition-colors hover:bg-sky-100"
               rel="noreferrer"
-              className="duration-450 flex h-40 max-w-full flex-col items-center justify-center space-x-2 overflow-hidden rounded-xl px-6 py-1 text-2xl transition-colors hover:bg-sky-100"
+              href={tool.url}
+              prefetch={true}
             >
-              <p className="mb-2 font-light text-sky-500">{tool.title}</p>
+              <p className="mb-2 text-sky-500">{tool.title}</p>
               {tool.icon ? <p>{tool.icon}</p> : null}
             </Link>
           </li>
