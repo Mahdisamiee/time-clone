@@ -14,9 +14,15 @@ type Props = {
 
 const UnitHome = async ({ params }: Props) => {
   unstable_setRequestLocale(params.locale);
+  const t = await getTranslations("Component.BreadcrumbNavbar");
+  // Extract translations
+  const level1 = t("level1");
+  const level2 = (args: { mode?: string }) => t("level2", args);
+  const level3 = (args: { from?: string; to?: string }) => t("level3", args);
+
   return (
     <>
-      <BreadcrumbNavbar params={params} />
+      <BreadcrumbNavbar params={params} t={{ level1, level2, level3 }} />
       <ConversionUnitForm unitMode={params.mode} />
     </>
   );
