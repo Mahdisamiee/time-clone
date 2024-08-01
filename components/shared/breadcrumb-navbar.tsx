@@ -1,16 +1,14 @@
+"use client"
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { memo } from "react";
 
-interface BreadcrumbNavbarProps {
+const BreadcrumbNavbar = ({
+  params,
+}: {
   params?: { mode?: string; options?: string };
-  t?: {
-    level1: string;
-    level2: (args: { mode?: string }) => string;
-    level3: (args: { from?: string; to?: string }) => string;
-  };
-}
-
-const BreadcrumbNavbar = ({ params, t }: BreadcrumbNavbarProps) => {
+}) => {
+  const t = useTranslations("Component.BreadcrumbNavbar");
   const options = params?.options?.split("-to-");
   return (
     <>
@@ -22,7 +20,7 @@ const BreadcrumbNavbar = ({ params, t }: BreadcrumbNavbarProps) => {
           rel="noreferrer"
           className="capitalize text-sky-500 transition ease-in-out hover:text-sky-700"
         >
-          {t?.level1}
+          {t("level1")}
         </Link>
       </span>
       <span> / </span>
@@ -36,7 +34,7 @@ const BreadcrumbNavbar = ({ params, t }: BreadcrumbNavbarProps) => {
               rel="noreferrer"
               className="capitalize text-sky-500 transition ease-in-out hover:text-sky-700"
             >
-              {t?.level2({ mode: params.mode })}
+              {t("level2", { mode: params.mode })}
             </Link>
           </span>
           {options ? (
@@ -50,7 +48,7 @@ const BreadcrumbNavbar = ({ params, t }: BreadcrumbNavbarProps) => {
                   rel="noreferrer"
                   className="capitalize text-sky-500 transition ease-in-out hover:text-sky-700"
                 >
-                  {t?.level3({ from: options[0], to: options[1] })}
+                  {t("level3", { from: options[0], to: options[1] })}
                 </Link>
               </span>
             </>
