@@ -1,3 +1,4 @@
+import { ToolsListMapperModel } from "@/components/shared/models/tools-list-mapper-model";
 import ToolsListMapper from "@/components/shared/tools-list-mapper";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 
@@ -9,10 +10,11 @@ export default async function Home({ params: { locale } }: Props) {
   unstable_setRequestLocale(locale);
   const t = await getTranslations("Links.MainLinks");
   
-  const tools = [
+  const tools: ToolsListMapperModel[] = [
     {
       title: t("time"),
       url: "/time",
+      prefetch: true,
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -33,6 +35,7 @@ export default async function Home({ params: { locale } }: Props) {
     {
       title: t("map"),
       url: "/map",
+      prefetch: false,
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -53,6 +56,7 @@ export default async function Home({ params: { locale } }: Props) {
     {
       title: t("conversion"),
       url: "/conversion",
+      prefetch: true,
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -69,10 +73,12 @@ export default async function Home({ params: { locale } }: Props) {
           />
         </svg>
       ),
+      
     },
     {
       title: t("currency"),
       url: "/currency",
+      prefetch:false,
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"

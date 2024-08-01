@@ -1,3 +1,4 @@
+import { ToolsListMapperModel } from "@/components/shared/models/tools-list-mapper-model";
 import ToolsListMapper from "@/components/shared/tools-list-mapper";
 import { Metadata } from "next";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
@@ -337,20 +338,20 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home({ params: { locale } }: Props) {
-  // unstable_setRequestLocale(locale);
+  unstable_setRequestLocale(locale);
   const t = await getTranslations("Conversion.Links");
-  const tools = [
-    { title: t("temp"), url: "/conversion/temp" },
-    { title: t("length"), url: "/conversion/length" },
-    { title: t("time"), url: "/conversion/time" },
-    { title: t("mass"), url: "/conversion/mass" },
-    { title: t("area"), url: "/conversion/area" },
-    { title: t("dataTransfer"), url: "/conversion/data-transfer" },
-    { title: t("digitalStorage"), url: "/conversion/digital-storage" },
-    { title: t("energy"), url: "/conversion/energy" },
-    { title: t("volume"), url: "/conversion/volume" },
-    { title: t("speed"), url: "/conversion/speed" },
-    { title: t("pressure"), url: "/conversion/pressure" },
+  const tools:ToolsListMapperModel[] = [
+    { title: t("temp"), url: "/conversion/temp", prefetch:true },
+    { title: t("length"), url: "/conversion/length",prefetch:true },
+    { title: t("time"), url: "/conversion/time",prefetch:true },
+    { title: t("mass"), url: "/conversion/mass",prefetch:true },
+    { title: t("area"), url: "/conversion/area",prefetch:true },
+    { title: t("dataTransfer"), url: "/conversion/data-transfer",prefetch:true },
+    { title: t("digitalStorage"), url: "/conversion/digital-storage",prefetch:true },
+    { title: t("energy"), url: "/conversion/energy" ,prefetch:true},
+    { title: t("volume"), url: "/conversion/volume",prefetch:true },
+    { title: t("speed"), url: "/conversion/speed",prefetch:true },
+    { title: t("pressure"), url: "/conversion/pressure",prefetch:true },
   ];
   return (
     <div className="z-10 w-full max-w-screen-lg px-5 xl:px-0">
